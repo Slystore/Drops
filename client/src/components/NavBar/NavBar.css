@@ -1,0 +1,75 @@
+.NavContainer{
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: thin dotted #f00; */
+}
+
+.LogoContainer{
+    width: 30vw;
+    height: 50px;
+    float: left;
+    /* border: thin dotted #f00; */
+}
+
+.Logo{
+    width: 150px;
+}
+
+.Logo:hover{ 
+    cursor: pointer;
+}
+
+.MenuContainer{
+    width: 40vw;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: thin dotted #f00; */
+}
+
+ul li{
+    list-style: none;
+    transition: 0.5s all;
+    font-size: 1.1em;
+    /* border: thin dotted #f00; */
+}
+
+ul li:hover{
+    color: #f00;
+    cursor: pointer;
+}
+
+.Menu{
+    width: 110px;
+    float: left;
+}
+
+.ToolsContainer{
+    width: 30vw;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: space-between;
+    /* border: thin dotted #f00; */
+}
+
+.Tool{
+    width: 50px;
+    float: left;
+}
+
+.Icon{
+    transition: 0.5s all;
+}
+
+.Icon:hover{
+    color: #f00;
+    cursor: pointer;
+}
