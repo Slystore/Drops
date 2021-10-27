@@ -55,6 +55,14 @@ ShoppingCart.belongsTo(Orders)
 // Orders.hasMany(Products)
 // Products.belongsTo(Orders)
 
+//relaciones de Reviews
+
+//reviews-products 1-n
+
+Users.hasMany(Reviews)
+Reviews.belongsTo(Users)
+
 module.exports = {
     conn:sequelize,
+    ...sequelize.models
 }
