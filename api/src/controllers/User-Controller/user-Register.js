@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { users } = require("../../db");
+const { Users } = require("../../db");
 const authConfing = require("../../config/auth");
 const register = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ const register = async (req, res) => {
       userType,
     } = req.body;
 
-    let userData = await users.findOne({
+    let userData = await Users.findOne({
       where: {
         mail: mail,
       },
@@ -28,7 +28,7 @@ const register = async (req, res) => {
         });
       } else {
         let passHash = await bcrypt.hash(password, +authConfing.rounds);
-        let user = await users.create({
+        let user = await Users.create({
           name,
           surname,
           profileImg,
