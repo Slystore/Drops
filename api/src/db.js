@@ -1,12 +1,12 @@
 require('dotenv').config();
-const {Sequelize} = require('sequelize')
-const usersModel = require('./models/Users')
-const shopCartsModel = require('./models/ShoppingCarts')
-const reviewsModel = require('./models/Reviews')
-const wishListsModel = require('./models/WishList')
-const branchsModel = require('./models/BranchOffices')
-const ordersModel = require('./models/Orders')
+const {Sequelize} = require('sequelize');
 
+const brandModel = require('./models/Brand.js');
+const categoryModel = require('./models/Category.js');
+const usersModel = require('./models/Users.js');
+const reviewsModel = require('./models/Reviews.js');
+const wishListsModel = require('./models/WishList.js');
+const ordersModel = require('./models/Orders.js');
 const {DB_USER,DB_PASSWORD,DB_NAME,DB_HOST} = process.env
 
 const sequelize = new Sequelize(
@@ -16,16 +16,14 @@ const sequelize = new Sequelize(
     }
 );
 
+brandModel(sequelize);
+categoryModel(sequelize);
+usersModel(sequelize);
+reviewsModel(sequelize);
+wishListsModel(sequelize);
+ordersModel(sequelize);
 
-usersModel(sequelize)
-shopCartsModel(sequelize)
-reviewsModel(sequelize)
-wishListsModel(sequelize)
-branchsModel(sequelize)
-ordersModel(sequelize)
-
-console.log(sequelize.models)
-const { Users, ShoppingCart, Reviews, WishList, BranchOffice, Orders } = sequelize.models
+const { Users, Reviews, WishList, Orders } = sequelize.models
 
 //Relaciones de Users
 
@@ -35,32 +33,21 @@ Reviews.belongsTo(Users)
 Users.hasOne(WishList)
 WishList.belongsTo(Users)
 
-Users.hasOne(ShoppingCart)
-ShoppingCart.belongsTo(Users)
-
 Users.hasMany(Orders)
 Orders.belongsTo(Users)
 
-//relaciones de BranchOffice
-
-// BranchOffice.hasMany(Products)
-// Products.belongsTo(BranchOffice)
-
+Users.hasMany(Reviews)
+Reviews.belongsTo(Users)
 
 // relaciones de Orders
-
-Orders.hasOne(ShoppingCart)
-ShoppingCart.belongsTo(Orders)
 
 // Orders.hasMany(Products)
 // Products.belongsTo(Orders)
 
-//relaciones de Reviews
+//relaciones de Product
 
-//reviews-products 1-n
 
-Users.hasMany(Reviews)
-Reviews.belongsTo(Users)
+
 
 module.exports = {
     conn:sequelize,
