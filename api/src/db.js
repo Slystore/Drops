@@ -59,8 +59,8 @@ ShoppingCart.belongsTo(Orders)
 
 //reviews-products 1-n
 
-Users.hasMany(Reviews)
-Reviews.belongsTo(Users)
+Users.hasMany(Reviews, {onDelete: "CASCADE"})
+Reviews.belongsTo(Users, {onDelete: "CASCADE"})
 
 module.exports = {
     conn:sequelize,
