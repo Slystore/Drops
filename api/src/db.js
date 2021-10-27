@@ -1,13 +1,15 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
-const brandModel = require("./models/Brand.js");
-const categoryModel = require("./models/Category.js");
 const usersModel = require("./models/Users.js");
 const reviewsModel = require("./models/Reviews.js");
 const wishListsModel = require("./models/WishList.js");
 const ordersModel = require("./models/Orders.js");
-const productsModel = require("./models/Product.js");
+
+const productModel = require("./models/Product.js");
+const sizeModel = require("./models/Size.js");
+const brandModel = require("./models/Brand.js");
+const categoryModel = require("./models/Category.js");
 
 const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } = process.env;
 const sequelize = new Sequelize(
@@ -18,22 +20,25 @@ const sequelize = new Sequelize(
   }
 );
 
-productsModel(sequelize);
+productModel(sequelize);
+sizeModel(sequelize);
+brandModel(sequelize);
+categoryModel(sequelize);
+
 usersModel(sequelize);
 reviewsModel(sequelize);
 ordersModel(sequelize);
-brandModel(sequelize);
-categoryModel(sequelize);
 wishListsModel(sequelize);
 
-const { 
-Product,
-Users,
-Reviews,
-Orders,
-Brand,
-Category,
-WishList } = sequelize.models;
+const {
+  Product,
+  Size,
+  Users,
+  Reviews,
+  Orders,
+  Brand,
+  Category,
+  WishList } = sequelize.models;
 
 //Relaciones de Users
 
@@ -53,8 +58,8 @@ Orders.belongsTo(Users);
 // Products.belongsTo(Orders)
 
 //relaciones de Product
-Product.belongsToMany(Category, { through: "ProductCategory" });
-Category.belongsToMany(Product, { through: "ProductCategory" });
+Product.belongsTo(Category);
+Category.hasMany(Product);
 
 Users.hasMany(Reviews, {onDelete: "CASCADE"})
 Reviews.belongsTo(Users, {onDelete: "CASCADE"})
@@ -62,6 +67,8 @@ Reviews.belongsTo(Users, {onDelete: "CASCADE"})
 Product.belongsTo(Brand);
 Brand.hasMany(Product);
 
+Product.belongsToMany(Size, { through: "ProductSize" });
+Size.belongsToMany(Product, { through: "ProductSize" });
 
 module.exports = {
   conn: sequelize,
