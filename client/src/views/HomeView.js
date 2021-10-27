@@ -5,14 +5,18 @@ import Brand from '../components/Brand/Brand';
 import Slider from '../components/Slider/Slider';
 import Home from '../components/Home/Home';
 import Footer from '../components/Footer/Footer';
+import Us from '../components/Us/Us';
+import Location from '../components/Location/Location';
 
 function HomeView() {
     return (
-        <div className='Container'>
+        <div style={{width: '99.1vw'}}>
             <NavBar />
             <Brand />
             <Slider />
             <Home />
+            <Us />
+            <Location />
             <Footer />
         </div>
     )

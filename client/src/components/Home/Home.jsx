@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import './Home.css';
 
 function Home() {
     return (
         <div className="HomeContainer">
-            Home
+            imágenes de chicos con drops
         </div>
     )
 }
