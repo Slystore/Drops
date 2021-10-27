@@ -37,8 +37,6 @@ WishList } = sequelize.models;
 
 //Relaciones de Users
 
-Users.hasMany(Reviews);
-Reviews.belongsTo(Users);
 
 Users.hasOne(WishList);
 WishList.belongsTo(Users);
@@ -46,8 +44,8 @@ WishList.belongsTo(Users);
 Users.hasMany(Orders);
 Orders.belongsTo(Users);
 
-Users.hasMany(Reviews);
-Reviews.belongsTo(Users);
+// Users.hasMany(Reviews);
+// Reviews.belongsTo(Users);
 
 // relaciones de Orders
 
@@ -58,8 +56,12 @@ Reviews.belongsTo(Users);
 Product.belongsToMany(Category, { through: "ProductCategory" });
 Category.belongsToMany(Product, { through: "ProductCategory" });
 
+Users.hasMany(Reviews, {onDelete: "CASCADE"})
+Reviews.belongsTo(Users, {onDelete: "CASCADE"})
+
 Product.belongsTo(Brand);
 Brand.hasMany(Product);
+
 
 module.exports = {
   conn: sequelize,
