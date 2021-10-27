@@ -7,6 +7,7 @@
     "start": "nodemon index",
     "client": "cd ../client && npm start",
     "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "seed": "node src/utils/mocks/reviews.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
