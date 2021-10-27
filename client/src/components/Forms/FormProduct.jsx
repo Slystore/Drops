@@ -5,6 +5,8 @@ import { useHistory, Link } from "react-router-dom";
 import swal from "sweetalert";
 import { useStyles } from "./FormStyles";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+// import image from "../Forms/img/posterForm.jpeg";
+// import bg from "../Forms/img/bgForm.jpeg";
 
 const FormProduct = () => {
 const dispatch= useDispatch();
@@ -14,18 +16,20 @@ const dispatch= useDispatch();
 //   const { categories } = useSelector((state) => state.productReducer);
 //   const { brands } = useSelector((state) => state.productReducer);
 //   const { sizes } = useSelector((state) => state.productReducer);
+const brands = ["Nike", "Adidas"]
+const categories = ["Street", "Running"]
+const sizes = ["40", "41"]
 
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     name: "",
     brand: "",
     category: "",
-    stock:{},
-    stockAvailable: true,
     price: 0,
     image: "",
     description: "",
-    status: [],
+    status: [],//que es status
+    stock:{"40":0,"41":0} 
   });
 
   const validate = (form) => {
@@ -44,10 +48,7 @@ const dispatch= useDispatch();
     } else if (!form.category) {
       errors.category = "Campo Obligatorio";
       
-    } else if (!form.stock || Object.key(form.stock).length === 0 || Object.values(form.stock).length === 0) {
-      errors.stock = "Campo Obligatorio";
-      
-    } else if (!form.description) {
+    }else if (!form.description) {
       errors.description = "Campo Obligatorio";
     }
     return errors;
@@ -68,15 +69,6 @@ const dispatch= useDispatch();
     });
   };
 
-  const handleSelect = (e) => {
-    setForm((form) => {
-      return {
-        ...form,
-        Disponibilidad: e.target.value,
-      };
-    });
-  };
-
   const handleSelectBrand = (e) => {
     setForm((form) => {
       return {
@@ -85,7 +77,24 @@ const dispatch= useDispatch();
       };
     });
   };
-
+  const handleSelectCategory = (e) => {
+    setForm((form) => {
+      return {
+        ...form,
+        category: e.target.value
+      };
+    } );
+  };
+  const handleChangeSize = (e) =>{
+    setForm((form)=> {
+      return {
+        ...form,
+        stock: {...form.stock, [e.target.name]: e.target.value } }
+      }
+    )
+  
+  }
+  
   function cambiar(){
     var pdrs = document.getElementById('fileUpload').files[0].name;
     document.getElementById('info').innerHTML = pdrs;
@@ -93,7 +102,7 @@ const dispatch= useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Object.values(errors).length > 0) {
+    if (Object.values(errors).length > 0 && form.name=== "") {
       swal("", "faltan campos por completar", "warning");
 
     } else {
@@ -120,21 +129,23 @@ const dispatch= useDispatch();
 
   return (
     <div className="container">
-        <div className={clasess.caja}>
+      {/* <img className={clasess.bg} src={bg} alt=""/> */}
+      <div className={clasess.caja}>
 
             <div className={clasess.imgLeft}>
+             {/* <img className={clasess.boxImg} src={image} alt=""/> */}
             </div>
 
             <div className={clasess.caja2}>
-
+                
                 <div className={clasess.titleContainer}>
-                    <h2 className={clasess.title}>Post movie</h2>
+                    <h3 className={clasess.title}>Crear</h3>
                 </div>
 
                 <form onSubmit={(e) => handleSubmit(e)} encType='multipart/form-data' method='post'>
 
-                    <div className={clasess.boxForm}>
-                        <div className={clasess.miniBox}>
+                    {/* <div className={clasess.boxForm}>
+                        <div className={clasess.miniBox}> */}
                             <input
                                 className={clasess.input}
                                 placeholder="Nombre"
@@ -145,9 +156,9 @@ const dispatch= useDispatch();
                              {errors.nombre && (
                                    <p className={clasess.error}>{errors.nombre}</p>
                             )}
-                        </div>
+                        {/* </div> */}
 
-                        <div className={clasess.miniBox2}>
+                        {/* <div className={clasess.miniBox2}> */}
                             <input
                                 className={clasess.input2}
                                 placeholder="Precio"
@@ -159,84 +170,71 @@ const dispatch= useDispatch();
                             {errors.precio && (
                               <p className={clasess.error}>{errors.precio}</p>
                             )}
-                        </div>
-
-                        <div className={clasess.miniBox2}>
+                        {/* </div> */}
+                        {/* <div className={clasess.miniBox2}> */}
+                          <label>Talle 40</label>
                             <input
                                 className={clasess.input2}
-                                placeholder="Marca"
-                                type="text"
-                                name="brand"
-                                onChange={handleChange}
+                                placeholder="Stock"
+                                type="number"
+                                min="0"
+                                name='40'
+                                onChange={handleChangeSize}
                             />
-                            {errors.brand && (
-                                  <p className={clasess.error}>{errors.brand}</p>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className={clasess.boxForm}>
-                        <div className={clasess.miniBox}>
+                            {/* </div>
+                            <div className={clasess.miniBox2}> */}
+                          <label>Talle 41</label>
                             <input
-                                className={clasess.input}
-                                placeholder="Categoria"
-                                type="text"
-                                name="category"
-                                onChange={handleChange}
+                                className={clasess.input2}
+                                placeholder="Stock"
+                                type="number"
+                                min="0"
+                                name='41'
+                                onChange={handleChangeSize}
                             />
-                            {errors.category && (
-                                  <p className={clasess.error}>{errors.category}</p>
-                            )}
-                        </div>
-                          </div>
-                    <div className={clasess.boxForm2}>
-                        <textarea
-                            className={clasess.textarea}
-                            name="description"
-                            placeholder="Descripción"
-                            onChange={handleChange}
-                        />
-                        {errors.description && (
-                          <p className={clasess.error}>{errors.description}</p>
-                        )}
-
+                            {/* </div>
                     </div>
 
-                    {/* <div className={clasess.boxForm}>
-                        <div className={clasess.miniBox3}>
+                    <div className={clasess.boxForm2}>
+                        <div className={clasess.miniBox3}> */}
                             <select onChange={(e) => handleSelectBrand(e)} className={clasess.select}>
                                 <option value="">Marca</option>
                                   {
                                       brands && brands.map((brand) => {
                                           return (
-                                            <option key={brand.id} value={brand.id}>
-                                              {brand.name}
+                                            <option key={brand.id} value={brand}>
+                                              {brand}
                                             </option>
                                           );
                                       })
                                   }
                             </select> 
-                        </div>
-                      
-        
-                       
-                    </div> */}
+                        {/* </div>
 
-                    <div className={clasess.boxForm}>
-                        <div className={clasess.miniBox3}>
-                            <select className={clasess.select} onChange={handleSelect}>
-                                <option value=""> Disponibilidad</option>
-                                <option value="true"> Disponible</option>
-                                <option value="false"> Proximamente</option>
-                            </select>
-                        </div>
-                    </div>
+                        <div className={clasess.miniBox3}> */}
+                            <select onChange={(e) => handleSelectCategory(e)} className={clasess.select}>
+                                <option value="">Categoría</option>
+                                  {
+                                      categories && categories.map((category) => {
+                                          return (
+                                            <option key={category} value={category}>
+                                              {category}
+                                            </option>
+                                          );
+                                      })
+                                  }
+                            </select> 
+                        {/* </div>  
+    
+                      </div>
+                      <div className={clasess.boxForm3}> */}
+
                         <div className={clasess.miniBox4}>
                             <div className={clasess.boxBtn}>
                                 <button type="submit" className={clasess.btn}>crear</button>  
                             </div>
                             <div className={clasess.boxBtn}>
-                                <Link to="/admin">
+                                <Link to="/">
                                   <button className={clasess.btn}>Volver</button>
                                 </Link>
                             </div>
@@ -259,12 +257,12 @@ const dispatch= useDispatch();
                             <div id="info" className={clasess.info}></div>  
                        
                     </div> */}
-
+                  {/* </div> */}
                 </form>
-            </div>
-        </div>
+          
+      </div>
 
-       
+       </div>
     
     </div>
   );

@@ -9,16 +9,16 @@ export const postProduct = async(payload) => {
 // const bodyParameters = { key: prueba };
     try {
         const res = await axios.post(
-            `/api/movies/createMovie`, { prueba }, {
+            `/api/products/createProduct`, { prueba }, {
                 headers: {
                     authorization: token,
                 },
             }
         );
-        console.log("post movie action despachada!");
+        console.log("post product action despachada!");
         return res;
     } catch (err) {
         console.log("yo rompo action", err);
     }
-    // const back = axios.post( 'http://localhost:3001/api/movies/createMovie', prueba)
+    // const back = axios.post( 'http://localhost:3001/api/products/createProduct', prueba)
 };
