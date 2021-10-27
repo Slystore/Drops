@@ -1,4 +1,4 @@
-const { Brand, Category, Product } = require("../../../db.js");
+const { Brand, Category, Product, Size } = require("../../../db.js");
 
 const jordanMockUp = async () => {
     const jordanOne = await Product.create({
@@ -6,7 +6,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const jordanOneCategory = await Category.findOne({
@@ -23,8 +23,15 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    jordanOne.addCategory(jordanOneCategory);
+    const jordanOneSize = await Size.findAll({
+        where: {
+            id: [38, 39, 40, 41, 42, 43 ]
+        }
+    })
+
+    jordanOne.addCategories(jordanOneCategory);
     jordanOne.addBrand(jordanOneBrand);
+    jordanOne.addSize(jordanOneSize);
 
     // ============================================================ //
 
@@ -33,7 +40,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const jordanRetroCategory = await Category.findOne({
@@ -50,7 +57,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    jordanRetro.addCategory(jordanRetroCategory);
+    jordanRetro.addCategories(jordanRetroCategory);
     jordanRetro.addBrand(jordanRetroBrand);
 
     // ============================================================ //
@@ -60,7 +67,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const jordanCactusCategory = await Category.findOne({
@@ -87,7 +94,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const jordanHyperCategory = await Category.findOne({
@@ -104,7 +111,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    jordanCactusBrand.addCategory(jordanHyperCategory)
+    jordanCactusBrand.addCategories(jordanHyperCategory)
     jordanHyper.addBrand(jordanHyperBrand)
 
     // ============================================================ //
@@ -114,7 +121,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const jordanJbalvinCategory = await Category.findOne({
@@ -131,7 +138,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    jordanJbalvin.addCategory(jordanJbalvinCategory)
+    jordanJbalvin.addCategories(jordanJbalvinCategory)
     jordanJbalvin.addBrand(jordanJbalvinBrand)
 
     // ============================================================ //
@@ -141,7 +148,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const jordanMochaCategory = await Category.findOne({
@@ -158,7 +165,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    jordanMocha.addCategory(jordanMochaCategory);
+    jordanMocha.addCategories(jordanMochaCategory);
     jordanMocha.addBrand(jordanMochaBrand);
 
     // ============================================================ //
@@ -168,7 +175,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const Jordan11RetroPlayOffsBredCategory = await Category.findOne({
@@ -185,7 +192,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    Jordan11RetroPlayOffsBred.addCategory(Jordan11RetroPlayOffsBredCategory);
+    Jordan11RetroPlayOffsBred.addCategories(Jordan11RetroPlayOffsBredCategory);
     Jordan11RetroPlayOffsBred.addBrand(Jordan11RetroPlayOffsBredBrand);
 
     // ============================================================ //
@@ -195,7 +202,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
     const jordan4RetroLightCategory = await Category.findOne({
         where: {
@@ -211,7 +218,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    jordan4RetroLight.addCategory(jordan4RetroLightCategory);
+    jordan4RetroLight.addCategories(jordan4RetroLightCategory);
     jordan4RetroLight.addBrand(jordan4RetroLightBrand);
 
     // ============================================================ //
@@ -221,7 +228,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const Jordan4RetroBredCategory = await Category.findOne({
@@ -238,7 +245,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    Jordan4RetroBred.addCategory(Jordan4RetroBredCategory);
+    Jordan4RetroBred.addCategories(Jordan4RetroBredCategory);
     Jordan4RetroBred.addBrand(Jordan4RetroBredBrand);
 
     // ============================================================ //
@@ -248,7 +255,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const Jordan3UNCCategory = await Category.findOne({
@@ -265,7 +272,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    Jordan3UNC.addCategory(Jordan3UNCCategory);
+    Jordan3UNC.addCategories(Jordan3UNCCategory);
     Jordan3UNC.addBrand(Jordan3UNCBrand);
 
     // ============================================================ //
@@ -275,7 +282,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const airJordan1MidMilitaryCategory = await Category.findOne({
@@ -292,7 +299,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    airJordan1MidMilitary.addCategory(airJordan1MidMilitaryCategory);
+    airJordan1MidMilitary.addCategories(airJordan1MidMilitaryCategory);
     airJordan1MidMilitary.addBrand(airJordan1MidMilitaryBrand);
 
     // ============================================================ //
@@ -302,7 +309,7 @@ const jordanMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible",
     });
 
     const airJordan1MidPurpleCategory = await Category.findOne({
@@ -319,7 +326,7 @@ const jordanMockUp = async () => {
         attributes: ["id"],
     });
 
-    airJordan1MidPurple.addCategory(airJordan1MidPurpleCategory);
+    airJordan1MidPurple.addCategories(airJordan1MidPurpleCategory);
     airJordan1MidPurple.addBrand(airJordan1MidPurpleBrand);
 
     //-------------------stret wear -------------------//

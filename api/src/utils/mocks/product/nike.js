@@ -6,7 +6,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: 105.25,
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const airForce1FeltCategory = await Category.findOne({
@@ -23,7 +23,7 @@ const nikeMockUp = async () => {
         attributes: ["id"],
     });
 
-    airForce1Felt.addCategory(airForce1FeltCategory);
+    airForce1Felt.addCategories(airForce1FeltCategory);
     airForce1Felt.addBrand(airForce1FeltBrand);
 
     // ============================================================ //
@@ -33,7 +33,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const airForce1GoretexCategory = await Category.findOne({
@@ -50,7 +50,7 @@ const nikeMockUp = async () => {
         attributes: ["id"],
     });
 
-    airForce1Goretex.addCategory(airForce1GoretexCategory);
+    airForce1Goretex.addCategories(airForce1GoretexCategory);
     airForce1Goretex.addBrand(airForce1GoretexBrand);
 
     // ============================================================ //
@@ -60,7 +60,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const airMax720OrangeCategory = await Category.findOne({
@@ -77,7 +77,7 @@ const nikeMockUp = async () => {
         attributes: ["id"],
     });
 
-    airMax720Orange.addCategory(airMax720OrangeCategory);
+    airMax720Orange.addCategories(airMax720OrangeCategory);
     airMax720Orange.addBrand(airMax720OrangeBrand);
 
     // ============================================================ //
@@ -87,7 +87,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const airMax720OGCategory = await Category.findOne({
@@ -104,7 +104,7 @@ const nikeMockUp = async () => {
         attributes: ["id"],
     });
 
-    airMax720OG.addCategory(airMax720OGCategory);
+    airMax720OG.addCategories(airMax720OGCategory);
     airMax720OG.addBrand(airMax720OGBrand);
 
     // ============================================================ //
@@ -114,7 +114,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const airMax1TerraCategory = await Category.findOne({
@@ -131,7 +131,7 @@ const nikeMockUp = async () => {
         attributes: ["id"],
     });
 
-    airMax1Terra.addCategory(airMax1TerraCategory);
+    airMax1Terra.addCategories(airMax1TerraCategory);
     airMax1Terra.addBrand(airMax1TerraBrand);
 
     // ============================================================ //
@@ -141,7 +141,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const airMax1ParraCategory = await Category.findOne({
@@ -158,7 +158,7 @@ const nikeMockUp = async () => {
         attributes: ["id"],
     });
 
-    airMax1Parra.addCategory(airMax1ParraCategory);
+    airMax1Parra.addCategories(airMax1ParraCategory);
     airMax1Parra.addBrand(airMax1ParraBrand);
 
     //-------------------stret wear -------------------//
@@ -174,7 +174,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
     const runFlyknitCategory = await Category.findAll({
         where: {
@@ -190,7 +190,7 @@ const nikeMockUp = async () => {
         attributes: [id],
     });
 
-    nikeRunFlyknit.addCategory(runFlyknitCategory);
+    nikeRunFlyknit.addCategories(runFlyknitCategory);
     nikeRunFlyknit.addBrand(runFlyknitBrand);
 
     // ============================================================ //
@@ -200,7 +200,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const nikeWinfloCategory = await Category.findAll({
@@ -217,7 +217,7 @@ const nikeMockUp = async () => {
         attributes: [id],
     });
 
-    nikeWinflo.addCategory(nikeWinfloCategory);
+    nikeWinflo.addCategories(nikeWinfloCategory);
     nikeWinflo.addBrand(nikeWinfloBrand);
 
     // ============================================================ //
@@ -227,7 +227,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const nikeRevolutionCategory = await Category.findAll({
@@ -244,7 +244,7 @@ const nikeMockUp = async () => {
         attributes: [id],
     });
 
-    nikeRevolution.addCategory(nikeRevolutionCategory);
+    nikeRevolution.addCategories(nikeRevolutionCategory);
     nikeRevolution.addBrand(nikeRevolutionBrand);
 
     // ============================================================ //
@@ -254,7 +254,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const nikeDrownshifterCategory = await Category.findAll({
@@ -271,7 +271,7 @@ const nikeMockUp = async () => {
         attributes: [id],
     });
 
-    nikeDrownshifter.addCategory(nikeDrownshifterCategory);
+    nikeDrownshifter.addCategories(nikeDrownshifterCategory);
     nikeDrownshifter.addBrand(nikeDrownshifterBrand);
 
     // ============================================================ //
@@ -281,7 +281,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const nikeAirExceeCategory = await Category.findAll({
@@ -298,7 +298,7 @@ const nikeMockUp = async () => {
         attributes: [id],
     });
 
-    nikeAirExcee.addCategory(nikeAirExceeCategory);
+    nikeAirExcee.addCategories(nikeAirExceeCategory);
     nikeAirExcee.addBrand(nikeAirExceeBrand);
 
     // ============================================================ //
@@ -308,7 +308,7 @@ const nikeMockUp = async () => {
         image: "",
         description: "",
         price: "$105",
-        status: ["disponible", "no disponible"],
+        status: "disponible" ,
     });
 
     const nikeQuestCategory = await Category.findAll({
@@ -325,7 +325,7 @@ const nikeMockUp = async () => {
         attributes: [id],
     });
 
-    nikeQuestBrand.addCategory(nikeQuestCategory);
+    nikeQuestBrand.addCategories(nikeQuestCategory);
     nikeQuest.addBrand(nikeQuestBrand);
     //-------------------deportivo -------------------//
 };

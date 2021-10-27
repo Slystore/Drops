@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
             type: DataTypes.DECIMAL(10,2),
         },
         status:{
-            type: DataTypes.ENUM('active', 'inactive'),
+            type: DataTypes.ENUM('disponible', 'no disponible'),
         }
     }, {timestamps: false})
 }
