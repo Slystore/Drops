@@ -1,0 +1,81 @@
+.LocationContainer{
+    width: 100%;
+    height: 650px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/bgJordan.jpg');
+    background-size: cover;
+    /* background: #ccc; */
+    /* border: thin dotted #f00; */
+}
+
+.SubLocation{
+   width: 1490px;
+   margin-top: 10px;
+   margin: 0 auto;
+   /* border: thin dotted #f00;  */
+} 
+
+.Location{
+    width: 800px; 
+    height: 600px;
+    float: left;
+    margin-right: 30px;
+    background: #00000030;
+}
+
+.Form{
+    width: 650px; 
+    height: 600px;
+    float: left;
+    /* border: thin dotted #f00; */
+}
+
+.InputFormContact{
+    width: 80%;
+    height: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.InputFormContact:focus{
+    outline:  solid 1px #f00;
+}
+
+.TextAreaFormContact{
+    width: 80%;
+    height: 150px;
+    padding: 10px;
+    resize: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+.TextAreaFormContact:focus{
+    outline: solid 1px #f00;
+}
+
+.ButtonFormContact{
+    width: 150px;
+    height: 30px; 
+    margin-top: 30px;
+    border: none;
+    background: #000000;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.5s all;
+}
+
+.ButtonFormContact:hover{
+    cursor: pointer;
+    background: #cf0000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}

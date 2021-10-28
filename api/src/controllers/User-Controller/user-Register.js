@@ -50,6 +50,9 @@ const register = async (req, res) => {
         }
       }
     }
+    if(userData){
+      res.json({msg:"Este mail ya se encuentra asociado a un usuario. Por favor intentar con otro"})
+    }
     if (!password) {
       return res.json({ msg: "Debe ingresar una contraseña" });
     }
