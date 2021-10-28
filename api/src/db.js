@@ -49,6 +49,9 @@ WishList.belongsTo(Users);
 Users.hasMany(Orders);
 Orders.belongsTo(Users);
 
+Users.hasMany(Reviews, { onDelete: "CASCADE" });
+Reviews.belongsTo(Users, { onDelete: "CASCADE" });
+
 // Users.hasMany(Reviews);
 // Reviews.belongsTo(Users);
 
@@ -58,14 +61,11 @@ Orders.belongsTo(Users);
 // Products.belongsTo(Orders)
 
 //relaciones de Product
-Product.belongsTo(Category);
 Category.hasMany(Product);
+Product.belongsTo(Category);
 
-Users.hasMany(Reviews, {onDelete: "CASCADE"})
-Reviews.belongsTo(Users, {onDelete: "CASCADE"})
-
-Product.belongsTo(Brand);
 Brand.hasMany(Product);
+Product.belongsTo(Brand);
 
 Product.belongsToMany(Size, { through: "ProductSize" });
 Size.belongsToMany(Product, { through: "ProductSize" });

@@ -1,30 +1,39 @@
-const { Brand, Category, Product } = require("../../../db.js");
+const { Brand, Category, Product, Size } = require("../../../db.js");
 
 const nikeMockUp = async () => {
-    const airForce1Felt = await Product.create({
+    const airForceOneFelt = await Product.create({
         name: "AIR FORCE 1 FELT GS",
         image: "",
         description: "",
         price: 105.25,
-        status: "disponible" ,
+        status: "disponible",
     });
 
-    const airForce1FeltCategory = await Category.findOne({
+    const airForceOneFeltCategory = await Category.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const airForce1FeltBrand = await Brand.findOne({
+    const airForceOneFeltBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airForce1Felt.addCategories(airForce1FeltCategory);
-    airForce1Felt.addBrand(airForce1FeltBrand);
+    const airForceOneSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airForceOneFeltBrand.addProduct(airForceOneFelt);
+    airForceOneFeltCategory.addProduct(airForceOneFelt);
+    airForceOneFelt.addSizes(airForceOneSizes);
 
     // ============================================================ //
 
@@ -32,7 +41,7 @@ const nikeMockUp = async () => {
         name: "Air Force 1 Goretex High White DS",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
@@ -40,18 +49,28 @@ const nikeMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airForce1GoretexBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airForce1Goretex.addCategories(airForce1GoretexCategory);
-    airForce1Goretex.addBrand(airForce1GoretexBrand);
+    const airForce1GoretexSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airForce1GoretexBrand.addProduct(airForce1Goretex);
+    airForce1GoretexCategory.addProduct(airForce1Goretex);
+    airForce1Goretex.addSizes(airForce1GoretexSizes);
+
 
     // ============================================================ //
 
@@ -59,7 +78,7 @@ const nikeMockUp = async () => {
         name: "Air Max 720 Orange DS",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.35,
         status: "disponible" ,
     });
 
@@ -67,18 +86,28 @@ const nikeMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airMax720OrangeBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airMax720Orange.addCategories(airMax720OrangeCategory);
-    airMax720Orange.addBrand(airMax720OrangeBrand);
+    const airMax720OrangeSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airMax720OrangeBrand.addProduct(airMax720Orange);
+    airMax720OrangeCategory.addProduct(airMax720Orange);
+    airMax720Orange.addSizes(airMax720OrangeSizes);
+
 
     // ============================================================ //
 
@@ -86,7 +115,7 @@ const nikeMockUp = async () => {
         name: "Air Max 720 OG DS",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
@@ -94,18 +123,27 @@ const nikeMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airMax720OGBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airMax720OG.addCategories(airMax720OGCategory);
-    airMax720OG.addBrand(airMax720OGBrand);
+    const airMax720OGSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airMax720OGBrand.addProduct(airMax720OG);
+    airMax720OGCategory.addProduct(airMax720OG);
+    airMax720OG.addSizes(airMax720OGSizes);
 
     // ============================================================ //
 
@@ -113,7 +151,7 @@ const nikeMockUp = async () => {
         name: "Air Max 1 Terra",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
@@ -121,18 +159,27 @@ const nikeMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airMax1TerraBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airMax1Terra.addCategories(airMax1TerraCategory);
-    airMax1Terra.addBrand(airMax1TerraBrand);
+    const airMax1TerraSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airMax1TerraBrand.addProduct(airMax1Terra);
+    airMax1TerraCategory.addProduct(airMax1Terra);
+    airMax1Terra.addSizes(airMax1TerraSizes);
 
     // ============================================================ //
 
@@ -140,7 +187,7 @@ const nikeMockUp = async () => {
         name: "Air Max 1 Parra DS",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
@@ -148,18 +195,27 @@ const nikeMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airMax1ParraBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airMax1Parra.addCategories(airMax1ParraCategory);
-    airMax1Parra.addBrand(airMax1ParraBrand);
+    const airMax1ParraSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airMax1ParraBrand.addProduct(airMax1Parra);
+    airMax1ParraCategory.addProduct(airMax1Parra);
+    airMax1Parra.addSizes(airMax1ParraSizes);
 
     //-------------------stret wear -------------------//
 
@@ -173,25 +229,35 @@ const nikeMockUp = async () => {
         name: "Nike React Infinity Run Flyknit",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
-    const runFlyknitCategory = await Category.findAll({
+
+    const nikeRunFlyknitCategory = await Category.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const runFlyknitBrand = await Brand.findAll({
+    const nikeRunFlyknitBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: [id],
+        attributes: ['id']
     });
 
-    nikeRunFlyknit.addCategories(runFlyknitCategory);
-    nikeRunFlyknit.addBrand(runFlyknitBrand);
+    const nikeRunFlyknitSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    nikeRunFlyknitBrand.addProduct(nikeRunFlyknit);
+    nikeRunFlyknitCategory.addProduct(nikeRunFlyknit);
+    nikeRunFlyknit.addSizes(nikeRunFlyknitSizes);
 
     // ============================================================ //
 
@@ -199,80 +265,105 @@ const nikeMockUp = async () => {
         name: "Nike Winflo 8",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
-    const nikeWinfloCategory = await Category.findAll({
+    const nikeWinfloCategory = await Category.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const nikeWinfloBrand = await Brand.findAll({
+    const nikeWinfloBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: [id],
+        attributes: ['id']
     });
 
-    nikeWinflo.addCategories(nikeWinfloCategory);
-    nikeWinflo.addBrand(nikeWinfloBrand);
+    const nikeWinfloSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
 
+
+    nikeWinfloBrand.addProduct(nikeWinflo);
+    nikeWinfloCategory.addProduct(nikeWinflo);
+    nikeWinflo.addSizes(nikeWinfloSizes);
     // ============================================================ //
 
     const nikeRevolution = await Product.create({
         name: "Nike Revolution 5",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
-    const nikeRevolutionCategory = await Category.findAll({
+    const nikeRevolutionCategory = await Category.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const nikeRevolutionBrand = await Brand.findAll({
+    const nikeRevolutionBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: [id],
+        attributes: ['id']
     });
 
-    nikeRevolution.addCategories(nikeRevolutionCategory);
-    nikeRevolution.addBrand(nikeRevolutionBrand);
+    const nikeRevolutionSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
 
+    nikeRevolutionBrand.addProduct(nikeRevolution);
+    nikeRevolutionCategory.addProduct(nikeRevolution);
+    nikeRevolution.addSizes(nikeRevolutionSizes);
+   
     // ============================================================ //
 
     const nikeDrownshifter = await Product.create({
         name: "Nike Downshifter 11",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
-    const nikeDrownshifterCategory = await Category.findAll({
+    const nikeDrownshifterCategory = await Category.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const nikeDrownshifterBrand = await Brand.findAll({
+    const nikeDrownshifterBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: [id],
+        attributes: ['id']
     });
 
-    nikeDrownshifter.addCategories(nikeDrownshifterCategory);
-    nikeDrownshifter.addBrand(nikeDrownshifterBrand);
+    const nikeDrownshifterSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    nikeDrownshifterBrand.addProduct(nikeDrownshifter);
+    nikeDrownshifterCategory.addProduct(nikeDrownshifter);
+    nikeDrownshifter.addSizes(nikeDrownshifterSizes);
 
     // ============================================================ //
 
@@ -280,26 +371,35 @@ const nikeMockUp = async () => {
         name: "Nike Air Max Excee",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
-    const nikeAirExceeCategory = await Category.findAll({
+    const nikeAirExceeCategory = await Category.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const nikeAirExceeBrand = await Brand.findAll({
+    const nikeAirExceeBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: [id],
+        attributes: ['id']
     });
 
-    nikeAirExcee.addCategories(nikeAirExceeCategory);
-    nikeAirExcee.addBrand(nikeAirExceeBrand);
+    const nikeAirExceeSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    nikeAirExceeBrand.addProduct(nikeAirExcee);
+    nikeAirExceeCategory.addProduct(nikeAirExcee);
+    nikeAirExcee.addSizes(nikeAirExceeSizes);
 
     // ============================================================ //
 
@@ -307,26 +407,35 @@ const nikeMockUp = async () => {
         name: "Nike Quest 4",
         image: "",
         description: "",
-        price: "$105",
+        price: 105.25,
         status: "disponible" ,
     });
 
-    const nikeQuestCategory = await Category.findAll({
+    const nikeQuestCategory = await Category.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const nikeQuestBrand = await Brand.findAll({
+    const nikeQuestBrand = await Brand.findOne({
         where: {
             id: 1,
         },
-        attributes: [id],
+        attributes: ['id']
     });
 
-    nikeQuestBrand.addCategories(nikeQuestCategory);
-    nikeQuest.addBrand(nikeQuestBrand);
+    const nikeQuestSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    nikeQuestBrand.addProduct(nikeQuest);
+    nikeQuestCategory.addProduct(nikeQuest);
+    nikeQuest.addSizes(nikeQuestSizes);
     //-------------------deportivo -------------------//
 };
 
