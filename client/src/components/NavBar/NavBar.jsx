@@ -45,12 +45,10 @@ function NavBar() {
                         />
                     </div> */}
                     <div className="Tool">
-                        <form>
-                            <input type="search" placeholder="Buscar ..."/>
+                        <form className="FormSearch">
+                            <input type="search" className="SearchBar" placeholder="Buscar ..."/>
                             <i className="fa fa-search spinIn"></i>
                         </form>
-                        {/* <input type="text" className="InputSearch"/>
-                        <SavedSearchIcon className="spinIn search"  sx={{fontSize: 25, transition: '0.5s all',  '&:hover': { color: '#f00', cursor: 'pointer'}}}/> */}
                     </div>
                     <div className="Tool"><ShoppingCartIcon className="spinIn"  sx={{fontSize: 25, transition: '0.5s all',  '&:hover': { color: '#f00', cursor: 'pointer'}}}/></div>
                     <div className="Tool"><AccountCircleIcon className="spinIn" sx={{fontSize: 25, transition: '0.5s all',  '&:hover': { color: '#f00', cursor: 'pointer'}}}/></div>
