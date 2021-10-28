@@ -21,7 +21,7 @@ function Location() {
                             <input className="InputFormContact" type="text" name="email" placeholder="Email"></input>
                             <input className="InputFormContact" type="text" name="subjet" placeholder="Asunto"></input>
                             <textarea className="TextAreaFormContact" placeholder="Mensaje"></textarea>
-                            <input className="ButtonFormContact" type="submit" name="submit" value="Enviar"></input>
+                            <input className="ButtonFormContact hvr-grow-shadow" type="submit" name="submit" value="Enviar"></input>
                         </form>
                     </Box>
                 </div>

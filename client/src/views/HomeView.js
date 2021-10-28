@@ -10,6 +10,7 @@ import Footer from '../components/Footer/Footer';
 // import { getReviews, getReviewById, getReviewsByProduct, getReviewsByUser, createReview, deleteReview, updateReview } from '../redux/actions';
 
 import Us from '../components/Us/Us';
+import Newsletter from '../components/Newsletter/Newsletter';
 import Location from '../components/Location/Location';
 
 
@@ -40,6 +41,7 @@ function HomeView() {
             <Slider />
             <Home />
             <Us />
+            <Newsletter />
             <Location />
             <Footer />
         </div>

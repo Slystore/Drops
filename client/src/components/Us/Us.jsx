@@ -32,7 +32,7 @@ function Us() {
             <h1>TODOS SOMOS DROPS</h1>
             <p>Somos el mejor local de street shoes de Argentina, con más de 50 modelos a escoger. <br></br>
             Como amantes de la cultura proveemos los mejores productos 100% originales que hacen match contigo.</p>
-            <div className="hvr-grow-shadow"><Button style={{backgroundColor: 'black', color: 'white', borderRadius: 10}} onClick={handleOpen}>Conócenos</Button></div>
+            <div className="hvr-grow-shadow"><Button style={{ width: 120, height:35, backgroundColor: 'black', color: 'white', borderRadius: 10}} onClick={handleOpen}>Conócenos</Button></div>
             <Modal
                 open={open}
                 onClose={handleClose}

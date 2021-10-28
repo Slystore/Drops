@@ -62,13 +62,13 @@
 }
 
 .ButtonFormContact{
-    width: 150px;
-    height: 30px; 
+    width: 120px;
+    height: 35px; 
     margin-top: 30px;
     border: none;
     background: #000000;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 500;
     transition: 0.5s all;
@@ -76,6 +76,6 @@
 
 .ButtonFormContact:hover{
     cursor: pointer;
-    background: #cf0000;
+    /* background: #cf0000; */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
 }
