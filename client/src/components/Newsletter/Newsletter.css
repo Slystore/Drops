@@ -1,0 +1,51 @@
+.NewsletterContainer{
+    width: 100%;
+    height: 220px;
+    margin: 100px 0;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #cccccc40;
+    /* border: thin dotted #f00; */
+}
+
+.FormNewsLetter{
+    width: 70%;
+    margin: 0 auto;
+    /* border: thin dotted #f00; */
+}
+
+.NewsletterInput{
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.NewsletterInput:focus{
+    outline:  solid 1px #f00;
+}
+
+.ButtonNewsletter{
+    width: 120px;
+    height: 35px; 
+    margin-top: 10px;
+    border: none;
+    background: #000000;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.5s all;
+    clear: both;
+}
+
+.ButtonNewsletter:hover{
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}

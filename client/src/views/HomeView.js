@@ -6,6 +6,7 @@ import Slider from '../components/Slider/Slider';
 import Home from '../components/Home/Home';
 import Footer from '../components/Footer/Footer';
 import Us from '../components/Us/Us';
+import Newsletter from '../components/Newsletter/Newsletter';
 import Location from '../components/Location/Location';
 
 function HomeView() {
@@ -16,6 +17,7 @@ function HomeView() {
             <Slider />
             <Home />
             <Us />
+            <Newsletter />
             <Location />
             <Footer />
         </div>
