@@ -5,7 +5,7 @@ const jordanMockUp = async () => {
         name: "Air Jordan 1 High Royal Toe",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -13,25 +13,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordanOneBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    const jordanOneSize = await Size.findAll({
+    const jordanOneSizes = await Size.findAll({
         where: {
-            id: [38, 39, 40, 41, 42, 43 ]
-        }
-    })
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
 
-    jordanOne.addCategories(jordanOneCategory);
-    jordanOne.addBrand(jordanOneBrand);
-    jordanOne.addSize(jordanOneSize);
+
+    jordanOneBrand.addProduct(jordanOne);
+    jordanOneCategory.addProduct(jordanOne);
+    jordanOne.addSizes(jordanOneSizes);
 
     // ============================================================ //
 
@@ -39,7 +41,7 @@ const jordanMockUp = async () => {
         name: "Jordan 1 Retro High Dark Mocha",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -47,18 +49,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordanRetroBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    jordanRetro.addCategories(jordanRetroCategory);
-    jordanRetro.addBrand(jordanRetroBrand);
+    const jordanRetroSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    jordanRetroBrand.addProduct(jordanRetro);
+    jordanRetroCategory.addProduct(jordanRetro);
+    jordanRetro.addSizes(jordanRetroSizes);
 
     // ============================================================ //
 
@@ -66,7 +77,7 @@ const jordanMockUp = async () => {
         name: "Air Jordan 4 Cactus Jack",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -74,18 +85,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordanCactusBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    jordanCactus.addBrand(jordanCactusCategory)
-    jordanCactus.addBrand(jordanCactusBrand)
+    const jordanCactusSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    jordanCactusBrand.addProduct(jordanCactus);
+    jordanCactusCategory.addProduct(jordanCactus);
+    jordanCactus.addSizes(jordanCactusSizes);
 
     // ============================================================ //
 
@@ -93,7 +113,7 @@ const jordanMockUp = async () => {
         name: "Jordan 1 Retro High Hyper Royal Smoke Grey",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -101,18 +121,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordanHyperBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    jordanCactusBrand.addCategories(jordanHyperCategory)
-    jordanHyper.addBrand(jordanHyperBrand)
+    const jordanHyperSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    jordanHyperBrand.addProduct(jordanHyper);
+    jordanHyperCategory.addProduct(jordanHyper);
+    jordanHyper.addSizes(jordanHyperSizes);
 
     // ============================================================ //
 
@@ -120,7 +149,7 @@ const jordanMockUp = async () => {
         name: "Jordan 1 Retro High J Balvin",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -128,26 +157,34 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordanJbalvinBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    jordanJbalvin.addCategories(jordanJbalvinCategory)
-    jordanJbalvin.addBrand(jordanJbalvinBrand)
+    const jordanJbalvinSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
 
+
+    jordanJbalvinBrand.addProduct(jordanJbalvin);
+    jordanJbalvinCategory.addProduct(jordanJbalvin);
+    jordanJbalvin.addSizes(jordanJbalvinSizes);
     // ============================================================ //
 
     const jordanMocha = await Product.create({
         name: "Jordan 1 Retro High Dark Mocha",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -155,18 +192,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordanMochaBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    jordanMocha.addCategories(jordanMochaCategory);
-    jordanMocha.addBrand(jordanMochaBrand);
+    const jordanMochaSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    jordanMochaBrand.addProduct(jordanMocha);
+    jordanMochaCategory.addProduct(jordanMocha);
+    jordanMocha.addSizes(jordanMochaSizes);
 
     // ============================================================ //
 
@@ -174,7 +220,7 @@ const jordanMockUp = async () => {
         name: "Jordan 11 Retro Playoffs Bred 2019",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -182,18 +228,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const Jordan11RetroPlayOffsBredBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    Jordan11RetroPlayOffsBred.addCategories(Jordan11RetroPlayOffsBredCategory);
-    Jordan11RetroPlayOffsBred.addBrand(Jordan11RetroPlayOffsBredBrand);
+    const Jordan11RetroPlayOffsBredSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    Jordan11RetroPlayOffsBredBrand.addProduct(Jordan11RetroPlayOffsBred);
+    Jordan11RetroPlayOffsBredCategory.addProduct(Jordan11RetroPlayOffsBred);
+    Jordan11RetroPlayOffsBred.addSizes(Jordan11RetroPlayOffsBredSizes);
 
     // ============================================================ //
 
@@ -201,25 +256,34 @@ const jordanMockUp = async () => {
         name: "Jordan 4 Retro Lightning 2021",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
     const jordan4RetroLightCategory = await Category.findOne({
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const jordan4RetroLightBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    jordan4RetroLight.addCategories(jordan4RetroLightCategory);
-    jordan4RetroLight.addBrand(jordan4RetroLightBrand);
+    const jordan4RetroLightSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    jordan4RetroLightBrand.addProduct(jordan4RetroLight);
+    jordan4RetroLightCategory.addProduct(jordan4RetroLight);
+    jordan4RetroLight.addSizes(jordan4RetroLightSizes);
 
     // ============================================================ //
 
@@ -227,7 +291,7 @@ const jordanMockUp = async () => {
         name: "Jordan 4 Retro Bred 2019",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -235,18 +299,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const Jordan4RetroBredBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    Jordan4RetroBred.addCategories(Jordan4RetroBredCategory);
-    Jordan4RetroBred.addBrand(Jordan4RetroBredBrand);
+    const Jordan4RetroBredSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    Jordan4RetroBredBrand.addProduct(Jordan4RetroBred);
+    Jordan4RetroBredCategory.addProduct(Jordan4RetroBred);
+    Jordan4RetroBred.addSizes(Jordan4RetroBredSizes);
 
     // ============================================================ //
 
@@ -254,7 +327,7 @@ const jordanMockUp = async () => {
         name: "Jordan 3 UNC",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -262,18 +335,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const Jordan3UNCBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    Jordan3UNC.addCategories(Jordan3UNCCategory);
-    Jordan3UNC.addBrand(Jordan3UNCBrand);
+    const Jordan3UNCSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    Jordan3UNCBrand.addProduct(Jordan3UNC);
+    Jordan3UNCCategory.addProduct(Jordan3UNC);
+    Jordan3UNC.addSizes(Jordan3UNCSizes);
 
     // ============================================================ //
 
@@ -281,7 +363,7 @@ const jordanMockUp = async () => {
         name: "Air Jordan 1 Mid Military Olive",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -289,18 +371,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airJordan1MidMilitaryBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airJordan1MidMilitary.addCategories(airJordan1MidMilitaryCategory);
-    airJordan1MidMilitary.addBrand(airJordan1MidMilitaryBrand);
+    const airJordan1MidMilitarySizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airJordan1MidMilitaryBrand.addProduct(airJordan1MidMilitary);
+    airJordan1MidMilitaryCategory.addProduct(airJordan1MidMilitary);
+    airJordan1MidMilitary.addSizes(airJordan1MidMilitarySizes);
 
     // ============================================================ //
 
@@ -308,7 +399,7 @@ const jordanMockUp = async () => {
         name: "Air Jordan 1 Mid SE Purple",
         image: "",
         description: "",
-        price: "$105",
+        price: 800,
         status: "disponible",
     });
 
@@ -316,18 +407,27 @@ const jordanMockUp = async () => {
         where: {
             id: 1,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
     const airJordan1MidPurpleBrand = await Brand.findOne({
         where: {
             id: 2,
         },
-        attributes: ["id"],
+        attributes: ['id']
     });
 
-    airJordan1MidPurple.addCategories(airJordan1MidPurpleCategory);
-    airJordan1MidPurple.addBrand(airJordan1MidPurpleBrand);
+    const airJordan1MidPurpleSizes = await Size.findAll({
+        where: {
+            id: [4, 5, 6, 7, 8, 9, 10]
+        },
+        attributes: ["id"]
+    });
+
+
+    airJordan1MidPurpleBrand.addProduct(airJordan1MidPurple);
+    airJordan1MidPurpleCategory.addProduct(airJordan1MidPurple);
+    airJordan1MidPurple.addSizes(airJordan1MidPurpleSizes);
 
     //-------------------stret wear -------------------//
 };
