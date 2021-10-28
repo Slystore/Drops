@@ -39,7 +39,7 @@ export default function FormRegister() {
             setSucces(true);
             setTimeout(() => {
               setSucces(false);
-              history.push("/");
+              history.push("/login");
             }, 3500);
             resetForm();
           }
