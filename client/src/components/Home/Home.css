@@ -1,0 +1,94 @@
+.HomeContainer{
+    width: 100%;
+    height: 600px;
+    margin: 100px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background: rgb(159, 236, 255); */
+    /* border: thin dotted #f00; */
+}
+
+.Images{
+    width: 1520px;
+    border: thin dotted #f00;
+}
+
+.Title{
+    display: none;
+    padding: 30px;
+    color: #fff;
+    font-size: 48px;
+    border: solid #fff;
+    position: absolute;
+    top: 40%;
+    left: 33%;
+}
+
+.Title2{
+    display: none;
+    padding: 30px;
+    color: #fff;
+    font-size: 48px;
+    border: solid #fff;
+    position: absolute;
+    top: 25%;
+    left: 33%;
+}
+
+.Title3{
+    display: none;
+    padding: 30px;
+    color: #fff;
+    font-size: 48px;
+    border: solid #fff;
+    position: absolute;
+    top: 23%;
+    left: 20%;
+}
+
+.Title4{
+    display: none;
+    padding: 30px;
+    color: #fff;
+    font-size: 48px;
+    border: solid #fff;
+    position: absolute;
+    top: 27%;
+    left: 30%;
+}
+
+.Title5{
+    display: none;
+    padding: 30px;
+    color: #fff;
+    font-size: 48px;
+    border: solid #fff;
+    position: absolute;
+    top: 28%;
+    left: 18%;
+}
+
+.divTitle:hover  .Title{
+    display: block;
+}
+
+.divTitle2:hover  .Title2{
+    display: block;
+}
+
+.divTitle3:hover  .Title3{
+    display: block;
+}
+
+.divTitle4:hover  .Title4{
+    display: block;
+}
+
+.divTitle4:hover  .Title4{
+    display: block;
+}
+
+.divTitle5:hover  .Title5{
+    display: block;
+}
