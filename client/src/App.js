@@ -6,16 +6,23 @@ import './App.css';
 import FormProduct from './components/Forms/CreateProduct.jsx';
 import FormCategory from './components/Forms/CreateCategory';
 import FormBrand from './components/Forms/CreateBrand';
+import Catalogue from './components/Catalogue/Catalogue.jsx';
+
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
+
 function App() {
   return (
     <div className="App">
         <Router>
             <Switch>
               <Route exact path="/" component={HomeView} />
+
+              <Route exact path="/catalogue" component={Catalogue} />
+
               <Route exact path ="/login" component={FormLogin} />
               <Route exact path = "/register" component={FormRegister}/>
+
               <Route exact path="/product/:id" component={ProductDetail} />
               <Route exact path="/admin/createProduct" component={FormProduct} />
               <Route exact path="/admin/createCategory" component={FormCategory} />

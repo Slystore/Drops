@@ -1,0 +1,92 @@
+.ContainerHome{
+    width: 1250px;
+    height: 510px;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    margin-top: 10px;
+    overflow-x: scroll;
+    overflow-y:hidden;
+    /* border: thin dotted #00f; */
+}
+
+.MoviesContainer{
+    width: 1250px;
+    height: 460px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: thin dotted #f00; */
+}
+
+.ContainerHome::-webkit-scrollbar {
+    /* width: 8px;     */
+    height: 8px;    
+    cursor: pointer;
+    /* display: none;  Ocultar scroll */
+}
+
+.ContainerHome::-webkit-scrollbar-thumb {
+    background: #00000050;
+    border-radius: 4px;
+}
+
+.ContainerHome::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.ContainerHome::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.ContainerHome::-webkit-scrollbar-track {
+    background: #e7e7e7;
+    border-radius: 4px;
+}
+
+.ContainerHome::-webkit-scrollbar-track:hover,
+.ContainerHome::-webkit-scrollbar-track:active {
+  background: #dfdfdf;
+}
+
+.SelectGroup{
+    width: 1250px;
+    height: 50px; 
+    margin: 0 auto;
+    /* border: thin dotted #f00; */
+}
+
+.SelectGroup h3{
+    float: left;
+    margin-right: 15px;
+    line-height: 10px;
+}
+
+.ContainerSelect select{
+	width: 150px;
+    height: 30px;
+    margin-right: 10px;
+    padding: 0px 10px 0 10px;
+    outline: 0; 
+  	border: 0;
+    background: #f0f0f0;
+    color: #5a5a5a;
+    font-size: 1em;
+    color: rgb(99, 99, 99);
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 12px;
+    position: relative;
+    top: 10px;
+    float: left;
+    transition: all 0.25s ease;
+}
+    
+.ContainerSelect select:hover{
+    box-shadow: 0 5px 10px #00000030;
+    cursor: pointer;
+}
+
+.LinkMovie{
+    text-decoration: none;
+}
