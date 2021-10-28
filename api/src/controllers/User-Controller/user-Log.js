@@ -23,7 +23,7 @@ const login = async (req, res) => {
       });
       return res
         .status(200)
-        .json({ auth: true, msg: "logeado con exito", token: token });
+        .json({ auth: true, token: token });
     } else {
       return res.json({
         auth: false,
