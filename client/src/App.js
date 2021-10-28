@@ -8,7 +8,6 @@ import FormCategory from './components/Forms/CreateCategory';
 import FormBrand from './components/Forms/CreateBrand';
 import FormRegister from './components/Register/FormRegister.jsx';
 
-
 function App() {
   return (
     <div className="App">
