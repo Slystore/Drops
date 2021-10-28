@@ -3,6 +3,7 @@ const { Reviews, Users, Products} = require('../../db')
 const postReview = async (req, res, next) => {
     try {
         const { comment, rating, user } = req.body
+        console.log(req.body)
 
         const userQuery = await Users.findOne({
             where: { id: user }
