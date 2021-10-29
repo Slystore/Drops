@@ -24,8 +24,7 @@ export default function FormRegister() {
         }}
         onSubmit={async (body, { resetForm }) => {
           const x = await userRegister(body);
-          console.log('estsa es mi data del post',x)
-          if (x.msg) {
+          if (!x.token) {
             setUser({
               noValidate: x.msg,
             });
@@ -34,8 +33,7 @@ export default function FormRegister() {
                 noValidate: "",
               });
             }, 3000);
-          }
-          if (x.data.user) {
+          } else if (x.user) {
             setSucces(true);
             setTimeout(() => {
               setSucces(false);
