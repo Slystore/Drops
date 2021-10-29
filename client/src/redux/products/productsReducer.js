@@ -1,11 +1,12 @@
 
 import {
-    GET_PRODUCTS,
+    GET_PRODUCTS, GET_ALL,
     GET_PRODUCTS_PER_PAGE,
     GET_PRODUCT_BY_ID,
     PRODUCT_FORM,
   FILTER_BY_BRAND, 
-  FILTER_BY_CATEGORY
+  FILTER_BY_CATEGORY,
+    GET_PRODUCTS_ID, CLEAN_DETAIL
    } from './productsAction';
    
    export const initialState = {
@@ -23,6 +24,7 @@ import {
                    return {
                        ...state,
                        products: action.payload,
+                     filtrados: action.payload
                    }
                }
    
@@ -48,6 +50,7 @@ import {
                    }
                }
              case FILTER_BY_BRAND:{
+
                 let productsByBrand = state.filtrados;
     
                 let filterBrand = action.payload === 'All' ? productsByBrand : productsByBrand.filter(el => el.Brand.name.includes(action.payload))
@@ -67,6 +70,19 @@ import {
                     products: filterCategory
                 }
             }
+
+            case GET_PRODUCTS_ID:
+
+                return {
+                    ...state,
+                    detail: action.payload,
+                }
+                case CLEAN_DETAIL:
+                    return {
+                        ...state,
+                        detail: []
+                    }    
+
               
                default:
                    return state
@@ -76,4 +92,5 @@ import {
    }
    
    export default productsReducer;
+
 

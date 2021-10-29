@@ -20,6 +20,7 @@ import postProduct2 from './components/Forms/postProduct2'
 function App() {
   return (
     <div className="App">
+
         <Router>
             <Switch>
               <Route exact path="/" component={HomeView} />
@@ -29,7 +30,7 @@ function App() {
               <Route exact path ="/login" component={FormLogin} />
               <Route exact path = "/register" component={FormRegister}/>
 
-              <Route exact path="/product/:id" component={ProductDetail} />
+              <Route exact path="/catalogue/:id" component={ProductDetail} />
               <Route exact path="/admin/createProduct" component={FormProduct} />
               <Route exact path="/admin/createProduct2" component={postProduct} />
               <Route exact path="/admin/createProduct21" component={postProduct2} />
@@ -37,6 +38,7 @@ function App() {
               <Route exact path="/admin/createBrand" component={FormBrand} />
             </Switch>
         </Router>
+
 
     </div>
   );
