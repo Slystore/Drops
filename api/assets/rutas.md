@@ -2,8 +2,7 @@
 
 RUTAS del BACK
 
-<!-- Reviews: -->
-
+<!-- Reviews -->
 GET
 /api/reviews/
 /api/reviews/{id}
@@ -17,7 +16,6 @@ DELETE
 /api/reviews/delete/{id}
 
 <!-- Users-->
-
 GET
 /api/allUser
 /api/allUser/:id
@@ -33,6 +31,7 @@ POST
 <!-- Products -->
 GET
 /api/products
+/api/products/:id
 /api/products?name=
 /api/products=Brand=
 /api/products=Category=
@@ -44,3 +43,13 @@ GET
 <!-- Brands -->
 GET
 /api/brands
+
+<!-- Sizes -->
+GET
+/api/sizes
+/api/sizes/:id
+
+<!-- ProductSizes -->
+GET
+/api/productSizes
+/api/productSizes/:id

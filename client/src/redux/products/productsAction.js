@@ -8,6 +8,47 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 // export function getAll() {
 //     return async(dispatch) => {
 
+
+export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
+export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
+export const PRODUCT_FORM = 'PRODUCT_FORM'
+
+export function getProducts(pagina){
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/products`)
+            return await dispatch({
+                type: GET_PRODUCTS,
+                payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function getProductsById(id){
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
+            return await dispatch({
+                type: GET_PRODUCT_BY_ID,
+                payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
+}
+
+export function productForm(form){
+    return async(dispatch) => {
+        return await dispatch({
+            type: PRODUCT_FORM,
+            payload: form
+        })
+    }
+}
 //         const products = await axios.get('http://localhost:3001/api/products')
 //         const categories = await axios.get(`http://localhost:3001/api/Categories`);
 //         const brands = await axios.get(`http://localhost:3001/api/brands`);
@@ -22,16 +63,9 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 //     };
 // }
 
-export function getProducts(){
-    return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/products')
-        return await dispatch({
-            type: GET_PRODUCTS,
-            payload: data
-        })
-    }
 
-}
+
+
 export const postProduct = async(payload) => {
     const token = localStorage.getItem("token");
     // console.log("this", payload);
