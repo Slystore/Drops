@@ -1,8 +1,15 @@
 const server = require("./src/app");
 const { conn } = require("./src/db");
 
+const {Product, Category} = require("./src/db.js");
+const {categoryData} = require("./src/utils/mocks/categoryData.js");
+const {data} = require("./src/utils/mocks/product/dataMock.js");
+
+
 const { userData } = require("./src/utils/mocks/users-mock.js");
 const seedReviews = require("./src/utils/mocks/reviews-mock.js");
+const {createMockUps} = require("./src/utils/createMockUps.js");
+
 
 const { categoryMockUp } = require("./src/utils/mocks/category.js");
 const { brandMockUp } = require("./src/utils/mocks/brand.js");
@@ -19,6 +26,11 @@ const { gucciMockUp } = require("./src/utils/mocks/product/gucci.js");
 const { balenciagaMockUp } = require("./src/utils/mocks/product/balenciaga.js");
 const { underArmourMockUp } = require("./src/utils/mocks/product/underArmour.js");
 const { vansMockUp } = require("./src/utils/mocks/product/vans.js");
+const { prueba } = require("./src/utils/mocks/product/prueba.js");
+const { createUserTest } = require("./src/utils/mocks/logicUserData.js");
+const { logicData } = require("./src/utils/mocks/reviewLogicData.js");
+const { productSizeLogicData } = require("./src/utils/mocks/productSizeLogicData.js");
+
 const port = process.env.PORT || 3001;
 
 conn
@@ -29,22 +41,29 @@ conn
       console.log(`Server listen in ${process.env.NODE_ENV} port ${port}`)
     );
 
-    await userData();
-    await seedReviews();
-    await brandMockUp();
-    await categoryMockUp();
-    await sizeMock();
+    // await userData();
+    // await seedReviews();
+    // await brandMockUp();
+    // await categoryMockUp();
+    // await sizeMock();
     //PRODUCTS
-    await nikeMockUp();
-    await jordanMockUp();
-    await offWhiteMockUp();
-    await adidasMockUp();
-    await adidasYeezyMockUp();
-    await pumaMockUp();
-    await reebokMockUp();
-    await gucciMockUp();
-    await balenciagaMockUp();
-    await underArmourMockUp();
-    await vansMockUp();
+    // await nikeMockUp();
+    // await jordanMockUp();
+    // await offWhiteMockUp();
+    // await adidasMockUp();
+    // await adidasYeezyMockUp();
+    // await pumaMockUp();
+    // await reebokMockUp();
+    // await gucciMockUp();
+    // await balenciagaMockUp();
+    // await underArmourMockUp();
+    // await vansMockUp();
+    // await createUserTest();
+    // await prueba();
+    // await logicData();
+    // await productSizeLogicData();
+  
+    await createMockUps(Category, categoryData);
+    // await createMockUps(Product, data);
   })
   .catch((e) => console.log("connection failed", e));
