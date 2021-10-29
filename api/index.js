@@ -1,37 +1,28 @@
 const server = require("./src/app");
 const { conn } = require("./src/db");
-
-const {Product, Category} = require("./src/db.js");
-const {categoryData} = require("./src/utils/mocks/categoryData.js");
-const {data} = require("./src/utils/mocks/product/dataMock.js");
-
-
-const { userData } = require("./src/utils/mocks/users-mock.js");
-const seedReviews = require("./src/utils/mocks/reviews-mock.js");
-const {createMockUps} = require("./src/utils/createMockUps.js");
-
-
-const { categoryMockUp } = require("./src/utils/mocks/category.js");
-const { brandMockUp } = require("./src/utils/mocks/brand.js");
-const { sizeMock } = require("./src/utils/mocks/sizes.js");
-
-const { nikeMockUp } = require("./src/utils/mocks/product/nike.js");
-const { jordanMockUp } = require("./src/utils/mocks/product/jordan.js");
-const { offWhiteMockUp } = require("./src/utils/mocks/product/off-white.js");
-const { adidasMockUp } = require("./src/utils/mocks/product/adidas.js");
-const { adidasYeezyMockUp } = require("./src/utils/mocks/product/adidasYeezy.js");
-const { pumaMockUp } = require("./src/utils/mocks/product/puma.js");
-const { reebokMockUp } = require("./src/utils/mocks/product/reebok.js");
-const { gucciMockUp } = require("./src/utils/mocks/product/gucci.js");
-const { balenciagaMockUp } = require("./src/utils/mocks/product/balenciaga.js");
-const { underArmourMockUp } = require("./src/utils/mocks/product/underArmour.js");
-const { vansMockUp } = require("./src/utils/mocks/product/vans.js");
-const { prueba } = require("./src/utils/mocks/product/prueba.js");
-const { createUserTest } = require("./src/utils/mocks/logicUserData.js");
-const { logicData } = require("./src/utils/mocks/reviewLogicData.js");
-const { productSizeLogicData } = require("./src/utils/mocks/productSizeLogicData.js");
-
 const port = process.env.PORT || 3001;
+
+const {
+  Category,
+  Brand,
+  Product,
+  ProductSize,
+  Size,
+  Reviews,
+  Users,
+  WishList,
+} = require("./src/db.js");
+
+const { createMockUps } = require("./src/utils/createMockUps.js");
+
+const { categoryData } = require("./src/utils/mocks/category/categoryData.js");
+const { brandData } = require("./src/utils/mocks/brand/brandData.js");
+const { allMocks } = require("./src/utils/mocks/product/allMocks.js");
+const { productSizeLogicData } = require("./src/utils/mocks/productSize/productSizeLogicData.js");
+const { sizeData } = require("./src/utils/mocks/size/sizeData.js");
+const { reviewData } = require("./src/utils/mocks/review/reviewData.js");
+const { userData } = require("./src/utils/mocks/user/userData.js");
+
 
 conn
   .sync({ force: true })
@@ -40,30 +31,12 @@ conn
     server.listen(port, () =>
       console.log(`Server listen in ${process.env.NODE_ENV} port ${port}`)
     );
-
-    // await userData();
-    // await seedReviews();
-    // await brandMockUp();
-    // await categoryMockUp();
-    // await sizeMock();
-    //PRODUCTS
-    // await nikeMockUp();
-    // await jordanMockUp();
-    // await offWhiteMockUp();
-    // await adidasMockUp();
-    // await adidasYeezyMockUp();
-    // await pumaMockUp();
-    // await reebokMockUp();
-    // await gucciMockUp();
-    // await balenciagaMockUp();
-    // await underArmourMockUp();
-    // await vansMockUp();
-    // await createUserTest();
-    // await prueba();
-    // await logicData();
-    // await productSizeLogicData();
-  
     await createMockUps(Category, categoryData);
-    // await createMockUps(Product, data);
+    await createMockUps(Brand, brandData);
+    await createMockUps(Product, allMocks);
+    await createMockUps(Size, sizeData);
+    await productSizeLogicData();
+    await createMockUps(Users, userData);
+    await createMockUps(Reviews, reviewData);
   })
   .catch((e) => console.log("connection failed", e));

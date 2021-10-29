@@ -74,6 +74,7 @@ Product.belongsTo(Brand);
 Product.belongsToMany(Size, { through: ProductSize });
 Size.belongsToMany(Product, { through: ProductSize });
 
+
 module.exports = {
   conn: sequelize,
   ...sequelize.models,

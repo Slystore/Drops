@@ -5,7 +5,6 @@ const categoryData = [
   {
     name: "Deportivo",
   },
-
   {
     name: "Sandalias",
   },

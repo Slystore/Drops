@@ -1,4 +1,4 @@
-const { Size, Product, ProductSize } = require("../../db.js");
+const { ProductSize } = require("../../../db.js");
 const { productSizeData } = require("./productSizeData.js");
 
 const productSizeLogicData = async () => {
