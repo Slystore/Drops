@@ -1,5 +1,5 @@
 import axios from "axios";
-export const GET_PRODUCTS = "GET_PRODCUTS";
+export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID";
 export const GET_ALL = "GET_ALL";
 export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
