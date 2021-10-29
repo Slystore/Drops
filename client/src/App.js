@@ -1,4 +1,7 @@
-import React from "react";
+
+import React, {useEffect} from 'react';
+import { getCategories } from "./redux/category/categoriesActions";
+import {useDispatch} from "react-redux";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import HomeView from "./views/HomeView.js";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
