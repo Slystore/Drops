@@ -7,7 +7,9 @@ import Slider from '../components/Slider/Slider';
 import Home from '../components/Home/Home';
 import Footer from '../components/Footer/Footer';
 
-// import { getReviews, getReviewById, getReviewsByProduct, getReviewsByUser, createReview, deleteReview, updateReview } from '../redux/actions';
+import { getReviews, getReviewById, getReviewsByProduct, getReviewsByUser, createReview, deleteReview, updateReview } from '../redux/reviews/reviewsActions';
+import { getUsers } from './../redux/users/userActions';
+
 
 import Us from '../components/Us/Us';
 import Newsletter from '../components/Newsletter/Newsletter';
@@ -19,7 +21,8 @@ function HomeView() {
     // const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        // dispatch(getReviews())
+        dispatch(getReviews(1))
+        dispatch(getUsers())
         // dispatch(getReviewById(1))
         // dispatch(getReviewsByUser('Aimee_Hills@hotmail.com'))
         // dispatch(getReviewsByProduct())

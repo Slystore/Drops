@@ -1,17 +1,17 @@
 
-import { GET_BRANDS } from './brandActions';
+import { GET_SIZES } from './sizeActions';
    
 export const initialState = {
-    brands: []
+    sizes: []
 };
    
-   function brandsReducer(state = initialState, action) {
+   function sizeReducer(state = initialState, action) {
        switch (action.type) {
-           case GET_BRANDS:
+           case GET_SIZES:
                {
                    return {
                        ...state,
-                       brands: action.payload,
+                       sizes: action.payload,
                    }
                }
    
@@ -22,5 +22,4 @@ export const initialState = {
    
    }
    
-   export default brandsReducer;
-
+   export default sizeReducer;

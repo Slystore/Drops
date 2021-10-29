@@ -1,6 +1,7 @@
 import axios from "axios";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 
+
 export function getCategories(){
     return async (dispatch) => {
         const categories = await axios.get('http://localhost:3001/api/Categories')
@@ -11,6 +12,7 @@ export function getCategories(){
     }
 
 }
+
 export function postCategory(payload) {
     return async() => {
         const json = await axios.post(`/api/categories/create`, payload)

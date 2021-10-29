@@ -1,17 +1,17 @@
 
-import { GET_BRANDS } from './brandActions';
+import { GET_CATEGORIES } from './categoriesActions';
    
 export const initialState = {
-    brands: []
+    categories: []
 };
    
-   function brandsReducer(state = initialState, action) {
+   function categoriesReducer(state = initialState, action) {
        switch (action.type) {
-           case GET_BRANDS:
+           case GET_CATEGORIES:
                {
                    return {
                        ...state,
-                       brands: action.payload,
+                       categories: action.payload,
                    }
                }
    
@@ -22,5 +22,4 @@ export const initialState = {
    
    }
    
-   export default brandsReducer;
-
+   export default categoriesReducer;
