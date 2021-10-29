@@ -1,0 +1,11 @@
+{
+  "web": {
+    "client_id": "867381968121-4njd3q5va0695tdivgirjl5tka5n7fqo.apps.googleusercontent.com",
+    "project_id": "dropsapp",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "javascript_origins": ["http://localhost:3001", "http://localhost:3000"]
+  }
+}
