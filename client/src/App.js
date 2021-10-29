@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import HomeView from "./views/HomeView.js";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
@@ -7,9 +7,10 @@ import FormProduct from './components/Forms/CreateProduct.jsx';
 import FormCategory from './components/Forms/CreateCategory';
 import FormBrand from './components/Forms/CreateBrand';
 import Catalogue from './components/Catalogue/Catalogue.jsx';
-
+import { getCategories } from "./redux/category/categoriesActions";
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
+import {useDispatch} from "react-redux";
 
 function App() {
   return (
