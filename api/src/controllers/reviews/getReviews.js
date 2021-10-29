@@ -1,4 +1,5 @@
-const { Reviews, Users, Products} = require('../../db')
+const { Reviews, Users, Products, Brand, Category, Size} = require('../../db')
+// const { Brand, Category, Product, Size } = require("../../../db.js");
 
 const getReviews = async (req, res, next) => {
     try {
@@ -12,9 +13,9 @@ const getReviews = async (req, res, next) => {
                             id: product
                         }
                     }
-                ]
+                ],
             })
-            return res.json(reviewsByProduct)
+            res.json(reviewsByProduct)
         }
         else if(user){
             const reviewsByUser = await Reviews.findAll({
@@ -30,7 +31,12 @@ const getReviews = async (req, res, next) => {
             return res.json(reviewsByUser)
         }
         else{
-            const reviewsQuery = await Reviews.findAll()
+            const { page, size} = req.query;
+            
+            const reviewsQuery = await Reviews.findAll({
+                limit: size,
+                offset: page * size
+            })
             res.json(reviewsQuery)
         }
     } catch (error) {

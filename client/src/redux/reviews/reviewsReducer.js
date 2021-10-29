@@ -8,7 +8,7 @@ import {
  DELETE_REVIEW 
 
     
-} from './actions';
+} from './reviewsActions';
 
 export const initialState = {
     reviews: [],

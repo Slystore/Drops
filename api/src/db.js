@@ -7,6 +7,7 @@ const wishListsModel = require("./models/WishList.js");
 const ordersModel = require("./models/Orders.js");
 
 const productModel = require("./models/Product.js");
+const stockModel = require("./models/Stock");
 const sizeModel = require("./models/Size.js");
 const brandModel = require("./models/Brand.js");
 const categoryModel = require("./models/Category.js");
@@ -21,6 +22,7 @@ const sequelize = new Sequelize(
 );
 
 productModel(sequelize);
+stockModel(sequelize);
 sizeModel(sequelize);
 brandModel(sequelize);
 categoryModel(sequelize);
