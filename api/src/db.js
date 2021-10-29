@@ -7,7 +7,7 @@ const wishListsModel = require("./models/WishList.js");
 const ordersModel = require("./models/Orders.js");
 
 const productModel = require("./models/Product.js");
-const stockModel = require("./models/Stock");
+const productSizeModel = require("./models/ProductSize.js");
 const sizeModel = require("./models/Size.js");
 const brandModel = require("./models/Brand.js");
 const categoryModel = require("./models/Category.js");
@@ -22,7 +22,7 @@ const sequelize = new Sequelize(
 );
 
 productModel(sequelize);
-stockModel(sequelize);
+productSizeModel(sequelize);
 sizeModel(sequelize);
 brandModel(sequelize);
 categoryModel(sequelize);
@@ -34,6 +34,7 @@ wishListsModel(sequelize);
 
 const {
   Product,
+  ProductSize,
   Size,
   Users,
   Reviews,
@@ -43,16 +44,17 @@ const {
   WishList } = sequelize.models;
 
 //Relaciones de Users
-
-
 Users.hasOne(WishList);
 WishList.belongsTo(Users);
 
 Users.hasMany(Orders);
 Orders.belongsTo(Users);
 
-Users.hasMany(Reviews, { onDelete: "CASCADE" });
-Reviews.belongsTo(Users, { onDelete: "CASCADE" });
+Users.hasMany(Reviews);
+Reviews.belongsTo(Users);
+
+Reviews.belongsTo(Product);
+Product.hasMany(Reviews);
 
 // Users.hasMany(Reviews);
 // Reviews.belongsTo(Users);
@@ -69,8 +71,9 @@ Product.belongsTo(Category);
 Brand.hasMany(Product);
 Product.belongsTo(Brand);
 
-Product.belongsToMany(Size, { through: "ProductSize" });
-Size.belongsToMany(Product, { through: "ProductSize" });
+Product.belongsToMany(Size, { through: ProductSize });
+Size.belongsToMany(Product, { through: ProductSize });
+
 
 module.exports = {
   conn: sequelize,
