@@ -1,8 +1,10 @@
 import axios from "axios";
 export const GET_PRODUCTS = "GET_PRODCUTS";
+export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID";
 export const GET_ALL = "GET_ALL";
 export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
 export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
 // export function getAll() {
 //     return async(dispatch) => {
 
@@ -63,4 +65,21 @@ export function filterCategory(payload) {
         type: FILTER_BY_CATEGORY,
         payload,
     };
+}
+export function getProductsId (payload){
+    return async function (dispatch){
+   try{ let response = await axios.get('http://localhost:3001/api/products/' + payload);
+//    console.log(response)
+    return dispatch ({
+        type:  GET_PRODUCTS_ID,  
+        payload: response.data
+    })
+}catch(error){console.log(error)}
+}
+}
+export function cleanDetail (payload){
+    return {
+        type: CLEAN_DETAIL,
+        payload
+    }
 }

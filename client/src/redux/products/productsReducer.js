@@ -1,10 +1,12 @@
-import { GET_PRODUCTS, GET_ALL, FILTER_BY_BRAND, FILTER_BY_CATEGORY } from "./productsAction";
+import { GET_PRODUCTS, GET_ALL, FILTER_BY_BRAND, FILTER_BY_CATEGORY,
+     GET_PRODUCTS_ID, CLEAN_DETAIL } from "./productsAction";
 
 const initialState = {
     products: [],
     filtrados: [],
     categories: [],
-    brands: []
+    brands: [],
+    detail: []
 };
 
 function productsReducer(state = initialState, action) {
@@ -47,6 +49,17 @@ function productsReducer(state = initialState, action) {
                     products: filterCategory
                 }
             }
+            case GET_PRODUCTS_ID:
+
+                return {
+                    ...state,
+                    detail: action.payload,
+                }
+                case CLEAN_DETAIL:
+                    return {
+                        ...state,
+                        detail: []
+                    }    
          default:
             return state;
     }

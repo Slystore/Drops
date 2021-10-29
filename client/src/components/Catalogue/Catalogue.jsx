@@ -14,7 +14,7 @@ import './Catalogue.css';
 import { getAll, getProducts, filterBrand, filterCategory } from "../../redux/products/productsAction";
 import { getBrands } from "../../redux/brand/brandActions";
 import { getCategories } from "../../redux/category/categoriesActions";
-
+import { Link } from "react-router-dom";
 
 
 function Catalogue() {
@@ -98,6 +98,7 @@ function Catalogue() {
         <div className="MoviesContainer">
           {currProducts && currProducts.map((product, index) => {
             return (
+              <Link to={`/catalogue/${product.id}`} key={index}>
               <div className="Movie" key={index}>
                 <Product
                   id={product.id}
@@ -109,6 +110,7 @@ function Catalogue() {
                   addToCart = {handleAddCart}  
                 />
               </div>
+              </Link>
             );
           })}
         </div>
