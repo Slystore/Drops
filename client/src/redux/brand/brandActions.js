@@ -1,6 +1,6 @@
 import axios from "axios";
+export const GET_BRANDS = "GET_BRANDS";
 
-export const GET_BRANDS = 'GET_BRANDS'
 
 export function postBrand(payload) {
     return async() => {

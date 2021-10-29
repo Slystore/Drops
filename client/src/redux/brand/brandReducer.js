@@ -23,3 +23,4 @@ export const initialState = {
    }
    
    export default brandsReducer;
+
