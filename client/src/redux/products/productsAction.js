@@ -7,7 +7,6 @@ export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
 //     return async(dispatch) => {
 
 
-export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
 export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
 export const PRODUCT_FORM = 'PRODUCT_FORM'
