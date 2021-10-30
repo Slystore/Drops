@@ -1,9 +1,8 @@
 Marcas 
-
 #Nike 
--- Street Wear-- Urbano
--AIR FORCE 1 FELT GS
--Air Force 1 Goretex High White DS
+-- Street Wear-- 
+-AIR FORCE 1 FELT GS  ****** Solo primera leta en Mayúsculas
+-Air Force 1 Gore Tex High White DS ******** es Gore Tex
 -Air Max 720 Orange DS
 -Air Max 720 OG DS
 -Air Max 1 Parra DS
@@ -15,35 +14,29 @@ Marcas
 -Nike Downshifter 11
 -Nike Air Max Excee
 -Nike Quest 4
-
-
 #Jordan
 -Air Jordan 1 High Royal Toe
 -Jordan 1 Retro High Dark Mocha
 -Air Jordan 4 Cactus Jack
 -Jordan 1 Retro High Hyper Royal Smoke Grey
 -Jordan 1 Retro High J Balvin
--Jordan 1 Retro High Dark Mocha
+-Jordan 1 Retro High OG Bloodline ****** Lo cambié porque estaba repetido
 -Jordan 11 Retro Playoffs Bred 2019
 -Jordan 4 Retro Lightning 2021
 -Jordan 4 Retro Bred 2019
 -Jordan 3 UNC
 -Air Jordan 1 Mid Military Olive
 -Air Jordan 1 Mid SE Purple
-
-
 #Off-white
 -OFF-WHITE Vulc Low
 -OFF-WHITE Vulc Low Eco Canvas
 -Off-White Low Vulc
 -OFF-WHITE Drowning Man Logo Slides
 -OFF-WHITE Vulc Low
-
 #Adidas  
--Adidas Honey
-
--adidas Ultra Boost DNA Star Wars Princess Leia ( running)
--adidas Ultra Boost OG Beyonce Ivy Park Hi Res Yellow( running)
+-Adidas Honey ****Falta
+-adidas Ultra Boost DNA Star Wars Princess Leia ( running) *** a de adidas a mayúscula
+-adidas Ultra Boost OG Beyonce Ivy Park Hi Res Yellow( running) *** a de adidas a mayúscula
 -Adidas Yung-1 Cloud White
 -Adidas  Superstar (tiene varios colores)
 -Adidas 3MC Vulc
@@ -66,19 +59,15 @@ Marcas
 -adidas Yeezy Slide Enflame Orange
 -adidas Yeezy Slide Pure
 -Adidas Yeezy Slide Soot
-
-
 #Puma
 -Puma Thunder Spectra
--Puma RS-X 3 Puzzle Limestone
+-Puma RS-X 3 Puzzle Limestone **** Es RS-X3
 -Puma Cell Fraction (running)
 -Puma FUSE (running) 
 -Puma DEVIATE NITRO (running)
 -Puma Eternity Nitro (running)
--Puma  evoSPEED TOKYO FUTURE (running)
+-Puma evoSPEED Haraka 6 Distance (running)****** Lo cambié oir (Puma evoSPEED Haraka 6 Distance) ese que pusieron ustedes es de atletismo por eso lo cambié
 -Puma Magnify Nitro SP (running)
-
-
 #reebok 
 -Reebok Nano X1
 -Reebok  Nano X1 Adventure
@@ -92,8 +81,6 @@ Marcas
 -Reebok Reago Essential 2 Reebok
 -Reebok Ztaur Run
 -Reebok Zig Dynamica
-
-
 #Gucci 
 -Gucci Web Slide Sandal
 -Gucci Ace 
@@ -107,7 +94,6 @@ Marcas
 -Gucci GG Slide Rubber Black
 -Gucci Screener Mini GG White
 -Gucci AceEmbroidered
-
 #Balenciaga
 -Balenciaga Speed 2.0 Black
 -Balenciaga Triple S
@@ -122,12 +108,12 @@ Marcas
 -Balenciaga Triple S Light Blue (W)
 -Balenciaga Furry Slide Black
 #Under Armour 
--UNDER ARMOUR UA W SURGE 2
--UNDER ARMOUR CHARGED BANDIT 6 LAM
--UNDER ARMOUR CHARGED PURSUIT 2 LAM
--UNDER ARMOUR CHARGED ESSENTIAL
-- UNDER ARMOUR SONIC 3
--UNDER ARMOUR CHARGED ESSENTIAL ( otro color)
+-UNDER ARMOUR UA W SURGE 2              ****** Solo primera letra con Mayúscula xfa
+-UNDER ARMOUR CHARGED BANDIT 6 LAM      ****** Solo primera letra con Mayúscula xfa
+-UNDER ARMOUR CHARGED PURSUIT 2 LAM     ****** Solo primera letra con Mayúscula xfa
+-UNDER ARMOUR CHARGED ESSENTIAL         ****** Solo primera letra con Mayúscula xfa
+- UNDER ARMOUR SONIC 3                  ****** Solo primera letra con Mayúscula xfa
+-UNDER ARMOUR CHARGED ESSENTIAL ( otro color) ****** Solo primera letra con Mayúscula xfa
 -Under Armour Curry 7 Sour Patch Kids Peach
 -Under Armour Project Rock 2 Black White
 -Under Armour The Rock Delta Steeltown Gold
