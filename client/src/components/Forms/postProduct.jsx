@@ -6,6 +6,8 @@ import {  postBrand } from '../../redux/brand/brandActions';
 import { productForm } from './../../redux/products/productsAction';
 import { getBrands } from './../../redux/brand/brandActions';
 import { getCategories } from '../../redux/category/categoriesActions';
+import { getSizes } from '../../redux/sizes/sizeActions';
+
 
 
 function validate(input) {
@@ -26,24 +28,29 @@ export default function FormBrand() {
    //Me traigo el estado de redux de dietas
    const {brands} =  useSelector(state => state.brandReducer)
    const {categories} =  useSelector(state => state.categoriesReducer)
+   const {sizes} =  useSelector(state => state.sizeReducer)
 
    useEffect(()=>{
        //aca ejecutamos action que trae las brands
        dispatch(getBrands())
        dispatch(getCategories())
+       dispatch(getSizes())
    },[dispatch])
 
-  const [input, setInput] = useState({
-    name: "",
-    image: "",
-    description: "",
-    price: 0,
-    status: "",
-    brand:"",
-    categories: []
+    const [talle, setTalle] = useState(0)
+    const [cantidad, setCantidad] = useState(0)
+    const [input, setInput] = useState({
+        name: "",
+        image: "",
+        description: "",
+        price: 0,
+        status: "",
+        brand:"",
+        categories: [],
+        stock:[]
   })
   
-
+let array
     //funcion que maneja los cambios en los inputs del formulario
     const handleChangeForm = (e) => {
         if(e.target.name === 'price') {
@@ -81,17 +88,6 @@ export default function FormBrand() {
         setCategory(e.target.value)
     }
 
-    //Agrega el estado pasosReceta al array de pasos en el formulario
-    // const agregarPaso = (e) => {
-    //     e.preventDefault()
-    //     setForm({
-    //         ...form,
-    //         pasos: [...form.pasos, pasosReceta]      
-    //     })
-    //     setPasosReceta('')
-    //     document.getElementById('pasos').value = '';
-    // }
-
     // funcion que maneja el option seleccionado del select y lo agrega al array dietas del form
     const agregarBrand = (e) => {
           setInput({
@@ -107,13 +103,29 @@ export default function FormBrand() {
         })
     }
 
-    //funcion que permite eliminar alguna de las dietas seleccionadas del array de dietas del form
-    // const deleteDieta = (el) => {
-    //     setForm({
-    //         ...form,
-    //         dietas: form.dietas.filter(dieta => el !== dieta)
-    //     })
-    // }
+    const handleTalle = (e) => {
+        setTalle(e.target.value)
+   }
+
+   const handleCantidad = (e) => {
+       let talle = parseInt(e.target.value)
+        setCantidad(talle)
+   }
+
+   //Agrega un objeto con key=talle y value=cantidad al array de input (estado local)
+
+   const agregarStock = (e) => {
+       e.preventDefault()
+       setInput( {
+           ...input, 
+           stock: { 
+               ...input.stock,
+                [talle]: cantidad
+            } })
+       setCantidad(0)
+       array = Object.entries(input.stock)
+       console.log(array)
+   }
    
     // funcion que maneja el submit del formulario y que nos manda a la pagina principal
     const handleSubmit = (e) => {
@@ -124,6 +136,7 @@ export default function FormBrand() {
         } else {
 
             dispatch(productForm(input))
+            array = Object.entries(input.stock)
             setInput({
                 name: "",
                 image: "",
@@ -132,9 +145,9 @@ export default function FormBrand() {
                 status: "",
                 stock: {},
                 brand:"",
-                categories: []
+                categories: [],
             })
-            history.push('/admin/createProduct21')
+            history.push('/')
         }
     }
 
@@ -143,42 +156,75 @@ export default function FormBrand() {
 
       <h5>Crear Producto</h5>
       <form onSubmit={e => handleSubmit(e)}>
+
         <div>
+                <label> Nombre <input type={'text'} name='name' onChange={handleChangeForm} autoComplete='off'/></label>
+                {errors.name && (<p>{errors.name}</p>)}
 
-        <label> Nombre <input type={'text'} name='name' onChange={handleChangeForm} autoComplete='off'/></label>
-        {errors.name && (<p>{errors.name}</p>)}
+                <label> Imagen <input type={'text'} name='image' onChange={handleChangeForm} /></label>
+                {errors.image && (<p>{errors.image}</p>)}
 
-        <label> Imagen <input type={'text'} name='image' onChange={handleChangeForm} /></label>
-        {errors.image && (<p>{errors.image}</p>)}
+                <textarea name='description'onChange={handleChangeForm} placeholder='Describe the product'/>
+                {errors.description && (<p>{errors.description}</p>)}
+                
+                <label> Price <input type={'number'} name='price' onChange={handleChangeForm}/></label> 
+                {errors.price && (<p>{errors.price}</p>)}
+                
+                <select onChange={ (e) => agregarBrand(e)}>
+                    <option> Brand </option>
+                    { brands && brands.map(e => <option key={e.id} value={e.name}> {e.name} </option> ) }
+                </select>
+                
+                <select onChange={ (e) => handleChangeCategory(e)}>
+                    <option> Category </option>
+                    { categories && categories.map(e => <option key={e.id} value={e.name}> {e.name} </option> ) }
+                </select>
 
-        <textarea name='description'onChange={handleChangeForm} placeholder='Describe the product'/>
-        {errors.description && (<p>{errors.description}</p>)}
+                <select onChange={ (e) => agregarDieta(e)}>
+                    <option> Status </option>
+                    <option> Disponible </option>
+                    <option> Fuera de Stock </option>
+                </select>
+        </div>
         
-        <label> Price <input type={'number'} name='price' onChange={handleChangeForm}/></label> 
-        {errors.price && (<p>{errors.price}</p>)}
-        
-        <select onChange={ (e) => agregarBrand(e)}>
-            <option> Brand </option>
-            { brands && brands.map(e => <option key={e.id} value={e.name}> {e.name} </option> ) }
-        </select>
-        
-        <select onChange={ (e) => handleChangeCategory(e)}>
-            <option> Category </option>
-            { categories && categories.map(e => <option key={e.id} value={e.name}> {e.name} </option> ) }
-        </select>
+        <div>
+                 <select onChange={ (e) => handleTalle(e)}>
+                    <option> Size </option>
+                    <option value='41'> 41 </option>
+                    <option value='42'> 42 </option>
+                    <option value='43'> 43 </option>
+                    <option value='44'> 44 </option>
+                    <option value='45'> 45 </option>
+                </select>
 
-        <select onChange={ (e) => agregarDieta(e)}>
-            <option> Status </option>
-            <option> Disponible </option>
-            <option> Fuera de Stock </option>
-        </select>
-       
+                <label> Stock <input type={'number'} name='stock' onChange={(e) => handleCantidad(e)}/></label> 
+                <button onClick={e => agregarStock(e)}> Agregar paso </button>
+        </div>
+
         <button type='submit'> Crear</button>
-        </div>
-        </form>
-        </div>
       
+    </form>
 
-  )
-
+    
+    </div>
+    
+    
+    )
+    
 }
+
+// <div>
+// {
+//     Object.entries(input.stock).forEach( ([key, value]) => {
+//         return(
+//             <div style={{display:"flex", justifyContent:"space-evenly"}}>
+//                 <p> Talle: { key } </p>
+//                 <p> stock: { value } </p>
+                
+                
+//             </div>
+//         )
+//     })
+// }
+ 
+// </div>

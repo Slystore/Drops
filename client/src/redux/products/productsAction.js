@@ -1,13 +1,17 @@
 import axios from "axios";
-export const GET_PRODUCTS = "GET_PRODUCTS";
-export const GET_ALL = "GET_ALL";
-export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
-export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
+
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_PRODUCT_STOCK="GET_PRODUCT_STOCK";
+
+export const GET_PRODUCTS = 'GET_PRODUCTS'
+
 export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
 export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
+export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
+export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
 export const PRODUCT_FORM = 'PRODUCT_FORM'
+export const GET_ALL = "GET_ALL";
+
 
 export function getProducts(pagina){
     return async (dispatch) => {
