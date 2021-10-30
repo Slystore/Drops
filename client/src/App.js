@@ -14,6 +14,9 @@ import Catalogue from "./components/Catalogue/Catalogue.jsx";
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
 import postProduct from './components/Forms/postProduct'
+import updateProduct from './components/Forms/updateProduct'
+import updateCategory from './components/Forms/updateCategory'
+import updateBrand from './components/Forms/updateBrand'
 
 
 
@@ -32,8 +35,11 @@ function App() {
               <Route exact path="/product/:id" component={ProductDetail} />
               <Route exact path="/admin/createProduct" component={FormProduct} />
               <Route exact path="/admin/createProduct2" component={postProduct} />
+              <Route exact path="/admin/product/:id/update" component={updateProduct} />
               <Route exact path="/admin/createCategory" component={FormCategory} />
+              <Route exact path="/admin/category/:id/update" component={updateCategory} />
               <Route exact path="/admin/createBrand" component={FormBrand} />
+              <Route exact path="/admin/brand/:id/update" component={updateBrand} />
             </Switch>
         </Router>
 
