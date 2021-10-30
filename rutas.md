@@ -43,4 +43,4 @@ GET
 
 <!-- Brands -->
 GET
-/api/brands
+/api/brands/getAllBrands

@@ -14,7 +14,7 @@ import Catalogue from "./components/Catalogue/Catalogue.jsx";
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
 import postProduct from './components/Forms/postProduct'
-import postProduct2 from './components/Forms/postProduct2'
+
 
 
 function App() {
@@ -32,7 +32,6 @@ function App() {
               <Route exact path="/product/:id" component={ProductDetail} />
               <Route exact path="/admin/createProduct" component={FormProduct} />
               <Route exact path="/admin/createProduct2" component={postProduct} />
-              <Route exact path="/admin/createProduct21" component={postProduct2} />
               <Route exact path="/admin/createCategory" component={FormCategory} />
               <Route exact path="/admin/createBrand" component={FormBrand} />
             </Switch>
