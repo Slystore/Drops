@@ -1,8 +1,9 @@
 
-import { GET_CATEGORIES } from './categoriesActions';
+import { GET_CATEGORIES, GET_CATEGORIE_BY_ID, POST_CATEGORIE } from './categoriesActions';
    
 export const initialState = {
-    categories: []
+    categories: [],
+    categoryById: {}
 };
    
    function categoriesReducer(state = initialState, action) {
@@ -14,12 +15,24 @@ export const initialState = {
                        categories: action.payload,
                    }
                }
-   
+            case GET_CATEGORIE_BY_ID:
+               {
+                   return {
+                       ...state,
+                       categoryById: {
+                           ...action.payload
+                        },
+                   }
+               }
+            case POST_CATEGORIE:
+               {
+                   return {
+                       ...state
+                   }
+               }
                default:
                    return state
-   
        }
-   
    }
    
    export default categoriesReducer;

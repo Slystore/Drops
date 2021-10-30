@@ -3,79 +3,78 @@ import { useState, useEffect } from 'react';
  import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import {  postBrand } from '../../redux/brand/brandActions';
-import { productForm } from './../../redux/products/productsAction';
+import { productForm, getProductsById } from './../../redux/products/productsAction';
 import { getBrands } from './../../redux/brand/brandActions';
 import { getCategories } from '../../redux/category/categoriesActions';
 import { getSizes } from '../../redux/sizes/sizeActions';
 
 
-
 function validate(input) {
     let errors = {};
     if(!input.name) errors.name = 'Es obligatorio ingresar un nombre';
-    else if(!input.image) errors.image = 'Es obligatorio ingresar una imagen';
-    else if(!input.description) errors.description = 'Es obligatorio describir el producto';
-    else if(!input.price || input.price < 1) errors.price = 'Es obligatorio ingresar un precio superior a 1';
-    else if(!input.status) errors.status = 'Es obligatorio determinar si el producto se encuentra en stock o no';
-    else if(!input.brand) errors.brand = 'Es obligatorio determinar una marca para el producto';
-    else if(!input.categories || input.categories.length === 0) errors.categories = 'Es obligatorio ingresar las categorias a las que pertenece el producto';
-    else if(!input.stock || input.stock.length === 0) errors.stock = 'Es obligatorio ingresar el stock del producto';
+    else if(!input.description) errors.description = 'Es obligatorio describir el plato';
+    else if(!input.puntuacion || input.puntuacion > 100 || input.puntuacion < 1) errors.puntuacion = 'Es obligatorio ingresar una puntuacion del 1 al 100';
+    else if(!input.salud || input.salud > 100 || input.salud < 1) errors.salud = 'Es obligatorio ingresar una puntuacion del 1 al 100';
     return errors
   };
 
-export default function FormProductCreate() {
+export default function FormProductUpdate({match}) {
+    //saca el id de params
+  const id = match.params.id
 
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [errors, setErrors] = useState({});
+  const [category, setCategory] = useState('');
 
-   //Me traigo el estado de redux de marcas, categorias y talles
+   //Me traigo el estado de redux de dietas
    const {brands} =  useSelector(state => state.brandReducer)
    const {categories} =  useSelector(state => state.categoriesReducer)
    const {sizes} =  useSelector(state => state.sizeReducer)
+   const {productId} =  useSelector(state => state)
 
-   //aca ejecutamos action que trae las brands, categories y sizes
    useEffect(()=>{
+       //aca ejecutamos action que trae la data de ese product en particular
+       dispatch(getProductsById(id))
        dispatch(getBrands())
        dispatch(getCategories())
        dispatch(getSizes())
    },[dispatch])
 
-   
-
-   //estados locales para almacenar data del form
-    const [category, setCategory] = useState('');
     const [talle, setTalle] = useState(0)
     const [cantidad, setCantidad] = useState(0)
-    //estado local para el formulario entero
     const [input, setInput] = useState({
-        name: "",
-        image: "",
-        description: "",
-        price: 0,
-        status: "",
-        brand:"",
-        categories: [],
-        stock:[]
+        // name: productId.name,
+        // image: productId.image,
+        // description: productId.description,
+        // price: productId.price,
+        // status: productId.status,
+        // brand:productId.brand,
+        // categories: [...productId.categories],
+        // stock:[...productId.stock]
+        name: 'nike air',
+        image: 'Esto es una imagen',
+        description: "Esto es una mega descripcion",
+        price: 100,
+        status: 'disponible',
+        brand: 'Nike',
+        categories: ['categoriaUno', 'categoriaDos'],
+        stock:[['hola', 'chau'],['hola1', 'chau1']]
   })
-
-  //variable para validar si el formulario esta completo y en funcion de eso disahabilitar el boton o no
-  let prueba = !!(input.name && input.image && input.description && input.price && input.status && input.brand && input.categories && input.stock.length >0)
-
   
+
     //funcion que maneja los cambios en los inputs del formulario
     const handleChangeForm = (e) => {
         if(e.target.name === 'price') {
             setInput( (state) => {
                 return {
                     ...state,
-                    price: Number(e.target.value)
+                    [e.target.name]: Number(e.target.value)
                 }
             })
             setErrors(validate({
                 ...input,
-                price: Number(e.target.value)
+                [e.target.name]: Number(e.target.value)
             }))
         } else {
             setInput( (state) => {
@@ -86,12 +85,12 @@ export default function FormProductCreate() {
             })
             setErrors(validate({
                 ...input,
-                [e.target.name]: e.target.value
+                [e.target.name]: Number(e.target.value)
             }))
         }   
     }
 
-    //Funcion que maneja el cambio en el estado de category en funcion de lo escrito en el input
+    //Funcion que maneja el cambio en el estado de pasosReceta en funcion de lo escrito en el input
     const handleChangeCategory = (e) => {
         e.preventDefault()
         setInput({
@@ -101,56 +100,52 @@ export default function FormProductCreate() {
         setCategory(e.target.value)
     }
 
-    // funcion que maneja el option seleccionado del select y lo agrega al array brands del form
+    // funcion que maneja el option seleccionado del select y lo agrega al array dietas del form
     const agregarBrand = (e) => {
           setInput({
             ...input,
             brand:  e.target.value      
         })
     }
-    // funcion que maneja el option seleccionado del select del status del productoy lo agrega al form
+    // funcion que maneja el option seleccionado del select y lo agrega al array dietas del form
     const agregarDieta = (e) => {
           setInput({
             ...input,
             status:  e.target.value      
         })
     }
-    //Guarda en el estado local talle, el talle seleccionado del select
+
     const handleTalle = (e) => {
         setTalle(e.target.value)
    }
 
-   //Guarda en el estado local cantidad, el stock seleccionado del select para ese talle
    const handleCantidad = (e) => {
        let talle = parseInt(e.target.value)
         setCantidad(talle)
    }
 
-   //Agrega un array con [0]=talle y [1]=cantidad al array (stock) del input (estado local)
+   //Agrega un objeto con key=talle y value=cantidad al array de input (estado local)
 
    const agregarStock = (e) => {
        e.preventDefault()
        setInput( {
            ...input, 
            stock: [ 
-            ...input.stock,
-             [`${talle}`,`${cantidad}`]
-         ] })
+               ...input.stock,
+                [`${talle}`,`${cantidad}`]
+            ] })
        setCantidad(0)
-       
+      
    }
    
     // funcion que maneja el submit del formulario y que nos manda a la pagina principal
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(input.name === undefined || input.image === undefined || input.description === undefined || input.price < 1 || input.status === undefined || input.brand === undefined || input.categories === undefined || input.stock === undefined){
-      
-            console.log('El formulario esta incompleto')
-
-
+        if(input.name === undefined || input.description === undefined || input.price <= 0 ){
+            alert('El formulario esta incompleto')
         } else {
-            
+
             dispatch(productForm(input))
             
             setInput({
@@ -175,6 +170,7 @@ export default function FormProductCreate() {
             )
         })
     }
+
   return (
     <div >
 
@@ -225,36 +221,35 @@ export default function FormProductCreate() {
                 <button onClick={e => agregarStock(e)}> Agregar paso </button>
         </div>
 
-        <button type='submit' id='submit' disabled={ prueba ?  false :  true}> Crear</button>
-       
+        <button type='submit'> Crear</button>
       
     </form>
 
     <div>
-    <h2> Categorias </h2>
+        <h2> Categorias </h2>
+        {
+            input.categories && input.categories.map(el => {
+            return(
+                <div style={{display:"flex", justifyContent:"space-evenly"}}>
+                    <p> {el} </p>
+                    <button onClick={ () => deleteCategory(el) }> X </button>
+                </div>
+            )})
+        }
+    </div>
+
+    <div>
+    <h2> Stock </h2>
     {
-        input.categories && input.categories.map(el => {
+        input.stock && input.stock.map(el => {
         return(
             <div style={{display:"flex", justifyContent:"space-evenly"}}>
-                <p> {el} </p>
+                <p key={el[0]}> {el[0]} </p>
+                <p key={el[1]}> {el[1]} </p>
                 <button onClick={ () => deleteCategory(el) }> X </button>
             </div>
         )})
     }
-</div>
-
-<div>
-<h2> Stock </h2>
-{
-    input.stock && input.stock.map(el => {
-    return(
-        <div style={{display:"flex", justifyContent:"space-evenly"}}>
-            <p key={el[0]}> {el[0]} </p>
-            <p key={el[1]}> {el[1]} </p>
-            <button onClick={ () => deleteCategory(el) }> X </button>
-        </div>
-    )})
-}
 </div>
     </div>
     
@@ -262,5 +257,3 @@ export default function FormProductCreate() {
     )
     
 }
-
-

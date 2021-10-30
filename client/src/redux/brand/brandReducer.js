@@ -1,8 +1,9 @@
 
-import { GET_BRANDS } from './brandActions';
+import { GET_BRANDS, GET_BRAND_BY_ID } from './brandActions';
    
 export const initialState = {
-    brands: []
+    brands: [],
+    brandById: {}
 };
    
    function brandsReducer(state = initialState, action) {
@@ -12,6 +13,13 @@ export const initialState = {
                    return {
                        ...state,
                        brands: action.payload,
+                   }
+               }
+           case GET_BRAND_BY_ID:
+               {
+                   return {
+                       ...state,
+                       brandById: action.payload,
                    }
                }
    
