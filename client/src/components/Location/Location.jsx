@@ -2,17 +2,18 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import './Location.css';
+import Map from '../Map/Map';
 
 function Location() {
     return (
         <div className="LocationContainer">
             <div className="SubLocation">
                 <div className="Location">
-
+                    <Map />
                 </div>
                 <div className="Form">
-                    <Box sx={{height:130, marginTop:2}}>
-                        <Typography variant="h4" sx={{marginBottom: 1, fontWeight:700}} >Ponte en contacto con nosotros </Typography>
+                    <Box sx={{ height: 130, marginTop: 2 }}>
+                        <Typography variant="h4" sx={{ marginBottom: 1, fontWeight: 700 }} >Ponte en contacto con nosotros </Typography>
                         <Typography variant="h6" >Cualquier duda que tengas por favor comunícate por medio del siguiente formulario y con gusto te apoyaremos. </Typography>
                     </Box>
                     <Box>
