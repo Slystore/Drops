@@ -4,12 +4,6 @@ import { useState, useEffect } from "react";
 import Product from "../Product/Product";
 import NavBar from "../NavBar/NavBar";
 import Paginado from "./Paginado";
-// import {
-//   filterBrand,
-//   getAll,
-//   filterCategory,
-// } from "../../redux/movies/moviesAction";
-// import { addToCart, storage } from "../../redux/carts/cartsActions";
 import './Catalogue.css';
 import { getAll, getProducts, filterBrand, filterCategory } from "../../redux/products/productsAction";
 import { getBrands } from "../../redux/brand/brandActions";
@@ -20,8 +14,13 @@ import { Link } from "react-router-dom";
 function Catalogue() {
   
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.productsReducer);
-  const { categories } = useSelector((state) => state.categoryReducer);
+  useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getBrands());
+    dispatch(getCategories());  
+ }, [dispatch]);
+  const { products } = useSelector((state) => state.productReducer);
+  const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
 
   const [currPage, setCurrPage] = useState(1);
@@ -35,11 +34,7 @@ function Catalogue() {
   const paginado = (pagNumber) => {
       setCurrPage(pagNumber)
   }
-  useEffect(() => {
-     dispatch(getProducts());
-     dispatch(getBrands());
-     dispatch(getCategories());  
-  }, [dispatch]);
+
   
 
   function handleFilterBrand(e) {
