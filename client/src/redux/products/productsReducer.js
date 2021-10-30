@@ -1,12 +1,14 @@
 
 import {
-    GET_PRODUCTS, GET_ALL,
+    GET_PRODUCTS,
+     GET_ALL,
     GET_PRODUCTS_PER_PAGE,
     GET_PRODUCT_BY_ID,
     PRODUCT_FORM,
   FILTER_BY_BRAND, 
   FILTER_BY_CATEGORY,
-    GET_PRODUCTS_ID, CLEAN_DETAIL
+     CLEAN_DETAIL,
+     GET_PRODUCT_STOCK
    } from './productsAction';
    
    export const initialState = {
@@ -14,7 +16,8 @@ import {
        productsPerPage: [],
        productId: {},
        productForm: {},
-      filtrados: []
+      filtrados: [],
+      stock: [],
    };
    
    function productsReducer(state = initialState, action) {
@@ -71,19 +74,16 @@ import {
                 }
             }
 
-            case GET_PRODUCTS_ID:
-
-                return {
-                    ...state,
-                    detail: action.payload,
-                }
                 case CLEAN_DETAIL:
                     return {
                         ...state,
                         detail: []
                     }    
-
-              
+                case GET_PRODUCT_STOCK:
+                    return {
+                        ...state,
+                        stock: action.payload    
+                    }
                default:
                    return state
    

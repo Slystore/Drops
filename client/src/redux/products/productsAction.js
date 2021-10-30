@@ -1,14 +1,10 @@
 import axios from "axios";
 export const GET_PRODUCTS = "GET_PRODUCTS";
-export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID";
 export const GET_ALL = "GET_ALL";
 export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
 export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-// export function getAll() {
-//     return async(dispatch) => {
-
-
+export const GET_PRODUCT_STOCK="GET_PRODUCT_STOCK";
 export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
 export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
 export const PRODUCT_FORM = 'PRODUCT_FORM'
@@ -100,20 +96,23 @@ export function filterCategory(payload) {
         payload,
     };
 }
-export function getProductsId (payload){
-    return async function (dispatch){
-   try{ let response = await axios.get('http://localhost:3001/api/products/' + payload);
-//    console.log(response)
-    return dispatch ({
-        type:  GET_PRODUCTS_ID,  
-        payload: response.data
-    })
-}catch(error){console.log(error)}
-}
-}
+
 export function cleanDetail (payload){
     return {
         type: CLEAN_DETAIL,
         payload
+    }
+}
+export function getProductsStock(id){
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/productSizes/${id}`)
+            return await dispatch({
+                type: GET_PRODUCT_STOCK,
+                payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
     }
 }

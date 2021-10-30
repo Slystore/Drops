@@ -11,7 +11,7 @@ export function postBrand(payload) {
 
 export function getBrands(){
     return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/brands')
+        const { data } = await axios.get('http://localhost:3001/api/brands/getAllBrands')
         return await dispatch({
             type: GET_BRANDS,
             payload: data
