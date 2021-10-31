@@ -28,7 +28,7 @@ function Us() {
     const handleClose = () => setOpen(false);
 
     return (
-        <div className="UsContainer">
+        <div className="UsContainer" id="Nosotros">
             <h1>TODOS SOMOS DROPS</h1>
             <p>Somos el mejor local de street shoes de Argentina, con más de 50 modelos a escoger. <br></br>
             Como amantes de la cultura proveemos los mejores productos 100% originales que hacen match contigo.</p>
@@ -49,7 +49,7 @@ function Us() {
                         Diseños exclusivos al alcance de tu mano ya sea que vengas a nuestra tienda o para envío inmediato por paquetería.<br /><br />
                         No esperes más y entra en este fabuloso mundo <strong>DROPS</strong> donde toneladas de estilo esperan por tus pies.
                     </Typography>
-                    <Button style={{backgroundColor: 'black', color: 'white', borderRadius: 10, marginTop:25}}>Ver Modelos</Button>
+                    <Button style={{backgroundColor: 'black', color: 'white', borderRadius: 10, marginTop:25}} href="/catalogue">Ver Modelos</Button>
                 </Box>
             </Modal>
         </div>

@@ -47,6 +47,7 @@ function HomeView() {
             <Newsletter />
             <Location />
             <Footer />
+            
         </div>
     )
 }

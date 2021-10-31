@@ -1,0 +1,31 @@
+.PaginadoContainer{
+    border: thin dotted #fff;
+}
+
+.Page{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    float: left;
+    margin: 0 5px;
+    /* transition: 0.5s all; */
+    /* border: thin dotted #00f; */
+}
+
+.PageCurrent{
+    border-bottom: solid 2px #f00;
+}
+
+.Page:hover{
+    border-bottom: solid 2px #f00;
+}
+
+.Number{
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+}
+
+.NumberCurrent{
+    color: #f00;
+}
