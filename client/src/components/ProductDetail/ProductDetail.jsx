@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {  cleanDetail, getProductsById, getProductsStock } from '../../redux/products/productsAction';
+import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
 import { NavLink } from 'react-router-dom';
 
 
@@ -11,11 +11,11 @@ import { NavLink } from 'react-router-dom';
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getProductsById(id))
-        dispatch(getProductsStock(id))
+        dispatch(getProductStockById(id))
         return () => dispatch(cleanDetail(id))
     }, [dispatch, id]);
     const {productId} = useSelector((state) => state.productReducer);
-    const {stock} = useSelector((state) => state.productReducer);
+    const {stockById} = useSelector((state) => state.productReducer);
 
     function addCart(e) {
         e.preventDefault()
@@ -33,7 +33,7 @@ import { NavLink } from 'react-router-dom';
                 <h4>{productId.Category.name}</h4>
                 <h5>Descripción: {`${productId.description}`}</h5>
               <h6>Talles: {productId.Sizes.map((size, index) => {
-                return (   <div>Talle {size.number} Stock {stock[index]?stock[index].stock: 0} pares</div>
+                return (   <div key={index}>Talle {size.number} Stock {stockById[index]?stockById[index].stock: 0} pares</div>
                   )}
               )}
                   </h6>

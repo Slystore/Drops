@@ -8,7 +8,7 @@ import {
   FILTER_BY_BRAND, 
   FILTER_BY_CATEGORY,
      CLEAN_DETAIL,
-     GET_PRODUCT_STOCK
+     GET_PRODUCT_STOCK_ID
    } from './productsAction';
    
    export const initialState = {
@@ -17,7 +17,7 @@ import {
        productId: {},
        productForm: {},
       filtrados: [],
-      stock: [],
+      stockById: [],
    };
    
    function productsReducer(state = initialState, action) {
@@ -79,10 +79,10 @@ import {
                         ...state,
                         detail: []
                     }    
-                case GET_PRODUCT_STOCK:
+                case GET_PRODUCT_STOCK_ID:
                     return {
                         ...state,
-                        stock: action.payload    
+                        stockById: action.payload    
                     }
                default:
                    return state

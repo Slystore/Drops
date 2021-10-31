@@ -14,9 +14,9 @@ export default function Paginado({ cardsxPage, products, paginado }) {
           {numberPage &&
             numberPage.map((number, index) => {
               return (
-                <div className="Page" >
+                <div className="Page" key ={index} >
                   <li >
-                    <a className="Number"  key ={index} onClick={() => paginado(number)}>
+                    <a className="Number"   onClick={() => paginado(number)}>
                       {number}
                     </a>
                   </li>
