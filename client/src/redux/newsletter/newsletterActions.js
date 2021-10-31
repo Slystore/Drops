@@ -9,7 +9,7 @@ export const postNewsletter = (payload) => {
             const res = await axios.post(`http://localhost:3001/api/newsletter/subscribe`, payload );
             return await dispatch({
                 type: POST_NEWSLETTER,
-                payload: res.data
+                payload: res
             })
         } catch (err) {
             console.log( err);

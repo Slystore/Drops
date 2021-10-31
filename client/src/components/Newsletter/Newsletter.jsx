@@ -29,10 +29,11 @@ function Newsletter() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    console.log('holis')
-    console.log(input)
-    dispatch(postNewsletter(input))
+    let prueba = {
+        email: input
+    }
+
+    dispatch(postNewsletter(prueba))
   }
     return (
         <div className="NewsletterContainer">
@@ -55,62 +56,3 @@ function Newsletter() {
 
 export default Newsletter
 
-// app.get('', (req, res) => {
-//     const options = {
-//         url: 'https://us5.admin.mailchimp.com/lists/b78e42cd84',
-//         method: 'POST',
-//         headers: {
-//             authorization: 'auth ceb8db134282b4535bc677188551aa0a-us5'
-//         },
-//         body: postData
-//     };
-    
-//     request(options, (err, response, body) => {
-//         if(err){
-//             res.redirect()
-//         }else{
-//             if(response.statusCode === 200) res.redirect()
-//             else res.redirect()
-//         }
-//     })
-
-// })
-
-
-// app.post('/signup', (req, res) => {
-//     const { email } = req.body;
-  
-//     // Make sure fields are filled
-//     if (!email) {
-//       res.redirect('/fail.html');
-//       return;
-//     }
-  
-//     // Construct req data
-//     const data = {
-//       members: [
-//         {
-//           email_address: email,
-//           status: 'subscribed', //status: 'pending'
-//         //   merge_fields: {
-//         //     FNAME: firstName,
-//         //     LNAME: lastName
-//         //   }
-//         }
-//       ]
-//     };
-  
-//     const postData = JSON.stringify(data);
-  
-//     fetch('https://us5.admin.mailchimp.com/3.0/lists/b78e42cd84', {
-//       method: 'POST',
-//       headers: {
-//         Authorization: 'auth ceb8db134282b4535bc677188551aa0a-us5'
-//       },
-//       body: postData
-//     })
-//       .then(res.statusCode === 200 ?
-//         res.redirect('/success.html') :
-//         res.redirect('/fail.html'))
-//       .catch(err => console.log(err))
-//   })
