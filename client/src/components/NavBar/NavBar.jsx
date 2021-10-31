@@ -4,10 +4,17 @@ import logo from '../../assets/Logo.png';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from "react-router-dom";
-import './NavBar.css'
+import { 
+            UserTooltip, 
+            TooltipsMarcas, 
+            TooltipsCategorias, 
+            titleUser, 
+            titleMarcas,
+            titleCategorias
+        } from './ToolTIps.js';
+import './NavBar.css';
 
 function NavBar() {
-   
     return (
         <div className="NavContainer">
             <Box className="LogoContainer">
@@ -16,14 +23,14 @@ function NavBar() {
             <Box className="MenuContainer">
                 <div>
                     <ul>
-                        <li className="Menu swoopInTop hvr-float-shadow">marcas</li>
-                        <li className="Menu swoopInTop hvr-float-shadow">categorías</li>
-                        <li className="Menu swoopInTop hvr-float-shadow">nosotros</li>
-                        <li className="Menu swoopInTop hvr-float-shadow">contacto</li>
-                    {/* <Link to="/" className="Link"><li className="Menu swoopInTop hvr-float-shadow">marcas</li></Link>
-                    <Link to="/" className="Link"><li className="Menu swoopInTop hvr-float-shadow">categorías</li></Link>
-                    <Link to="/" className="Link"><li className="Menu swoopInTop hvr-float-shadow">nosotros</li></Link>
-                    <Link to="/" className="Link"><li className="Menu swoopInTop hvr-float-shadow">contacto</li></Link> */}
+                        <TooltipsMarcas title={titleMarcas}><li className="Menu swoopInTop ">marcas</li></TooltipsMarcas>
+                        <TooltipsCategorias title={titleCategorias}><li className="Menu swoopInTop">categorías</li></TooltipsCategorias>
+                        <li className="Menu swoopInTop">nosotros</li>
+                        <li className="Menu swoopInTop">contacto</li>
+                        {/* <TooltipsMarcas title={titleMarcas}><li className="Menu swoopInTop hvr-float-shadow">marcas</li></TooltipsMarcas> */}
+                        {/* <TooltipsCategorias><li className="Menu swoopInTop hvr-float-shadow">categorías</li></TooltipsCategorias> */}
+                        {/* <li className="Menu swoopInTop hvr-float-shadow">nosotros</li>
+                        <li className="Menu swoopInTop hvr-float-shadow">contacto</li> */}
                     </ul>
                 </div>
             </Box>
@@ -35,8 +42,34 @@ function NavBar() {
                             <i className="fa fa-search spinIn"></i>
                         </form>
                     </div>
-                    <div className="Tool"><ShoppingCartIcon className="spinIn"  sx={{fontSize: 25, transition: '0.5s all',  '&:hover': { color: '#f00', cursor: 'pointer'}}}/></div>
-                    <div className="Tool"><AccountCircleIcon className="spinIn" sx={{fontSize: 25, transition: '0.5s all',  '&:hover': { color: '#f00', cursor: 'pointer'}}}/></div>
+
+                    <div className="Tool">
+                        <ShoppingCartIcon
+                            className="spinIn"
+                            sx={{
+                                    fontSize: 25,
+                                    transition: '0.5s all',
+                                    '&:hover': {
+                                        color: '#f00',
+                                        cursor: 'pointer'
+                                }}}
+                        />
+                    </div>
+
+                    <UserTooltip title={titleUser}>
+                        <div className="Tool">
+                            <AccountCircleIcon
+                                className="spinIn"
+                                sx={{
+                                        fontSize: 25,
+                                        transition: '0.5s all',
+                                        '&:hover': {
+                                            color: '#f00',
+                                            cursor: 'pointer'
+                                    }}}
+                            />
+                        </div>
+                    </UserTooltip>
                 </div>
             </Box>
         </div>
@@ -46,4 +79,3 @@ function NavBar() {
 export default NavBar
 
 
-       
