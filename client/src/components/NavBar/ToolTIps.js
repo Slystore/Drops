@@ -30,7 +30,7 @@ export const titleUser =
     </div>
 
     <div className="LinkUserContainer">
-        <a href="/login">Registrarse</a>
+        <a href="/register">Registrarse</a>
     </div>
   </div>
 

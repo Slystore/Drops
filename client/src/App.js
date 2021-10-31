@@ -18,8 +18,6 @@ import updateProduct from './components/Forms/updateProduct'
 import updateCategory from './components/Forms/updateCategory'
 import updateBrand from './components/Forms/updateBrand'
 
-
-
 function App() {
   return (
     <div className="App">
@@ -43,8 +41,6 @@ function App() {
               <Route exact path="/admin/brand/:id/update" component={updateBrand} />
             </Switch>
         </Router>
-
-
     </div>
   );
 }

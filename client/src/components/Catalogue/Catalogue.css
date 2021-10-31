@@ -1,3 +1,69 @@
+.CatologueContainer{
+    width: 100vw;
+    
+    /* border: thin dotted #00f;  */
+}
+
+.Portada{
+    width: 100%;
+    max-height: 400px;
+    height: 40vh;
+    background-color: #ccccce;
+    background-image: url(../../assets/portada.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* border: thin dotted #00f;  */
+}
+
+.Filtros{
+    width: 20%;
+    height: 600px;
+    float: left;
+    padding: 10px;
+    /* background-color: #00000080; */
+     /* border: thin dotted #00f;  */
+}
+
+.Productos{
+    width: 75%;
+    height: auto;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 30px;
+     /* flex-direction: row;
+     align-items: center;
+      */
+    /* background-color: #00000050; */
+    /* border: thin dotted #00f; */
+}
+
+.Shoes{
+   
+    position: relative;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    /* border: thin dotted #f00; */
+}
+
+.Paginado{
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .ContainerHome{
     width: 1250px;
     height: 510px;

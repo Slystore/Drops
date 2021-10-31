@@ -1,4 +1,5 @@
 import React from "react";
+import './Paginado.css';
 
 
 export default function Paginado({ cardsxPage, products, paginado }) {
@@ -7,15 +8,15 @@ export default function Paginado({ cardsxPage, products, paginado }) {
     numberPage.push(i);
   }
   return (
-    <div > 
+    <div className="PaginadoContainer" > 
       <nav>
         <ul >
           {numberPage &&
             numberPage.map((number, index) => {
               return (
-                <div >
+                <div className="Page" >
                   <li >
-                    <a  key ={index} onClick={() => paginado(number)}>
+                    <a className="Number"  key ={index} onClick={() => paginado(number)}>
                       {number}
                     </a>
                   </li>

@@ -12,7 +12,7 @@
 .Images{
     /* width: 1520px; */
     width: 80%;
-    border: thin dotted #00f;
+    /* border: thin dotted #00f; */
 }
 
 .Title{
@@ -70,9 +70,17 @@
     left: 18%;
 }
 
+.divTitle{
+    transition: 0.5s all;
+}
+
 .divTitle:hover  .Title{
     display: block;
 }
+
+/* .divTitle:hover{
+    filter: brightness(50%);
+} */
 
 .divTitle2:hover  .Title2{
     display: block;

@@ -5,7 +5,7 @@ import './Location.css';
 
 function Location() {
     return (
-        <div className="LocationContainer">
+        <div className="LocationContainer" id="Location">
             <div className="SubLocation">
                 <div className="Location">
 

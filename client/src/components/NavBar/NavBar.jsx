@@ -25,8 +25,9 @@ function NavBar() {
                     <ul>
                         <TooltipsMarcas title={titleMarcas}><li className="Menu swoopInTop ">marcas</li></TooltipsMarcas>
                         <TooltipsCategorias title={titleCategorias}><li className="Menu swoopInTop">categorías</li></TooltipsCategorias>
-                        <li className="Menu swoopInTop">nosotros</li>
-                        <li className="Menu swoopInTop">contacto</li>
+                        <li className="Menu swoopInTop"><a href="/catalogue">catálogo</a></li>
+                        <li className="Menu swoopInTop"><a href="#Nosotros">nosotros</a></li>
+                        <li className="Menu swoopInTop"><a href="#Location" className="">contacto</a></li>
                         {/* <TooltipsMarcas title={titleMarcas}><li className="Menu swoopInTop hvr-float-shadow">marcas</li></TooltipsMarcas> */}
                         {/* <TooltipsCategorias><li className="Menu swoopInTop hvr-float-shadow">categorías</li></TooltipsCategorias> */}
                         {/* <li className="Menu swoopInTop hvr-float-shadow">nosotros</li>

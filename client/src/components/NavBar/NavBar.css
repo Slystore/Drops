@@ -40,7 +40,12 @@ ul li{
     /* border: thin dotted #f00; */
 }
 
-ul li:hover{
+ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+ul li:hover, ul li a:hover{
     color: #f00;
     cursor: pointer;
     /* transform: translateY(-3px); */
@@ -174,7 +179,7 @@ ul li:hover{
 }
 
 .LinkMarcaContainer1 a{
-    width: 60px;
+    width: 65px;
     font-size: 16px;
     padding: 5px;
     margin-right: 5px;
@@ -187,7 +192,7 @@ ul li:hover{
 }
 
 .LinkMarcaContainer2 a{
-    width: 80px;
+    width: 90px;
     font-size: 16px;
     padding: 5px;
     text-decoration: none;
@@ -215,7 +220,7 @@ ul li:hover{
 }
 
 .LinkCategoriaContainer1 a{
-    width: 75px;
+    width: 80px;
     font-size: 16px;
     padding: 5px;
     text-decoration: none;
