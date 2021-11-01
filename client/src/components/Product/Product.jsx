@@ -11,8 +11,8 @@ export default function Product({ name, id, price, image, handdleAddCart }) {
             <div className="Name"><h3>{name}</h3> </div> 
             <div className="Price"><h5>${price}</h5> </div>  
             <div className="IconShoppingContainer">
-                <div className="IconShopping hvr-pulse-grow"><ShoppingCartIcon sx={{fontSize:20, marginTop:0.5}}/></div>
-                <div className="IconShopping hvr-pulse-grow"><FavoriteIcon sx={{fontSize:20, marginTop:0.5}}/></div>
+                <div className="IconShopping hvr-pulse-grow"><ShoppingCartIcon sx={{fontSize:20, marginTop:0.7}}/></div>
+                <div className="IconShopping hvr-pulse-grow"><FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/></div>
             </div>
             {/* <div ><h5>{handdleAddCart}</h5> </div>  */}
         </div>

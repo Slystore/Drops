@@ -58,15 +58,17 @@ function Catalogue() {
   return (
     <div className="CatologueContainer">
        
-       <NavBar />
-        
-        <div className="Portada"></div>
+      <NavBar />
 
+      <div className="Portada"></div>
+
+      <div className="Info">
+        
         <div className="Filtros"> 
 
-          <div><h2>Filtros</h2></div>
-          <div className="TitleFilter">Categoría</div>
-          <div>
+          <div style={{padding:'20px 0'}}><h1>Filtros</h1></div>
+          <div className="TitleFilter">Filtrar por Categoría</div>
+          <div className="SelectFilter">
             <select className="Select" onChange={(e) => handleFilterCategory(e)}>
               <option value="All">Categorías</option>
               {categories &&
@@ -79,10 +81,10 @@ function Catalogue() {
                 })}
             </select>
           </div>
-          <div className="TitleFilter">Marca</div>
-          <div>
+          <div className="TitleFilter">Filtrar por Marca</div>
+          <div  className="SelectFilter">
             <select className="Select" onChange={(e) => handleFilterBrand(e)}>
-              <option value="All">Marcas</option>
+              <option value="All">Todas</option>
               {brands &&
                 brands.map((brand) => {
                   return (
@@ -124,9 +126,14 @@ function Catalogue() {
             />
           </div>
         </div>
+      </div>
+
+        
 
 
-          {/* <Footer /> */}
+
+
+          <Footer />
 
 
 
