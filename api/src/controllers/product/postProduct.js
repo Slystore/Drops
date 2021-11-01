@@ -19,11 +19,14 @@ const postProduct = async (req, res, next) => {
         description,
         price,
         status,
+        categoryId,
+        brandId,
+        sizeId,
     });
 
     const findCategory = await Category.findOne({
       where: {
-        name: categoryId,
+        id: categoryId,
       },
       through: {
         attributes: ["id"],
@@ -32,18 +35,18 @@ const postProduct = async (req, res, next) => {
 
     const findBrand = await Brand.findOne({
       where: {
-        name: brandId,
+        id: brandId,
       },
     });
 
-    const findSize = await Size.findOne({
+    const findSize = await Size.findAll({
       where: {
-        number: sizeId,
+        id: sizeId,
       },
     });   
 
     await productCreated.setCategory(findCategory);
-    await productCreated.setBrands(findBrand);
+    await productCreated.setBrand(findBrand);
     await productCreated.addSizes(findSize);
 
     res.status(200).json(productCreated)
