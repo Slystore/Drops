@@ -10,6 +10,7 @@ import { getBrands } from "../../redux/brand/brandActions";
 import { getCategories } from "../../redux/category/categoriesActions";
 import { Link } from "react-router-dom";
 import './Catalogue.css';
+import {addToCart} from '../../redux/cart/cartActions';
 
 function Catalogue() {
   
@@ -51,7 +52,7 @@ function Catalogue() {
     // totalItems++
     // console.log(totalItems)
     console.log("console home",id)
-    // dispatch (addToCart(id))
+    dispatch (addToCart(id))
     // dispatch(storage(id));
 }
 
