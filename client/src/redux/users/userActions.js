@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const GET_USERS = 'GET_USERS'
+export const GET_USERS = "GET_USERS";
 
 export const userRegister = async (payload) => {
   try {
@@ -15,16 +15,18 @@ export const userRegister = async (payload) => {
   }
 };
 
-
-export const userLoginGoogle = async(payload)=>{
-  console.log('a ver que me llega de paylaod',payload)
-try{
- let {data} = await axios.post('http://localhost:3001/api/googleLogin',payload)
- return data;
-}catch(err){
-  console.log('rompo en la action de googleLog',err )
-}
-}
+export const userLoginGoogle = async (payload) => {
+  console.log("a ver que me llega de paylaod", payload);
+  try {
+    let { data } = await axios.post(
+      "http://localhost:3001/api/googleLogin",
+      payload
+    );
+    return data;
+  } catch (err) {
+    console.log("rompo en la action de googleLog", err);
+  }
+};
 
 export const userLogin = async (payload) => {
   try {
@@ -39,18 +41,26 @@ export const userLogin = async (payload) => {
     console.log("rompo en el login action", error);
   }
 };
-
+export const getToken = () => {
+  let token = localStorage.getItem("token");
+  if (!token) {
+    let error = {};
+    error.msg = "No se ha encontrado ningun token";
+    return error;
+  }
+  return token;
+};
 export const getUsers = () => {
   return async (dispatch) => {
-  try {
+    try {
       let { data } = await axios.get("http://localhost:3001/api/allUser");
-      console.log(data)
+      console.log(data);
       return await dispatch({
         type: GET_USERS,
-        payload: data
-    })       
+        payload: data,
+      });
     } catch (error) {
-    console.log(error)
-  }
-}
+      console.log(error);
+    }
+  };
 };
