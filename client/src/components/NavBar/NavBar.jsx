@@ -9,6 +9,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
+import { makeStyles } from '@mui/styles';
+
 import {
   UserTooltip,
   TooltipsMarcas,
@@ -19,14 +21,47 @@ import {
   titleUserLog,
 } from "./ToolTIps.js";
 import "./NavBar.css";
+
+const useStyles = makeStyles(() => ({
+  iconCart: {
+    "&:hover": {
+      color: "#f00",
+      cursor: "pointer",
+    },
+    "@media (min-width: 1400px) ": {
+      fontSize: 25,
+    },
+    "@media (min-width: 1200px) and (max-width: 1399px)": {
+      fontSize: 14,
+    },
+  },
+  iconUser: {
+    "&:hover": {
+      color: "#f00",
+      cursor: "pointer",
+    },
+    "@media (min-width: 1400px)": {
+      fontSize: 25,
+    },
+    "@media (min-width: 1200px)": {
+      fontSize: 2,
+    },
+  },
+}))
+
 import { getProductsByName } from "../../redux/products/productsAction";
 
+
 function NavBar() {
+
+  const classes = useStyles();
+
   const [loged, setLoged] = useState({
     userState: false,
     userData: {},
     userAdmin: {},
   });
+
   useEffect(() => {
     const x = getToken();
     console.log("esta es mi x ", x);
@@ -62,7 +97,7 @@ function NavBar() {
     <div className="NavContainer">
       <Box className="LogoContainer">
         <Link to="/">
-          <img src={logo} className="Logo ball" alt="" />
+          <img src={logo} className="Logo ball" alt="Logo"/>  
         </Link>
       </Box>
       <Box className="MenuContainer">
@@ -85,10 +120,6 @@ function NavBar() {
                 contacto
               </a>
             </li>
-            {/* <TooltipsMarcas title={titleMarcas}><li className="Menu swoopInTop hvr-float-shadow">marcas</li></TooltipsMarcas> */}
-            {/* <TooltipsCategorias><li className="Menu swoopInTop hvr-float-shadow">categorías</li></TooltipsCategorias> */}
-            {/* <li className="Menu swoopInTop hvr-float-shadow">nosotros</li>
-                        <li className="Menu swoopInTop hvr-float-shadow">contacto</li> */}
           </ul>
         </div>
       </Box>
@@ -110,55 +141,24 @@ function NavBar() {
             </form>
           </div>
 
-          <div className="Tool">
-            <Badge badgeContent={cart.length} color="error">
-              <ShoppingCartIcon
-                className="spinIn"
-                sx={{
-                  fontSize: 25,
-                  transition: "0.5s all",
-                  "&:hover": {
-                    color: "#f00",
-                    cursor: "pointer",
-                  },
-                }}
-              />{" "}
-            </Badge>
+          <div className="Tool spinIn">
+             <Badge badgeContent={cart.length} color="error">
+                <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
+             </Badge>
           </div>
-
-          {loged.userState ? (
-            <UserTooltip title={titleUserLog}>
-              <div className="Tool">
-                <AccountCircleIcon
-                  className="spinIn"
-                  sx={{
-                    fontSize: 25,
-                    transition: "0.5s all",
-                    "&:hover": {
-                      color: "#f00",
-                      cursor: "pointer",
-                    },
-                  }}
-                />
-              </div>
-            </UserTooltip>
-          ) : (
-            <UserTooltip title={titleUser}>
-              <div className="Tool">
-                <AccountCircleIcon
-                  className="spinIn"
-                  sx={{
-                    fontSize: 25,
-                    transition: "0.5s all",
-                    "&:hover": {
-                      color: "#f00",
-                      cursor: "pointer",
-                    },
-                  }}
-                />
-              </div>
-            </UserTooltip>
-          )}
+          {
+              loged.userState ? (
+                <UserTooltip title={titleUserLog}>
+                  <div className="Tool spinIn">
+                     <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
+                </div>
+              </UserTooltip>
+              ) : (
+                <UserTooltip title={titleUser}>
+                  <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all"}}/></div>
+              </UserTooltip>
+              )
+          }
         </div>
       </Box>
     </div>

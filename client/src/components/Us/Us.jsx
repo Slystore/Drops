@@ -10,8 +10,10 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
-    height: 600,
+    width: '50vw',
+    height: '50vw',
+    // width: 600,
+    // height: 600,
     bgcolor: 'background.paper',
     borderRadius: 3,
     boxShadow: 24,
@@ -32,7 +34,8 @@ function Us() {
             <h1>TODOS SOMOS DROPS</h1>
             <p>Somos el mejor local de street shoes de Argentina, con más de 50 modelos a escoger. <br></br>
             Como amantes de la cultura proveemos los mejores productos 100% originales que hacen match contigo.</p>
-            <div className="hvr-grow-shadow"><Button style={{ width: 120, height:35, backgroundColor: 'black', color: 'white', borderRadius: 10}} onClick={handleOpen}>Conócenos</Button></div>
+            <div className="hvr-grow-shadow">
+                <Button style={{ width: 120, height:35, backgroundColor: 'black', color: 'white', borderRadius: 10}} onClick={handleOpen}>Conócenos</Button></div>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -44,10 +47,10 @@ function Us() {
                         Comunidad Drops
                     </Typography>
                     <div className="PortadaModal"></div>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }} variant="h6">
-                        Únete a nuestro grupo selecto de coleccionistas de calzado único como tu.
+                    <Typography id="modal-modal-description" className="TextModal" sx={{ mt: 2 }} variant="h6">
+                        <p>Únete a nuestro grupo selecto de coleccionistas de calzado único como tu.
                         Diseños exclusivos al alcance de tu mano ya sea que vengas a nuestra tienda o para envío inmediato por paquetería.<br /><br />
-                        No esperes más y entra en este fabuloso mundo <strong>DROPS</strong> donde toneladas de estilo esperan por tus pies.
+                        No esperes más y entra en este fabuloso mundo <strong>DROPS</strong> donde toneladas de estilo esperan por tus pies.</p>
                     </Typography>
                     <Button style={{backgroundColor: 'black', color: 'white', borderRadius: 10, marginTop:25}} href="/catalogue">Ver Modelos</Button>
                 </Box>
