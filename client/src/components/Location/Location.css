@@ -24,6 +24,7 @@
     height: 600px;
     float: left;
     margin-right: 30px;
+    overflow: hidden;
     background: #00000030;
 }
 

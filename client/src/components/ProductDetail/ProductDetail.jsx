@@ -26,8 +26,8 @@ import './ProductDetail.css';
 
     function addCart(e) {
         e.preventDefault()
-
     }
+
     return (
         <div className="DetailContainer">
              {
