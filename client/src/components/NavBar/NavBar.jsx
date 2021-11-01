@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import logo from "../../assets/Logo.png";
+import { getToken } from "../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
+
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
+import logo from "../../assets/Logo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
-
 import {
   UserTooltip,
   TooltipsMarcas,
-  titleUserLog,
   TooltipsCategorias,
   titleUser,
   titleMarcas,
   titleCategorias,
+  titleUserLog,
 } from "./ToolTIps.js";
 import "./NavBar.css";
-import { getToken } from "../../redux/users/userActions";
+import { getProductsByName } from "../../redux/products/productsAction";
 
 function NavBar() {
   const [loged, setLoged] = useState({
@@ -41,11 +44,25 @@ function NavBar() {
     }
   }, []);
 
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const { cart } = useSelector((state) => state.cartReducer);
+  function handleInputChange(e) {
+    e.preventDefault();
+    setName(e.target.value);
+    console.log(name);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(name);
+    dispatch(getProductsByName(name));
+    // dispatch(cleanAction())
+  }
   return (
     <div className="NavContainer">
       <Box className="LogoContainer">
         <Link to="/">
-          <img src={logo} className="Logo ball" />
+          <img src={logo} className="Logo ball" alt="" />
         </Link>
       </Box>
       <Box className="MenuContainer">
@@ -83,54 +100,65 @@ function NavBar() {
                 type="search"
                 className="SearchBar"
                 placeholder="Buscar ..."
+                onChange={handleInputChange}
               />
-              <i className="fa fa-search spinIn"></i>
+              <i
+                className="fa fa-search spinIn"
+                onClick={(e) => handleSubmit(e)}
+                href="/catalogue"
+              ></i>
             </form>
           </div>
 
           <div className="Tool">
-            <ShoppingCartIcon
-              className="spinIn"
-              sx={{
-                fontSize: 25,
-                transition: "0.5s all",
-                "&:hover": {
-                  color: "#f00",
-                  cursor: "pointer",
-                },
-              }}
-            />
+            <Badge badgeContent={cart.length} color="error">
+              <ShoppingCartIcon
+                className="spinIn"
+                sx={{
+                  fontSize: 25,
+                  transition: "0.5s all",
+                  "&:hover": {
+                    color: "#f00",
+                    cursor: "pointer",
+                  },
+                }}
+              />{" "}
+            </Badge>
           </div>
 
-         {loged.userState ? <UserTooltip title={titleUserLog}>
-            <div className="Tool">
-              <AccountCircleIcon
-                className="spinIn"
-                sx={{
-                  fontSize: 25,
-                  transition: "0.5s all",
-                  "&:hover": {
-                    color: "#f00",
-                    cursor: "pointer",
-                  },
-                }}
-              />
-            </div>
-          </UserTooltip>:<UserTooltip title={titleUser}>
-            <div className="Tool">
-              <AccountCircleIcon
-                className="spinIn"
-                sx={{
-                  fontSize: 25,
-                  transition: "0.5s all",
-                  "&:hover": {
-                    color: "#f00",
-                    cursor: "pointer",
-                  },
-                }}
-              />
-            </div>
-          </UserTooltip>}
+          {loged.userState ? (
+            <UserTooltip title={titleUserLog}>
+              <div className="Tool">
+                <AccountCircleIcon
+                  className="spinIn"
+                  sx={{
+                    fontSize: 25,
+                    transition: "0.5s all",
+                    "&:hover": {
+                      color: "#f00",
+                      cursor: "pointer",
+                    },
+                  }}
+                />
+              </div>
+            </UserTooltip>
+          ) : (
+            <UserTooltip title={titleUser}>
+              <div className="Tool">
+                <AccountCircleIcon
+                  className="spinIn"
+                  sx={{
+                    fontSize: 25,
+                    transition: "0.5s all",
+                    "&:hover": {
+                      color: "#f00",
+                      cursor: "pointer",
+                    },
+                  }}
+                />
+              </div>
+            </UserTooltip>
+          )}
         </div>
       </Box>
     </div>
