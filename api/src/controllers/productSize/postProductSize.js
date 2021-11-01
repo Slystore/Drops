@@ -1,40 +1,42 @@
-const {Product, Size, ProductSize} = require("../../db.js");
+const { Product, Size, ProductSize } = require("../../db.js");
 
 const postProductSize = async (req, res, next) => {
   try {
-    let {
-        stock,
-        ProductId,
-        SizeId,
-    } = req.body;
+    let { stock, ProductId } = req.body;
 
-    let productSizeCreated = await ProductSize.create({
-        stock: stock,
+    const findProductSize = await ProductSize.findAll({
+      where: {
         ProductId: ProductId,
-        SizeId: SizeId
-    });
-
-    const findProduct = await Product.findOne({
-      where: {
-         ProductId,
       },
     });
 
-    const findSize = await Size.findOne({
-      where: {
-        SizeId,
-      },
+    let promises = [];
+
+    findProductSize.forEach((el) => {
+      promises.push(
+        el.update(
+          {stock: stock},
+          {
+            where: {
+              ProductId: ProductId,
+            },
+          }
+        )
+      );
     });
 
+    Promise.all(promises).then(
+      function () {
+        res.status(200).json(findProductSize);
+      },
+      function (err) {
+        console.log(err)
+      }
+    );
 
-    console.log(findProduct);
-    await productSizeCreated.addProduct(findProduct);
-    await productSizeCreated.addSize(findSize);
-
-    res.status(200).send(productSizeCreated)
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 };
 
-module.exports =  postProductSize;
+module.exports = postProductSize;
