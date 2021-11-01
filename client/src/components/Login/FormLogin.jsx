@@ -63,12 +63,12 @@ export default function FormLogin() {
       >
         {({ errors }) => (
           <Form>
-            <Field name="mail" type="text" placeHolder="Mail" />
+            <Field name="mail" type="text" placeholder="Mail" />
             <ErrorMessage
               name="mail"
               component={() => <div>{errors.mail}</div>}
             />
-            <Field name="password" type="password" placeHolder="Password" />
+            <Field name="password" type="password" placeholder="Password" />
             <ErrorMessage
               name="password"
               component={() => <div>{errors.password}</div>}

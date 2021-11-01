@@ -22,3 +22,18 @@ p{
     background-position: center center;
     background-color:black;
 }
+
+@media (min-width: 1200px){
+    .UsContainer h1{
+        font-size: 24px;
+    }
+    
+    .UsContainer p{
+        font-size: 16px;
+    }
+    
+    .TextModal p{
+        font-size: 16px;
+
+    }
+}
