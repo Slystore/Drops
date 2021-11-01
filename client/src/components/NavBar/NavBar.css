@@ -103,10 +103,6 @@ ul li:hover, ul li a:hover{
 }
 
 .SearchBar{
-    /* position: absolute;
-    top: 0;
-    border: solid 1px #f00;
-    left: 0; */
     width: 200px;
     height: 30px;
     line-height: 30px;
@@ -229,4 +225,57 @@ ul li:hover, ul li a:hover{
     transition: 0.5s all;
     text-align: center;
     /* border: thin dotted #f00; */
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+    .Logo{
+        width: 120px;
+    }
+
+    .Menu{
+        font-size: 14px;
+        width: 80px;
+        float: left;
+        padding: 5px;
+    }
+
+    .fa{
+        font-size: 18px;
+    }
+
+    .FormSearch{
+        position: relative;
+        top: -3px;
+        left: 90%; 
+        transform: translate(-100%,0%);
+        transition: all 1s;
+        width: 30px;
+        height: 30px;
+        background: white;
+        box-sizing: border-box;
+        border-radius: 30px;
+        border: 4px solid white;
+        padding: 4px;
+        border: solid 1px #fff;
+    }
+
+    .FormSearch:hover{
+        width: 200px;
+        cursor: pointer;
+    }
+
+    .SearchBar{
+        width: 160px;
+        height: 30px;
+        line-height: 30px;
+        outline: 0;
+        border: solid 1px #ccc;
+        background: transparent;
+        display: none;
+        border-radius: 20px;
+        padding: 5px;
+        font-size: 12px;
+    }
+    
 }

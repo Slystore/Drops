@@ -13,7 +13,7 @@
 }
 
 .SubLocation{
-   width: 1490px;
+   width: 90%;
    margin-top: 10px;
    margin: 0 auto;
    /* border: thin dotted #f00;  */
@@ -24,6 +24,7 @@
     height: 600px;
     float: left;
     margin-right: 30px;
+    overflow: hidden;
     background: #00000030;
 }
 
@@ -81,4 +82,32 @@
     cursor: pointer;
     /* background: #cf0000; */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 1200px){
+
+    .Location{
+        width: 50%; 
+        height: 600px;
+        float: left;
+        margin-right: 30px;
+        overflow: hidden;
+        background: #00000030;
+    }
+
+    .Form{
+        width: 45%; 
+        height: 600px;
+        float: left;
+        /* border: thin dotted #f00; */
+    }
+
+    .TitleLocation{
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .SubTitleLocation{
+        font-size: 14px;
+    }
 }

@@ -7,11 +7,12 @@
 
 html{
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .App {
   text-align: center;
-  width: 90vw;
+  width: 100vw;
   /* border: thin dotted #f00; */
 }
 
