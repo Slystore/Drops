@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/Logo.png';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Badge } from '@mui/material';
 import { Link } from "react-router-dom";
 import { 
             UserTooltip, 
@@ -13,8 +15,23 @@ import {
             titleCategorias
         } from './ToolTIps.js';
 import './NavBar.css';
+import { getProductsByName } from '../../redux/products/productsAction';
 
 function NavBar() {
+    const dispatch = useDispatch();
+    const [name, setName] = useState('');
+    const { cart } = useSelector((state) => state.cartReducer);
+    function handleInputChange(e){
+        e.preventDefault()
+      setName(e.target.value)
+      console.log(name)
+    }
+    function  handleSubmit(e) {
+        e.preventDefault()
+        console.log(name)
+        dispatch(getProductsByName(name))    
+        // dispatch(cleanAction())
+    }
     return (
         <div className="NavContainer">
             <Box className="LogoContainer">
@@ -38,13 +55,14 @@ function NavBar() {
             <Box className="ToolsContainer">
                 <div>
                     <div className="Tool">
-                        <form className="FormSearch">
-                            <input type="search" className="SearchBar" placeholder="Buscar ..."/>
-                            <i className="fa fa-search spinIn"></i>
+                        <form className="FormSearch" >
+                        <input type="search" className="SearchBar" placeholder="Buscar ..." onChange= {handleInputChange}/> 
+                            <i className="fa fa-search spinIn" onClick={(e) => handleSubmit(e)} href='/catalogue'></i>
                         </form>
                     </div>
 
                     <div className="Tool">
+                        <Badge  badgeContent={cart.length} color="error">
                         <ShoppingCartIcon
                             className="spinIn"
                             sx={{
@@ -54,7 +72,7 @@ function NavBar() {
                                         color: '#f00',
                                         cursor: 'pointer'
                                 }}}
-                        />
+                        /> </Badge>
                     </div>
 
                     <UserTooltip title={titleUser}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
+import { filterBrand } from '../../redux/products/productsAction';
 
 /****************************** TOOLTIPS USER ******************************************/
 export const UserTooltip = styled(({ className, ...props }) => (
@@ -55,7 +56,7 @@ export const TooltipsMarcas = styled(({ className, ...props }) => (
   export const titleMarcas = 
   <div className="ToolTipsMarca">
     <div className="LinkMarcaContainer1">
-        <a href="/">Adidas</a>
+        <a href="/" >Adidas</a>
     </div>
 
     <div className="LinkMarcaContainer2">

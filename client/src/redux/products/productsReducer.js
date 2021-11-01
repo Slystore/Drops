@@ -8,7 +8,8 @@ import {
   FILTER_BY_BRAND, 
   FILTER_BY_CATEGORY,
      CLEAN_DETAIL,
-     GET_PRODUCT_STOCK
+     GET_PRODUCT_STOCK,
+     GET_PRODUCT_NAME
    } from './productsAction';
    
    export const initialState = {
@@ -84,6 +85,11 @@ import {
                         ...state,
                         stock: action.payload    
                     }
+                    case GET_PRODUCT_NAME:
+                        return {
+                            ...state,
+                            products: action.payload
+                        }
                default:
                    return state
    
