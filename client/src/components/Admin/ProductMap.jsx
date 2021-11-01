@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const ProductMap = ({id, name, image, price, status}) => {
     return(
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
@@ -5,7 +7,7 @@ const ProductMap = ({id, name, image, price, status}) => {
             <p>{name}</p>
             <p>{price}</p>
             <p>{status}</p>
-            <button>actualizar</button>
+            <Link to={`admin/product/${id}/update`}> <a>actualizar</a></Link>
            
         </div>
     )
