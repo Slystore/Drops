@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import logo from "../../assets/Logo.png";
+import { getToken } from "../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
+
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
+import logo from "../../assets/Logo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getToken } from "../../redux/users/userActions";
 import { makeStyles } from '@mui/styles';
 
 import {
   UserTooltip,
   TooltipsMarcas,
-  titleUserLog,
   TooltipsCategorias,
   titleUser,
   titleMarcas,
   titleCategorias,
+  titleUserLog,
 } from "./ToolTIps.js";
 import "./NavBar.css";
 
@@ -46,6 +49,9 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
+import { getProductsByName } from "../../redux/products/productsAction";
+
+
 function NavBar() {
 
   const classes = useStyles();
@@ -73,11 +79,25 @@ function NavBar() {
     }
   }, []);
 
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const { cart } = useSelector((state) => state.cartReducer);
+  function handleInputChange(e) {
+    e.preventDefault();
+    setName(e.target.value);
+    console.log(name);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(name);
+    dispatch(getProductsByName(name));
+    // dispatch(cleanAction())
+  }
   return (
     <div className="NavContainer">
       <Box className="LogoContainer">
         <Link to="/">
-          <img src={logo} className="Logo ball" alt="Logo"/>
+          <img src={logo} className="Logo ball" alt="Logo"/>  
         </Link>
       </Box>
       <Box className="MenuContainer">
@@ -111,22 +131,33 @@ function NavBar() {
                 type="search"
                 className="SearchBar"
                 placeholder="Buscar ..."
+                onChange={handleInputChange}
               />
-              <i className="fa fa-search spinIn"></i>
+              <i
+                className="fa fa-search spinIn"
+                onClick={(e) => handleSubmit(e)}
+                href="/catalogue"
+              ></i>
             </form>
           </div>
 
           <div className="Tool spinIn">
-            <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>
+             <Badge badgeContent={cart.length} color="error">
+                <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
+             </Badge>
           </div>
           {
-              loged.userState ? <UserTooltip title={titleUserLog}>
-                <div className="Tool spinIn">
-                  <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
+              loged.userState ? (
+                <UserTooltip title={titleUserLog}>
+                  <div className="Tool spinIn">
+                     <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
                 </div>
-              </UserTooltip>:<UserTooltip title={titleUser}>
-                <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all"}}/></div>
               </UserTooltip>
+              ) : (
+                <UserTooltip title={titleUser}>
+                  <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all"}}/></div>
+              </UserTooltip>
+              )
           }
         </div>
       </Box>
