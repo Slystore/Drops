@@ -42,8 +42,6 @@ export default function FormProductCreate() {
        dispatch(getSizes())
    },[dispatch])
 
-   
-
    //estados locales para almacenar data del form
     const [category, setCategory] = useState('');
     const [talle, setTalle] = useState(0)
@@ -214,15 +212,12 @@ export default function FormProductCreate() {
         <div>
                  <select onChange={ (e) => handleTalle(e)}>
                     <option> Size </option>
-                    <option value='41'> 41 </option>
-                    <option value='42'> 42 </option>
-                    <option value='43'> 43 </option>
-                    <option value='44'> 44 </option>
-                    <option value='45'> 45 </option>
+                    { sizes && sizes.map(e => <option key={e.id} value={e.number}> {e.number} </option> ) }
+                   
                 </select>
 
                 <label> Stock <input type={'number'} name='stock' onChange={(e) => handleCantidad(e)}/></label> 
-                <button onClick={e => agregarStock(e)}> Agregar paso </button>
+                <button onClick={e => agregarStock(e)}> Agregar stock </button>
         </div>
 
         <button type='submit' id='submit' disabled={ prueba ?  false :  true}> Crear</button>
