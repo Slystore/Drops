@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const GET_PRODUCT_STOCK="GET_PRODUCT_STOCK";
+export const GET_PRODUCT_STOCK_ID="GET_PRODUCT_STOCK_ID";
 
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 
@@ -107,12 +107,12 @@ export function cleanDetail (payload){
         payload
     }
 }
-export function getProductsStock(id){
+export function getProductStockById(id){
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`http://localhost:3001/api/productSizes/${id}`)
             return await dispatch({
-                type: GET_PRODUCT_STOCK,
+                type: GET_PRODUCT_STOCK_ID,
                 payload: data
             })    
         } catch (error) {

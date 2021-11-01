@@ -17,12 +17,12 @@ import './ProductDetail.css';
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getProductsById(id))
-        dispatch(getProductsStock(id))
+        dispatch(getProductStockById(id))
         return () => dispatch(cleanDetail(id))
     }, [dispatch, id]);
 
     const {productId} = useSelector((state) => state.productReducer);
-    const {stock} = useSelector((state) => state.productReducer);
+    const {stockById} = useSelector((state) => state.productReducer);
 
     function addCart(e) {
         e.preventDefault()
@@ -120,7 +120,7 @@ import './ProductDetail.css';
                 <h4>{productId.Category.name}</h4>
                 <h5>Descripción: {`${productId.description}`}</h5>
               <h6>Talles: {productId.Sizes.map((size, index) => {
-                return (   <div>Talle {size.number} Stock {stock[index]?stock[index].stock: 0} pares</div>
+                return (   <div key={index}>Talle {size.number} Stock {stockById[index]?stockById[index].stock: 0} pares</div>
                   )}
               )}
                   </h6>

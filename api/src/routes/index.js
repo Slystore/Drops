@@ -13,7 +13,7 @@ const productSizes = require('./productSize/productSize.js');
 app.use('/',users);
 app.use('/reviews', reviewsRoutes);
 app.use('/products', products);
-app.use('/Categories', categories);
+app.use('/categories', categories);
 app.use('/brands', brands);
 app.use('/productSizes', productSizes);
 app.use('/sizes', sizes);

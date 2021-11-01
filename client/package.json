@@ -16,10 +16,12 @@
     "axios": "^0.24.0",
     "formik": "^2.2.9",
     "hover.css": "^2.3.2",
+    "jwt-decode": "^3.1.2",
     "nodemon": "^2.0.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
+    "react-leaflet": "^3.2.2",
     "react-player": "^2.9.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
@@ -42,18 +44,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "devDependencies": {
     "husky": "^7.0.4"
   }

@@ -39,7 +39,11 @@ GET
 <!-- Categories -->
 GET
 /api/categories
-
+/api/categories/:id
+POST
+/api/categories/createCategory
+PUT
+/api/categories/editCategory/:id
 <!-- Brands -->
 GET
 /api/brands/getAllBrands
