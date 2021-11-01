@@ -6,14 +6,14 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import HomeView from "./views/HomeView.js";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import "./App.css";
-import FormProduct from "./components/Forms/CreateProduct.jsx";
+// import FormProductCreate from "./components/Forms/CreateProduct.jsx";
 import FormCategory from "./components/Forms/CreateCategory";
 import FormBrand from "./components/Forms/CreateBrand";
 import Catalogue from "./components/Catalogue/Catalogue.jsx";
 
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
-import postProduct from './components/Forms/postProduct'
+import FormProductCreate from './components/Forms/postProduct'
 import updateProduct from './components/Forms/updateProduct'
 import updateCategory from './components/Forms/updateCategory'
 import updateBrand from './components/Forms/updateBrand'
@@ -59,7 +59,7 @@ function App() {
             <Route exact path="/admin/newsletter" > <Newsletter/> </Route>
             <Route exact path="/admin/appointment" > <Appointment/> </Route>
             <Route exact path="/admin/onsale" > <OnSale/> </Route>
-            <Route exact path="/admin/createProduct2" > <postProduct/> </Route>
+            <Route exact path="/admin/createProduct2" > <FormProductCreate/> </Route>
 
         </Router>
 

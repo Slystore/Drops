@@ -222,7 +222,7 @@ export default function FormProductCreate() {
                 </select>
 
                 <label> Stock <input type={'number'} name='stock' onChange={(e) => handleCantidad(e)}/></label> 
-                <button onClick={e => agregarStock(e)}> Agregar paso </button>
+                <button onClick={e => agregarStock(e)}> Agregar stock </button>
         </div>
 
         <button type='submit' id='submit' disabled={ prueba ?  false :  true}> Crear</button>
