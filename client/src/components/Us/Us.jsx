@@ -10,10 +10,10 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '50vw',
-    height: '50vw',
-    // width: 600,
-    // height: 600,
+    // width: '50vw',
+    // height: '50vw',
+    width: 600,
+    height: 600,
     bgcolor: 'background.paper',
     borderRadius: 3,
     boxShadow: 24,
@@ -31,7 +31,7 @@ function Us() {
 
     return (
         <div className="UsContainer" id="Nosotros">
-            <h1>TODOS SOMOS DROPS</h1>
+            <h1>Todos somos DROPS</h1>
             <p>Somos el mejor local de street shoes de Argentina, con más de 50 modelos a escoger. <br></br>
             Como amantes de la cultura proveemos los mejores productos 100% originales que hacen match contigo.</p>
             <div className="hvr-grow-shadow">

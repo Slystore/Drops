@@ -1,7 +1,39 @@
 .SliderContainer{
     width: 100%;
-    height: 150px;
+    height: 250px;
     margin: 100px 0;
-    background: rgb(193, 255, 157);
-    /* border: thin dotted #f00; */
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* background: rgb(193, 255, 157); */
+    border: thin dotted #f00;
+}
+
+.Slider{
+    width: 80%;
+    border: thin dotted #f00;
+}
+
+.Marca{
+    width: 150px;
+    height: 150px;
+    background-image: url('../../assets/marcas/nike.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transition: 0.5s all;
+    border: thin dotted #f00;
+}
+
+.SliderTitle{
+    font-size: 25px;
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    
+    .SliderTitle{
+        font-size: 14px;
+    }
 }

@@ -4,7 +4,11 @@ import './Slider.css'
 function Slider() {
     return (
         <div className="SliderContainer">
-            slide de marcas principales
+            <div className="Slider">
+                <div className="SliderTitle"><h1>Marcas más vendidas</h1></div>
+                <div className="Marca"></div>
+
+            </div>
         </div>
     )
 }

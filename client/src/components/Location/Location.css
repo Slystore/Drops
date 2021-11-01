@@ -13,7 +13,7 @@
 }
 
 .SubLocation{
-   width: 90%;
+   width: 80%;
    margin-top: 10px;
    margin: 0 auto;
    /* border: thin dotted #f00;  */
@@ -33,6 +33,15 @@
     height: 600px;
     float: left;
     /* border: thin dotted #f00; */
+}
+
+.TitleLocation{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.SubTitleLocation{
+    font-size: 20px;
 }
 
 .InputFormContact{
@@ -84,7 +93,14 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .SubLocation{
+        width: 90%;
+        margin-top: 10px;
+        margin: 0 auto;
+        /* border: thin dotted #f00;  */
+     } 
 
     .Location{
         width: 50%; 
@@ -93,6 +109,7 @@
         margin-right: 30px;
         overflow: hidden;
         background: #00000030;
+        /* border: thin dotted #f00; */
     }
 
     .Form{
