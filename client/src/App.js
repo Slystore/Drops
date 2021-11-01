@@ -40,8 +40,7 @@ function App() {
               <Route exact path = "/register" component={FormRegister}/>
 
               <Route exact path="/catalogue/:id" component={ProductDetail} />
-              <Route exact path="/admin/createProduct" component={FormProduct} />
-              <Route exact path="/admin/createProduct2" component={postProduct} />
+        
               <Route path="/admin" component={Admin} />
 
               
