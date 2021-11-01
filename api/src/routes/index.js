@@ -8,7 +8,7 @@ const categories = require('./categories/categories.js');
 const brands = require('./brands/brands.js');
 const sizes = require('./sizes/sizes.js');
 const productSizes = require('./productSize/productSize.js');
-
+const newsletter = require('./newsletter/newsletter');
 
 app.use('/',users);
 app.use('/reviews', reviewsRoutes);
@@ -17,6 +17,6 @@ app.use('/categories', categories);
 app.use('/brands', brands);
 app.use('/productSizes', productSizes);
 app.use('/sizes', sizes);
-
+app.use('/newsletter', newsletter);
 
 module.exports = app; 

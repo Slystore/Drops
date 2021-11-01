@@ -6,6 +6,7 @@ import productReducer from './products/productsReducer';
 import brandReducer from './brand/brandReducer';
 import categoriesReducer from './category/categoriesReducer';
 import sizeReducer from './sizes/sizeReducer';
+import newsletterReducer from './newsletter/newsletterReducer';
 
 
 export const reducers = combineReducers({
@@ -14,7 +15,8 @@ export const reducers = combineReducers({
     productReducer,
     brandReducer,
     categoriesReducer,
-    sizeReducer
+    sizeReducer,
+    newsletterReducer
 
 });
 
