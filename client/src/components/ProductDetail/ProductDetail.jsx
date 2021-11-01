@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import {  cleanDetail, getProductsById, getProductsStock } from '../../redux/products/productsAction';
+import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
 
 import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -26,8 +26,8 @@ import './ProductDetail.css';
 
     function addCart(e) {
         e.preventDefault()
-
     }
+
     return (
         <div className="DetailContainer">
              {
@@ -55,7 +55,7 @@ import './ProductDetail.css';
                                                         return (   
                                                                 <div>
                                                                     <div className="Talle">#{size.number}</div>
-                                                                    <div className="Stock"> Stock {stock[index] ? stock[index].stock : 0} pares</div>
+                                                                    <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
                                                                 </div>
                                                         )}
                                                 )}
