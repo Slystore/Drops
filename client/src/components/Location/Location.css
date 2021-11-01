@@ -24,6 +24,7 @@
     height: 600px;
     float: left;
     margin-right: 30px;
+    overflow: hidden;
     background: #00000030;
 }
 
@@ -38,6 +39,7 @@
     width: 80%;
     height: 30px;
     padding: 10px;
+    margin-left: 11px;
     border: none;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -51,11 +53,13 @@
 .TextAreaFormContact{
     width: 80%;
     height: 150px;
+    margin-left: 11px;
     padding: 10px;
     resize: none;
     border: none;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    /* border: thin dotted #f00; */
 }
 .TextAreaFormContact:focus{
     outline: solid 1px #f00;

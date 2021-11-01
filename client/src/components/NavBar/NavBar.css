@@ -9,7 +9,7 @@
 }
 
 .LogoContainer{
-    width: 30vw;
+    width: 20vw;
     height: 50px;
     float: left;
     /* border: thin dotted #f00; */
@@ -24,7 +24,7 @@
 }
 
 .MenuContainer{
-    width: 40vw;
+    width: 60vw;
     float: left;
     display: flex;
     flex-direction: row;
@@ -35,14 +35,20 @@
 
 ul li{
     list-style: none;
-    transition: 0.5s all;
+    transition: 0.1s all;
     font-size: 1.1em;
     /* border: thin dotted #f00; */
 }
 
-ul li:hover{
+ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+ul li:hover, ul li a:hover{
     color: #f00;
     cursor: pointer;
+    /* transform: translateY(-3px); */
 }
 
 .Link{
@@ -52,10 +58,11 @@ ul li:hover{
 .Menu{
     width: 110px;
     float: left;
+    padding: 5px
 }
 
 .ToolsContainer{
-    width: 30vw;
+    width: 20vw;
     float: left;
     display: flex;
     flex-direction: row;
@@ -91,24 +98,25 @@ ul li:hover{
     box-sizing: border-box;
     border-radius: 25px;
     border: 4px solid white;
-    padding: 5px;
+    padding: 4px;
     border: thin solid #fff;
 }
 
 .SearchBar{
     /* position: absolute;
     top: 0;
+    border: solid 1px #f00;
     left: 0; */
-    width: 250px;
+    width: 200px;
     height: 30px;
     line-height: 30px;
     outline: 0;
-    border:0;
+    border: none;
     background: transparent;
     display: none;
     font-size: 1em;
     border-radius: 20px;
-    padding: 0 10px;
+    padding: 5px;
 }
 
 .fa{
@@ -127,7 +135,7 @@ ul li:hover{
 }
 
 .FormSearch:hover{
-    width: 300px;
+    width: 250px;
     cursor: pointer;
 }
 
@@ -135,11 +143,90 @@ ul li:hover{
     display: block;
 }
 
-.FormSearch .SearchBar:focus-visible{
-    border-bottom: thin 1px #f00;
-}
 
 .FormSearch:hover .fa{
     background: #07051a;
     color: white;
+}
+
+.ToolTipsUser{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LinkUserContainer{
+    width: 100%;
+    height: 30px;
+    padding:0 5px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: thin dotted #f00; */
+}
+
+.LinkUserContainer a{
+    font-size: 18px;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.5s all;
+}
+
+.LinkUserContainer a:hover{
+    text-shadow: 0 5px 8px #000000;
+}
+
+.LinkMarcaContainer1 a{
+    width: 65px;
+    font-size: 16px;
+    padding: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #00000070;
+    float: left;
+    transition: 0.5s all;
+    text-align: left;
+    /* border: thin dotted #f00; */
+}
+
+.LinkMarcaContainer2 a{
+    width: 90px;
+    font-size: 16px;
+    padding: 5px;
+    text-decoration: none;
+    color: #00000070;
+    float: left;
+    transition: 0.5s all;
+    text-align: center;
+    /* border: thin dotted #f00; */
+}
+
+.LinkMarcaContainer3 a{
+    width: 75px;
+    font-size: 16px;
+    padding: 5px;
+    text-decoration: none;
+    color: #00000070;
+    float: left;
+    transition: 0.5s all;
+    text-align: right;
+    /* border: thin dotted #f00; */
+}
+
+.LinkMarcaContainer1 a:hover, .LinkMarcaContainer2 a:hover, .LinkMarcaContainer3 a:hover, .LinkCategoriaContainer1 a:hover{
+    color: #000000;
+}
+
+.LinkCategoriaContainer1 a{
+    width: 80px;
+    font-size: 16px;
+    padding: 5px;
+    text-decoration: none;
+    color: #00000070;
+    float: left;
+    transition: 0.5s all;
+    text-align: center;
+    /* border: thin dotted #f00; */
 }

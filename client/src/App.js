@@ -26,11 +26,10 @@ import Newsletter from './components/Admin/Newsletter';
 import OnSale from './components/Admin/OnSale';
 
 
-
-
 function App() {
   return (
     <div className="App">
+
         <Router>
             <Switch>
               <Route exact path="/" component={HomeView} />
@@ -40,8 +39,9 @@ function App() {
               <Route exact path ="/login" component={FormLogin} />
               <Route exact path = "/register" component={FormRegister}/>
 
-              <Route exact path="/product/:id" component={ProductDetail} />
-
+              <Route exact path="/catalogue/:id" component={ProductDetail} />
+              <Route exact path="/admin/createProduct" component={FormProduct} />
+              <Route exact path="/admin/createProduct2" component={postProduct} />
               <Route path="/admin" component={Admin} />
 
               
@@ -62,7 +62,6 @@ function App() {
             <Route exact path="/admin/createProduct2" > <FormProductCreate/> </Route>
 
         </Router>
-
     </div>
   );
 }

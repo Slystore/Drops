@@ -8,6 +8,7 @@ import categoriesReducer from './category/categoriesReducer';
 import sizeReducer from './sizes/sizeReducer';
 import newsletterReducer from './newsletter/newsletterReducer';
 
+import cartReducer from './cart/cartReducer';
 
 export const reducers = combineReducers({
     reviewsReducer,
@@ -16,8 +17,8 @@ export const reducers = combineReducers({
     brandReducer,
     categoriesReducer,
     sizeReducer,
-    newsletterReducer
-
+    newsletterReducer,
+    cartReducer
 });
 
 export default reducers;

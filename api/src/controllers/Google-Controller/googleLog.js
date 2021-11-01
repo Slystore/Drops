@@ -16,24 +16,31 @@ const googleLog = async (req, res) => {
         mail: ticket.payload.email,
       },
     });
-    const userGoogle = await Users.create({
-      name: ticket.payload.given_name,
-      surname: ticket.payload.family_name,
-      mail: ticket.payload.email,
-      password: ticket.payload.jti,
-      phone:"+54 9 000 000000 ",
-      location:"avenida siempre viva 220",
-      userType,
-    });
-    if (userGoogle) {
-      let token = jwt.sign({ user: userGoogle }, authConfing.secret, {
+    if (userValidate) {
+      let token = jwt.sign({ user: userValidate }, authConfing.secret, {
         expiresIn: "999 days",
       });
-      res.status(200).json({
-        msg: "Usuario creado con exito",
-        user: userGoogle,
-        token: token,
+      res.status(200).json({ auth: true, user: userValidate, token });
+    } else {
+      const userGoogle = await Users.create({
+        name: ticket.payload.given_name,
+        surname: ticket.payload.family_name,
+        mail: ticket.payload.email,
+        password: ticket.payload.jti,
+        phone: "+54 9 000 000000 ",
+        location: "avenida siempre viva 220",
+        userType,
       });
+      if (userGoogle) {
+        let token = jwt.sign({ user: userGoogle }, authConfing.secret, {
+          expiresIn: "999 days",
+        });
+        res.status(200).json({
+          msg: "Usuario creado con exito",
+          user: userGoogle,
+          token: token,
+        });
+      }
     }
   } catch (error) {
     console.log("rompo en el googlelog controller", error);
