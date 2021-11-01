@@ -23,7 +23,8 @@ p{
     background-color:black;
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) and (max-width: 1399px){
+    
     .UsContainer h1{
         font-size: 24px;
     }

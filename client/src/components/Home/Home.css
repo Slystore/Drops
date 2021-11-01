@@ -146,7 +146,7 @@
     display: block;
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) and (max-width: 1399px){
     .Title{
         display: none;
         padding: 30px;

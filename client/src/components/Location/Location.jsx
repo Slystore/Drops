@@ -12,7 +12,7 @@ function Location() {
                     <Map />
                 </div>
                 <div className="Form">
-                    <Box sx={{ height: 130, marginTop: 2 }}>
+                    <Box sx={{ height: 130, marginTop: 2, marginBottom: 3 }}>
                         <Typography variant="h4"  sx={{ marginBottom: 1, fontWeight: 700 }} ><p className="TitleLocation">Ponte en contacto con nosotros</p> </Typography>
                         <Typography variant="h6" ><p  className="SubTitleLocation">Cualquier duda que tengas por favor comunícate por medio del siguiente formulario y con gusto te apoyaremos.</p> </Typography>
                     </Box>
