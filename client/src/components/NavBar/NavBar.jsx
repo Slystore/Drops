@@ -10,7 +10,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-
+import { getProductsByName } from "../../redux/products/productsAction";
 import {
   UserTooltip,
   TooltipsMarcas,
@@ -49,7 +49,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-import { getProductsByName } from "../../redux/products/productsAction";
+
 
 
 function NavBar() {
