@@ -177,7 +177,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="location"
-                    placeholder="Location"
+                    placeholder="Adress"
                   />
                   <ErrorMessage
                     name="location"
