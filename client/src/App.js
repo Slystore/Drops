@@ -67,7 +67,7 @@ function App() {
             <Route exact path="/admin/appointment" > <Appointment/> </Route>
             <Route exact path="/admin/onsale" > <OnSale/> </Route>
             <Route exact path="/admin/createProduct2" > <FormProductCreate/> </Route>
-            <Route exact path="/admin/product/:id/update" >  <FormProductUpdate /> </Route>
+            <Route exact path="/admin/product/:id/update" render={ ({match}) => <FormProductUpdate/> } /> 
 
         </Router>
     </div>

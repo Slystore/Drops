@@ -11,9 +11,9 @@ const ProductButtons = () => {
     return(
         <div>
             <div style={{display: 'flex', justifyContent: 'center'}}> 
-               <Link to='/admin/createProduct2'><a> Crear </a></Link>
-               <Link><a> crear Marca</a></Link>
-               <Link><a> crear Categoria</a></Link>
+               <Link to='/admin/createProduct2'><button> Crear </button></Link>
+               <Link><button> crear Marca</button></Link>
+               <Link><button> crear Categoria</button></Link>
             </div>
         </div>
     )
