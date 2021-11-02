@@ -18,10 +18,10 @@ function validate(input) {
     return errors
   };
 
-export default function FormProductUpdate({match}) {
+export default function FormProductUpdate(props) {
     //saca el id de params
-  const id = match.params.id
-
+  const id = props.match.params.id
+console.log(props)
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});

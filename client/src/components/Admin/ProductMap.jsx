@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
-const ProductMap = ({id, name, image, price, status}) => {
+const ProductMap = (props) => {
     return(
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <img src={image} alt={id} style={{height:'25px', width:'50px'}}/>
-            <p>{name}</p>
-            <p>{price}</p>
-            <p>{status}</p>
-            <Link to={`admin/product/${id}/update`}> <a>actualizar</a></Link>
+            <img src={props.image} alt={props.id} style={{height:'25px', width:'50px'}}/>
+            <p>{props.name}</p>
+            <p>{props.price}</p>
+            <p>{props.status}</p>
+            <Link to={`admin/product/${props.id}/update`}> <a> actualizar </a></Link> 
            
         </div>
     )

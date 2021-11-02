@@ -1,7 +1,9 @@
 
 import React, {useEffect} from 'react';
 import { getCategories } from "./redux/category/categoriesActions";
-import {useDispatch} from "react-redux";
+import { getProducts } from './redux/products/productsAction';
+
+import {useDispatch, useSelector} from "react-redux";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import HomeView from "./views/HomeView.js";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
@@ -27,6 +29,15 @@ import OnSale from './components/Admin/OnSale';
 
 
 function App() {
+
+  const dispatch = useDispatch()
+    
+  useEffect(()=>{
+      dispatch(getProducts())
+  },[dispatch])
+  
+  const productos = useSelector( state => state.productReducer.products);
+
   return (
     <div className="App">
 
@@ -43,9 +54,6 @@ function App() {
         
               <Route path="/admin" component={Admin} />
 
-              
-             
-              
               <Route exact path="/admin/createCategory" component={FormCategory} />
               <Route exact path="/admin/category/:id/update" component={updateCategory} />
               <Route exact path="/admin/createBrand" component={FormBrand} />
@@ -59,7 +67,7 @@ function App() {
             <Route exact path="/admin/appointment" > <Appointment/> </Route>
             <Route exact path="/admin/onsale" > <OnSale/> </Route>
             <Route exact path="/admin/createProduct2" > <FormProductCreate/> </Route>
-            <Route exact path="/admin/product/:id/update" >  <FormProductUpdate/> </Route>
+            <Route exact path="/admin/product/:id/update" >  <FormProductUpdate product={ (product) => productos.filter(el => el.id !== product.id)}/> </Route>
 
         </Router>
     </div>
