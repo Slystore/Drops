@@ -4,27 +4,61 @@
     margin: 100px 0;
     padding: 10px 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)) */
     /* background: rgb(193, 255, 157); */
-    border: thin dotted #f00;
+    background: #cccccc40;
+    /* border: thin dotted #f00; */
 }
 
 .Slider{
     width: 80%;
-    border: thin dotted #f00;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* border: thin dotted #f00; */
 }
 
-.Marca{
-    width: 150px;
-    height: 150px;
-    background-image: url('../../assets/marcas/nike.png');
+.Marca1, .Marca2, .Marca3, .Marca4, .Marca5, .Marca6{
+    width: 120px;
+    height: 120px;
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;
     transition: 0.5s all;
-    border: thin dotted #f00;
+    /* border: thin dotted #f00; */
+}
+
+.Marca1{
+    background-image: url('../../assets/nike.png');
+    background-size: 60%;
+}
+
+.Marca2{
+    background-image: url('../../assets/adidaslogo.png');
+    background-size: 90%;
+}
+
+.Marca3{
+    background-image: url('../../assets/under.png');
+    background-size: 60%;
+}
+
+.Marca4{
+    background-image: url('../../assets/puma.png');
+    background-size: 60%;
+}
+
+.Marca5{
+    background-image: url('../../assets/gucci.png');
+    background-size: 80%;
+}
+
+.Marca6{
+    background-image: url('../../assets/vanslogo.png');
+    background-size: 60%;
 }
 
 .SliderTitle{

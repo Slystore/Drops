@@ -2,7 +2,6 @@
     width: 99.1vw;
     display: flex;
     flex-direction: column;
-    
     align-items: center;
     justify-content: space-evenly;
     overflow: hidden;
@@ -87,5 +86,31 @@ select:hover{
 }
 
 .Paginado{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    clear: both;
     margin-top: 20px;
+    /* border: thin dotted #f00; */
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .Info{ 
+        width: 99%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .Filtros{
+        min-width: 200px;
+        width: 250px;
+        height: 800px;
+        top: 0;
+        /* border: thin dotted #f00;  */
+    }
 }
