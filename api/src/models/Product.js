@@ -16,6 +16,6 @@ module.exports = (sequelize) => {
         },
         status:{
             type: DataTypes.ENUM('disponible', 'no disponible'),
-        }
+        },
     }, {timestamps: false})
 }

@@ -11,6 +11,7 @@ const postProduct = async (req, res, next) => {
       categoryId,
       brandId,
       sizeId,
+      stock,
     } = req.body;
 
     const productCreated = await Product.create({
@@ -45,25 +46,33 @@ const postProduct = async (req, res, next) => {
       },
     });
 
-
     await productCreated.setCategory(findCategory);
     await productCreated.setBrand(findBrand);
     await productCreated.addSizes(findSize);
 
 
-    res.status(200).json(productCreated);
+    let findProductSize = await ProductSize.findAll({
+      where: {
+        ProductId: productCreated.id,
+        SizeId: sizeId,
+      },
+    });
 
+    let sizeBody;
+    let stockBody;
 
-    // let lastIndex = 619;
-    
-    // if (productCreated.id > lastIndex) {
-    //   await ProductSize.create({
-    //     ProductId: lastIndex++,
-    //     SizeId: findSize,
-    //     stock: productCreated.stock,
-    //   });
-    // }
+    for (let i = 0; i < stock.length; i++) {
+      [sizeBody, stockBody] = stock[i];
+      findProductSize[i].update({
+        sizeId: sizeBody,
+        stock: stockBody,
+      });
+    }
 
+    res.status(200).json({
+      message: "Product created",
+      data: productCreated,
+    });
   } catch (err) {
     console.log(err);
   }
