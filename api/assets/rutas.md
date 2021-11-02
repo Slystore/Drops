@@ -35,7 +35,8 @@ GET
 /api/products?name=
 /api/products=Brand=
 /api/products=Category=
-
+POST
+/api/products/createProduct
 <!-- Categories -->
 GET
 /api/categories

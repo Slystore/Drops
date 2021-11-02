@@ -1,4 +1,4 @@
-const { Product, Size, Brand, Category, ProductSize } = require("../../db.js");
+const { Product, Size, Brand, Category, ProductSize, Reviews } = require("../../db.js");
 const { Op } = require("sequelize");
 
 
@@ -58,6 +58,9 @@ const getProducts = async(req, res, next) => {
                         attributes: [],
                     },
                 },
+                {
+                    model: Reviews,
+                }
             ],
             where: handleWhere(filters),
             //NO BORRAR EL SIGUIENTE COMENTARIO QUE ES PARA EL FILTRO POR TITLE Y GENRE

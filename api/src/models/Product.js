@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, UUIDV4 } = require('sequelize');
 
 module.exports = (sequelize) => {
     return sequelize.define('Product', {
@@ -16,6 +16,6 @@ module.exports = (sequelize) => {
         },
         status:{
             type: DataTypes.ENUM('disponible', 'no disponible'),
-        }
+        },
     }, {timestamps: false})
 }
