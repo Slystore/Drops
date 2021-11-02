@@ -10,6 +10,7 @@ import { postNewsletter } from './../../redux/newsletter/newsletterActions';
 function Newsletter() {
 
   const dispatch = useDispatch();
+  let newsletter = document.getElementById('hola')
 
    //aca ejecutamos action que trae las brands, categories y sizes
 
@@ -34,6 +35,7 @@ function Newsletter() {
     }
 
     dispatch(postNewsletter(prueba))
+    newsletter.innerHTML = 'Gracias por tu suscripcion!'
   }
     return (
         <div className="NewsletterContainer">
@@ -46,6 +48,7 @@ function Newsletter() {
                     <form  onSubmit={e => handleSubmit(e)} >
                         <input name='email' type="email" className="NewsletterInput" placeholder="Email" onChange={(e) => handleChange(e)}/>  
                         <input className="ButtonNewsletter hvr-grow-shadow" type="submit" name="email" value="Registrar"></input>
+                        <p id='hola' style={{color: 'red', fontSize:'12px'}}></p>
                     </form>
 
                 </div>
