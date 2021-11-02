@@ -27,7 +27,7 @@ const login = async (req, res) => {
     } else {
       return res.json({
         auth: false,
-        msg: "La contraseña el mail no coinciden con nuestros registros. Por favor intenete de nuevo",
+        msg: "La contraseña o el mail no coinciden con nuestros registros. Por favor intenete de nuevo",
       });
     }
   } catch (err) {

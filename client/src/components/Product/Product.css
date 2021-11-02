@@ -19,6 +19,11 @@
     /* border: thin dotted #f00; */
 }
 
+.Zapatilla img{
+    width: 200px;
+    height: 250px;
+}
+
 .Name{ 
     width: 100%;
     height: 70px;
@@ -63,4 +68,62 @@
     background: '-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
     background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
     background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
+}
+
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .ProductContainer{
+        width: 180px;
+        height: 300px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.5s all;
+        /* border: thin dotted #f00; */
+    }
+
+    .Zapatilla{
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        /* border: thin dotted #0f0; */
+    }
+    
+    .Zapatilla img{
+        width: 170px;
+        height: 210px;
+        /* border: thin dotted #0f0; */
+    }
+
+    .Name{ 
+        width: 100%;
+        height: 60px;
+        font-size: 16px;
+        font-family: 'Zen Kurenaido', sans-serif;
+        font-weight: 100;
+        line-height: 20px;
+        color: #000;
+        /* border: thin dotted #f00; */
+    }
+    
+    .Price{
+        color: #000;
+        font-size: 24px;
+        /* border: thin dotted #f00; */
+    }
+
+    .IconShoppingContainer{
+        width: 80%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color:  rgb(197, 197, 197);
+        transition: 0.5s all;
+        /* border: thin dotted #f00; */
+    }
+
 }

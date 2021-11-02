@@ -8,7 +8,7 @@ export default function Product({ name, id, price, image, addToCart }) {
     return (
         <div className="ProductContainer" >
             <div className="Zapatilla">
-                <img src={image} alt="imagen no encontrada" width="200px" height="250px" />
+                <img src={image} alt="imagen no encontrada"/>
             </div>
             <div className="Name">
                 <h3>{name}</h3>
@@ -18,10 +18,10 @@ export default function Product({ name, id, price, image, addToCart }) {
             </div>  
             <div className="IconShoppingContainer">
                     <div className="IconShopping hvr-pulse-grow">
-                        <ShoppingCartIcon sx={{fontSize:20, marginTop:0.5}} onClick={() => addToCart(id)}/>
+                        <ShoppingCartIcon sx={{fontSize:20, marginTop:0.7}} onClick={() => addToCart(id)}/>
                     </div>
                     <div className="IconShopping hvr-pulse-grow">
-                    <FavoriteIcon sx={{fontSize:20, marginTop:0.5}}/>
+                    <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
                     </div>
             </div>
         </div>

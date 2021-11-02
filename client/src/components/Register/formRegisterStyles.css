@@ -1,0 +1,68 @@
+.reg-Cont{
+    width: 100vw;
+    height: 100vh;
+}
+.reg-Box{
+    border: solid #ccc 1px;
+    width: 900px;
+    height: 600px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    top: 10vh;
+    padding: 15px;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+}
+.reg-Box h1{
+    text-align: left;
+    margin-left: 80px;
+}
+
+.data-Field-reg{
+    width: 350px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    outline: none;
+}
+.form-box-reg{
+    margin-top: 35px;
+    margin-left: 55px;
+    width: fit-content;
+}
+.Field-reg{
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: thin solid #ccc;
+    outline: none;
+}
+.btn-reg{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left:  100px; ;
+    background:none;
+    border: thin solid #ccc;
+    outline: none;
+}
+.btn-reg:hover{
+    background-color: #fc4444; 
+    transition-duration: 1s;
+    font-size: 15px;
+    font-weight: 100;
+    transform:scale(1.1);
+}
+.btn-reg:after{
+    transition: all 0.3s ease-in-out;
+    transition-duration: 1s;
+}
