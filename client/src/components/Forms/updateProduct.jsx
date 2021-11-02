@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
  import { useDispatch, useSelector} from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import {  postBrand } from '../../redux/brand/brandActions';
+import {  useHistory, useParams } from 'react-router-dom';
 import { productForm, getProductsById } from './../../redux/products/productsAction';
 import { getBrands } from './../../redux/brand/brandActions';
 import { getCategories } from '../../redux/category/categoriesActions';
@@ -18,52 +17,49 @@ function validate(input) {
     return errors
   };
 
-export default function FormProductUpdate(props) {
-    const location = useLocation()
+export default function FormProductUpdate() {
+    const params = useParams()
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+
     //saca el id de params
-//   const id = props.match.params.id
-//   const id = props.location.nada.id
-console.log(location.nada)
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const id = params.id
+
   const [errors, setErrors] = useState({});
   const [category, setCategory] = useState('');
 
-   //Me traigo el estado de redux de dietas
+  useEffect(()=>{
+    //aca ejecutamos action que trae la data de ese product en particular
+    dispatch(getProductsById(id))
+    dispatch(getBrands())
+    dispatch(getCategories())
+    dispatch(getSizes())
+},[dispatch])
+
+   //Me traigo el estado de redux
    const {brands} =  useSelector(state => state.brandReducer)
    const {categories} =  useSelector(state => state.categoriesReducer)
    const {sizes} =  useSelector(state => state.sizeReducer)
-   const {productId} =  useSelector(state => state)
+   const {productId} =  useSelector(state => state.productReducer)
 
-   useEffect(()=>{
-       //aca ejecutamos action que trae la data de ese product en particular
-    //    dispatch(getProductsById(id))
-       dispatch(getBrands())
-       dispatch(getCategories())
-       dispatch(getSizes())
-   },[dispatch])
+   
+
+console.log(productId)
 
     const [talle, setTalle] = useState(0)
     const [cantidad, setCantidad] = useState(0)
     const [talleString, setTalleString] = useState(0)
     const [talleUi, setTalleUi] = useState([])
     const [input, setInput] = useState({
-        // name: productId.name,
-        // image: productId.image,
-        // description: productId.description,
-        // price: productId.price,
-        // status: productId.status,
-        // brand:productId.brand,
-        // categories: [...productId.categories],
-        // stock:[...productId.stock]
-        name: 'nike air',
-        image: 'Esto es una imagen',
-        description: "Esto es una mega descripcion",
-        price: 100,
-        status: 'disponible',
-        brand: 'Nike',
-        categories: ['categoriaUno', 'categoriaDos'],
-        stock:[['hola', 'chau'],['hola1', 'chau1']]
+        name: '',
+        image: '',
+        description: '',
+        price: '',
+        status: '',
+        brand: '',
+        categories: [],
+        stock:[]
   })
   
 
@@ -184,16 +180,16 @@ console.log(location.nada)
       <form onSubmit={e => handleSubmit(e)}>
 
         <div>
-                <label> Nombre <input type={'text'} name='name' onChange={handleChangeForm} autoComplete='off'/></label>
+                <label> Nombre <input type={'text'} name='name' onChange={handleChangeForm} autoComplete='off'  /></label>
                 {errors.name && (<p>{errors.name}</p>)}
 
                 <label> Imagen <input type={'text'} name='image' onChange={handleChangeForm} /></label>
                 {errors.image && (<p>{errors.image}</p>)}
 
-                <textarea name='description'onChange={handleChangeForm} placeholder='Describe the product'/>
+                <textarea name='description'onChange={handleChangeForm} placeholder='Describe the product' />
                 {errors.description && (<p>{errors.description}</p>)}
                 
-                <label> Price <input type={'number'} name='price' onChange={handleChangeForm}/></label> 
+                <label> Price <input type={'number'} name='price' onChange={handleChangeForm} /></label> 
                 {errors.price && (<p>{errors.price}</p>)}
                 
                 <select onChange={ (e) => agregarBrand(e)}>

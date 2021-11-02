@@ -26,7 +26,7 @@ const Products = () => {
                         hola && hola.map(prod => (
                         <div>
                             
-                            <ProductMap key={prod.id} name={prod.name} image={prod.image} price={prod.price} status={prod.status} data={prod} />
+                            <ProductMap key={prod.id} name={prod.name} image={prod.image} price={prod.price} status={prod.status} data={prod} match={prod.id}/>
                         </div>
                     ))}
                 

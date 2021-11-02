@@ -3,6 +3,11 @@ import {useLocation} from 'react-router'
 
 const ProductMap = (props) => {
     const location = useLocation()
+    const handleClick = (e) => {
+        e.preventDefault()
+        console.log(props.data.id)
+        // console.log(typeof props.data.id)
+    }
 
     return(
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
@@ -10,10 +15,7 @@ const ProductMap = (props) => {
             <p>{props.name}</p>
             <p>{props.price}</p>
             <p>{props.status}</p>
-            <Link to={{
-                pathname: `/admin/product/1/update`,
-                nada: 'hola'
-            }}> <a> actualizar </a></Link> 
+            <Link to= {`/admin/product/${props.data.id}/update`}> <button > actualizar </button></Link> 
            
         </div>
     )
@@ -21,6 +23,7 @@ const ProductMap = (props) => {
 
 export default ProductMap
 
+// onClick={handleClick}
 // <ul>
 // <li> {name} </li>
 // <li> {price} </li>
