@@ -37,6 +37,10 @@ GET
 /api/products=Category=
 POST
 /api/products/createProduct
+PUT
+api/products/updateProduct/:id
+DELETE
+api/products/deleteteProduct/:id
 <!-- Categories -->
 GET
 /api/categories
