@@ -1,8 +1,8 @@
-.log-Cont{
+.reg-Cont{
     width: 100vw;
     height: 100vh;
 }
-.log-Box{
+.reg-Box{
     border: solid #ccc 1px;
     width: 900px;
     height: 600px;
@@ -15,15 +15,12 @@
     margin: 0 auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
-.border-dec{
-    border: solid #ccc 1px;
-    width: 480px;
-}
-.log-Box h1{
+.reg-Box h1{
     text-align: left;
-    margin-left: 23px;
+    margin-left: 80px;
 }
-.data-Field{
+
+.data-Field-reg{
     width: 350px;
     height: 40px;
     display: flex;
@@ -35,31 +32,12 @@
     border-radius: 8px;
     outline: none;
 }
-.form-box-log{
+.form-box-reg{
     margin-top: 35px;
     margin-left: 55px;
     width: fit-content;
 }
-.img-log{
-    /* border: solid blue 1px; */
-    position: absolute;
-    top: 0;
-    left: 500px;
-    width: 400px;
-    height: 600px;
-    background-image: url('../../assets/sneake-new.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover
-}
-.data-Field p{
-    font-size: 16px;
-}
-.data-Field a {
-    text-decoration: none;
-    color: #fc4444;
-}
-.Field{
+.Field-reg{
     width: 300px;
     height: 35px;
     border-radius: 5px;
@@ -67,31 +45,24 @@
     border: thin solid #ccc;
     outline: none;
 }
-.btn-sub{
+.btn-reg{
     width: 100px;
     height: 100px;
     cursor: pointer;
     border-radius: 5px;
+    margin-left:  100px; ;
     background:none;
     border: thin solid #ccc;
     outline: none;
 }
-.btn-sub:hover{
+.btn-reg:hover{
     background-color: #fc4444; 
     transition-duration: 1s;
     font-size: 15px;
     font-weight: 100;
     transform:scale(1.1);
 }
-.btn-sub:after{
+.btn-reg:after{
     transition: all 0.3s ease-in-out;
     transition-duration: 1s;
-}
-.log-error{
-    font-size: 18px;
-    color: red;
-}
-.log-error-inp{
-    font-size: 12px;
-    color: red;
 }

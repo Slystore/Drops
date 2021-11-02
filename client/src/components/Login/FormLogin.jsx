@@ -98,8 +98,9 @@ export default function FormLogin() {
                   />
                   <ErrorMessage
                     name="password"
-                    
-                    component={() => <div className="log-error-inp">{errors.password}</div>}
+                    component={() => (
+                      <div className="log-error-inp">{errors.password}</div>
+                    )}
                   />
                 </div>
                 <div className="data-Field">
