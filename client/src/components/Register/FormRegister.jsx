@@ -192,9 +192,17 @@ export default function FormRegister() {
                   Create
                 </button>
               </div>
-              <div>
-                {user && <p>{user.noValidate}</p>}
-                {succes && <p>Usuario Creado</p>}
+              <div className="data-Field-reg">
+                <div className = "data-log-box">
+                  <p>
+                    Do you already have an account?{" "}
+                    <a href="/login">Login here</a>
+                  </p>
+                </div>
+              </div>
+              <div className="data-Field-red">
+                {user && <p className="no-validate">{user.noValidate}</p>}
+                {succes && <p className="validate">Usuario Creado</p>}
               </div>
             </Form>
           )}
