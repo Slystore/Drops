@@ -3,7 +3,6 @@ const { DataTypes, UUIDV4, DATE, DATEONLY } = require("sequelize");
 module.exports = (Sequelize) => {
     return Sequelize.define(
         "Orders", {
-
             date: {
                 type: DataTypes.DATEONLY,
                 allowNull: false,

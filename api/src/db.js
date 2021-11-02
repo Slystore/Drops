@@ -5,6 +5,7 @@ const usersModel = require("./models/Users.js");
 const reviewsModel = require("./models/Reviews.js");
 const wishListsModel = require("./models/WishList.js");
 const ordersModel = require("./models/Orders.js");
+const orderDetailModel = require("./models/OrderDetail.js");
 
 const productModel = require("./models/Product.js");
 const productSizeModel = require("./models/ProductSize.js");
@@ -30,6 +31,8 @@ categoryModel(sequelize);
 usersModel(sequelize);
 reviewsModel(sequelize);
 ordersModel(sequelize);
+orderDetailModel(sequelize);
+
 wishListsModel(sequelize);
 
 const {
@@ -39,6 +42,7 @@ const {
   Users,
   Reviews,
   Orders,
+  OrderDetail,
   Brand,
   Category,
   WishList } = sequelize.models;
@@ -74,6 +78,8 @@ Product.belongsTo(Brand);
 Product.belongsToMany(Size, { through: ProductSize });
 Size.belongsToMany(Product, { through: ProductSize });
 
+Product.belongsToMany(Orders, { through: OrderDetail });
+Orders.belongsToMany(Product, { through: OrderDetail }); 
 
 module.exports = {
   conn: sequelize,
