@@ -45,6 +45,8 @@ export default function FormProductCreate() {
    //estados locales para almacenar data del form
     const [category, setCategory] = useState('');
     const [talle, setTalle] = useState(0)
+    const [talleString, setTalleString] = useState(0)
+    const [talleUi, setTalleUi] = useState([])
     const [cantidad, setCantidad] = useState(0)
     //estado local para el formulario entero
     const [input, setInput] = useState({
@@ -128,14 +130,16 @@ export default function FormProductCreate() {
 
    const agregarStock = (e) => {
        e.preventDefault()
+       let prueba = sizes.filter(e => e.number === +talle )
+       setTalleUi( [...talleUi, [ prueba[0].number, cantidad ] ] )
+       console.log(talleUi)
        setInput( {
            ...input, 
            stock: [ 
             ...input.stock,
-             [`${talle}`,`${cantidad}`]
+             [parseInt(prueba[0].id), parseInt(cantidad)]
          ] })
        setCantidad(0)
-       
    }
    
     // funcion que maneja el submit del formulario y que nos manda a la pagina principal
@@ -150,7 +154,7 @@ export default function FormProductCreate() {
         } else {
             
             dispatch(productForm(input))
-            
+
             setInput({
                 name: "",
                 image: "",
@@ -241,7 +245,7 @@ export default function FormProductCreate() {
 <div>
 <h2> Stock </h2>
 {
-    input.stock && input.stock.map(el => {
+    talleUi && talleUi.map(el => {
     return(
         <div style={{display:"flex", justifyContent:"space-evenly"}}>
             <p key={el[0]}> {el[0]} </p>

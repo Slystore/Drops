@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
  import { useDispatch, useSelector} from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import {  postBrand } from '../../redux/brand/brandActions';
 import { productForm, getProductsById } from './../../redux/products/productsAction';
 import { getBrands } from './../../redux/brand/brandActions';
@@ -19,9 +19,11 @@ function validate(input) {
   };
 
 export default function FormProductUpdate(props) {
+    const location = useLocation()
     //saca el id de params
-  const id = props.match.params.id
-console.log(props)
+//   const id = props.match.params.id
+//   const id = props.location.nada.id
+console.log(location.nada)
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -35,7 +37,7 @@ console.log(props)
 
    useEffect(()=>{
        //aca ejecutamos action que trae la data de ese product en particular
-       dispatch(getProductsById(id))
+    //    dispatch(getProductsById(id))
        dispatch(getBrands())
        dispatch(getCategories())
        dispatch(getSizes())
@@ -43,6 +45,8 @@ console.log(props)
 
     const [talle, setTalle] = useState(0)
     const [cantidad, setCantidad] = useState(0)
+    const [talleString, setTalleString] = useState(0)
+    const [talleUi, setTalleUi] = useState([])
     const [input, setInput] = useState({
         // name: productId.name,
         // image: productId.image,
@@ -127,15 +131,17 @@ console.log(props)
    //Agrega un objeto con key=talle y value=cantidad al array de input (estado local)
 
    const agregarStock = (e) => {
-       e.preventDefault()
-       setInput( {
-           ...input, 
-           stock: [ 
-               ...input.stock,
-                [`${talle}`,`${cantidad}`]
-            ] })
-       setCantidad(0)
-      
+    e.preventDefault()
+    let prueba = sizes.filter(e => e.number === +talle )
+    setTalleUi( [...talleUi, [ prueba[0].number, cantidad ] ] )
+    console.log(talleUi)
+    setInput( {
+        ...input, 
+        stock: [ 
+         ...input.stock,
+          [parseInt(prueba[0].id), parseInt(cantidad)]
+      ] })
+    setCantidad(0)
    }
    
     // funcion que maneja el submit del formulario y que nos manda a la pagina principal
@@ -241,7 +247,7 @@ console.log(props)
     <div>
     <h2> Stock </h2>
     {
-        input.stock && input.stock.map(el => {
+        talleUi && talleUi.map(el => {
         return(
             <div style={{display:"flex", justifyContent:"space-evenly"}}>
                 <p key={el[0]}> {el[0]} </p>
