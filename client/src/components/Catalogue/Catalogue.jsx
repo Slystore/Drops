@@ -20,6 +20,7 @@ function Catalogue() {
     dispatch(getBrands());
     dispatch(getCategories());  
  }, [dispatch]);
+ 
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
@@ -35,8 +36,6 @@ function Catalogue() {
   const paginado = (pagNumber) => {
       setCurrPage(pagNumber)
   }
-
-  
 
   function handleFilterBrand(e) {
     e.preventDefault();
@@ -126,68 +125,8 @@ function Catalogue() {
         </div>
       </div>
 
-        
+      <Footer />
 
-
-
-
-          <Footer />
-
-
-
-      {/* 
-      <div className="SelectGroup">
-       
-        <div className="ContainerSelect">
-          <select className="Select" onChange={(e) => handleFilterBrand(e)}>
-            <option value="All">Marcas</option>
-            {brands &&
-              brands.map((brand) => {
-                return (
-                  <option key={brand.id} value={brand.name}>
-                    {brand.name}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-        <div className="ContainerSelect">
-          <select className="Select" onChange={(e) => handleFilterCategory(e)}>
-            <option value="All">Categorías</option>
-            {categories &&
-              categories.map((category) => {
-                return (
-                  <option key={category.id} value={category.name}>
-                    {category.name}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-      </div>
-      <Paginado cardsxPage={cardsxPage} products={products.length}
-                    paginado={paginado} />
-      <div className="ContainerHome">
-        <div className="MoviesContainer">
-          {currProducts && currProducts.map((product, index) => {
-            return (
-              <Link to={`/catalogue/${product.id}`} key={index}>
-              <div className="Movie" key={index}>
-                <Product
-                  id={product.id}
-                 image={product.image}
-                name={product.name}
-                 price={product.price}
-                 status={product.status}
-                  description={product.description}
-                  addToCart = {handleAddCart}  
-                />
-              </div>
-              </Link>
-            );
-          })}
-        </div>
-      </div> */}
     </div>
   );
 }
