@@ -81,7 +81,9 @@ function NavBar() {
 
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const[cartStorage ]= useState(JSON.parse(window.localStorage.getItem("cartId")))
   const { cart } = useSelector((state) => state.cartReducer);
+  const {storage} = useSelector(state => state.cartReducer)
   function handleInputChange(e) {
     e.preventDefault();
     setName(e.target.value);
@@ -140,12 +142,12 @@ function NavBar() {
               ></i>
             </form>
           </div>
-
+          <Link to={storage ? '/shoppingCart': ''} >
           <div className="Tool spinIn">
-             <Badge badgeContent={cart.length} color="error">
+             <Badge badgeContent={cartStorage? cartStorage.length: cart.length} color="error">
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
-          </div>
+          </div></Link>
           {
               loged.userState ? (
                 <UserTooltip title={titleUserLog}>
