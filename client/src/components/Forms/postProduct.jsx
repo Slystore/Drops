@@ -94,9 +94,13 @@ export default function FormProductCreate() {
     //Funcion que maneja el cambio en el estado de category en funcion de lo escrito en el input
     const handleChangeCategory = (e) => {
         e.preventDefault()
+
+        let catFilter = categories.filter(cat => cat.name === e.target.value)
+        catFilter = catFilter[0].id
+
         setInput({
             ...input,
-            categories: [...input.categories, e.target.value]
+            categories: [...input.categories, catFilter]
         })
         setCategory(e.target.value)
     }
@@ -152,7 +156,7 @@ export default function FormProductCreate() {
 
 
         } else {
-            
+            console.log(input)
             dispatch(productForm(input))
 
             setInput({
@@ -198,7 +202,7 @@ export default function FormProductCreate() {
                 
                 <select onChange={ (e) => agregarBrand(e)}>
                     <option> Brand </option>
-                    { brands && brands.map(e => <option key={e.id} value={e.name}> {e.name} </option> ) }
+                    { brands && brands.map(e => <option key={e.id} value={e.id}> {e.name} </option> ) }
                 </select>
                 
                 <select onChange={ (e) => handleChangeCategory(e)}>
@@ -208,8 +212,8 @@ export default function FormProductCreate() {
 
                 <select onChange={ (e) => agregarDieta(e)}>
                     <option> Status </option>
-                    <option> Disponible </option>
-                    <option> Fuera de Stock </option>
+                    <option> disponible </option>
+                    <option> no disponible </option>
                 </select>
         </div>
         

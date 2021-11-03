@@ -51,6 +51,7 @@ function App() {
               <Route exact path = "/register" component={FormRegister}/>
 
               <Route exact path="/catalogue/:id" component={ProductDetail} />
+              <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
         
               <Route path="/admin" component={Admin} />
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
 
@@ -10,6 +11,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './ProductDetail.css';
 
  function ProductDetail(props) {
+     const history = useHistory()
 
     const { id } = props.match.params
   
@@ -25,6 +27,11 @@ import './ProductDetail.css';
 
     function addCart(e) {
         e.preventDefault()
+    }
+
+    function handleReviews(e){
+        e.preventDefault()
+        history.push(`/catalogue/${id}/reviews`)
     }
 
     return (
@@ -98,6 +105,19 @@ import './ProductDetail.css';
                                                     }
                                                 }} 
                                                 startIcon={<FavoriteIcon />}>Wish List</Button>
+                                            <Button
+                                                size="small"
+                                                className="hvr-grow-shadow" 
+                                                sx={{
+                                                    backgroundColor:'black', 
+                                                    color: 'white',
+                                                    transition: '0.5s all',
+                                                    '&:hover': {
+                                                        backgroundColor:'#00000099'
+                                                    }
+                                                }} 
+                                                onClick={handleReviews}
+                                                >Reviews</Button>
                                         </div>
 
                                     </div>
