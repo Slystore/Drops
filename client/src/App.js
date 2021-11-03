@@ -12,7 +12,7 @@ import "./App.css";
 import FormCategory from "./components/Forms/CreateCategory";
 import FormBrand from "./components/Forms/CreateBrand";
 import Catalogue from "./components/Catalogue/Catalogue.jsx";
-
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
 import FormProductCreate from './components/Forms/postProduct'
@@ -51,7 +51,7 @@ function App() {
               <Route exact path = "/register" component={FormRegister}/>
 
               <Route exact path="/catalogue/:id" component={ProductDetail} />
-        
+              <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
               <Route path="/admin" component={Admin} />
 
               <Route exact path="/admin/createCategory" component={FormCategory} />

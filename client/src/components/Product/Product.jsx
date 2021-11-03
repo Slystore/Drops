@@ -2,7 +2,7 @@ import React from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Product.css';
-
+import { Link } from 'react-router-dom';
 
 export default function Product({ name, id, price, image, addToCart }) {
     return (
@@ -15,11 +15,13 @@ export default function Product({ name, id, price, image, addToCart }) {
             </div> 
             <div className="Price">
                 <h5>${price}</h5>
-            </div>  
+            </div>
+              
             <div className="IconShoppingContainer">
-                    <div className="IconShopping hvr-pulse-grow">
+            <Link to={`/catalogue`}>
+                     <div className="IconShopping hvr-pulse-grow">
                         <ShoppingCartIcon sx={{fontSize:20, marginTop:0.7}} onClick={() => addToCart(id)}/>
-                    </div>
+                    </div></Link>
                     <div className="IconShopping hvr-pulse-grow">
                     <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
                     </div>
