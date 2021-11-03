@@ -6,7 +6,7 @@ import CartItem from "./CartItem";
 function ShopingCart() {
     const dispatch = useDispatch();
     const { cartFill } = useSelector((state) => state.cartReducer);
-    const[cartStorage]= useState(JSON.parse(window.localStorage.getItem("cartId")))
+    const [ cartStorage ] = useState(JSON.parse(window.localStorage.getItem("cartId")))
    
     useEffect(() => {
         // console.log("tb text", text)
@@ -23,6 +23,7 @@ function ShopingCart() {
                 return (
                   <CartItem
                     key={product.id}
+                    name={product.name}
                     image={product.image}
                     name={product.name}
                     id={product.id}
@@ -30,6 +31,7 @@ function ShopingCart() {
                     quantity={product.quantity}
                  
                   />
+                  
                 )})
       }  
         </div>

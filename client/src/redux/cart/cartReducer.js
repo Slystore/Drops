@@ -7,6 +7,7 @@ import {
   DECREMENT_CART_STORAGE,
   CLEAR_CART,
   RECOVERY_CART,
+  DELETE_ITEM_CART_STORAGE
 } from "./cartActions";
 
 export const initialState = {
@@ -17,8 +18,10 @@ export const initialState = {
 };
 
 function cartReducer(state = initialState, action) {
+
   switch (action.type) {
-    case ADD_TO_CART:
+
+    case ADD_TO_CART: {
       let newItem = state.products.find(
         (product) => product.id === action.payload
       );
@@ -37,26 +40,32 @@ function cartReducer(state = initialState, action) {
             ...state,
             cart: [...state.cart, { ...newItem, quantity: 1 }],
           };
+    }
+
     case GET_PRODUCTS: {
       return {
         ...state,
         products: action.payload,
       };
     }
-    case STORAGE:
+
+    case STORAGE:{
       let estado = state.cart;
       window.localStorage.setItem("cartId", JSON.stringify(estado));
-      let store2 = JSON.parse(window.localStorage.getItem("CartId"));
+      let store2 = JSON.parse(window.localStorage.getItem("cartId"));
       return {
         ...state,
         storage: store2,
       };
+    }
+
     case FILL_CART_STORAGE: {
       return {
         ...state,
         cartFill: action.payload !== null ? action.payload : [],
       };
     }
+
     case CLEAR_CART: {
       return {
         ...state,
@@ -64,30 +73,60 @@ function cartReducer(state = initialState, action) {
         cartFill: [],
       };
     }
+
     case INCREMENT_CART_STORAGE: {
-      let result2 = state.cartFill.map((item) =>
-        item.quantity ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      return {
-        ...state,
-        cartFill: result2,
-      };
+      let filtro = state.cartFill.find((item) => item.id === action.payload);
+      return filtro
+        ? {
+            ...state,
+            cartFill: state.cartFill.map((item) =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cartFill: [...state.cartFill, { ...action.payload, quantity: 1 }],
+          };
+
     }
+
     case DECREMENT_CART_STORAGE: {
-      let result2 = state.cartFill.map((item) =>
-        item.quantity ? { ...item, quantity: item.quantity - 1 } : item
-      );
-      
-      return {
-        ...state,
-        cartFill: result2,
-      };
+      let filtro = state.cartFill.find((item) => item.id === action.payload);
+      return filtro
+        ? {
+            ...state,
+            cartFill: state.cartFill.map((item) =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cartFill: [...state.cartFill, { ...action.payload, quantity: 1 }],
+          };
+
     }
+    
     case RECOVERY_CART:
       return {
         ...state,
-       // ?: action.payload,
+        // ?: action.payload,
       };
+      
+      case DELETE_ITEM_CART_STORAGE: {
+        let deleteItem = state.cartFill.filter((item) => item.id !== action.payload);
+        console.log(deleteItem)
+        return {
+          ...state,
+          cartFill: deleteItem,
+        };
+      }
+
+
+
     default:
       return state;
   }
