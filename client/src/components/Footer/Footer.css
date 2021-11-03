@@ -12,9 +12,10 @@
     font-size: 14px;
 }
 
-@media (min-width: 1200px) and (max-width: 1399px) {
+@media (min-width: 768px) and (max-width: 1399px) {
     
     .FootText{
         font-size: 10px;
     }
 }
+

@@ -16,9 +16,9 @@ export const UserTooltip = styled(({ className, ...props }) => (
   },
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: "#FF0000",
-    background: "-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)",
-    background: "-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)",
-    background: "linear-gradient(to top, #9E0000 0%, #FF0000 100%)",
+    background: "-moz-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
+    background: "-webkit-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
+    background: "linear-gradient(to top, #9E0000 0%, #fc4444 100%)",
     //   backgroundColor: theme.palette.common.white,
     height: 65,
     boxShadow: "0 5px 10px #00000080",

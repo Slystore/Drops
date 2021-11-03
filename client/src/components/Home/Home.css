@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    overflow: hidden;
     /* border: thin dotted #f00; */
 }
 
@@ -16,137 +17,148 @@
     /* border: thin dotted #00f; */
 }
 
-.Title{
-    display: none;
-    padding: 30px;
-    color: #fff;
-    font-size: 48px;
-    border: solid #fff;
-    position: absolute;
-    top: 39%;
-    left: 31%;
-}
 
-.Title2, .Title3{
-    width: 220px;
-    display: none;
-    padding: 30px;
-    color: #fff;
-    font-size: 48px;
-    border: solid #fff;
-    position: relative;
-    top: 26%;
-    left: 29%;
-}
+@media (min-width: 1400px){
+    
+    .Title{
+        width: 50%;
+        height: 23%;
+        display: none;
+        padding: 30px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: absolute;
+        top: 38.5%;
+        left: 25%;
+    }
+    
+    .Title2, .Title3{
+        width: 50%;
+        height: 40%;
+        display: none;
+        padding: 20px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: relative;
+        top: 30%;
+        left: 25%;
+    }
+    
+    .Title4{
+        width: 65%;
+        height: 30%;
+        display: none;
+        padding: 20px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: absolute;
+        top: 35%;
+        left: 20%;
+    }
+    
+    .Title5{
+        display: none;
+        padding: 30px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: absolute;
+        top: 24%;
+        left: 25%;
+    }
+    
+    .divTitle{
+        width: 36%;
+        height: 100%;
+        margin-right: 14px;
+        float: left;
+        background-image: url('../../assets/nikeAirForce1.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    .divTitle:hover  .Title{
+        display: block;
+    }
+    
+    /* .divTitle:hover{
+        filter: brightness(50%);
+    } */
+    
+    .divTitle2{
+        width: 35.5%;
+        height: 49%;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        float: left;
+        background-image: url('../../assets/airJordan1.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    .divTitle2:hover  .Title2{
+        display: block;
+    }
+    
+    .divTitle3{
+        width: 35.5%;
+        height: 49%;
+        margin-right: 10px;
+        float: left;
+        background-image: url('../../assets/yeezy500.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    .divTitle3:hover  .Title3{
+        display: block;
+    }
+    
+    .divTitle4{
+        width: 26%;
+        height: 60%;
+        float: right;
+        margin-bottom: 10px;
+        background-image: url('../../assets/thunderSpectra.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    
+    .divTitle4:hover  .Title4{
+        display: block;
+    }
+    
+    .divTitle5{
+        width: 26%;
+        height: 38%;
+        float: right;
+        background-image: url('../../assets/vans.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    .divTitle5:hover  .Title5{
+        display: block;
+    }
 
-.Title4{
-    display: none;
-    padding: 30px;
-    color: #fff;
-    font-size: 48px;
-    border: solid #fff;
-    position: absolute;
-    top: 30%;
-    left: 25%;
-}
-
-.Title5{
-    display: none;
-    padding: 30px;
-    color: #fff;
-    font-size: 48px;
-    border: solid #fff;
-    position: absolute;
-    top: 24%;
-    left: 25%;
-}
-
-.divTitle{
-    width: 37%;
-    height: 100%;
-    margin-right: 10px;
-    float: left;
-    background-image: url('../../assets/nikeAirForce1.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    transition: 0.5s all;
-}
-
-.divTitle:hover  .Title{
-    display: block;
-}
-
-/* .divTitle:hover{
-    filter: brightness(50%);
-} */
-
-.divTitle2{
-    width: 35.5%;
-    height: 49%;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    float: left;
-    background-image: url('../../assets/airJordan1.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    transition: 0.5s all;
-}
-
-.divTitle2:hover  .Title2{
-    display: block;
-}
-
-.divTitle3{
-    width: 35.5%;
-    height: 49%;
-    margin-right: 10px;
-    float: left;
-    background-image: url('../../assets/yeezy500.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    transition: 0.5s all;
-}
-
-.divTitle3:hover  .Title3{
-    display: block;
-}
-
-.divTitle4{
-    width: 26%;
-    height: 60%;
-    float: right;
-    margin-bottom: 10px;
-    background-image: url('../../assets/thunderSpectra.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    transition: 0.5s all;
-}
-
-
-.divTitle4:hover  .Title4{
-    display: block;
-}
-
-.divTitle5{
-    width: 26%;
-    height: 38%;
-    float: right;
-    background-image: url('../../assets/vans.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    transition: 0.5s all;
-}
-
-.divTitle5:hover  .Title5{
-    display: block;
 }
 
 @media (min-width: 1200px) and (max-width: 1399px){
+    
     .Title{
         display: none;
         padding: 30px;
@@ -193,7 +205,9 @@
     }
     
     .divTitle{
-        width: 36.5%;
+        width: 36%;
+        min-width: 36%;
+        max-width: 36.5%;
         height: 100%;
         margin-right: 10px;
         float: left;
@@ -213,4 +227,160 @@
     } */
     
     
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    
+    .Title{
+        display: none;
+        padding: 30px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: absolute;
+        top: 39%;
+        left: 15%;
+    }
+    
+    .Title2, .Title3{
+        display: none;
+        padding: 20px;
+        color: #fff;
+        font-size: 36px;
+        border: solid #fff;
+        position: relative;
+        top: 32%;
+        left: 14%;
+    }
+    
+    .Title4{
+        display: none;
+        padding: 20px;
+        color: #fff;
+        font-size: 36px;
+        border: solid #fff;
+        position: absolute;
+        top: 36%;
+        left: 15%;
+    }
+    
+    .Title5{
+        display: none;
+        padding: 20px;
+        color: #fff;
+        font-size: 36px;
+        border: solid #fff;
+        position: absolute;
+        top: 27%;
+        left: 15%;
+    }
+    
+    .divTitle{
+        width: 35.7%;
+        min-width: 35.7%;
+        max-width: 36%;
+        height: 100%;
+        margin-right: 10px;
+        float: left;
+        background-image: url('../../assets/nikeAirForce1.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    .divTitle:hover  .Title{
+        display: block;
+    }
+    
+    /* .divTitle:hover{
+        filter: brightness(50%);
+    } */
+    
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    
+    .Title{
+        display: none;
+        padding: 30px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: absolute;
+        top: 39%;
+        left: 14%;
+    }
+    
+    .Title2{
+        width: 50%;
+        display: none;
+        /* padding: 30px; */
+        color: #fff;
+        text-align: center;
+        font-size: 48px;
+        border: solid #fff;
+        position: relative;
+        top: 25%;
+        left: 25%;
+    }
+
+    .Title4{
+        display: none;
+        padding: 30px;
+        color: #fff;
+        font-size: 48px;
+        border: solid #fff;
+        position: absolute;
+        top: 26%;
+        left: 13%;
+    }
+    
+    .divTitle{
+        width: 47.3%;
+        min-width: 47.3%;
+        max-width: 36%;
+        height: 100%;
+        margin-right: 12px;
+        float: left;
+        background-image: url('../../assets/nikeAirForce1.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+        /* border: 1px solid #f0f; */
+    }
+
+    .divTitle2{
+        width: 49%;
+        height: 49%;
+        margin-bottom: 10px;
+        float: right;
+        background-image: url('../../assets/airJordan1.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+        /* border: 1px solid #f0fs */
+    }
+
+    .divTitle4{
+        width: 49%;
+        height: 49%;
+        float: left;
+        background-image: url('../../assets/thunderSpectra.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: 0.5s all;
+    }
+    
+    
+
+    
+    /* .divTitle:hover{
+        filter: brightness(50%);
+    } */
+
 }

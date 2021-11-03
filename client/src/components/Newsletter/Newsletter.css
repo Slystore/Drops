@@ -89,3 +89,51 @@
         clear: both;
     }
 }
+
+@media (min-width: 768px) and (max-width: 1199px){
+
+    .NewsletterContainer{
+        width: 100%;
+        height: 250px;
+        margin: 50px 0;
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background: #cccccc40;
+        /* border: thin dotted #f00; */
+    }
+
+    .NewsletterTitle{
+        font-size: 24px;
+    }
+
+    .NewsletterSubTitle{
+        font-size: 14px;
+    }
+
+    .NewsletterInput{
+        width: 350px;
+        height: 30px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin: 5px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .ButtonNewsletter{
+        width: 100px;
+        height: 30px; 
+        margin-top: 20px;
+        border: none;
+        background: #000000;
+        color: #fff;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.5s all;
+        clear: both;
+    }
+}

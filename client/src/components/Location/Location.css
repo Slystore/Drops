@@ -20,7 +20,7 @@
 } 
 
 .Location{
-    width: 800px; 
+    width: 50%; 
     height: 600px;
     float: left;
     margin-right: 30px;
@@ -29,7 +29,7 @@
 }
 
 .Form{
-    width: 650px; 
+    width: 40%; 
     height: 600px;
     float: left;
     /* border: thin dotted #f00; */
@@ -116,7 +116,7 @@
         width: 45%; 
         height: 600px;
         float: left;
-        /* border: thin dotted #f00; */
+        /* border: thin dotted #0f0; */
     }
 
     .TitleLocation{

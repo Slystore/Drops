@@ -1,9 +1,4 @@
 import React from 'react';
-import img1 from '../../assets/nikeAirForce1.jpg';
-import img2 from '../../assets/airJordan1.jpg';
-import img3 from '../../assets/thunderSpectra.jpg';
-import img4 from '../../assets/yeezy500.jpg';
-import img5 from '../../assets/vans.jpg';
 import './Home.css';
 
 function Home() {
@@ -19,7 +14,7 @@ function Home() {
                 <div className="hvr-pop divTitle4">
                     <div className="Title4">DROPS</div>
                 </div>
-               <div className="hvr-pop divTitle3">
+                <div className="hvr-pop divTitle3">
                     <div className="Title3">DROPS</div>
                 </div>
                 <div className="hvr-pop divTitle5" >

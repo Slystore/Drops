@@ -155,7 +155,7 @@ function NavBar() {
               </UserTooltip>
               ) : (
                 <UserTooltip title={titleUser}>
-                  <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all"}}/></div>
+                  <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all", '&:hover':{color: 'red',cursor: "pointer"}}}/></div>
               </UserTooltip>
               )
           }
