@@ -1,9 +1,14 @@
 .reg-Cont{
     width: 100vw;
     height: 100vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/botasMarino.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .reg-Box{
     border: solid #ccc 1px;
+    background: #fff;
     width: 900px;
     height: 600px;
     position: relative;

@@ -12,7 +12,6 @@ function Slider() {
                 <div className="Marca4"></div>
                 <div className="Marca5"></div>
                 <div className="Marca6"></div>
-
             </div>
         </div>
     )
