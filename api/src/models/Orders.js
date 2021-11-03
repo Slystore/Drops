@@ -1,38 +1,51 @@
 const { DataTypes, UUIDV4, DATE, DATEONLY } = require("sequelize");
 
 module.exports = (Sequelize) => {
-    return Sequelize.define(
-        "Orders", {
-            date: {
-                type: DataTypes.DATEONLY,
-                allowNull: false,
-                defaultValue: Sequelize.NOW
-            },
-            products: {
-                type: DataTypes.ARRAY(DataTypes.JSON),
-                allowNull: false
-            },
-            shipping_Address: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            total_Price: {
-                type: DataTypes.FLOAT,
-                allowNull: false,
-                defaultValue: 0.0
-            },
-            payment_id:{
-                type: DataTypes.INTEGER,
-                defaultValue: 0
-            },
-            payment_status:{
-                type: DataTypes.STRING,
-                defaultValue: ""
-            },
-            merchant_order_id: {
-                type: DataTypes.BIGINT,
-                defaultValue: 0
-            }
-        }, { timestamps: false }
-    );
+  return Sequelize.define(
+    "Orders",
+    {
+      date: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      products: {
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        allowNull: false,
+      },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      totalPrice: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0.0,
+      },
+      paymentId: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      paymentStatus: {
+        type: DataTypes.STRING,
+        defaultValue: "",
+      },
+      merchantOrderId: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      status: {
+        type: DataTypes.ENUM(
+          "inCart",
+          "created",
+          "pending",
+          "cancelled",
+          "completed"
+        ),
+      },
+      cart: {
+        type: DataTypes.ARRAY(DataTypes.JSON),
+      },
+    },
+    { timestamps: false }
+  );
 };
