@@ -1,0 +1,208 @@
+.CartItemContainer{
+    width: 850px;
+    height: 250px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    /* border: thin dotted #f00; */
+}
+
+.CartItemImage{
+    width: 200px;
+    height: 250px; 
+    float: left;
+    /* border: thin dotted #f00; */
+}
+
+.CartItemImage img{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.CartItemInfo{
+    width: 350px;
+    height: 250px;
+    float: left;
+    /* border: thin dotted #00f; */
+}
+
+.CartItemSelect{
+    width: 170px;
+    height: 20px;
+    float: left;
+}
+
+.Total{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.CartPrice{
+    width: 300px;
+    height: 250px;
+    float: left;
+    /* border: thin dotted #f00; */
+}
+
+.Price{
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    float: left;
+    /* border: thin dotted #f00; */
+}
+
+.Tickets{
+    width: 300px;
+    height: 120px;
+    float: left;
+}
+
+.Quantity{
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.CartItemButton{
+    width: 80px;
+    height: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: all 0.25s ease;
+}
+
+.CartItemButton:hover, .CartItemDelete:hover{
+    cursor: pointer;
+    box-shadow: 0 5px 10px #00000030;
+}
+
+.CartItemDelete{
+    width: 140px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    background-color: rgb(49, 102, 202);
+}
+
+.CartItemDelete:hover{
+    background-color: rgb(27, 73, 158);
+}
+
+.CartItemDeleteContainer{
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/************ STEP 2 ***********/
+
+.CartSeatContainer{
+    width: 850px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: thin dotted rgb(255, 255, 255);
+}
+
+.Cinema{
+    width: 450px;
+    float: left;
+}
+
+.SeatRow{
+    width: 380px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* border: thin dotted #f00; */
+}
+
+.SeatMap{
+    margin-top: 30px;
+    border: thin dotted rgb(255, 255, 255);
+}
+
+.Seat{
+    width: 35px;
+    height: 35px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: thin dotted #00f; */
+}
+
+.X, .X2, .X3{
+    font-size: 35px;
+    margin-right: 15px;
+    /* border: thin dotted #00f;*/
+}
+
+.X{
+    color: rgb(49, 102, 202);
+}
+
+.X2{
+    color: rgb(0,0, 0);
+}
+
+.X3{
+    color: rgb(214, 0, 0);
+}
+
+/* .X:hover, .X2:hover, .X3:hover{
+    cursor: pointer;
+} */
+
+.X:hover, .X2:hover{
+    cursor: pointer;
+}
+
+.X3:hover{
+    cursor: no-drop;
+}
+
+.RowLetter{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.Intructions{
+    float: left;
+}
+
+.TypeSeat{
+    margin-left: 3px;
+    margin-right: 12px;
+    float: left;
+    line-height: 30px;
+}
+
+span::before {
+    content: attr(data-parent);
+}
+span::after[data-color='blue']{
+    font-size: 35px;
+    margin-right: 15px;
+    color: rgb(49, 102, 202);
+}
