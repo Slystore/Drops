@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react" 
+import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
 import { getUsers } from "../../redux/users/userActions"
 import UserMap from "./UserMap"
