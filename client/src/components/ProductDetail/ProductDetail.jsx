@@ -1,19 +1,23 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
 
 import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ProductReview from './Reviews'
 
 import './ProductDetail.css';
 
  function ProductDetail(props) {
+     const history = useHistory()
 
     const { id } = props.match.params
   
     const dispatch = useDispatch();
+    let [bul, setBul] = useState(false)
     useEffect(() => {
         dispatch(getProductsById(id))
         dispatch(getProductStockById(id))
@@ -23,8 +27,24 @@ import './ProductDetail.css';
     const {productId} = useSelector((state) => state.productReducer);
     const {stockById} = useSelector((state) => state.productReducer);
 
+    console.log(productId)
+    const prueba = document.getElementById('reviews')
+    
+    const nada = productId.Reviews.map(e => 
+        <div>  <ProductReview comment={e.comment} rating={e.rating}/> </div>)
+    
+
     function addCart(e) {
         e.preventDefault()
+    }
+
+    function handleReviews(e){
+        e.preventDefault()
+        setBul(!bul)
+
+        // if(prueba2 === true) data = 'visible';
+        // else data = 'hidden'
+        // history.push(`/catalogue/${id}/reviews`)
     }
 
     return (
@@ -98,6 +118,24 @@ import './ProductDetail.css';
                                                     }
                                                 }} 
                                                 startIcon={<FavoriteIcon />}>Wish List</Button>
+                                            <Button
+                                                size="small"
+                                                className="hvr-grow-shadow" 
+                                                sx={{
+                                                    backgroundColor:'black', 
+                                                    color: 'white',
+                                                    transition: '0.5s all',
+                                                    '&:hover': {
+                                                        backgroundColor:'#00000099'
+                                                    }
+                                                }} 
+                                                onClick={e => handleReviews(e)}
+                                                >Reviews</Button>
+                                        </div>
+
+                                        <div id='reviews' >
+
+                                            { bul && nada      }
                                         </div>
 
                                     </div>

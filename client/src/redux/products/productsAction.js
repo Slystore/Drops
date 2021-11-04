@@ -42,9 +42,10 @@ export function getProductsById(id){
 
 export function productForm(form){
     return async(dispatch) => {
+        const { data } = await axios.post(`http://localhost:3001/api/products/createProduct`, form)
         return await dispatch({
             type: PRODUCT_FORM,
-            payload: form
+            payload: data
         })
     }
 }

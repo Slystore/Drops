@@ -54,6 +54,8 @@ function App() {
 
               <Route exact path="/catalogue/:id" component={ProductDetail} />
               <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
+              <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
+        
               <Route path="/admin" component={Admin} />
 
               <Route exact path="/admin/createCategory" component={FormCategory} />
