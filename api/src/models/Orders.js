@@ -8,10 +8,6 @@ module.exports = (Sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      products: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: false,
-      },
       location: {
         type: DataTypes.STRING,
         allowNull: false,
