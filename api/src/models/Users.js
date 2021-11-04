@@ -21,7 +21,8 @@ module.exports = (Sequelize) => {
                 allowNull: false
             },
             profileImg: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                defaultValue: "https://i.postimg.cc/bNk3y03Z/avatar-g85f64b319-640.png"
             },
             mail: {
                 type: DataTypes.STRING,

@@ -74,7 +74,7 @@ export default function Profile() {
   const handleClose = () => setOpen(false);
   const [user, setUser] = React.useState({
     userData: {},
-    validate: false,
+    validate: "",
     userDataiD: usersId ? usersId.user : "",
   });
 
@@ -84,7 +84,7 @@ export default function Profile() {
     console.log("this x ", x);
     if (x.msg) {
       return setUser({
-        validate: false,
+        validate: "noAuth",
       });
     }
     if (x) {
@@ -94,7 +94,7 @@ export default function Profile() {
       console.log("this", userDecoded);
       setUser({
         userData: userDecoded,
-        validate: true,
+        validate: "auth",
       });
     }
   }, [dispatch]);
@@ -115,7 +115,7 @@ export default function Profile() {
   console.log("this data", usersId);
   return (
     <div>
-      {!user.validate ? (
+      {user.validate === "noAuth" ? (
         <div>
           No tienes permisos para ver esto
           <Redirect to="/login" />
@@ -149,7 +149,7 @@ export default function Profile() {
                 </h1>
                 <div>
                   <img
-                    src={usersId.user.picture ? usersId.user.picture : ""}
+                    src={usersId.user.picture ? usersId.user.picture : usersId.user.profileImg}
                     alt=""
                   />
                 </div>
