@@ -52,11 +52,11 @@ export const getToken = () => {
   return token;
 };
 
-export const editUsers = async(userUpdate) =>{
+export const editUsers = async(userUpdate,id) =>{
   console.log('este es el userUpdate de la action ',userUpdate)
   try{
-    let id = userUpdate.id
-    let {data} = await axios.put(`http://localhost:3001/api/edit/12`,userUpdate)
+
+    let {data} = await axios.put(`http://localhost:3001/api/edit/${id}`,userUpdate)
     return data 
   }catch(err){
     console.log('rompo en la action de editUsers',err)
