@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { userRegister } from "../../redux/users/userActions";
+import { useDispatch } from "react-redux";
+import { getUserId, userRegister } from "../../redux/users/userActions";
 import { useHistory } from "react-router";
 import "./formRegisterStyles.css";
 export default function FormRegister() {
   const history = useHistory();
+  const dispatch = useDispatch()
   const [user, setUser] = useState({
     validate: "",
     noValidate: "",
@@ -27,6 +29,7 @@ export default function FormRegister() {
           }}
           onSubmit={async (body, { resetForm }) => {
             const x = await userRegister(body);
+            
             if (!x.token) {
               setUser({
                 noValidate: x.msg,
@@ -37,6 +40,7 @@ export default function FormRegister() {
                 });
               }, 3000);
             } else if (x.user) {
+              dispatch(getUserId(x.user.id))
               setSucces(true);
               setTimeout(() => {
                 setSucces(false);
