@@ -1,28 +1,67 @@
 .CartItemContainer{
-    width: 850px;
-    height: 250px;
+    width: 900px;
+    height: 200px;
     position: relative;
     margin: 0 auto;
     margin-top: 50px;
     /* border: thin dotted #f00; */
+    overflow: hidden;
+    /* box-shadow: 0 5px 10px rgba(0,0,0,0.15); */
 }
 
 .CartItemImage{
-    width: 200px;
-    height: 250px; 
+    width: 180px;
+    height: 180px; 
     float: left;
+    overflow: hidden;
     /* border: thin dotted #f00; */
 }
 
 .CartItemImage img{
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    height: 180px;
 }
 
 .CartItemInfo{
-    width: 350px;
-    height: 250px;
+    width: 450px;
+    height: 170px;
     float: left;
     /* border: thin dotted #00f; */
+}
+
+.NameProduct{ 
+    font-size: 16px;
+    text-align: left;
+    color: #00000050;
+    /* border: thin dotted #f00; */
+    
+}
+.Quantity{
+    width: 70%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* border: thin dotted #000; */
+}
+
+.QuantityTitle{
+    width: 35%;
+    font-size: 16px;
+    font-weight: bold;
+    /* border: thin dotted #0f0; */
+}
+
+.QuantityNumber{
+    width: 30px;
+    color: red;
+    margin-left: 20px;
+    /* border: thin dotted #0f0; */
+}
+
+.QuantityButtons{
+    width: 50%;
+    /* border: thin dotted #0f0; */
 }
 
 .CartItemSelect{
@@ -38,40 +77,50 @@
     text-align: center;
 }
 
-.CartPrice{
-    width: 300px;
-    height: 250px;
-    float: left;
-    /* border: thin dotted #f00; */
-}
 
 .Price{
     width: 300px;
-    height: 60px;
-    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 20px;
     float: left;
     /* border: thin dotted #f00; */
 }
 
-.Tickets{
-    width: 300px;
-    height: 120px;
+.CartPrice{
+    width: 250px;
+    height: 170px;
     float: left;
+    /* border: thin dotted #000; */
 }
 
-.Quantity{
-    width: 30px;
+.BtnCart{
+    width: 100%;
+    /* border: thin dotted #f00; */
+}
+
+.CartItemDelete{
+    width: 150px;
     height: 30px;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    font-size: 24px;
-    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    background-color: rgb(49, 102, 202);
+}
+
+.CartItemDelete:hover{
+    background-color: rgb(27, 73, 158);
+}
+
+.CartItemButton:hover, .CartItemDelete:hover{
+    cursor: pointer;
+    box-shadow: 0 5px 10px #00000030;
 }
 
 .CartItemButton{
-    width: 80px;
+    width: 40px;
     height: 25px;
     font-weight: bold;
     font-size: 16px;
@@ -81,24 +130,26 @@
     transition: all 0.25s ease;
 }
 
-.CartItemButton:hover, .CartItemDelete:hover{
-    cursor: pointer;
-    box-shadow: 0 5px 10px #00000030;
-}
+/* .Tickets{
+    width: 300px;
+    height: 120px;
+    float: left;
+} */
 
-.CartItemDelete{
-    width: 140px;
+/* .Quantity{
+    width: 30px;
     height: 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    color: #fff;
-    background-color: rgb(49, 102, 202);
-}
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+} */
 
-.CartItemDelete:hover{
-    background-color: rgb(27, 73, 158);
-}
+
+
+
 
 .CartItemDeleteContainer{
     width: 350px;
