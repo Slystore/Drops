@@ -10,6 +10,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
+import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const style = {
@@ -81,6 +82,11 @@ export default function Profile() {
     console.log("estoy entrando al  useEffect");
     const x = getToken();
     console.log("this x ", x);
+    if (x.msg) {
+      return setUser({
+        validate: false,
+      });
+    }
     if (x) {
       const userDecoded = jwtDecode(x);
       dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
@@ -96,121 +102,141 @@ export default function Profile() {
   const handleFormChange = (e) => {
     setData({
       ...data,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleSubmit = async () => {
-
-    const x = await editUsers(data,user.userData.user.id);
+    const x = await editUsers(data, user.userData.user.id);
   };
   console.log("this user", user);
   console.log("this data", usersId);
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        bgcolor: "background.paper",
-        display: "flex",
-        height: 224,
-      }}
-    >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider" }}
-      >
-        <Tab label="Profile" {...a11yProps(0)} />
-        <Tab label="Configuration" {...a11yProps(1)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        {usersId.user && (
-          <div>
-            <h1>
-              Hello{" "}
-              {usersId.user ? usersId.user.name : usersId.user.family_name}
-            </h1>
-            <div>
-              <img
-                src={usersId.user.picture ? usersId.user.picture : ""}
-                alt=""
-              />
-            </div>
-          </div>
-        )}
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        {usersId.user && (
-          <div>
-            <h1>Profile Configuration</h1>
-            <div>
-              <span>
-                {usersId.user ? usersId.user.name : usersId.user.family_name}
-              </span>
-            </div>
-            <div>
-              <span>
-                {usersId.user ? usersId.user.surname : usersId.user.given_name }
-              </span>
-            </div>
-            <div>
-              <span>
-                {usersId.user ? usersId.user.mail : usersId.user.email}
-              </span>
-            </div>
-          </div>
-        )}
-
-        <Button onClick={handleOpen}>Edit proflie</Button>
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
+    <div>
+      {!user.validate ? (
+        <div>
+          No tienes permisos para ver esto
+          <Redirect to="/login" />
+        </div>
+      ) : (
+        <Box
+          sx={{
+            flexGrow: 1,
+            bgcolor: "background.paper",
+            display: "flex",
+            height: 224,
           }}
         >
-          <Fade in={open}>
-            <Box sx={style}>
-              <form onSubmit={handleSubmit}>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            sx={{ borderRight: 1, borderColor: "divider" }}
+          >
+            <Tab label="Profile" {...a11yProps(0)} />
+            <Tab label="Configuration" {...a11yProps(1)} />
+          </Tabs>
+          <TabPanel value={value} index={0}>
+            {usersId.user && (
+              <div>
+                <h1>
+                  Hello{" "}
+                  {usersId.user ? usersId.user.name : usersId.user.family_name}
+                </h1>
                 <div>
-                  <label>Name</label>
-                  <input onChange={handleFormChange} type="text" name="name" />
-                </div>
-                <div>
-                  <label>Surname</label>
-                  <input
-                    onChange={handleFormChange}
-                    type="text"
-                    name="surname"
+                  <img
+                    src={usersId.user.picture ? usersId.user.picture : ""}
+                    alt=""
                   />
                 </div>
+              </div>
+            )}
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            {usersId.user && (
+              <div>
+                <h1>Profile Configuration</h1>
                 <div>
-                  <label>Phone</label>
-                  <input onChange={handleFormChange} type="text" name="phone" />
+                  <span>
+                    {usersId.user
+                      ? usersId.user.name
+                      : usersId.user.family_name}
+                  </span>
                 </div>
                 <div>
-                  <label>Adress</label>
-                  <input
-                    onChange={handleFormChange}
-                    type="text"
-                    name="adress"
-                  />
+                  <span>
+                    {usersId.user
+                      ? usersId.user.surname
+                      : usersId.user.given_name}
+                  </span>
                 </div>
-                <button type="submit">Send</button>
-              </form>
-            </Box>
-          </Fade>
-        </Modal>
-      </TabPanel>
-    </Box>
+                <div>
+                  <span>
+                    {usersId.user ? usersId.user.mail : usersId.user.email}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            <Button onClick={handleOpen}>Edit proflie</Button>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={open}
+              onClose={handleClose}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
+              <Fade in={open}>
+                <Box sx={style}>
+                  <form onSubmit={handleSubmit}>
+                    <div>
+                      <label>Name</label>
+                      <input
+                        onChange={handleFormChange}
+                        type="text"
+                        name="name"
+                      />
+                    </div>
+                    <div>
+                      <label>Surname</label>
+                      <input
+                        onChange={handleFormChange}
+                        type="text"
+                        name="surname"
+                      />
+                    </div>
+                    <div>
+                      <label>Phone</label>
+                      <input
+                        onChange={handleFormChange}
+                        type="text"
+                        name="phone"
+                      />
+                    </div>
+                    <div>
+                      <label>Adress</label>
+                      <input
+                        onChange={handleFormChange}
+                        type="text"
+                        name="adress"
+                      />
+                    </div>
+                    <button type="submit">Send</button>
+                  </form>
+                </Box>
+              </Fade>
+            </Modal>
+          </TabPanel>
+        </Box>
+      )}
+    </div>
   );
 }

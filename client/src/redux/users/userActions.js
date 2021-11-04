@@ -43,13 +43,14 @@ export const userLogin = async (payload) => {
   }
 };
 export const getToken = () => {
+  let data = {}
   let token = localStorage.getItem("token");
   if (!token) {
     let error = {};
     error.msg = "No se ha encontrado ningun token";
     return error;
   }
-  return token;
+  return data.tokenInfo = token;
 };
 
 export const editUsers = async(userUpdate,id) =>{
