@@ -41,6 +41,7 @@ PUT
 api/products/updateProduct/:id
 DELETE
 api/products/deleteteProduct/:id
+
 <!-- Categories -->
 GET
 /api/categories
@@ -62,3 +63,14 @@ GET
 GET
 /api/productSizes
 /api/productSizes/:id
+
+<!-- Orders -->
+GET
+/api/orders
+/api/orders/:id
+POST
+/api/orders/createOrder
+PUT
+/api/orders/updateOrder/:id
+DELETE 
+/api/orders/deleteOrder/:id
