@@ -58,7 +58,11 @@ const postOrder = async (req, res) => {
       return res.json({
         status: `${order.status}`,
         message: true,
-        cartId: `${order.id}`
+        orderId: `${order.id}`
+      });
+    }else{
+      res.status(500).json({
+        message: "User already has an Order",
       });
     }
   } catch (err) {
