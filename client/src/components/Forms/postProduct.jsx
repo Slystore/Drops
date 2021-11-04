@@ -55,19 +55,19 @@ export default function FormProductCreate() {
         description: "",
         price: 0,
         status: "",
-        brand:"",
-        categories: [],
+        brandId:0,
+        categoryId: [],
         sizeId: [],
         stock:[]
   })
 
   //variable para validar si el formulario esta completo y en funcion de eso disahabilitar el boton o no
-  let prueba = !!(input.name && input.image && input.description && input.price && input.status && input.brand && input.categories && input.stock.length >0)
+  let prueba = !!(input.name && input.image && input.description && input.price && input.status && input.brandId && input.categoryId && input.stock.length >0)
 
   
     //funcion que maneja los cambios en los inputs del formulario
     const handleChangeForm = (e) => {
-        if(e.target.name === 'price') {
+        if(e.target.name === 'price' ) {
             setInput( (state) => {
                 return {
                     ...state,
@@ -101,7 +101,7 @@ export default function FormProductCreate() {
 
         setInput({
             ...input,
-            categories: [...input.categories, catFilter]
+            categoryId: [...input.categoryId, catFilter]
         })
         setCategory(e.target.value)
     }
@@ -110,7 +110,7 @@ export default function FormProductCreate() {
     const agregarBrand = (e) => {
           setInput({
             ...input,
-            brand:  e.target.value      
+            brandId:  parseInt(e.target.value )
         })
     }
     // funcion que maneja el option seleccionado del select del status del productoy lo agrega al form
@@ -152,7 +152,7 @@ export default function FormProductCreate() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(input.name === undefined || input.image === undefined || input.description === undefined || input.price < 1 || input.status === undefined || input.brand === undefined || input.categories === undefined || input.stock === undefined){
+        if(input.name === undefined || input.image === undefined || input.description === undefined || input.price < 1 || input.status === undefined || input.brandId === undefined || input.categoryId === undefined || input.stock === undefined){
       
             console.log('El formulario esta incompleto')
 
@@ -168,9 +168,9 @@ export default function FormProductCreate() {
                 price: 0,
                 status: "",
                 stock: [],
-                brand:"",
+                brandId:0,
                 sizeId: [],
-                categories: [],
+                categoryId: [],
             })
             history.push('/')
         }
@@ -179,7 +179,7 @@ export default function FormProductCreate() {
     const deleteCategory = (data) => {
         setInput({
             ...input,
-            categories: input.categories.filter(
+            categoryId: input.categoryId.filter(
                 category => data !== category
             )
         })
@@ -239,7 +239,7 @@ export default function FormProductCreate() {
     <div>
     <h2> Categorias </h2>
     {
-        input.categories && input.categories.map(el => {
+        input.categoryId && input.categoryId.map(el => {
         return(
             <div style={{display:"flex", justifyContent:"space-evenly"}}>
                 <p> {el} </p>
