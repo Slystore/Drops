@@ -24,6 +24,8 @@ import Users from './components/Admin/Users';
 import Orders from './components/Admin/Orders';
 import Newsletter from './components/Admin/Newsletter';
 import OnSale from './components/Admin/OnSale';
+import Profile from './components/Profile/profile';
+
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
         <Router>
             <Switch>
               <Route exact path="/" component={HomeView} />
-
+              <Route exact path ="/profile" component ={Profile}/>
               <Route exact path="/catalogue" component={Catalogue} />
 
               <Route exact path ="/login" component={FormLogin} />
