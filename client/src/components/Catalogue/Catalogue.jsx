@@ -19,18 +19,26 @@ function Catalogue() {
     dispatch(getProducts());
     dispatch(getBrands());
     dispatch(getCategories());  
- }, [dispatch]);
+ }, [dispatch, products]);
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
 
   const [currPage, setCurrPage] = useState(1);
   const [cardsxPage, setcardsxPage] = useState(10);
+  // const [nada, setNada] = useState([]);
   
   const lastProduct = currPage * cardsxPage
   const firstProduct =  lastProduct - cardsxPage;
 
   const currProducts = products.slice(firstProduct, lastProduct);
+  // setNada([...products])
+
+  // nada = nada.filter(e => {
+  //   if(e.name === 'Air Force 1 Felt GS') e.status = 'nada'
+  // })
+  // console.log(prueba)
+  // prueba.status = 'nada'
 
   const paginado = (pagNumber) => {
       setCurrPage(pagNumber)
@@ -103,7 +111,7 @@ function Catalogue() {
           {
           currProducts && currProducts.map((product, index) => {
               return (
-                <Link to={`/catalogue/${product.id}`} key={index}>
+                product && product.status === 'disponible' && (<Link to={`/catalogue/${product.id}`} key={index}>
                   <div className="Shoes" key={index}>
                       <Product
                         id={product.id}
@@ -115,7 +123,7 @@ function Catalogue() {
                         addToCart = {handleAddCart}  
                       />
                   </div>
-                </Link>
+                </Link>)
               );
             })}
 

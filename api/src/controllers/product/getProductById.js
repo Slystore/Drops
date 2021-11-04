@@ -1,4 +1,4 @@
-const { Product, Size, Brand, Category, ProductSize } = require("../../db.js");
+const { Product, Size, Brand, Category, ProductSize, Reviews } = require("../../db.js");
 
 
 const getProductById = async(req, res, next) => {
@@ -27,6 +27,9 @@ const getProductById = async(req, res, next) => {
                         attributes: [],
                     },
                 },
+                {
+                    model: Reviews,
+                }
                 // {
                 //     model: ProductSize,
                 //     through: {

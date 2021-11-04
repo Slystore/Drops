@@ -57,6 +57,7 @@ export default function FormProductCreate() {
         status: "",
         brand:"",
         categories: [],
+        sizeId: [],
         stock:[]
   })
 
@@ -139,6 +140,7 @@ export default function FormProductCreate() {
        console.log(talleUi)
        setInput( {
            ...input, 
+           sizeId: [...input.sizeId, parseInt(prueba[0].id)],
            stock: [ 
             ...input.stock,
              [parseInt(prueba[0].id), parseInt(cantidad)]
@@ -165,8 +167,9 @@ export default function FormProductCreate() {
                 description: "",
                 price: 0,
                 status: "",
-                stock: {},
+                stock: [],
                 brand:"",
+                sizeId: [],
                 categories: [],
             })
             history.push('/')

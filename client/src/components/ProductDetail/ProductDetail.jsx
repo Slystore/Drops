@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -7,6 +7,7 @@ import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/
 import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ProductReview from './Reviews'
 
 import './ProductDetail.css';
 
@@ -16,6 +17,7 @@ import './ProductDetail.css';
     const { id } = props.match.params
   
     const dispatch = useDispatch();
+    let [bul, setBul] = useState(false)
     useEffect(() => {
         dispatch(getProductsById(id))
         dispatch(getProductStockById(id))
@@ -25,13 +27,24 @@ import './ProductDetail.css';
     const {productId} = useSelector((state) => state.productReducer);
     const {stockById} = useSelector((state) => state.productReducer);
 
+    console.log(productId)
+    const prueba = document.getElementById('reviews')
+    
+    const nada = productId.Reviews.map(e => 
+        <div>  <ProductReview comment={e.comment} rating={e.rating}/> </div>)
+    
+
     function addCart(e) {
         e.preventDefault()
     }
 
     function handleReviews(e){
         e.preventDefault()
-        history.push(`/catalogue/${id}/reviews`)
+        setBul(!bul)
+
+        // if(prueba2 === true) data = 'visible';
+        // else data = 'hidden'
+        // history.push(`/catalogue/${id}/reviews`)
     }
 
     return (
@@ -116,8 +129,13 @@ import './ProductDetail.css';
                                                         backgroundColor:'#00000099'
                                                     }
                                                 }} 
-                                                onClick={handleReviews}
+                                                onClick={e => handleReviews(e)}
                                                 >Reviews</Button>
+                                        </div>
+
+                                        <div id='reviews' >
+
+                                            { bul && nada      }
                                         </div>
 
                                     </div>

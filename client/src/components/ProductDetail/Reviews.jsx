@@ -6,11 +6,9 @@ const ProductReview = (props) => {
 
     return(
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <p>{props.comment}</p>
-            <p>{props.rating}</p>
-            <p>{props.status}</p>
-            <Link to= {`/admin/product/${props.data.id}/update`}> <button > actualizar </button></Link> 
-           
+            <p style={{fontSize: '10px'}}>{props.comment}</p>
+            <p style={{fontSize: '10px'}}> puntaje: {props.rating}</p>
+            <Link><p>{props.userId}</p></Link>       
         </div>
     )
 }
