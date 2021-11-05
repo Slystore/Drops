@@ -10,7 +10,7 @@ module.exports = (Sequelize) => {
       },
       location: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       totalPrice: {
         type: DataTypes.DECIMAL(10, 2),
