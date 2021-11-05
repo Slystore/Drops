@@ -6,7 +6,7 @@ async function putOrder(req, res, next) {
     const {
       status,
       location,
-      cart, // [{productId, quantity}]
+      cart, 
     } = req.body;
 
     const order = await Orders.findByPk(id);
@@ -45,7 +45,6 @@ async function putOrder(req, res, next) {
           });
         }
       });
-
     } else {
       return res.status(400).send({
         message: "Cart order doesnt have products",

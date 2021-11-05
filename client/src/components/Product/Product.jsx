@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 
 export default function Product({ name, id, price, image, addToCart }) {
 
+    const { ratings } = useSelector((state) => state.ratingReducer);
+    const data = ratings.filter(e => e.id === id)
+    console.log(data.name, data)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -33,6 +36,10 @@ export default function Product({ name, id, price, image, addToCart }) {
             </div> 
             <div className="PriceProduct">
                 <h5>${price}</h5>
+            </div>
+
+            <div className="Price">
+                <h5> Prom {data[0] ? data[0].rating : null}</h5>
             </div>
             <div>
                 {

@@ -230,3 +230,11 @@ html{
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
+
+.container {
+  display: flex;
+}
+
+.dashboard{
+  flex: 4;
+}

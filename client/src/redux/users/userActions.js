@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_USERS = "GET_USERS";
+export const GET_USER_ID = 'GET_USER_ID'
 
 export const userRegister = async (payload) => {
   try {
@@ -42,14 +43,42 @@ export const userLogin = async (payload) => {
   }
 };
 export const getToken = () => {
+  let data = {}
   let token = localStorage.getItem("token");
   if (!token) {
     let error = {};
     error.msg = "No se ha encontrado ningun token";
     return error;
   }
-  return token;
+  return data.tokenInfo = token;
 };
+
+export const editUsers = async(userUpdate,id) =>{
+  console.log('este es el userUpdate de la action ',userUpdate)
+  try{
+
+    let {data} = await axios.put(`http://localhost:3001/api/edit/${id}`,userUpdate)
+    return data 
+  }catch(err){
+    console.log('rompo en la action de editUsers',err)
+  }
+}
+
+export const getUserId = (id)=>{
+  return async function(dispatch){
+    console.log('data de la action',id)
+    try{
+      let {data} = await axios.get(`http://localhost:3001/api/allUser/${id}`)
+      return await dispatch({
+        type:GET_USER_ID,
+        payload:data
+      })
+    }catch(err){
+      console.log('rompo en el getUserId',err)
+    }
+  }
+}
+
 export const getUsers = () => {
   return async (dispatch) => {
     try {

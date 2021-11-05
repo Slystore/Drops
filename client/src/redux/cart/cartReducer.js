@@ -108,7 +108,7 @@ function cartReducer(state = initialState, action) {
             ...state,
             cartFill: state.cartFill.map((item) =>
               item.id === action.payload
-                ? { ...item, quantity: item.quantity - 1 }
+                ? { ...item, quantity: --item.quantity  }
                 : item
             ),
           }

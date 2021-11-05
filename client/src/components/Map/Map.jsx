@@ -18,7 +18,7 @@ const Map = () => {
                 </Marker>
             </MapContainer>,
         </div>
-    );
+    )
 };
 
-export default Map;
+export default Map

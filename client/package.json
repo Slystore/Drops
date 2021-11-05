@@ -23,10 +23,13 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
+    "react-icons": "^4.3.1",
     "react-leaflet": "^3.2.2",
     "react-player": "^2.9.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
+    
+    "recharts": "^2.1.6",
     "react-scripts": "^4.0.3",
     "redux-thunk": "^2.4.0",
     "scrollreveal": "^4.0.9",

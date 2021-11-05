@@ -1,77 +1,79 @@
 
-import React, {useEffect} from 'react';
-import { getCategories } from "./redux/category/categoriesActions";
-import { getProducts } from './redux/products/productsAction';
-
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import HomeView from "./views/HomeView.js";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import "./App.css";
-// import FormProductCreate from "./components/Forms/CreateProduct.jsx";
 import FormCategory from "./components/Forms/CreateCategory";
 import FormBrand from "./components/Forms/CreateBrand";
 import Catalogue from "./components/Catalogue/Catalogue.jsx";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
-import FormProductCreate from './components/Forms/postProduct'
-import FormProductUpdate from './components/Forms/updateProduct'
 import updateCategory from './components/Forms/updateCategory'
 import updateBrand from './components/Forms/updateBrand'
-import Admin from './views/admin';
-import Appointment from './components/Admin/Appointment';
-import Products from './components/Admin/Products';
+import Appointment from './components/Admin/appointment/Appointment';
+import Products from './components/Admin/products/Products';
 import Users from './components/Admin/Users';
-import Orders from './components/Admin/Orders';
-import Newsletter from './components/Admin/Newsletter';
-import OnSale from './components/Admin/OnSale';
+
+import Orders from './components/Admin/orders/Orders';
+import Newsletter from './components/Admin/newsletter/Newsletter';
+import OnSale from './components/Admin/onsale/OnSale';
+import Nav from "./components/Admin/navbar/Nav"
+import Dashboard from './components/Admin/dashboard/Dashboard';
+import Profile from './components/Profile/profile'
+
 import Pay from './components/Checkout/Pay';
+
 
 
 function App() {
 
-  const dispatch = useDispatch()
-    
-  useEffect(()=>{
-      dispatch(getProducts())
-  },[dispatch])
-  
-  const productos = useSelector( state => state.productReducer.products);
-
   return (
     <div className="App">
 
-        <Router>
-            <Switch>
-              <Route exact path="/" component={HomeView} />
 
-              <Route exact path="/catalogue" component={Catalogue} />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/catalogue" component={Catalogue} />
 
-              <Route exact path ="/login" component={FormLogin} />
-              <Route exact path = "/register" component={FormRegister}/>
+          <Route exact path="/login" component={FormLogin} />
+          <Route exact path="/register" component={FormRegister} />
+          <Route exact path= "/pay" component={Pay} /> 
+          <Route exact path="/catalogue/:id" component={ProductDetail} />
+          <Route exact path="/shoppingCart" component={ShoppingCart} />
+          <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
 
-              <Route exact path="/catalogue/:id" component={ProductDetail} />
-              <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
-              <Route exact path= "/pay" component={Pay} /> 
-              <Route path="/admin" component={Admin} />
 
-              <Route exact path="/admin/createCategory" component={FormCategory} />
-              <Route exact path="/admin/category/:id/update" component={updateCategory} />
-              <Route exact path="/admin/createBrand" component={FormBrand} />
-              <Route exact path="/admin/brand/:id/update" component={updateBrand} />
-            </Switch>
-            
-            <Route exact path="/admin/products" > <Products/> </Route>
-            <Route exact path="/admin/users" > <Users/> </Route>
-            <Route exact path="/admin/orders" > <Orders /> </Route>
-            <Route exact path="/admin/newsletter" > <Newsletter/> </Route>
-            <Route exact path="/admin/appointment" > <Appointment/> </Route>
-            <Route exact path="/admin/onsale" > <OnSale/> </Route>
-            <Route exact path="/admin/createProduct2" > <FormProductCreate/> </Route>
-            <Route exact path="/admin/product/:id/update" render={ ({match}) => <FormProductUpdate/> } /> 
+          <Route exact path="/admin/createCategory" component={FormCategory} />
+          <Route exact path="/admin/category/:id/update" component={updateCategory} />
+          <Route exact path="/admin/createBrand" component={FormBrand} />
+          <Route exact path="/admin/brand/:id/update" component={updateBrand} />
+        </Switch>
+        <Switch>
+          <div className='container'>
+            <Route path="/admin" component={Nav} />
 
-        </Router>
+            <div className='dashboard'>
+              <Route path="/admin/home" component={Dashboard} />
+              <Route path="/admin/onSale" component={OnSale} />
+              <Route path="/admin/products" component={Products} />
+              <Route path="/admin/users" component={Users} />
+              <Route path="/admin/newsletter" component={Newsletter} />
+              <Route path="/admin/appointment" component={Appointment} />
+              <Route path="/admin/orders" component={Orders} />
+            </div>
+
+          </div>
+
+        </Switch>
+
+
+      </Router>
+
+
     </div>
   );
 }
