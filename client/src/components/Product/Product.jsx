@@ -13,6 +13,7 @@ export default function Product({ name, id, price, image }) {
 const dispatch = useDispatch();
 const x = getToken();
 const decoded = x?jwt_decode(x): null;
+
 // console.log("tomiUser",decoded)
     const handleAddToCart = async () => {
     

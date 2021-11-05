@@ -28,7 +28,7 @@ const postOrderTomi = async (req, res, next) => {
   
         products?.forEach(async product => {
           //Busca el producto por productId
-          const productData = await Product.findByPk(product.productId);
+          const productData = await Product.findByPk(product.ProductId);
           //Asocia product a la order, con la cantidad y el precio (de la DB);
           console.log(productData, "productData")
           order2.addProduct(productData, {

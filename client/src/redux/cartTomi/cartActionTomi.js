@@ -13,7 +13,7 @@ export const FUSION_CART = "FUSION_CART";
 
 const x = getToken();
 const decoded = x?jwt_decode(x):null;
-
+// const decoded = 4
 export const addToCartTomi = (id, quantity, price, name, image) => async (dispatch) => {
   let product = {
     id,
@@ -161,8 +161,8 @@ export const changeProductQuantityTomi =
 
 export const loadCartTomi = () =>
   async (dispatch) => {
-   
-    let user1 = decoded?decoded.user.id: null
+   let user1= null
+    // let user1 = decoded?decoded.user.id: null
     let user = JSON.parse(localStorage.getItem("storage"));
 
     if (user1) {
@@ -217,11 +217,11 @@ export const fusionCartTomi = async (id) => {
   try {
     let user2 = decoded?decoded.user.id: null
     let user = JSON.parse(localStorage.getItem("storage")) || id;
-    let cart = JSON.parse(localStorage.getItem("cart"));
+    let products = JSON.parse(localStorage.getItem("cart"));
 
-    if (cart) {
+    if (products) {
 
-      cart = cart.map(e => {
+      products = products.map(e => {
         return {
           ProductId: e.id,
           quantity: e.quantity,
@@ -229,11 +229,11 @@ export const fusionCartTomi = async (id) => {
         }
       })
     }
-console.log(cart,"tomi")
+console.log(products,"tomi")
     if (user2) {
 
-      if (cart?.length > 0) {
-        let info = { userId: user2, cart }
+      if (products?.length > 0) {
+        let info = { userId: user2, products }
         let res = await axios.post("http://localhost:3001/api/orders/createOrderTomi", info)
         console.log(res,"tomicart")
         if(res.data.status !== "inCart"){
