@@ -4,21 +4,21 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Product.css';
 import { Link } from 'react-router-dom';
-import { addToCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 import jwt_decode from "jwt-decode";
 import { getToken } from '../../redux/users/userActions';
 
 export default function Product({ name, id, price, image }) {
     const {items} = useSelector(store => store.cartReducersTomi);
 const dispatch = useDispatch();
-// const x = getToken();
-// const decoded = jwt_decode(x);
+const x = getToken();
+const decoded = x?jwt_decode(x): null;
 // console.log("tomiUser",decoded)
     const handleAddToCart = async () => {
     
         let product = items?.find( e => e.id === id)
     
-        let user = JSON.parse(localStorage.getItem("storage"));
+        let user = decoded?decoded.user.id: null
         
         // if(cart && product?.quantity >= stock) {
           
@@ -45,7 +45,10 @@ const dispatch = useDispatch();
         //     }
         //   )
         // }
-        // if(user?.uid) dispatch(loadCartTomi())
+         if(user) {
+            //  console.log("entrouser",user)
+           await  (fusionCartTomi(id))
+            await  (loadCartTomi())}
       };
     return (
         <div className="ProductContainer" >

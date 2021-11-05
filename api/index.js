@@ -25,7 +25,7 @@ const { userData } = require("./src/utils/mocks/user/userData.js");
 
 
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(async () => {
     console.log("DB connected!");
     server.listen(port, () =>
