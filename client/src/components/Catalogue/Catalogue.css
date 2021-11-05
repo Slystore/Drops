@@ -50,7 +50,7 @@
     margin-bottom: 20px;
 }
 
-select{
+.Select{
     width: 80%;
     height: 30px;
     outline: 0; 
@@ -62,7 +62,7 @@ select{
     border: solid 1px #ccc;
 }
 
-select:hover{
+.Select:hover{
     box-shadow: 0 5px 10px #00000030;
     cursor: pointer;
     border: none;

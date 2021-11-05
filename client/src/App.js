@@ -26,6 +26,7 @@ import Users from './components/Admin/Users';
 import Orders from './components/Admin/Orders';
 import Newsletter from './components/Admin/Newsletter';
 import OnSale from './components/Admin/OnSale';
+import Pay from './components/Checkout/Pay';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
 
               <Route exact path="/catalogue/:id" component={ProductDetail} />
               <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
+              <Route exact path= "/pay" component={Pay} /> 
               <Route path="/admin" component={Admin} />
 
               <Route exact path="/admin/createCategory" component={FormCategory} />
