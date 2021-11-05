@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSelector } from "react-redux";
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Product.css';
 import { Link } from 'react-router-dom';
 
 export default function Product({ name, id, price, image, addToCart }) {
+
+    const { ratings } = useSelector((state) => state.ratingReducer);
+    const data = ratings.filter(e => e.id === id)
+    console.log(data.name, data)
     return (
         <div className="ProductContainer" >
             <div className="Zapatilla">
@@ -15,6 +21,10 @@ export default function Product({ name, id, price, image, addToCart }) {
             </div> 
             <div className="Price">
                 <h5>${price}</h5>
+            </div>
+
+            <div className="Price">
+                <h5> Prom {data[0] ? data[0].rating : null}</h5>
             </div>
               
             <div className="IconShoppingContainer">
