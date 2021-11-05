@@ -11,6 +11,7 @@ import { getCategories } from "../../redux/category/categoriesActions";
 import { Link } from "react-router-dom";
 import './Catalogue.css';
 import {addToCart, storage} from '../../redux/cart/cartActions';
+import { addToCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 
 function Catalogue() {
   
@@ -18,7 +19,8 @@ function Catalogue() {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getBrands());
-    dispatch(getCategories());  
+    dispatch(getCategories());
+    dispatch(loadCartTomi())  
  }, [dispatch, products]);
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
@@ -55,8 +57,9 @@ function Catalogue() {
   }
   
   const handleAddCart = (id) => {
-    dispatch (addToCart(id))
-   dispatch(storage(id));
+  //   dispatch (addToCart(id))
+  //  dispatch(storage(id));
+  //  dispatch(addToCartTomi(id))
 }
 
   return (
@@ -115,7 +118,7 @@ function Catalogue() {
                         price={product.price}
                         status={product.status}
                         description={product.description}
-                        addToCart = {handleAddCart}  
+                        // addToCart = {handleAddCart}  
                       />
                   </div>
                 </Link>)
