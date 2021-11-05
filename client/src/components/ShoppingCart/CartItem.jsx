@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { decrementCartStorage, clearCart, incrementCartStorage, deleteItemCartStorage } from '../../redux/cart/cartActions';
+import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
 
 import {  recoveryCart } from '../../redux/cart/cartActions';
 
@@ -10,14 +12,26 @@ import Divider from '@mui/material/Divider';
 
 import './CartItem.css'
 
-
-
 export default function CartItem  ({image, price, title, id, quantity, name, fillState}) {
 //  const {cart} = useSelector(state => state.cartReducer)
+   // const { id } = props.match.params
    const history = useHistory()
    // const [stateCart, setStateCart] = React.useState([])
 
-   const dispatch = useDispatch()
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(getProductsById(id))
+      dispatch(getProductStockById(id))
+      return () => dispatch(cleanDetail(id))
+   }, [dispatch, id]);
+
+   const {productId} = useSelector((state) => state.productReducer);
+   const {stockById} = useSelector((state) => state.productReducer);
+
+   // productId.name ? console.log("ProductID",productId.name) : console.log("No despacha la acción")
+   // console.log("ID",id)
+   // console.log("Stock",stockById.data)
 
    function handleIncrement(){
       dispatch(incrementCartStorage(id))
@@ -31,12 +45,12 @@ export default function CartItem  ({image, price, title, id, quantity, name, fil
       dispatch(deleteItemCartStorage(id))
    } 
 
-   function handleClearCart(){
-      dispatch(clearCart())
-      localStorage.removeItem('cartId');
-      history.push('/catalogue')
-      window.location.replace('')
-   }
+   // function handleClearCart(){
+   //    dispatch(clearCart())
+   //    localStorage.removeItem('cartId');
+   //    history.push('/catalogue')
+   //    window.location.replace('')
+   // }
    
    function round(num) {
       var m = Number((Math.abs(num) * 100).toPrecision(15));
@@ -56,42 +70,91 @@ export default function CartItem  ({image, price, title, id, quantity, name, fil
 
    return (
    <div>
+      {/* <div className="BtnCart">
+         <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button>
+      </div> */}
       <div className="CartItemContainer">
 
          <div className="CartItemImage"><img src={image} alt="imagen no encontrada" height='250'/></div>
-
          <div className="CartItemInfo">
             <div className="NameProduct"><h2>{name}</h2></div>
-            <div className="Price"><h3> Precio: $ {price} </h3></div>
-            <div className="Quantity">
-               <div className="QuantityTitle"><h2>Cantidad</h2></div>
-               <div className="QuantityNumber"><h2>{quantity}</h2></div>
-               <div className="QuantityButtons">
-                  <button onClick={handleDecrement} className="CartItemButton">-</button>
-                  <button onClick={handleIncrement} className="CartItemButton" >+</button>
+            <div className="Row">
+               <div className="PriceShoppinCart"><h3> Precio: $ {price} </h3></div> 
+               <div className="SelectTalle">
+                  <select className="SelectShoppingCart">
+                     <option value="">Talle</option>
+                     <option value="">40</option>
+                     <option value="">41</option>
+                     <option value="">42</option>
+                  </select>
                </div>
+            </div>
+            <div className="Row">
+                   <div className="QuantityTitle"><h2>Cantidad</h2></div>
+                   <div className="QuantityNumber"><h2>{quantity}</h2></div>
+                   <div className="QuantityButtons">
+                     <button onClick={handleDecrement} className={quantity > 1? 'CartItemButton':'CartItemButtonDisabled'} >-</button>
+                     <button onClick={handleIncrement} className="CartItemButton" >+</button>
+                  </div>
             </div>
          </div>
 
          <div className="CartPrice">
                <div className="BtnCart">
-                  <button onClick={handleDeleteItemCart} className="CartItemDelete">Quitar de Carrito</button>
+                  <button onClick={handleDeleteItemCart} className="CartItemButtonOption">Quitar de Carrito</button>
                </div>
                <div className="BtnCart">
-                  <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button>
+                  <button onClick="" className="CartItemButtonOption">Guardar para Después</button>
                </div>
-               <div className="BtnCart">
-                  <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
-               </div>
-
                <div className="Total">
-                  <h2>TOTAL: ${ round(price*quantity) }</h2>
+                  <h2>${ round(price*quantity) }</h2>
                </div>
          </div>
 
-      <div style={{ marginTop:10, clear: 'both'}}><Divider /></div>
+         <div style={{ marginTop:10, clear: 'both'}}><Divider /></div>
       </div>
      
    </div>
    )
 }
+
+
+
+
+{/* 
+<div> */}
+   {/* <div>
+
+      {
+            productId.Sizes.map((size, index) => {
+               return (   
+                        <div>
+                           <div className="Talle">#{size.number}</div>
+                           <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
+                        </div>
+               )}
+      )}
+   </div> */}
+   {/* <select >
+      <option value="">Talles</option>
+       {
+         productId.Sizes.map((talle, index) => {
+            return (   
+                     <option>{talle.number} | {stockById[index].stock}</option>
+                  //   <div>
+                  //       <div className="Talle">#{size.number}</div>
+                  //       <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
+                  //   </div>
+            )}
+    )
+      } 
+   </select>
+</div> */}
+{/* 
+   </div>
+   
+   <div className="Stock"> Stock 5 pares</div>
+</div> */}
+{/* <div className="BtnCart">
+   <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
+</div> */}

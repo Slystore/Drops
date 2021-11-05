@@ -15,18 +15,23 @@ import updateBrand from './components/Forms/updateBrand'
 import Appointment from './components/Admin/appointment/Appointment';
 import Products from './components/Admin/products/Products';
 import Users from './components/Admin/Users';
+
 import Orders from './components/Admin/orders/Orders';
 import Newsletter from './components/Admin/newsletter/Newsletter';
 import OnSale from './components/Admin/onsale/OnSale';
 import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
-import Profile from './components/Profile/profile';
+import Profile from './components/Profile/profile'
+
+import Pay from './components/Checkout/Pay';
+
 
 
 function App() {
 
   return (
     <div className="App">
+
 
       <Router>
         <Switch>
@@ -36,7 +41,7 @@ function App() {
 
           <Route exact path="/login" component={FormLogin} />
           <Route exact path="/register" component={FormRegister} />
-
+          <Route exact path= "/pay" component={Pay} /> 
           <Route exact path="/catalogue/:id" component={ProductDetail} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
@@ -67,6 +72,8 @@ function App() {
 
 
       </Router>
+
+
     </div>
   );
 }

@@ -59,8 +59,8 @@ function Catalogue() {
   
   const handleAddCart = (id) => {
     dispatch (addToCart(id))
-   dispatch(storage(id));
-}
+    dispatch(storage(id));
+  }
 
   return (
     <div className="CatologueContainer">
