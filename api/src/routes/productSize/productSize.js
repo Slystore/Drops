@@ -7,6 +7,6 @@ const updateProductSize = require('../../controllers/productSize/putProductSize.
 
 router.get('/', getProductSizes);
 router.get('/:id', getProductSizesById);
-router.put('/updateProductSize', updateProductSize);
+router.put('/updateProductSize/:id', updateProductSize);
 
 module.exports = router
