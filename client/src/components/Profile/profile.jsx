@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { editUsers, getToken, getUserId } from "../../redux/users/userActions";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -62,6 +63,7 @@ export default function Profile() {
   const dispatch = useDispatch();
   const usersId = useSelector((state) => state.usersReducer.userId);
   const [value, setValue] = React.useState(0);
+  const [edit, setEdit] = useState(false);
   const [data, setData] = useState({
     // id: usersId.user ? usersId.user.id : "",
     name: "",
@@ -69,6 +71,7 @@ export default function Profile() {
     phone: "",
     adress: "",
   });
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -103,15 +106,18 @@ export default function Profile() {
     setData({
       ...data,
       [e.target.name]: e.target.value,
-    })
+    });
   };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleSubmit = async () => {
     const x = await editUsers(data, user.userData.user.id);
-    if(x)return ''
+    if (x) return "";
   };
+  const handleOpenEdit = () => setEdit(true);
+  const handleCloseEdit = () => setEdit(false);
+
   console.log("this user", user);
   console.log("this data", usersId);
   return (
@@ -150,7 +156,11 @@ export default function Profile() {
                 </h1>
                 <div>
                   <img
-                    src={usersId.user.picture ? usersId.user.picture : usersId.user.profileImg}
+                    src={
+                      usersId.user.picture
+                        ? usersId.user.picture
+                        : usersId.user.profileImg
+                    }
                     alt=""
                   />
                 </div>
@@ -235,6 +245,73 @@ export default function Profile() {
                 </Box>
               </Fade>
             </Modal>
+            <Button variant="text" onClick={handleOpenEdit}>
+              Change password
+            </Button>
+            {edit && (
+              <div>
+                <Formik
+                  initialValues={{
+                    oldPassword: "",
+                    password: "",
+                    confirmPass: "",
+                  }}
+                  onSubmit={async (body,{resetForm}) => {
+                    const x = await editUsers(
+                      body,
+                      user.userData.user.id
+                    );
+                    resetForm()
+                  }}
+                  validate={(values)=>{
+                    let error = {}
+                    if(!values.oldPassword){
+                      error.oldPassword = "Complete this camp"
+                    }
+                    if(values.confirmPass !== values.password){
+                      error.confirmPass = "La contraseña nueva no coincide con esta"
+                    }
+                    return error;
+                  }}
+                >
+                  {({ errors }) => (
+                    <Form>
+                      <label>Actual password</label>
+                      <Field
+                        type="password"
+                        name="oldPassword"
+                        placeHolder="Actual password"
+                      />
+                      <ErrorMessage
+                        name="oldPassword"
+                        component={() => <div>{errors.oldPassword}</div>}
+                      />
+                        <label>New password</label>
+                      <Field
+                        type="password"
+                        name="password"
+                        placeHolder="New password"
+                      />
+                      <ErrorMessage
+                        name="password"
+                        component={() => <div></div>}
+                      />
+                        <label>Confirm new password</label>
+                      <Field
+                        type="password"
+                        name="confirmPass"
+                        placeHolder="Confirm new password"
+                      />
+                      <ErrorMessage
+                        name="confirmPass"
+                        component={() => <div>{errors.confirmPass}</div>}
+                      />
+                      <Button variant="text" type="submit">Change</Button>
+                    </Form>
+                  )}
+                </Formik>
+              </div>
+            )}
           </TabPanel>
         </Box>
       )}
