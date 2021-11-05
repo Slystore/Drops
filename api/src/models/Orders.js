@@ -26,7 +26,7 @@ module.exports = (Sequelize) => {
         defaultValue: "",
       },
       merchantOrderId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         defaultValue: 0,
       },
       status: {
@@ -45,3 +45,4 @@ module.exports = (Sequelize) => {
     { timestamps: false }
   );
 };
+
