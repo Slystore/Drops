@@ -1,41 +1,42 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
- import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import {  postBrand, getBrandById } from '../../redux/brand/brandActions';
+import { getCategoryById, postCategory } from '../../../redux/category/categoriesActions';
 
 
 function validate(input) {
-    let errors = {};
-    if (!input.name) {
-      errors.name = 'Nombre es requerido';
-    } 
-    return errors;
-  };
+  let errors = {};
+  if (!input.name) {
+    errors.name = 'Nombre es requerido';
+  }
+  return errors;
+};
 
 
-export default function FormBrandUpdate({match}) {
+export default function FormCategoryUpdate({ match }) {
 
   const id = match.params.id
+
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(()=>{
+  useEffect(() => {
     //ejecutar action que traiga la category by id
-    getBrandById(id)
-  },[dispatch])
-
-  const {brandById} = useSelector(state=>state);
-
+    getCategoryById(id)
+  }, [dispatch])
 
   const [errors, setErrors] = useState({});
+  const { categoryById } = useSelector(state => state);
 
   const [input, setInput] = useState({
-    // name: brandById.name,
+    // name: categoryById.name,
+    // description: categoryById.description
     name: "hola",
+    description: "chau"
   })
-  
+
 
   function onInputChange(e) {
     var objErrors = validate({
@@ -55,21 +56,21 @@ export default function FormBrandUpdate({match}) {
     if (Object.values(errors).length > 0 || input.name === "") {
       console.log("Faltan datos a completar")
     } else {
-     dispatch(postBrand(input))
-     console.log(input)
+      dispatch(postCategory(input))
       alert("Género creado correctamente");
+      console.log(input)
       setInput({
         name: "",
       })
-    //   history.push('/admin')
-    //   window.location.replace('')
+      //   history.push('/admin')
+      //   window.location.replace('')
     }
   }
 
   return (
     <div >
 
-      <h5>Actualizar Marca</h5>
+      <h5>Modificar Categoría</h5>
       <form onSubmit={e => handleSubmit(e)}>
         <div>
 
@@ -83,15 +84,18 @@ export default function FormBrandUpdate({match}) {
           {errors.name && (
             <p className="danger">{errors.name}</p>
           )}
+          <label >Descripción: </label>
+          <input
+            name="description"
+            type="text"
+            onChange={onInputChange}
+            value={input.description} />
         </div>
-        <button type='submit'   >
-          Crear</button>
-      </form >
-      
-    </div >
-
+        <button type='submit'> Crear</button>
+      </form>
+    </div>
   )
-          }
 
+}
 
-//   { <Link to="/admin" ><button >Volver</button></Link> }
+{/* <Link to="/admin" ><button >Volver</button></Link> */ }

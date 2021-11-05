@@ -4,10 +4,10 @@ import Logo from "../../../assets/Logo.png"
 import "./nav.css"
 import { MdLineStyle, MdTrendingUp } from "react-icons/md"
 import { FaUsers } from "react-icons/fa"
-import { MdProductionQuantityLimits, MdOutlineLocalShipping } from "react-icons/md"
+import { MdProductionQuantityLimits, MdOutlineLocalShipping, MdOutlineCategory } from "react-icons/md"
 import { GiConverseShoe } from "react-icons/gi"
 import { AiOutlineMail } from "react-icons/ai"
-
+import { SiNike } from "react-icons/si"
 
 const AdminNavBar = () => {
     return (
@@ -22,7 +22,7 @@ const AdminNavBar = () => {
                         Dashboard
                     </h3>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem' activeClassN >
+                        <li className='sidebarListItem'>
                             <MdLineStyle className='sidebarIcon' />
                             <Link to="/admin/home">
                                 Home
@@ -41,12 +41,24 @@ const AdminNavBar = () => {
                         Menu
                     </h3>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem active'>
+                        <li className='sidebarListItem'>
                             <GiConverseShoe className='sidebarIcon' />
                             <Link to="/admin/products">
                                 Productos
                             </Link>
 
+                        </li>
+                        <li className='sidebarListItem'>
+                            <MdOutlineCategory className='sidebarIcon' />
+                            <Link to="/admin/categories">
+                                Categorias
+                            </Link>
+                        </li>
+                        <li className='sidebarListItem'>
+                            <SiNike className='sidebarIcon' />
+                            <Link to="/admin/brands">
+                                Marcas
+                            </Link>
                         </li>
                         <li className='sidebarListItem'>
                             <FaUsers className='sidebarIcon' />
@@ -61,6 +73,7 @@ const AdminNavBar = () => {
                                 Reportes
                             </Link>
                         </li>
+
                     </ul>
                 </div>
                 <div className='sidebarMenu'>
@@ -68,7 +81,7 @@ const AdminNavBar = () => {
                         Informacion
                     </h3>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem active'>
+                        <li className='sidebarListItem'>
                             <AiOutlineMail className='sidebarIcon' />
                             <Link to="/admin/newsletter">
                                 Newsletter

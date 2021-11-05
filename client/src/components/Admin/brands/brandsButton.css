@@ -1,0 +1,11 @@
+.boxModalBrands {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(246, 248, 244);
+    width: auto;
+    height: auto;
+    box-shadow: 40;
+    border-radius: 7;
+}

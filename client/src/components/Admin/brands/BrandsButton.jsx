@@ -1,13 +1,11 @@
 
 import React, { useState } from "react"
-import FromProductCreate from "../../Forms/product/postProduct"
+import CreateBrand from "../../Forms/brand/CreateBrand"
+import { SiNike } from "react-icons/si"
 import { Grid, Box, Button, Typography, Modal } from '@mui/material';
-import "./productButton.css"
-import FormProductCreate from "../../Forms/product/postProduct";
-import { GiConverseShoe } from "react-icons/gi"
+import "./brandsButton.css"
 
-
-const ProductButtons = () => {
+const BrandsButtons = () => {
 
     const [open, setOpen] = useState(false);
 
@@ -17,20 +15,20 @@ const ProductButtons = () => {
 
     return (
         <Grid className="navButton">
-            <GiConverseShoe className="iconButtonNav" />
-
-            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
+            <SiNike className="iconButtonNav" />
+            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} type='button' className="buttonButton" onClick={handleOpen} variant='contained'>Crear Marca</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className="boxModal">
+                <Box className="boxModalCategories">
                     <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
-                        Crear Producto
+                        Crear Marca
                     </Typography>
                     <div className="formModal">
-                        <FormProductCreate />
+                        <CreateBrand />
+
                     </div>
 
                 </Box>
@@ -44,4 +42,4 @@ const ProductButtons = () => {
     )
 }
 
-export default ProductButtons
+export default BrandsButtons
