@@ -75,8 +75,8 @@ function Catalogue() {
   
   const handleAddCart = (id) => {
     dispatch (addToCart(id))
-   dispatch(storage(id));
-}
+    dispatch(storage(id));
+  }
 
 const handlePrice = (e) => {
   e.preventDefault()

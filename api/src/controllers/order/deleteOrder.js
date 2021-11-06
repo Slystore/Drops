@@ -23,3 +23,4 @@ const deleteOrder = async (req, res, next) => {
 };
 
 module.exports = deleteOrder;
+

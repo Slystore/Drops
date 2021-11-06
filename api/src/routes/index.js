@@ -10,6 +10,7 @@ const sizes = require('./sizes/sizes.js');
 const productSizes = require('./productSize/productSize.js');
 const orders = require('./order/order.js');
 const newsletter = require('./newsletter/newsletter');
+const mercadopago = require('./mercadoPago/mercadoPago.js')
 
 app.use('/',users);
 app.use('/reviews', reviewsRoutes);
@@ -20,4 +21,6 @@ app.use('/productSizes', productSizes);
 app.use('/sizes', sizes);
 app.use('/orders', orders)
 app.use('/newsletter', newsletter);
+app.use('/mercadopago', mercadopago);
+
 module.exports = app; 
