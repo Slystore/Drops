@@ -19,7 +19,7 @@ const postOrderTomi = async (req, res, next) => {
       if (!order) {
         //Crea la orden
       
-        const order2 = await Orders.create({ userId });
+        const order2 = await Orders.create({ userId, products });
         //Busca el usuario por userId
         const user = await Users.findByPk(userId);
         //Asocia user a la order
@@ -28,7 +28,7 @@ const postOrderTomi = async (req, res, next) => {
   
         products?.forEach(async product => {
           //Busca el producto por productId
-          const productData = await Product.findByPk(product.ProductId);
+          const productData = await Product.findByPk(product.productId);
           //Asocia product a la order, con la cantidad y el precio (de la DB);
           console.log(productData, "productData")
           order2.addProduct(productData, {
@@ -41,13 +41,13 @@ const postOrderTomi = async (req, res, next) => {
         return res.json({
           status: `${order2.status}`,
           message: true,
-          cartId: `${order2.id}`
+          orderId: `${order2.id}`
         });
         //Si la orden existe se fusiona
       } else res.json({
         status: `${order.status}`,
         message: false,
-        cartId: `${order.id}`
+        orderId: `${order.id}`
       })
     } catch (err) {
       console.log(err);

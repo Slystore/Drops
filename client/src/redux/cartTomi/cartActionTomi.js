@@ -11,8 +11,10 @@ export const LOAD_CART = "LOAD_CART";
 export const UPDATE_TOTAL = "UPDATE_TOTAL";
 export const FUSION_CART = "FUSION_CART";
 
-const x = getToken();
-const decoded = x?jwt_decode(x):null;
+let x
+if(localStorage.getItem('token')){
+     x = getToken();}
+const decoded = x?jwt_decode(x): null;
 // const decoded = 4
 export const addToCartTomi = (id, quantity, price, name, image) => async (dispatch) => {
   let product = {
@@ -22,17 +24,17 @@ export const addToCartTomi = (id, quantity, price, name, image) => async (dispat
     name,
     image
   };
-
+  let user3 = decoded?decoded.user.id: null
   let user = JSON.parse(window.localStorage.getItem("storage"));
   let orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   try {
 
-    if (user?.uid) {
-      let info = { userId: user.uid, products: [{ productId: id, quantity }] }
+    if (user3) {
+      let info = { userId: user3, products: [{ productId: id, quantity, price, name,image }] }
 
       if (orderId) {
-        await axios.put("http://localhost:3001/api/orders/update/" + orderId, info)
+        await axios.put("http://localhost:3001/api/orders/updateOrder/" + orderId, info)
       }
       else {
         let res = await axios.post("http://localhost:3001/api/orders/createOrder", info)
@@ -139,7 +141,7 @@ export const changeProductQuantityTomi =
     if (user?.uid) {
       let orderId = JSON.parse(localStorage.getItem("orderId"));
       let info = { products: [{ productId: id, quantity }] }
-      await axios.put("http://localhost:3001/api/orders/update/" + orderId, info)
+      await axios.put("http://localhost:3001/api/orders/updateOrder/" + orderId, info)
     }
     else {
     //   let cart = getState().cart.items;
@@ -161,27 +163,32 @@ export const changeProductQuantityTomi =
 
 export const loadCartTomi = () =>
   async (dispatch) => {
-   let user1= null
-    // let user1 = decoded?decoded.user.id: null
+  
+    let user1 = decoded?decoded.user.id: null
     let user = JSON.parse(localStorage.getItem("storage"));
 
     if (user1) {
        
       let orderId = JSON.parse(localStorage.getItem("orderId"));
+      console.log("here", orderId)
       let cart = await axios.get("http://localhost:3001/api/orders/" + orderId)//order solamente
-      if(cart.data.orderState !== "inCart"){//viene del back cart
-        let res = await axios.post("http://localhost:3001/api/orders/createOrder", {userId:user1})
+      if(cart.data.status !== "inCart"){//viene del back cart
+        let res = await axios.post("http://localhost:3001/api/orders/createOrderTomi", {userId:user1})
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         cart = await axios.get("http://localhost:3001/api/orders/" + res.data.orderId)
       }
-
-      cart = cart?.data.products.map(e => {
+console.log(cart.data, "tomiload")
+      cart = cart?cart.data.products.map(e => {
+        // console.log(e, "tomiload")viene productid quantity id userid
         return {
           id: e.id,
+          quantity: e.quantity,
+          price: e.price,
           name: e.name,
-          ...e.Order_Product//OrderDetail nuestro console loguear
+          image: e.image
+          // ...e.Order_Product//OrderDetail nuestro console loguear
         }
-      });
+      }):[];
 
       dispatch({
         type: LOAD_CART,
@@ -202,7 +209,7 @@ export const loadCartTomi = () =>
 export const checkoutTomi = () => async (dispatch, getState) => {
   const cart = JSON.parse(localStorage.getItem("cart"));
   try {
-    axios.post("http://localhost:3001/api/orders/createOrder", { cart });
+    axios.post("http://localhost:3001/api/orders/createOrderTomi", { cart });
   } catch (e) {
     console.log(e);
   }
@@ -216,38 +223,37 @@ export const updateTotalTomi = () => {
 export const fusionCartTomi = async (id) => {
   try {
     let user2 = decoded?decoded.user.id: null
-    let user = JSON.parse(localStorage.getItem("storage")) || id;
+    // let user = JSON.parse(localStorage.getItem("storage")) || id;
     let products = JSON.parse(localStorage.getItem("cart"));
 
     if (products) {
 
       products = products.map(e => {
         return {
-          ProductId: e.id,
+          productId: e.id,
           quantity: e.quantity,
-          price: Number(e.price),
         }
       })
     }
-console.log(products,"tomi")
+// console.log(products,"tomi")
     if (user2) {
 
       if (products?.length > 0) {
         let info = { userId: user2, products }
         let res = await axios.post("http://localhost:3001/api/orders/createOrderTomi", info)
-        console.log(res,"tomicart")
+        // console.log(res,"tomicart")
         if(res.data.status !== "inCart"){
-          res = await axios.post("http://localhost:3001/api/orders/createOrder", {userId:user2})
+          res = await axios.post("http://localhost:3001/api/orders/createOrderTomi", {userId:user2})
         }
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         if (res.data.message === false) {
-          await axios.put("http://localhost:3001/api/orders/update/" + res.data.orderId, info)
+          await axios.put("http://localhost:3001/api/orders/updateOrder/" + res.data.orderId, info)
         }
       }
       else {
-        let res = await axios.post("http://localhost:3001/api/orders/createOrder", { userId: user2 })
+        let res = await axios.post("http://localhost:3001/api/orders/createOrderTomi", { userId: user2 })
         if(res.data.status !== "inCart"){
-          res = await axios.post("http://localhost:3001/api/orders/createOrder", {userId:user2})
+          res = await axios.post("http://localhost:3001/api/orders/createOrderTomi", {userId:user2})
         }
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
       }

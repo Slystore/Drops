@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import './Catalogue.css';
 import {addToCart, storage} from '../../redux/cart/cartActions';
 import { addToCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import { getRatings } from "../../redux/rating/ratingActions";
 
 function Catalogue() {
   
@@ -21,10 +22,12 @@ function Catalogue() {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(loadCartTomi())  
+      dispatch(getRatings());  
  }, [dispatch, products]);
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
+
 
   const [currPage, setCurrPage] = useState(1);
   const [cardsxPage, setcardsxPage] = useState(10);

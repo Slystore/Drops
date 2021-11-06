@@ -1,7 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
 import './Product.css';
 import { Link } from 'react-router-dom';
 import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
@@ -11,8 +13,22 @@ import { getToken } from '../../redux/users/userActions';
 export default function Product({ name, id, price, image }) {
     const {items} = useSelector(store => store.cartReducersTomi);
 const dispatch = useDispatch();
-const x = getToken();
+let x
+if(localStorage.getItem('token')){
+     x = getToken();}
 const decoded = x?jwt_decode(x): null;
+const { ratings } = useSelector((state) => state.ratingReducer);
+    const data = ratings.filter(e => e.id === id)
+    // console.log(data.name, data)
+   
+    useEffect(() => {
+        dispatch(getProductsById(id))
+        dispatch(getProductStockById(id))
+        return () => dispatch(cleanDetail(id))
+    }, [dispatch, id]);
+
+    const {productId} = useSelector((state) => state.productReducer);
+    const {stockById} = useSelector((state) => state.productReducer);
 
 // console.log("tomiUser",decoded)
     const handleAddToCart = async () => {
@@ -20,7 +36,12 @@ const decoded = x?jwt_decode(x): null;
         let product = items?.find( e => e.id === id)
     
         let user = decoded?decoded.user.id: null
-        
+        if(user) {
+            //   console.log("entrouser",user)
+           await  (fusionCartTomi(id))
+            await  (loadCartTomi())
+            await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image))
+        }
         // if(cart && product?.quantity >= stock) {
           
         //   Swal.fire(
@@ -46,10 +67,7 @@ const decoded = x?jwt_decode(x): null;
         //     }
         //   )
         // }
-         if(user) {
-            //  console.log("entrouser",user)
-           await  (fusionCartTomi(id))
-            await  (loadCartTomi())}
+      
       };
     return (
         <div className="ProductContainer" >
@@ -59,8 +77,28 @@ const decoded = x?jwt_decode(x): null;
             <div className="Name">
                 <h3>{name}</h3>
             </div> 
-            <div className="Price">
+            <div className="PriceProduct">
                 <h5>${price}</h5>
+            </div>
+
+            <div className="Price">
+                <h5> Prom {data[0] ? data[0].rating : null}</h5>
+            </div>
+            <div>
+                {
+                    name ? 
+                        <div>
+                            {/* {
+                                productId.Sizes.map((size, index) => {
+                                    return (   <div>
+                                        <div className="Talle">#{size.number}</div>
+                                        <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div></div>
+                                    )}
+                            )} */}
+                        </div> 
+                        : 
+                        <div>No name</div>
+                }
             </div>
               
             <div className="IconShoppingContainer">

@@ -26,7 +26,7 @@
 //         defaultValue: "",
 //       },
 //       merchantOrderId: {
-//         type: DataTypes.INTEGER,
+//         type: DataTypes.BIGINT,
 //         defaultValue: 0,
 //       },
 //       status: {
@@ -71,14 +71,34 @@ module.exports = (Sequelize) => {
                 ),
                 defaultValue: "not initialized"
               },
+              paymentState: {
+                type: DataTypes.STRING
+                ,
+                defaultValue: "notInitialized"
+              },
+              shippingAddress: {
+                type: DataTypes.STRING,
+        
+                //defaultValue: "not initialized"
+        
+              },
+              shippingZip: {
+                type: DataTypes.INTEGER,
+              },
+              shippingLocated: {
+                type: DataTypes.STRING,
+              },
+              shippingCity: {
+                type: DataTypes.STRING,
+              },
             payment_id:{
                 type: DataTypes.STRING,
             },
             status: {
                 type: DataTypes.ENUM(
                   "inCart",
-                  "created",
                   "pending",
+                  "processing",
                   "cancelled",
                   "completed"
                 ),
@@ -89,7 +109,10 @@ module.exports = (Sequelize) => {
             merchant_order_id: {
                 type: DataTypes.BIGINT,
                 defaultValue: 0
-            }
+            },
+            products: {
+              type: DataTypes.ARRAY(DataTypes.JSON),
+            },
             
         }, { timestamps: false }
     );

@@ -60,9 +60,11 @@ function cartReducer(state = initialState, action) {
     }
 
     case FILL_CART_STORAGE: {
+      let storage3 = JSON.parse(window.localStorage.getItem("cartId"));
       return {
         ...state,
         cartFill: action.payload !== null ? action.payload : [],
+        storage: storage3,
       };
     }
 
@@ -75,6 +77,13 @@ function cartReducer(state = initialState, action) {
     }
 
     case INCREMENT_CART_STORAGE: {
+
+      let estado = state.cartFill;
+      
+      console.log("ESTADO CARTFILL",estado)
+      console.log(window.localStorage.getItem("cartId"))
+
+
       let filtro = state.cartFill.find((item) => item.id === action.payload);
       return filtro
         ? {
@@ -99,7 +108,7 @@ function cartReducer(state = initialState, action) {
             ...state,
             cartFill: state.cartFill.map((item) =>
               item.id === action.payload
-                ? { ...item, quantity: item.quantity - 1 }
+                ? { ...item, quantity: --item.quantity  }
                 : item
             ),
           }

@@ -9,13 +9,13 @@ const postOrder = async (req, res) => {
     merchantOrderId,
     status,
     userId,
-    cart, //[{ productId, price, quantity }]
+    cart,
   } = req.body;
 
   try {
     const getOrder = await Orders.findOne({
       where: {
-        id: userId,
+        UserId: userId,
       },
     });
 
