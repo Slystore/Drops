@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
- import { useDispatch} from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import {  postBrand } from '../../redux/brand/brandActions';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { postBrand } from '../../../redux/brand/brandActions';
+import "./formBrand.css"
+import swal from 'sweetalert';
 
 export default function FormBrand() {
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ export default function FormBrand() {
     let errors = {};
     if (!input.name) {
       errors.name = 'Nombre es requerido';
-    } 
+    }
     return errors;
   };
 
@@ -33,43 +35,44 @@ export default function FormBrand() {
 
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    console.log(input)
     if (Object.values(errors).length > 0 || input.name === "") {
-      alert("Faltan datos a completar")
+      swal("Faltan datos por completar!");
     } else {
-     dispatch(postBrand(input))
-      alert("Género creado correctamente");
+      const x = await postBrand(input)
+
+      swal("Good job!", "Marca Creada!", "success");
       setInput({
         name: "",
       })
-      history.push('/admin')
+      history.push('/admin/brands')
       window.location.replace('')
     }
   }
 
   return (
     <div >
-
-      <h5>Crear Marca</h5>
       <form onSubmit={e => handleSubmit(e)}>
-        <div>
-
-          <label >Nombre: </label>
-          <input
+        <div className='boxInputBrand'>
+          <input className='inputProduct'
             name="name"
             type="text"
             onChange={onInputChange}
-            value={input.name} />
+            value={input.name}
+            placeholder='Nombre'
+          />
 
           {errors.name && (
-            <p className="danger">{errors.name}</p>
+            <p className="errorText">{errors.name}</p>
           )}
         </div>
-        <button type='submit'   >
-          Crear</button>
+        <div className='boxBtnCreate'>
+          <button className='btnCreate' type='submit'>  Crear</button>
+
+        </div>
       </form >
-      {/* <Link to="/admin" ><button >Volver</button></Link> */}
     </div >
 
   )

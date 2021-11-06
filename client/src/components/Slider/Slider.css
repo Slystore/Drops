@@ -1,5 +1,5 @@
 .SliderContainer{
-    width: 100%;
+    width: 100vw;
     height: 250px;
     margin: 100px 0;
     padding: 10px 0;
@@ -14,7 +14,7 @@
 }
 
 .Slider{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,7 +22,7 @@
     /* border: thin dotted #f00; */
 }
 
-.Marca1, .Marca2, .Marca3, .Marca4, .Marca5, .Marca6{
+.Marca1, .Marca2, .Marca3, .Marca4, .Marca5, .Marca6, .Marca7, .Marca8, .Marca9, .Marca10, .Marca11, .Marca12{
     width: 120px;
     height: 120px;
     background-repeat: no-repeat;
@@ -31,38 +31,77 @@
     /* border: thin dotted #f00; */
 }
 
+.Marca1:hover, .Marca2:hover, .Marca3:hover, .Marca4:hover, .Marca5:hover, .Marca6:hover, .Marca7:hover, .Marca8:hover, .Marca9:hover, .Marca10:hover, .Marca11:hover, .Marca12:hover{
+    cursor: pointer;
+}
+
 .Marca1{
     background-image: url('../../assets/nike.png');
-    background-size: 60%;
+    background-size: 90%;
 }
 
 .Marca2{
     background-image: url('../../assets/adidaslogo.png');
-    background-size: 90%;
+    background-size: 120%;
 }
 
 .Marca3{
     background-image: url('../../assets/under.png');
-    background-size: 60%;
+    background-size: 80%;
 }
 
 .Marca4{
     background-image: url('../../assets/puma.png');
-    background-size: 60%;
+    background-size: 80%;
 }
 
 .Marca5{
     background-image: url('../../assets/gucci.png');
-    background-size: 80%;
+    background-size: 100%;
 }
 
 .Marca6{
     background-image: url('../../assets/vanslogo.png');
-    background-size: 60%;
+    background-size: 70%;
+}
+
+.Marca7{
+    background-image: url('../../assets/nike2.png');
+    background-size: 90%;
+}
+
+.Marca8{
+    background-image: url('../../assets/off-white.png');
+    background-size: 70%;
+}
+
+.Marca9{
+    width: 170px;
+    background-image: url('../../assets/balenciaga.png');
+    background-size: 100%;
+}
+
+.Marca10{
+    background-image: url('../../assets/jordan.png');
+    background-size: 80%;
+}
+
+.Marca11{
+    background-image: url('../../assets/reebok.png');
+    background-size: 100%;
+}
+
+.Marca12{
+    background-image: url('../../assets/adidas2.png');
+    background-size: 80%;
 }
 
 .SliderTitle{
     font-size: 25px;
+}
+
+.carousel-indicators [data-bs-target]{
+    background-color: #ccc;
 }
 
 @media (min-width: 1200px) and (max-width: 1399px){

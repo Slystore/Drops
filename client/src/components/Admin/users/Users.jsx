@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
-import { getUsers } from "../../redux/users/userActions"
+import { getUsers } from "../../../redux/users/userActions"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
 
 import UserMap from "./UserMap"

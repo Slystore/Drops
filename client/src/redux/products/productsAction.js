@@ -17,7 +17,7 @@ export const GET_ALL = "GET_ALL";
 export function getProducts(pagina){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/products`)
+            const { data } = await axios.get(`/products`)
             return await dispatch({
                 type: GET_PRODUCTS,
                 payload: data
@@ -31,7 +31,7 @@ export function getProducts(pagina){
 export function getProductsById(id){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
+            const { data } = await axios.get(`/products/${id}`)
             console.log('estoy disparando la action ',data)
             return await dispatch({
                 type: GET_PRODUCT_BY_ID,
@@ -45,39 +45,20 @@ export function getProductsById(id){
 
 export function productForm(form){
     return async(dispatch) => {
-        const { data } = await axios.post(`http://localhost:3001/api/products/createProduct`, form)
+        const { data } = await axios.post(`/products/createProduct`, form)
         return await dispatch({
             type: PRODUCT_FORM,
             payload: data
         })
     }
 }
-//         const products = await axios.get('http://localhost:3001/api/products')
-//         const categories = await axios.get(`http://localhost:3001/api/Categories`);
-//         const brands = await axios.get(`http://localhost:3001/api/brands`);
-     
-
-//         return await dispatch({
-//             type: GET_ALL,
-//             products: products.data,
-//             categories: categories.data,
-//             brands: brands.data
-//         });
-//     };
-// }
-
-
-
 
 export const postProduct = async(payload) => {
     const token = localStorage.getItem("token");
-    // console.log("this", payload);
     let prueba=""
-    // const config = { headers: { Authorization: `Bearer ${token1}` }   };
-// const bodyParameters = { key: prueba };
     try {
         const res = await axios.post(
-            `/api/products/createProduct`, { prueba }, {
+            `/products/createProduct`, { prueba }, {
                 headers: {
                     authorization: token,
                 },
@@ -88,7 +69,6 @@ export const postProduct = async(payload) => {
     } catch (err) {
         console.log("yo rompo action", err);
     }
-    // const back = axios.post( 'http://localhost:3001/api/products/createProduct', prueba)
 };
 
 export function filterBrand(payload) {
@@ -124,7 +104,7 @@ export function cleanDetail (payload){
 export function getProductStockById(id){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/productSizes/${id}`)
+            const { data } = await axios.get(`/productSizes/${id}`)
             return await dispatch({
                 type: GET_PRODUCT_STOCK_ID,
                 payload: data
@@ -138,7 +118,7 @@ export function getProductsByName(payload) {
     return async function(dispatch) {
         try {
             let response = await axios.get(
-                `http://localhost:3001/api/products?name=` + payload
+                `/products?name=` + payload
             );
             return dispatch({
                 type: GET_PRODUCT_NAME,

@@ -19,7 +19,7 @@ export function addToCart(id) {
 export function getProducts(pagina){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/products`)
+            const { data } = await axios.get(`/products`)
             return await dispatch({
                 type: GET_PRODUCTS,
                 payload: data

@@ -64,14 +64,14 @@ const Chart = () => {
 
     return (
         <div className='chart'>
-            <h3 className="chartTitle">Estadisticas</h3>
+            <p className="chartTitle">Actividad de Usuarios</p>
             <ResponsiveContainer width="100%" aspect={4 / 1}>
                 <LineChart data={data}>
                     <XAxis dataKey="name" stroke='#555' />
                     <Line type="monotone" dataKey="Users Activos" stroke='#BC8CF2' />
                     <Tooltip />
                     <CartesianGrid stroke='#e0dfdf' strokeDasharray="5 5" />
-                    <Legend />
+                    <Legend style={{ marginTop: 10 }} />
                 </LineChart>
             </ResponsiveContainer>
         </div>

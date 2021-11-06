@@ -10,7 +10,7 @@ export const TYPES = {
 export function getRatings(){
     return async (dispatch) => {
         try {
-            let { data } = await axios.get(`http://localhost:3001/api/products`)
+            let { data } = await axios.get(`/api/products`)
             data = data.map(el => {
                 return {
                     ...el,

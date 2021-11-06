@@ -1,38 +1,35 @@
-
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux"
-import { getProducts } from "../../../redux/products/productsAction"
+import { getCategories } from '../../../redux/category/categoriesActions';
+import CategoriesButtons from './CategoriesButton';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid } from '@mui/material';
-import ProductButtons from './ProductButtons';
 
-const Products = () => {
+const Categories = () => {
     const dispatch = useDispatch()
 
-    const [productos, setProductos] = useState([])
-
     useEffect(() => {
-        dispatch(getProducts())
+        dispatch(getCategories())
     }, [dispatch])
 
-    const shoes = useSelector(state => state.productReducer.products);
+    const categories = useSelector(state => state.categoriesReducer.categories);
+
+
 
     return (
         <Grid style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
-            <ProductButtons />
+            <CategoriesButtons />
             <TableContainer >
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>ID</TableCell>
                             <TableCell align="left">Nombre</TableCell>
-                            <TableCell align="left">Price</TableCell>
-                            <TableCell align="left">Estado</TableCell>
                             <TableCell align="left">Actualizar</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {
-                            shoes && shoes.map(el => {
+                            categories && categories.map(el => {
                                 return (
                                     <TableRow
                                         key={el.id}
@@ -42,10 +39,8 @@ const Products = () => {
                                             {el.id}
                                         </TableCell>
                                         <TableCell align="left">{el.name}</TableCell>
-                                        <TableCell align="left">{el.price}</TableCell>
-                                        <TableCell align="left">{el.status}</TableCell>
                                         <TableCell align="left">
-                                            <Button variant="contained" style={{ backgroundColor: "rgb(240, 240, 255)", color: "blue" }} >Editar</Button>
+                                            <Button variant="contained" disabled style={{ backgroundColor: "rgb(240, 240, 255)", color: "#ccc" }} >Editar</Button>
                                         </TableCell>
                                     </TableRow>
                                 )
@@ -55,25 +50,10 @@ const Products = () => {
                 </Table>
             </TableContainer>
         </Grid>
-    )
-}
+    );
+};
 
-export default Products
+export default Categories;
 
-// style={{height: '200px', width: '400px', margin: '25% auto', border: '1px black solid'}}
-{/* <div>
-<ProductButtons/>
-<div > 
-    <h2> Mapeo de productos </h2>
-    <div>
-        {
-            hola && hola.map(prod => (
-            <div>
-                
-                <ProductMap key={prod.id} name={prod.name} image={prod.image} price={prod.price} status={prod.status} data={prod} match={prod.id}/>
-            </div>
-        ))}
-    
-    </div>
-</div>
-</div> */}
+
+

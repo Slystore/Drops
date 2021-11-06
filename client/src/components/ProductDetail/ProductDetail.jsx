@@ -11,6 +11,7 @@ import {
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import ProductReview from "./Reviews";
 
 import "./ProductDetail.css";
@@ -73,14 +74,14 @@ function ProductDetail(props) {
               <a href="/catalogue">X</a>
             </div>
             <div className="NameShoe">
-              <h1> {productId.name} </h1>
+              <h1 style={{lineHeight:'40px'}}> {productId.name} </h1>
             </div>
             <div className="Brand">
-              <h3>
+              <h4>
                 {" "}
                 {productId.Brand.name} / {productId.Category.name} /{" "}
                 {productId.status}
-              </h3>
+              </h4>
             </div>
             <div className="PriceShoe">
               <h3> ${Number(productId.price)} </h3>
@@ -131,7 +132,6 @@ function ProductDetail(props) {
                 sx={{
                   backgroundColor: "black",
                   color: "white",
-                  marginRight: 5,
                   transition: "0.5s all",
                   "&:hover": {
                     backgroundColor: "#00000099",
@@ -146,6 +146,7 @@ function ProductDetail(props) {
                 size="small"
                 className="hvr-grow-shadow"
                 sx={{
+                  width: 130,
                   backgroundColor: "black",
                   color: "white",
                   transition: "0.5s all",
@@ -154,13 +155,14 @@ function ProductDetail(props) {
                   },
                 }}
                 startIcon={<FavoriteIcon />}
-              >
+                >
                 Wish List
               </Button>
               <Button
                 size="small"
                 className="hvr-grow-shadow"
                 sx={{
+                  width: 130,
                   backgroundColor: "black",
                   color: "white",
                   transition: "0.5s all",
@@ -169,6 +171,7 @@ function ProductDetail(props) {
                   },
                 }}
                 onClick={(e) => handleReviews(e)}
+                startIcon={<RateReviewIcon />}
               >
                 Reviews
               </Button>
