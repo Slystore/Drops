@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
- import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import {  postCategory } from '../../redux/category/categoriesActions';
+import { postCategory } from '../../../redux/category/categoriesActions';
 
 export default function FormCategory() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function FormCategory() {
     let errors = {};
     if (!input.name) {
       errors.name = 'Nombre es requerido';
-    } 
+    }
     return errors;
   };
 
@@ -34,17 +34,18 @@ export default function FormCategory() {
 
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (Object.values(errors).length > 0 || input.name==="") {
+    console.log(input)
+    if (Object.values(errors).length > 0 || input.name === "") {
       alert("Faltan datos a completar")
     } else {
-     dispatch(postCategory(input))
+      const x = await postCategory(input)
       alert("Género creado correctamente");
       setInput({
         name: "",
       })
-      history.push('/admin')
+      history.push('/admin/categories')
       window.location.replace('')
     }
   }
@@ -52,7 +53,6 @@ export default function FormCategory() {
   return (
     <div >
 
-      <h5>Crear Categoría</h5>
       <form onSubmit={e => handleSubmit(e)}>
         <div>
 

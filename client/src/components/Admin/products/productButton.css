@@ -1,0 +1,26 @@
+.boxModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(246, 248, 244);
+    width: auto;
+    height: auto;
+    box-shadow: 40;
+    border-radius: 7;
+}
+
+.navButton {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(246, 248, 244);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttonButton {
+    height: 35px;    
+}
+.iconButtonNav {
+    font-size: 35px;
+}

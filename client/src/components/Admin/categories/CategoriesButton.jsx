@@ -1,13 +1,11 @@
 
 import React, { useState } from "react"
-import FromProductCreate from "../../Forms/product/postProduct"
+import CreateCategory from "../../Forms/category/CreateCategory";
 import { Grid, Box, Button, Typography, Modal } from '@mui/material';
-import "./productButton.css"
-import FormProductCreate from "../../Forms/product/postProduct";
-import { GiConverseShoe } from "react-icons/gi"
+import { MdOutlineCategory } from "react-icons/md"
+import "./categoriesButton.css"
 
-
-const ProductButtons = () => {
+const CategoriesButtons = () => {
 
     const [open, setOpen] = useState(false);
 
@@ -17,20 +15,20 @@ const ProductButtons = () => {
 
     return (
         <Grid className="navButton">
-            <GiConverseShoe className="iconButtonNav" />
-
-            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
+            <MdOutlineCategory className="iconButtonNav" />
+            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Categoria</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className="boxModal">
+                <Box className="boxModalCategories">
                     <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
-                        Crear Producto
+                        Crear Categoria
                     </Typography>
                     <div className="formModal">
-                        <FormProductCreate />
+                        <CreateCategory />
+
                     </div>
 
                 </Box>
@@ -44,4 +42,4 @@ const ProductButtons = () => {
     )
 }
 
-export default ProductButtons
+export default CategoriesButtons

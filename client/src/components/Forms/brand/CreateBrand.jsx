@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
- import { useDispatch} from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import {  postBrand } from '../../redux/brand/brandActions';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { postBrand } from '../../../redux/brand/brandActions';
 
 export default function FormBrand() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export default function FormBrand() {
     let errors = {};
     if (!input.name) {
       errors.name = 'Nombre es requerido';
-    } 
+    }
     return errors;
   };
 
@@ -33,34 +33,34 @@ export default function FormBrand() {
 
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    console.log(input)
     if (Object.values(errors).length > 0 || input.name === "") {
       alert("Faltan datos a completar")
     } else {
-     dispatch(postBrand(input))
+      const x = await postBrand(input)
+
       alert("Género creado correctamente");
       setInput({
         name: "",
       })
-      history.push('/admin')
+      history.push('/admin/brands')
       window.location.replace('')
     }
   }
 
   return (
     <div >
-
-      <h5>Crear Marca</h5>
-      <form onSubmit={e => handleSubmit(e)}>
-        <div>
-
-          <label >Nombre: </label>
-          <input
+      <form className='FormBox' onSubmit={e => handleSubmit(e)}>
+        <div className='miniBoxForm'>
+          <input className='input'
             name="name"
             type="text"
             onChange={onInputChange}
-            value={input.name} />
+            value={input.name}
+            placeholder='Nombre'
+          />
 
           {errors.name && (
             <p className="danger">{errors.name}</p>
@@ -69,7 +69,6 @@ export default function FormBrand() {
         <button type='submit'   >
           Crear</button>
       </form >
-      {/* <Link to="/admin" ><button >Volver</button></Link> */}
     </div >
 
   )

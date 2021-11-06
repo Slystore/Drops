@@ -16,14 +16,14 @@
     background: #fff;
     max-width: 1000px;
     width: 1000px;
-    max-height: 530px;
-    height: 530px;
+    max-height: 600px;
+    min-height: 530px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 10px;
+    padding: 10px 10px 30px 10px;
     box-shadow: 0 5px 10px rgba(0,0,0, 0.15);
     /* border: thin dotted #f00; */
 }
@@ -133,5 +133,11 @@
 }
 
 .BtnCart{
+    width: 50px;
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* border: thin dotted #0ff; */
 }
