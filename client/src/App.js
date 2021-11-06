@@ -27,6 +27,7 @@ import Orders from './components/Admin/Orders';
 import Newsletter from './components/Admin/Newsletter';
 import OnSale from './components/Admin/OnSale';
 import Profile from './components/Profile/profile';
+import ReviewForm from './components/Forms/createReview';
 
 
 
@@ -72,6 +73,8 @@ function App() {
             <Route exact path="/admin/onsale" > <OnSale/> </Route>
             <Route exact path="/admin/createProduct2" > <FormProductCreate/> </Route>
             <Route exact path="/admin/product/:id/update" render={ ({match}) => <FormProductUpdate/> } /> 
+
+            <Route exact path="/user/:userId/review/:productId/" render={ ({match}) => <ReviewForm/> } /> 
 
         </Router>
     </div>

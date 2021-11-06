@@ -79,14 +79,11 @@ export function deleteReview(id){
     }
 }
 
-export function createReview({comment, rating, user}){
-    return async (dispatch) => {
+export function createReview({ user, comment, productId, rating}){
+    return async () => {
         try {
-            const { data } = await axios.post(`http://localhost:3001/api/reviews/create/`, {comment, rating, user})
-            return await dispatch({
-                type: POST_REVIEW,
-                data
-            })       
+            const { data } = await axios.post(`http://localhost:3001/api/reviews/create/`, {comment, rating, user, productId})
+            return data  
         } catch (error) {
             console.log(error)
         }
