@@ -8,6 +8,8 @@ export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
 export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
 export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
 export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
+export const FILTER_BY_PRICE = " FILTER_BY_PRICE";
+export const FILTERS_RESET = " FILTERS_RESET";
 export const PRODUCT_FORM = 'PRODUCT_FORM'
 export const GET_ALL = "GET_ALL";
 
@@ -100,6 +102,17 @@ export function filterCategory(payload) {
         type: FILTER_BY_CATEGORY,
         payload,
     };
+}
+
+export function filterPrice(payload) {
+    return {
+        type: FILTER_BY_PRICE,
+        payload,
+    };
+}
+
+export function filtersReset() {
+    return getProducts()
 }
 
 export function cleanDetail (payload){

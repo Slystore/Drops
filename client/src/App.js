@@ -10,22 +10,23 @@ import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
 import Appointment from './components/Admin/appointment/Appointment';
 import Products from './components/Admin/products/Products';
+import ReviewForm from './components/Forms/createReview';
 import Users from './components/Admin/users/Users';
 import Orders from './components/Admin/orders/Orders';
 import Newsletter from './components/Admin/newsletter/Newsletter';
 import OnSale from './components/Admin/onsale/OnSale';
 import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
-import Profile from './components/Profile/profile';
-import Categories from './components/Admin/categories/Categories.jsx';
-import Brands from './components/Admin/brands/Brands.jsx';
+import Profile from './components/Profile/profile'
+
+import Pay from './components/Checkout/Pay';
+
 
 
 function App() {
 
   return (
     <div className="App">
-
       <Router>
         <Switch>
           <Route exact path="/" component={HomeView} />
@@ -34,10 +35,12 @@ function App() {
 
           <Route exact path="/login" component={FormLogin} />
           <Route exact path="/register" component={FormRegister} />
-
+          <Route exact path="/pay" component={Pay} />
           <Route exact path="/catalogue/:id" component={ProductDetail} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
+          <Route exact path="/user/:userId/review/:productId/" render={({ match }) => <ReviewForm />} />
+
 
         </Switch>
         <Switch>
@@ -62,6 +65,8 @@ function App() {
 
 
       </Router>
+
+
     </div>
   );
 }
