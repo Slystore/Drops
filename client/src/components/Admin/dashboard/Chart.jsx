@@ -71,7 +71,7 @@ const Chart = () => {
                     <Line type="monotone" dataKey="Users Activos" stroke='#BC8CF2' />
                     <Tooltip />
                     <CartesianGrid stroke='#e0dfdf' strokeDasharray="5 5" />
-                    <Legend />
+                    <Legend style={{ marginTop: 10 }} />
                 </LineChart>
             </ResponsiveContainer>
         </div>

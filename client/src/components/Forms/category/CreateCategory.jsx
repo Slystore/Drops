@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { postCategory } from '../../../redux/category/categoriesActions';
+import swal from 'sweetalert';
 
 export default function FormCategory() {
   const dispatch = useDispatch();
@@ -38,10 +39,12 @@ export default function FormCategory() {
     e.preventDefault();
     console.log(input)
     if (Object.values(errors).length > 0 || input.name === "") {
-      alert("Faltan datos a completar")
+      swal("Faltan datos por completar!");
+
     } else {
       const x = await postCategory(input)
-      alert("Género creado correctamente");
+      swal("Good job!", "Categoria Creada!", "success");
+
       setInput({
         name: "",
       })
@@ -55,26 +58,30 @@ export default function FormCategory() {
 
       <form onSubmit={e => handleSubmit(e)}>
         <div>
+          <div className='boxInputProduct'>
+            <p className='titleProduct'>Nombre </p>
+            <input className='inputProduct'
+              name="name"
+              type="text"
+              onChange={onInputChange}
+              value={input.name} />
 
-          <label >Nombre: </label>
-          <input
-            name="name"
-            type="text"
-            onChange={onInputChange}
-            value={input.name} />
-
-          {errors.name && (
-            <p className="danger">{errors.name}</p>
-          )}
-          <label >Descripción: </label>
-          <input
-            name="description"
-            type="text"
-            onChange={onInputChange}
-            value={input.description} />
+            {errors.name && (
+              <p className="errorText">{errors.name}</p>
+            )}
+          </div>
+          <div className='boxInpuProduct'>
+            <p className='titleProduct'>Descripción </p>
+            <input className='inputProduct'
+              name="description"
+              type="text"
+              onChange={onInputChange}
+              value={input.description} />
+          </div>
         </div>
-        <button type='submit'   >
-          Crear</button>
+        <div className='boxBtnCreate'>
+          <button className='btnCreate' type='submit'>Crear</button>
+        </div>
       </form >
       {/* <Link to="/admin" ><button >Volver</button></Link> */}
     </div >
