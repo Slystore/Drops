@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postBrand } from '../../../redux/brand/brandActions';
+import "./formBrand.css"
+import swal from 'sweetalert';
 
 export default function FormBrand() {
   const dispatch = useDispatch();
@@ -37,11 +39,11 @@ export default function FormBrand() {
     e.preventDefault();
     console.log(input)
     if (Object.values(errors).length > 0 || input.name === "") {
-      alert("Faltan datos a completar")
+      swal("Faltan datos por completar!");
     } else {
       const x = await postBrand(input)
 
-      alert("Género creado correctamente");
+      swal("Good job!", "Marca Creada!", "success");
       setInput({
         name: "",
       })
@@ -52,9 +54,9 @@ export default function FormBrand() {
 
   return (
     <div >
-      <form className='FormBox' onSubmit={e => handleSubmit(e)}>
-        <div className='miniBoxForm'>
-          <input className='input'
+      <form onSubmit={e => handleSubmit(e)}>
+        <div className='boxInputBrand'>
+          <input className='inputProduct'
             name="name"
             type="text"
             onChange={onInputChange}
@@ -63,11 +65,13 @@ export default function FormBrand() {
           />
 
           {errors.name && (
-            <p className="danger">{errors.name}</p>
+            <p className="errorText">{errors.name}</p>
           )}
         </div>
-        <button type='submit'   >
-          Crear</button>
+        <div className='boxBtnCreate'>
+          <button className='btnCreate' type='submit'>  Crear</button>
+
+        </div>
       </form >
     </div >
 

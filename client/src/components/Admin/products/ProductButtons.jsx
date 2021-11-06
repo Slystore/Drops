@@ -26,7 +26,7 @@ const ProductButtons = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box className="boxModal">
-                    <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
+                    <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h4">
                         Crear Producto
                     </Typography>
                     <div className="formModal">
