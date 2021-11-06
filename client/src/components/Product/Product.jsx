@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
+import Rating from '@mui/material/Rating';
 import './Product.css';
 import { Link } from 'react-router-dom';
 
@@ -39,7 +40,8 @@ export default function Product({ name, id, price, image, addToCart }) {
             </div>
 
             <div className="Price">
-                <h5> Prom {data[0] ? data[0].rating : null}</h5>
+                <Rating name="read-only" value={data[0] ? data[0].rating : null} readOnly />
+                {/* <h5> Prom {data[0] ? data[0].rating : null}</h5> */}
             </div>
             <div>
                 {
@@ -61,7 +63,16 @@ export default function Product({ name, id, price, image, addToCart }) {
             <div className="IconShoppingContainer">
             <Link to={`/catalogue`}>
                      <div className="IconShopping hvr-pulse-grow">
-                        <ShoppingCartIcon sx={{fontSize:20, marginTop:0.7}} onClick={() => addToCart(id)}/>
+                        <ShoppingCartIcon 
+                            sx={{
+                                    width:30,
+                                    fontSize:20, 
+                                    marginTop:0.7, 
+                                    color:' rgb(197, 197, 197)',
+                                    '&:hover':{
+                                        color:'#9E0000'
+                                    }}}
+                            onClick={() => addToCart(id)}/>
                     </div></Link>
                     <div className="IconShopping hvr-pulse-grow">
                     <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>

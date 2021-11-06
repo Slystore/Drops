@@ -36,18 +36,22 @@ function ShopingCart() {
     history.push('/catalogue')
     window.location.replace('')
   }
-
+  
   function handleUpdateCart(){
     let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
     if(userLogParse){
-        dispatch(recoveryCart(userLogParse))
-        alert("Carrito recuperado, puede avanzar sin completar datos")
-        localStorage.removeItem('cartPost')}
-    else{ 
+      dispatch(recoveryCart(userLogParse))
+      alert("Carrito recuperado, puede avanzar sin completar datos")
+      localStorage.removeItem('cartPost')}
+      else{ 
         alert("No hay carrito a recuperar")
+      }
     }
+    
+  function handleCatalogue(){
+    history.push('/catalogue')
+    window.location.replace('')
   }
-
   
 
   // const productos = [
@@ -76,6 +80,7 @@ function ShopingCart() {
                 <div className="BtnShoppingCart">
                     <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button>
                     <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
+                    <button onClick={handleCatalogue} className="CartBack">Regresar</button>
                 </div>
             </div>
             { 

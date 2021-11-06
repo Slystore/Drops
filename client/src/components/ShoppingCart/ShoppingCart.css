@@ -28,29 +28,41 @@
 }
 
 .ShoppingCartTitle{
-    width: 45%;
+    width: 40%;
     min-width: 21%;
     text-align: left;
     /* border: thin dotted #f00; */
 }
 
 .BtnShoppingCart{
-    width: 35%;
+    width: 40%;
     /* border: thin dotted #f00; */
 }
 
 .CartItemDelete{
-    width: 150px;
+    width: 120px;
     height: 30px;
     border: none;
     margin: 0 5px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     background-color: rgb(49, 102, 202);
 }
 
-.CartItemDelete:hover, .ContinuarBtnShoppingCart:hover{
+.CartBack{
+    width: 100px;
+    height: 30px;
+    border: none;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+    background-color: rgb(49, 102, 202);
+}
+
+.CartItemDelete:hover, .ContinuarBtnShoppingCart:hover, .CartBack:hover{
+    cursor: pointer;
     background-color: rgb(27, 73, 158);
     box-shadow: 0 5px 10px #00000030;
 }

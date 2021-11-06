@@ -144,7 +144,7 @@ function NavBar() {
           </div>
           <Link to={storage ? '/shoppingCart': ''} >
           <div className="Tool spinIn">
-             <Badge badgeContent={cartStorage? cartStorage.length: cart.length} color="error">
+             <Badge badgeContent={cartStorage? cartStorage.length: cart.length} color="error" sx={{color:'black'}}>
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
           </div></Link>
