@@ -6,7 +6,7 @@ import './Brand.css'
 function Brand() {
     return (
         <div className="ContainerBrand">
-            <ReactPlayer url={intro}  width='100%' height='100%' playing="true" controls="false" loop="true"/>
+            <ReactPlayer url={intro}  width='100%' height='100%' playing={true} controls={false} loop={true}/>
         </div>
     )
 }
