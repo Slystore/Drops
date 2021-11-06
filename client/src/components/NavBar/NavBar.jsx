@@ -87,6 +87,8 @@ function NavBar() {
   function handleInputChange(e) {
     e.preventDefault();
     setName(e.target.value);
+    dispatch(getProductsByName(name));
+
     console.log(name);
   }
   function handleSubmit(e) {
