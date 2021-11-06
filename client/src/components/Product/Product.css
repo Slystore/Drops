@@ -56,7 +56,7 @@
 .IconShopping:hover{
     cursor: pointer;
     background: linear-gradient(360deg, #9E0000, #FF0000);
-    color: #00000050;
+    color: #9E0000;
 }
 
 .IconShopping{
@@ -69,7 +69,6 @@
     background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
     background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
 }
-
 
 @media (min-width: 1200px) and (max-width: 1399px){
 
