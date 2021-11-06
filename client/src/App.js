@@ -18,7 +18,8 @@ import OnSale from './components/Admin/onsale/OnSale';
 import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
 import Profile from './components/Profile/profile'
-
+import Categories from './components/Admin/categories/Categories'
+import Brands from './components/Admin/brands/Brands'
 import Pay from './components/Checkout/Pay';
 
 
