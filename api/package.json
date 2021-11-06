@@ -29,7 +29,7 @@
     "sequelize": "^6.8.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.13", 
+    "nodemon": "^2.0.13",
     "concurrently": "^6.3.0",
     "husky": "^7.0.4"
   }
