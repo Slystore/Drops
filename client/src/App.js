@@ -15,7 +15,7 @@ import updateBrand from './components/Forms/updateBrand'
 import Appointment from './components/Admin/appointment/Appointment';
 import Products from './components/Admin/products/Products';
 import Users from './components/Admin/Users';
-
+import ReviewForm from './components/Forms/createReview';
 import Orders from './components/Admin/orders/Orders';
 import Newsletter from './components/Admin/newsletter/Newsletter';
 import OnSale from './components/Admin/onsale/OnSale';
@@ -31,8 +31,6 @@ function App() {
 
   return (
     <div className="App">
-
-
       <Router>
         <Switch>
           <Route exact path="/" component={HomeView} />
@@ -45,12 +43,16 @@ function App() {
           <Route exact path="/catalogue/:id" component={ProductDetail} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
+          <Route exact path="/user/:userId/review/:productId/" render={ ({match}) => <ReviewForm/> } /> 
+
 
 
           <Route exact path="/admin/createCategory" component={FormCategory} />
           <Route exact path="/admin/category/:id/update" component={updateCategory} />
           <Route exact path="/admin/createBrand" component={FormBrand} />
-          <Route exact path="/admin/brand/:id/update" component={updateBrand} />
+          <Route exact path="/admin/brand/:id/update" component={updateBrand} />            
+          {/* <Route exact path="/admin/product/:id/update" render={ ({match}) => <FormProductUpdate/> } />  */}
+
         </Switch>
         <Switch>
           <div className='container'>

@@ -40,6 +40,13 @@ function ShopingCart() {
       history.push('/catalogue')
       window.location.replace('')
     }
+
+
+    
+  function handleCatalogue(){
+    history.push('/catalogue')
+    window.location.replace('')
+  }
   
     function handleUpdateCart(){
       let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
@@ -52,20 +59,21 @@ function ShopingCart() {
       }
     }
 
-    return (
-      <div className="ShoppingCartContainer">
-      <div className="ShoppingCartNav">
-          <div className="ShoppingCartLogo"><Link to="/"><img src={logo}/></Link></div>
-          <div className="ShoppingCartTitle"><h1>Shoping Cart</h1></div>
-          <div className="BtnShoppingCart">
-              <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button>
-              <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
-          </div>
-      </div>
-          { 
+ return (
+        <div className="ShoppingCartContainer">
+            <div className="ShoppingCartNav">
+                <div className="ShoppingCartLogo"><Link to="/"><img src={logo}/></Link></div>
+                <div className="ShoppingCartTitle"><h1>Shoping Cart</h1></div>
+                <div className="BtnShoppingCart">
+                    <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button>
+                    <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
+                    <button onClick={handleCatalogue} className="CartBack">Regresar</button>
+                </div>
+            </div>
+            {   
                items?.length?
               items.map((product) => {
-                // console.log("tomi",cartFill)
+              
                 return (
                   <CartItem
                     key={product.id}
