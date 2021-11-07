@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fillCartStorage } from "../../redux/cart/cartActions";
-import { cartResetTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import { cartResetTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router';
 import { clearCart } from '../../redux/cart/cartActions';
@@ -11,7 +11,8 @@ import CartItem from "./CartItem";
 import logo from '../../assets/Logo.png';
 import Checkout from '../Checkout/Checkout';
 import axios from 'axios'
-
+import { getToken } from './../../redux/users/userActions'
+import jwt_decode from "jwt-decode";
 import './ShoppingCart.css'
 
 var total = 0
@@ -21,15 +22,21 @@ function ShopingCart() {
     const { cartFill } = useSelector((state) => state.cartReducer);
     const [ cartStorage ] = useState(JSON.parse(window.localStorage.getItem("cartId")))
     const history = useHistory()
-    let user = JSON.parse(localStorage.getItem("storage"));
+    let x
+    if(localStorage.getItem('token')){
+         x = getToken();}
+    const decoded = x?jwt_decode(x): null;
     const {total} = useSelector((state) => state.cartReducersTomi);
     const {items} = useSelector((state) => state.cartReducersTomi);
+    let user = decoded?decoded.user.id: null
+console.log(user,"tomimix2")
 
   useEffect(() => {
-        // console.log("tb text", text)
-        dispatch(loadCartTomi())
-        dispatch(fillCartStorage(cartStorage));
-    }, [cartStorage]);
+    //  fusionCartTomi()
+      dispatch(loadCartTomi())
+    console.log("entrofusion")
+    // dispatch(fillCartStorage(cartStorage));
+  }, [dispatch, user]);
   
     const handleReset = () => {//resetea a cero carrito tanto si es user o guest 
       dispatch(cartResetTomi())
@@ -65,7 +72,7 @@ function ShopingCart() {
                 <div className="ShoppingCartLogo"><Link to="/"><img src={logo}/></Link></div>
                 <div className="ShoppingCartTitle"><h1>Shoping Cart</h1></div>
                 <div className="BtnShoppingCart">
-                    <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button>
+                    <button onClick={handleReset} className="CartItemDelete">Vaciar Carrito</button>
                     <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
                     <button onClick={handleCatalogue} className="CartBack">Regresar</button>
                 </div>
@@ -89,12 +96,12 @@ function ShopingCart() {
 
             <div>
                 <div className="TotalShoppingCart">
-                  <p>Total $650.55</p>
+                  <p>Total ${total}</p>
                   {/* {total} */}
                 </div>
                 <div style={{ height: '30px', padding: '10px 0', clear: 'both'}}><Divider /></div>
                 <div style={{margin: '0 0 20px 0'}}>
-                  <Link to="/pay" className="ContinuarBtnShoppingCart">Continuar</Link>
+                  <Link to={!user?"/login":"/pay"} className="ContinuarBtnShoppingCart">Continuar</Link>
                 </div>
             </div> 
 

@@ -24,7 +24,7 @@ function Catalogue() {
     dispatch(getCategories());
     dispatch(loadCartTomi())  
       dispatch(getRatings());  
- }, [dispatch, products]);
+ }, [dispatch]);
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);

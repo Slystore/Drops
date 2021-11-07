@@ -25,7 +25,6 @@ export const addToCartTomi = (id, quantity, price, name, image) => async (dispat
     image
   };
   let user3 = decoded?decoded.user.id: null
-  let user = JSON.parse(window.localStorage.getItem("storage"));
   let orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   try {
@@ -82,10 +81,10 @@ export const addToCartTomi = (id, quantity, price, name, image) => async (dispat
 export const removeFromCartTomi = (id) => (dispatch, getState) => {
 
   try {
-    let user = JSON.parse(localStorage.getItem("storage"));
+    let user3 = decoded?decoded.user.id: null
 
-    if (user?.uid) {
-      let info = { userId: user.uid, productId: id }// deleteOrder/:id ?como va
+    if (user3) {
+      let info = { userId: user3, productId: id }// deleteOrder/:id ?como va
       axios.delete("http://localhost:3001/api/orders/deleteOrder/", { data: { ...info } })
     }
     else {
@@ -107,12 +106,10 @@ export const removeFromCartTomi = (id) => (dispatch, getState) => {
 
 export const cartResetTomi = () => async (dispatch) => {
 
-
-  let user = JSON.parse(localStorage.getItem("storage"));
+  let user4 = decoded?decoded.user.id: null
   let orderId = JSON.parse(localStorage.getItem("orderId"));
 
-  
-  if (user?.uid && orderId) {
+  if (user4 && orderId) {
 
     console.log("entro aca wey")
     await axios.delete( "http://localhost:3001/api/orders/deleteOrder/" + orderId)
@@ -134,14 +131,16 @@ export const cartResetTomi = () => async (dispatch) => {
 
 
 export const changeProductQuantityTomi =
-  (id, quantity) => async (dispatch, getState) => {
+  (id, quantity, price, name, image) => async (dispatch, getState) => {
 
-    let user = JSON.parse(localStorage.getItem("storage"));
+    let user5 = decoded?decoded.user.id: null
 
-    if (user?.uid) {
+    if (user5) {
       let orderId = JSON.parse(localStorage.getItem("orderId"));
-      let info = { products: [{ productId: id, quantity }] }
+      let info = {userId: user5, products: [{ productId: id, quantity, price, name,image  }] }
+
       await axios.put("http://localhost:3001/api/orders/updateOrder/" + orderId, info)
+      // console.log("entro aca wey tomi")
     }
     else {
     //   let cart = getState().cart.items;
@@ -165,8 +164,7 @@ export const loadCartTomi = () =>
   async (dispatch) => {
   
     let user1 = decoded?decoded.user.id: null
-    let user = JSON.parse(localStorage.getItem("storage"));
-
+    console.log(user1,'tomimix')
     if (user1) {
        
       let orderId = JSON.parse(localStorage.getItem("orderId"));
@@ -177,7 +175,7 @@ export const loadCartTomi = () =>
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         cart = await axios.get("http://localhost:3001/api/orders/" + res.data.orderId)
       }
-console.log(cart.data, "tomiload")
+ console.log(cart.data, "tomiload")
       cart = cart?cart.data.products.map(e => {
         // console.log(e, "tomiload")viene productid quantity id userid
         return {
@@ -223,7 +221,6 @@ export const updateTotalTomi = () => {
 export const fusionCartTomi = async (id) => {
   try {
     let user2 = decoded?decoded.user.id: null
-    // let user = JSON.parse(localStorage.getItem("storage")) || id;
     let products = JSON.parse(localStorage.getItem("cart"));
 
     if (products) {

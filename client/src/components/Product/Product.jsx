@@ -38,7 +38,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
     
         let user = decoded?decoded.user.id: null
         if(user) {
-            //   console.log("entrouser",user)
+               console.log("entrouser",user)
            await  (fusionCartTomi(id))
             await  (loadCartTomi())
             await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image))
