@@ -231,8 +231,10 @@ html{
   animation-direction: alternate;
 }
 
-.container {
+.cuadro{  
   display: flex;
+  margin: 0 ;
+  padding: 0;
 }
 
 .dashboard{

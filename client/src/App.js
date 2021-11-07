@@ -45,7 +45,7 @@ function App() {
 
         </Switch>
         <Switch>
-          <div className='container'>
+          <div className='cuadro'>
             <Route path="/admin" component={Nav} />
 
             <div className='dashboard'>

@@ -62,7 +62,6 @@
 
 }
 .boxStockProduct {
-    border: 1px solid red;
 }
 .titleStockProduct {
     font-size: 15px;
@@ -75,6 +74,8 @@
     height: 30px;
     margin-left: 10px;
     width: 100px;
+    border: none;
+    outline: none;
 }
 .stockNumber {
     font-size: 15px;
@@ -101,4 +102,6 @@
 .btnCreate {
     width: 140px;
     height: 40px;
+    outline: none;
+    border: none;
 }
