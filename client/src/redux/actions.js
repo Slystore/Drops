@@ -14,7 +14,7 @@ export const GET_BRANCHS = 'GET_BRANCHS'
 
 export function getOrders(){
     return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/orders')
+        const { data } = await axios.get('/orders')
         return await dispatch({
             type: GET_ORDERS,
             payload: data
@@ -27,7 +27,7 @@ export function getOrders(){
 
 export function getWishList(){
     return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/wishlist')
+        const { data } = await axios.get('/wishlist')
         return await dispatch({
             type: GET_WISH_LISTS,
             payload: data
@@ -40,7 +40,7 @@ export function getWishList(){
 
 export function getProducts(){
     return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/products')
+        const { data } = await axios.get('/products')
         return await dispatch({
             type: GET_PRODUCTS,
             payload: data
@@ -55,7 +55,7 @@ export function getProducts(){
 
 export function getCategories(){
     return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/category')
+        const { data } = await axios.get('/category')
         return await dispatch({
             type: GET_CATEGORIES,
             payload: data
@@ -68,7 +68,7 @@ export function getCategories(){
 
 export function getBranchs(){
     return async (dispatch) => {
-        const { data } = await axios.get('http://localhost:3001/api/branch')
+        const { data } = await axios.get('/branch')
         return await dispatch({
             type: GET_BRANCHS,
             payload: data

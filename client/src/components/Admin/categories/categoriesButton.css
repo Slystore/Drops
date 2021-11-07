@@ -6,6 +6,7 @@
     background-color: rgb(246, 248, 244);
     width: auto;
     height: auto;
-    box-shadow: 40;
-    border-radius: 7;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0 , 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0 , 0, 0.75);
+    border-radius: 5px;
 }

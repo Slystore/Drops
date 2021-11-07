@@ -12,7 +12,7 @@ export const UPDATE_REVIEW = 'UPDATE_REVIEW'
 export function getReviews(pagina){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/reviews?size=10&page=${pagina}`)
+            const { data } = await axios.get(`/reviews?size=10&page=${pagina}`)
             return await dispatch({
                 type: GET_REVIEWS,
                 payload: data

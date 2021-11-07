@@ -7,7 +7,8 @@ import { productForm } from '../../../redux/products/productsAction';
 import { getBrands } from '../../../redux/brand/brandActions';
 import { getCategories } from '../../../redux/category/categoriesActions';
 import { getSizes } from '../../../redux/sizes/sizeActions';
-
+import swal from 'sweetalert';
+import "./postProduct.css"
 
 
 function validate(input) {
@@ -161,7 +162,7 @@ export default function FormProductCreate() {
         } else {
             console.log(input)
             dispatch(productForm(input))
-
+            swal("Good job!", "Producto Creado!", "success");
             setInput({
                 name: "",
                 image: "",
@@ -173,7 +174,7 @@ export default function FormProductCreate() {
                 sizeId: [],
                 categoryId: [],
             })
-            history.push('/')
+            history.push('/admin/products')
         }
     }
 
@@ -189,54 +190,97 @@ export default function FormProductCreate() {
         <div >
 
             <form onSubmit={e => handleSubmit(e)}>
+                <div className='formProduct'>
+                    <div className='firstBoxProduct'>
+                        <div className='boxInputProduct'>
+                            <p className='titleProduct'> Nombre </p>
+                            <input className='inputProduct' type={'text'} name='name' onChange={handleChangeForm} autoComplete='off' />
+                            {errors.name && (<p className='errorText'>{errors.name}</p>)}
+                        </div>
 
-                <div style={{ width: 500 }}>
-                    <label> Nombre <input type={'text'} name='name' onChange={handleChangeForm} autoComplete='off' /></label>
-                    {errors.name && (<p>{errors.name}</p>)}
+                        <div className='boxInputProduct'>
+                            <p className='titleProduct'> Imagen </p>
+                            <input className='inputProduct' type={'text'} name='image' onChange={handleChangeForm} />
+                            {errors.image && (<p className='errorText'>{errors.image}</p>)}
+                        </div>
 
-                    <label> Imagen <input type={'text'} name='image' onChange={handleChangeForm} /></label>
-                    {errors.image && (<p>{errors.image}</p>)}
+                        <div className='boxInputProduct'>
+                            <p className='titleProduct'> Price </p>
+                            <input className='inputProduct' type={'number'} name='price' onChange={handleChangeForm} />
+                            {errors.price && (<p className='errorText'>{errors.price}</p>)}
+                        </div>
+                        <div className='boxTextarea'>
+                            <textarea className='textarea' name='description' onChange={handleChangeForm} placeholder='Describe the product' />
+                            {errors.description && (<p className='errorText'>{errors.description}</p>)}
+                        </div>
+                    </div>
+                    <div className='secondBoxProduct'>
 
-                    <textarea name='description' onChange={handleChangeForm} placeholder='Describe the product' />
-                    {errors.description && (<p>{errors.description}</p>)}
+                        <div className='boxSelectProduct'>
+                            <select className='selectProduct' onChange={(e) => agregarBrand(e)}>
+                                <option> Marcas </option>
+                                {brands && brands.map(e => <option key={e.id} value={e.id}> {e.name} </option>)}
+                            </select>
+                        </div>
 
-                    <label> Price <input type={'number'} name='price' onChange={handleChangeForm} /></label>
-                    {errors.price && (<p>{errors.price}</p>)}
+                        <div className='boxSelectProduct'>
+                            <select className='selectProduct' onChange={(e) => handleChangeCategory(e)}>
+                                <option> Categoria </option>
+                                {categories && categories.map(e => <option key={e.id} value={e.name}> {e.name} </option>)}
+                            </select>
+                        </div>
 
-                    <select onChange={(e) => agregarBrand(e)}>
-                        <option> Brand </option>
-                        {brands && brands.map(e => <option key={e.id} value={e.id}> {e.name} </option>)}
-                    </select>
+                        <div className='boxSelectProduct'>
+                            <select className='selectProduct' onChange={(e) => agregarDieta(e)}>
+                                <option > Estado </option>
+                                <option> disponible </option>
+                                <option> no disponible </option>
+                            </select>
+                        </div>
 
-                    <select onChange={(e) => handleChangeCategory(e)}>
-                        <option> Category </option>
-                        {categories && categories.map(e => <option key={e.id} value={e.name}> {e.name} </option>)}
-                    </select>
+                        <div className='boxSelectProduct'>
+                            <select className='selectProduct' onChange={(e) => handleTalle(e)}>
+                                <option> Tallas </option>
+                                {sizes && sizes.map(e => <option key={e.id} value={e.number}> {e.number} </option>)}
 
-                    <select onChange={(e) => agregarDieta(e)}>
-                        <option> Status </option>
-                        <option> disponible </option>
-                        <option> no disponible </option>
-                    </select>
+                            </select>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div>
-                    <select onChange={(e) => handleTalle(e)}>
-                        <option> Size </option>
-                        {sizes && sizes.map(e => <option key={e.id} value={e.number}> {e.number} </option>)}
+                <div className='boxStockProduct'>
+                    <p className='titleStockProduct'>Existencias </p>
+                    <input className='inputProduct' type={'number'} name='stock' onChange={(e) => handleCantidad(e)} />
+                    <button className='buttonStock' onClick={e => agregarStock(e)}> Agregar </button>
 
-                    </select>
 
-                    <label> Stock <input type={'number'} name='stock' onChange={(e) => handleCantidad(e)} /></label>
-                    <button onClick={e => agregarStock(e)}> Agregar stock </button>
+
+                    <div>
+                        {
+                            talleUi && talleUi.map(el => {
+                                return (
+                                    <div style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
+                                        <p className='stockNumber' key={el[0]}> Talla:{el[0]} - Cantidad:{el[1]}
+                                            <button className='deleteStock' onClick={() => deleteCategory(el)}> X </button>
+                                        </p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+
+
+
                 </div>
-
-                <button type='submit' id='submit' disabled={prueba ? false : true}> Crear</button>
-
-
+                <div className='boxBtnCreate'>
+                    <button className='btnCreate' type='submit' id='submit' disabled={prueba ? false : true}> Crear</button>
+                </div>
             </form>
 
-            <div>
+
+
+            {/* <div>
                 {
                     input.categoryId && input.categoryId.map(el => {
                         return (
@@ -247,21 +291,8 @@ export default function FormProductCreate() {
                         )
                     })
                 }
-            </div>
+            </div> */}
 
-            <div>
-                {
-                    talleUi && talleUi.map(el => {
-                        return (
-                            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                                <p key={el[0]}> {el[0]} </p>
-                                <p key={el[1]}> {el[1]} </p>
-                                <button onClick={() => deleteCategory(el)}> X </button>
-                            </div>
-                        )
-                    })
-                }
-            </div>
         </div>
 
 
