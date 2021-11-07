@@ -18,9 +18,12 @@ import OnSale from './components/Admin/onsale/OnSale';
 import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
 import Profile from './components/Profile/profile'
+// import FormProductUpdate from './components/Forms/updateProduct'
+
 import Categories from './components/Admin/categories/Categories'
 import Brands from './components/Admin/brands/Brands'
 import Pay from './components/Checkout/Pay';
+import ShipmentForm from './components/Forms/orders/ShipmentForm.jsx';
 
 
 
@@ -41,6 +44,7 @@ function App() {
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />
           <Route exact path="/user/:userId/review/:productId/" render={({ match }) => <ReviewForm />} />
+          <Route exact path="/user/:userId/shipmentForm/" component={ShipmentForm} />
 
 
         </Switch>
