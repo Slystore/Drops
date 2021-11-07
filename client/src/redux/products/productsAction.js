@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_PRODUCT_STOCK_ID="GET_PRODUCT_STOCK_ID";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
@@ -8,6 +9,9 @@ export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
 export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
 export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
 export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
+export const SAVE_FILTERED_DATA_BY_CATEGORY = " SAVE_FILTERED_DATA_BY_CATEGORY";
+export const SAVE_FILTERED_DATA_BY_BRAND = " SAVE_FILTERED_DATA_BY_BRAND";
+export const RESTORE_DATA = " RESTORE_DATA";
 export const FILTER_BY_PRICE = " FILTER_BY_PRICE";
 export const FILTERS_RESET = " FILTERS_RESET";
 export const PRODUCT_FORM = 'PRODUCT_FORM'
@@ -32,7 +36,7 @@ export function getProductsById(id){
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`/products/${id}`)
-            console.log('estoy disparando la action ',data)
+            // console.log('estoy disparando la action ',data)
             return await dispatch({
                 type: GET_PRODUCT_BY_ID,
                 payload: data
@@ -46,10 +50,8 @@ export function getProductsById(id){
 export function productForm(form){
     return async(dispatch) => {
         const { data } = await axios.post(`/products/createProduct`, form)
-        return await dispatch({
-            type: PRODUCT_FORM,
-            payload: data
-        })
+        return  data
+        
     }
 }
 
@@ -72,16 +74,67 @@ export const postProduct = async(payload) => {
 };
 
 export function filterBrand(payload) {
-    return {
-        type: FILTER_BY_BRAND,
-        payload,
-    };
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: FILTER_BY_BRAND,
+                payload
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
 }
 export function filterCategory(payload) {
-    return {
-        type: FILTER_BY_CATEGORY,
-        payload,
-    };
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: FILTER_BY_CATEGORY,
+                payload
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
+}
+
+export function saveFilteredDataCategory(payload) {
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: SAVE_FILTERED_DATA_BY_CATEGORY,
+                payload
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
+}
+
+export function saveFilteredDataBrand(payload) {
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: SAVE_FILTERED_DATA_BY_BRAND,
+                payload
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
+}
+
+export function restoreData(payload){
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: RESTORE_DATA,
+                payload
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
 }
 
 export function filterPrice(payload) {
@@ -92,7 +145,17 @@ export function filterPrice(payload) {
 }
 
 export function filtersReset() {
-    return getProducts()
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`/products`)
+            return await dispatch({
+                type: FILTERS_RESET,
+                payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 export function cleanDetail (payload){

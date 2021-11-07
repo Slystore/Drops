@@ -13,7 +13,7 @@ export default function Product({ name, id, price, image, addToCart }) {
     const { ratings } = useSelector((state) => state.ratingReducer);
     const data = ratings.filter(e => e.id === id)
     // console.log(data.name, data)
-    console.log(data.name, data)
+    // console.log(data.name, data)
     const dispatch = useDispatch();
 
     useEffect(() => {
