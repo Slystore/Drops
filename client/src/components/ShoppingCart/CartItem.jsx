@@ -5,16 +5,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { decrementCartStorage, clearCart, incrementCartStorage, deleteItemCartStorage } from '../../redux/cart/cartActions';
 import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
-
+import { getToken } from './../../redux/users/userActions'
+import jwt_decode from "jwt-decode";
 import {  recoveryCart } from '../../redux/cart/cartActions';
 
 import Divider from '@mui/material/Divider';
 
 import './CartItem.css'
+import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartTomi } from '../../redux/cartTomi/cartActionTomi';
 
 export default function CartItem  ({image, price, title, id, quantity, name, fillState}) {
 //  const {cart} = useSelector(state => state.cartReducer)
-   // const { id } = props.match.params
+   //  const { id } = props.match.params
+    console.log(id,"tomicomponcart")
    const history = useHistory()
    // const [stateCart, setStateCart] = React.useState([])
 
@@ -36,15 +39,28 @@ export default function CartItem  ({image, price, title, id, quantity, name, fil
    function handleIncrement(){
       dispatch(incrementCartStorage(id))
    } 
-
+   const handleChangeQuantity = async (e) => {
+      const { value } = e.target;
+      await dispatch(changeProductQuantityTomi(id, Number(value), price, name, image))
+      await dispatch(loadCartTomi())
+    };
    function handleDecrement(){
       dispatch(decrementCartStorage(id))
    } 
    
    function handleDeleteItemCart(){
-      dispatch(deleteItemCartStorage(id))
+      // dispatch(deleteItemCartStorage(id))
+dispatch(removeFromCartTomi(id))
+let x
+    if(localStorage.getItem('token')){
+         x = getToken();}
+    const decoded = x?jwt_decode(x): null;
+    let user = decoded?decoded.user.id: null
+       if(user){ dispatch(loadCartTomi());}
    } 
-
+   const handleReset = () => {//resetea a cero carrito tanto si es user o guest 
+      dispatch(cartResetTomi())
+    }
    // function handleClearCart(){
    //    dispatch(clearCart())
    //    localStorage.removeItem('cartId');
@@ -92,17 +108,27 @@ export default function CartItem  ({image, price, title, id, quantity, name, fil
             <div className="Row">
                    <div className="QuantityTitle"><h2>Cantidad</h2></div>
                    <div className="QuantityNumber"><h2>{quantity}</h2></div>
-                   <div className="QuantityButtons">
+                   <input
+            type="number"
+            defaultValue={quantity}//manejar stock aca con max
+            min={1}
+            // max={detail.stock}
+            onChange={handleChangeQuantity}
+          />
+                   {/* <div className="QuantityButtons">
                      <button onClick={handleDecrement} className={quantity > 1? 'CartItemButton':'CartItemButtonDisabled'} >-</button>
                      <button onClick={handleIncrement} className="CartItemButton" >+</button>
                   </div>
             </div>
-         </div>
+         </div> */}
 
          <div className="CartPrice">
                <div className="BtnCart">
                   <button onClick={handleDeleteItemCart} className="CartItemButtonOption">Quitar de Carrito</button>
                </div>
+               {/* <div className="BtnCart">
+                  <button onClick={handleReset} className="CartItemDelete">Vaciar Carrito</button>
+               </div> */}
                <div className="BtnCart">
                   <button onClick="" className="CartItemButtonOption">Guardar para Después</button>
                </div>
@@ -113,10 +139,11 @@ export default function CartItem  ({image, price, title, id, quantity, name, fil
 
          <div style={{ marginTop:10, clear: 'both'}}><Divider /></div>
       </div>
-     
+     </div>
+     </div>
    </div>
    )
-}
+};
 
 
 

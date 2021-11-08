@@ -1,50 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Chekout from './Checkout';
+import Checkout from './Checkout';
 import axios from 'axios'
 import './Pay.css';
-var total = 0
-var i = 0
+import jwt_decode from "jwt-decode";
+import { getToken } from '../../redux/users/userActions';
+
 function Pay() {
-
     const [datos, setDatos] = useState("")
-
-    const { cartFill } = useSelector((state) => state.cartReducer);
-
-    console.log("Carrito", cartFill)
+    const orderId = JSON.parse(window.localStorage.getItem("orderId"))
+    const {total} = useSelector((state) => state.cartReducersTomi)
+    const {items} = useSelector((state) => state.cartReducersTomi);
+    let x
+    if(localStorage.getItem('token')){
+         x = getToken();}
+    const decoded = x?jwt_decode(x): null;
+    let userId = decoded?decoded.user.id: null
 
     useEffect(()=>{
-    axios.get("http://localhost:3001/api/mercadopago")
+        if(userId){
+    axios.get("http://localhost:3001/api/mercadopago/" + userId)
         .then((data)=>{
         setDatos(data.data)
-        console.log('Contenido de data:', data)
-        // console.info('Contenido de data:', data)
-        }).catch(err => console.error(err)) 
-    },[])
-
-
+        console.log('numero de orden:', data)
+     
+        }).catch(err => console.error(err)) }
+    },[userId])
+    console.log('datos ID', datos)
+    console.log('ORDER ID', orderId)
+    console.log('userID', userId)
+    console.log('products', items)
+    console.log('totales', total)
 
     return (
         <div className="PayContainer">
-            {
-               
-                 cartFill.map((product) => {
-                    // console.log("tomi",cartFill)
-                    i++
-                    total = total + parseInt(product.price)
-                    console.log("total",total)
-                    console.log("vuelta",i)
-                    return (
-                        <div>
-                            <div>{product.name}</div>
-                            <div>{product.price}</div>
-                            <div>{product.quantity}</div>
-                        </div>
-                      
-                    )})
-            }
-            <div>{total}</div>
-            <div><a href={datos.init_point} >Pagar</a></div>
+             <Checkout products={items} total={total} data={datos}/>
         </div>
     )
 }

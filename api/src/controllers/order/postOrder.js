@@ -22,7 +22,7 @@ const postOrder = async (req, res) => {
     if (!getOrder) {
       const user = await Users.findOne({
         where: {
-          id: userId,
+          UserId: userId,
         },
       });
 

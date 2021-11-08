@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import "./loginStyles.css";
+import { useDispatch } from "react-redux";
 import { Form, Field, ErrorMessage, Formik } from "formik";
 import { userLogin, userLoginGoogle } from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
+import { getToken } from './../../redux/users/userActions'
+import jwt_decode from "jwt-decode";
+import { fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+
 export default function FormLogin() {
+  const dispatch = useDispatch();
   const [logeado, setLogeado] = useState({
     msg: "",
     state: false,
   });
   const history = useHistory();
+  let x
+    if(localStorage.getItem('token')){
+         x = getToken();}
+    const decoded = x?jwt_decode(x): null;
+    let user = decoded?decoded.user.id: null
+
   const responseGoogle = async (response) => {
     try {
       console.log("a ver la response", response);
@@ -24,6 +36,7 @@ export default function FormLogin() {
       console.log("rompo en response google", err);
     }
   };
+
   return (
     <div className="log-Cont">
       <div className="log-Box">
@@ -104,7 +117,7 @@ export default function FormLogin() {
                   />
                 </div>
                 <div className="data-Field">
-                  <button className="btn-sub" type="submit">
+                  <button className="btn-sub" type="submit" >
                     Login
                   </button>
                 </div>

@@ -7,7 +7,7 @@ export const userRegister = async (payload) => {
   try {
     console.log("estoy entrando", payload);
     let { data } = await axios.post(
-      "/register",
+      "http://localhost:3001/api/register",
       payload
     );
     return data;
@@ -20,7 +20,7 @@ export const userLoginGoogle = async (payload) => {
   console.log("a ver que me llega de paylaod", payload);
   try {
     let { data } = await axios.post(
-      "/googleLogin",
+      "http://localhost:3001/api/googleLogin",
       payload
     );
     return data;
@@ -31,7 +31,7 @@ export const userLoginGoogle = async (payload) => {
 
 export const userLogin = async (payload) => {
   try {
-    let { data } = await axios.post("/login", payload);
+    let { data } = await axios.post("http://localhost:3001/api/login", payload);
     if (data.token) {
       let token = data.token;
       localStorage.setItem("token", token);
@@ -57,7 +57,7 @@ export const editUsers = async(userUpdate,id) =>{
   console.log('este es el userUpdate de la action ',userUpdate)
   try{
 
-    let {data} = await axios.put(`/edit/${id}`,userUpdate)
+    let {data} = await axios.put(`http://localhost:3001/api/edit/${id}`,userUpdate)
     return data 
   }catch(err){
     console.log('rompo en la action de editUsers',err)
@@ -68,7 +68,7 @@ export const getUserId = (id)=>{
   return async function(dispatch){
     console.log('data de la action',id)
     try{
-      let {data} = await axios.get(`/allUser/${id}`)
+      let {data} = await axios.get(`http://localhost:3001/api/allUser/${id}`)
       return await dispatch({
         type:GET_USER_ID,
         payload:data

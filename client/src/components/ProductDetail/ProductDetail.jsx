@@ -7,13 +7,14 @@ import {
   getProductsById,
   getProductStockById,
 } from "../../redux/products/productsAction";
-
+import jwt_decode from "jwt-decode";
+import { getToken } from '../../redux/users/userActions';
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import ProductReview from "./Reviews";
-
+import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 import "./ProductDetail.css";
 
 function ProductDetail(props) {
@@ -23,7 +24,12 @@ function ProductDetail(props) {
   const { id } = props.match.params;
   const { productId } = useSelector((state) => state.productReducer);
   const { stockById } = useSelector((state) => state.productReducer);
-  
+  const {items} = useSelector(store => store.cartReducersTomi);
+  let x
+if(localStorage.getItem('token')){
+     x = getToken();}
+const decoded = x?jwt_decode(x): null;
+
   let [bul, setBul] = useState(false);
   
   useEffect(() => {
@@ -45,8 +51,20 @@ function ProductDetail(props) {
       </div>
     ));
 
-  function addCart(e) {
+  const  addCart = async (e) => {
     e.preventDefault();
+    let product = items?.find( e => e.id === id)
+    
+    let user = decoded?decoded.user.id: null
+    if(user) {
+          // console.log("entrouser",user)
+       await  (fusionCartTomi(id))
+        await  (loadCartTomi())
+        await dispatch(addToCartTomi(id, 1,
+          productId.price, productId.name,productId.image))
+    }
+    await dispatch(addToCartTomi(id,  1,
+      productId.price, productId.name,productId.image))
   }
 
   function handleReviews(e) {

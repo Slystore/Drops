@@ -7,15 +7,21 @@ import { cleanDetail, getProductsById, getProductStockById } from '../../redux/p
 import Rating from '@mui/material/Rating';
 import './Product.css';
 import { Link } from 'react-router-dom';
+import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import jwt_decode from "jwt-decode";
+import { getToken } from '../../redux/users/userActions';
 
-export default function Product({ name, id, price, image, addToCart }) {
-
-    const { ratings } = useSelector((state) => state.ratingReducer);
+export default function Product({ name, id, price, image }) {
+    const {items} = useSelector(store => store.cartReducersTomi);
+const dispatch = useDispatch();
+let x
+if(localStorage.getItem('token')){
+     x = getToken();}
+const decoded = x?jwt_decode(x): null;
+const { ratings } = useSelector((state) => state.ratingReducer);
     const data = ratings.filter(e => e.id === id)
     // console.log(data.name, data)
-    // console.log(data.name, data)
-    const dispatch = useDispatch();
-
+   
     useEffect(() => {
         dispatch(getProductsById(id))
         dispatch(getProductStockById(id))
@@ -25,9 +31,45 @@ export default function Product({ name, id, price, image, addToCart }) {
     const {productId} = useSelector((state) => state.productReducer);
     const {stockById} = useSelector((state) => state.productReducer);
 
+// console.log("tomiUser",decoded)
+    const handleAddToCart = async () => {
     
-    // console.log("DATA PRODUCTSID",productId.name)
-
+        let product = items?.find( e => e.id === id)
+    
+        let user = decoded?decoded.user.id: null
+        if(user) {
+               console.log("entrouser",user)
+           await  (fusionCartTomi(id))
+            await  (loadCartTomi())
+            await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image))
+        }
+        // if(cart && product?.quantity >= stock) {
+          
+        //   Swal.fire(
+        //     {
+        //       text: 'Ups! Alcanzo el maximo del stock',
+        //       icon: 'warning', 
+        //       width:'20rem', 
+        //       timer: '3000', 
+        //       showConfirmButton: false 
+        //     }
+        //     )
+        //     history.push("/cart")
+        //   }
+        //   else {
+          await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image));
+        //   Swal.fire(
+        //     {
+        //       text:'Se agrego al carrito',
+        //       icon: 'success', 
+        //       width:'20rem', 
+        //       timer: '3000', 
+        //       showConfirmButton: false 
+        //     }
+        //   )
+        // }
+      
+      };
     return (
         <div className="ProductContainer" >
             <div className="Zapatilla">
@@ -73,7 +115,7 @@ export default function Product({ name, id, price, image, addToCart }) {
                                     '&:hover':{
                                         color:'#9E0000'
                                     }}}
-                            onClick={() => addToCart(id)}/>
+                            onClick={() => handleAddToCart(id)}/>
                     </div></Link>
                     <div className="IconShopping hvr-pulse-grow">
                     <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
