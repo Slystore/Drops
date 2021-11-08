@@ -82,10 +82,12 @@ export const removeFromCartTomi = (id) => (dispatch, getState) => {
 
   try {
     let user3 = decoded?decoded.user.id: null
-
+    let orderId = JSON.parse(localStorage.getItem("orderId"));
+    console.log(user3, id, "tomideletefromcart")
     if (user3) {
+      // console.log(user3, id, "tomideletefromcart")
       let info = { userId: user3, productId: id }// deleteOrder/:id ?como va
-      axios.delete("http://localhost:3001/api/orders/deleteOrder/", { data: { ...info } })
+      axios.delete("http://localhost:3001/api/orders/deleteOrder/product/" + orderId, {info  })
     }
     else {
     //   let cart = getState().cart.items;
@@ -232,7 +234,7 @@ export const fusionCartTomi = async (id) => {
         }
       })
     }
-// console.log(products,"tomi")
+ console.log(products,user2,id,"tomisubmit")
     if (user2) {
 
       if (products?.length > 0) {

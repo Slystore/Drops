@@ -47,7 +47,15 @@ console.log(user,"tomimix2")
       history.push('/catalogue')
       window.location.replace('')
     }
-
+    async function  handleSubmit (){
+    
+      if(user){
+    await (fusionCartTomi(user))
+    await dispatch(loadCartTomi())
+    console.log(user,"logintomi")
+   
+    }
+    }
 
     
   function handleCatalogue(){
@@ -80,7 +88,6 @@ console.log(user,"tomimix2")
             {   
                items?.length?
               items.map((product) => {
-              
                 return (
                   <CartItem
                     key={product.id}
@@ -101,14 +108,15 @@ console.log(user,"tomimix2")
                 </div>
                 <div style={{ height: '30px', padding: '10px 0', clear: 'both'}}><Divider /></div>
                 <div style={{margin: '0 0 20px 0'}}>
-                  <Link to={!user?"/login":"/pay"} className="ContinuarBtnShoppingCart">Continuar</Link>
+                  <Link to={!user?"/login":"/shipment"} className="ContinuarBtnShoppingCart" onClick={handleSubmit}>
+                    Continuar</Link>
                 </div>
             </div> 
 
         </div>
       )
 
-
+//!user?"/login":
 
 
   // const history = useHistory()

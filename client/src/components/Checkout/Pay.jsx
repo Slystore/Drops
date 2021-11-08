@@ -9,9 +9,9 @@ function Pay() {
 
     const [datos, setDatos] = useState("")
 
-    const { cartFill } = useSelector((state) => state.cartReducer);
+    const {items} = useSelector((state) => state.cartReducersTomi);
 
-    console.log("Carrito", cartFill)
+    // console.log("Carrito", cartFill)
 
     useEffect(()=>{
     axios.get("http://localhost:3001/api/mercadopago")
@@ -27,13 +27,13 @@ function Pay() {
     return (
         <div className="PayContainer">
             {
-               
-                 cartFill.map((product) => {
+               items &&
+                 items.map((product) => {
                     // console.log("tomi",cartFill)
                     i++
                     total = total + parseInt(product.price)
-                    console.log("total",total)
-                    console.log("vuelta",i)
+                    // console.log("total",total)
+                    // console.log("vuelta",i)
                     return (
                         <div>
                             <div>{product.name}</div>

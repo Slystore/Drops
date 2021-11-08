@@ -55,9 +55,7 @@ module.exports = (Sequelize) => {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
               },
-            shipping_Address: {
-                type: DataTypes.STRING,
-            },
+        
             shippingState: {
                 type: DataTypes.ENUM(
                   "not initialized",

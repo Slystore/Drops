@@ -16,7 +16,8 @@ import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartT
 
 export default function CartItem  ({image, price, title, id, quantity, name, fillState}) {
 //  const {cart} = useSelector(state => state.cartReducer)
-   // const { id } = props.match.params
+   //  const { id } = props.match.params
+    console.log(id,"tomicomponcart")
    const history = useHistory()
    // const [stateCart, setStateCart] = React.useState([])
 
