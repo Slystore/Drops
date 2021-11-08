@@ -79,7 +79,7 @@ export default function ShipmentForm() {
         else {
             console.log(input,orderId,"shippingform")
             try {
-                 const {data} = await axios.put(`http://localhost:3001/api/orders/updateOrder/${orderId}`, input )
+                 const {data} = await axios.put(`/orders/updateOrder/${orderId}`, input )
              console.log(data)
             history.push('/pay')        
               }catch (error){
