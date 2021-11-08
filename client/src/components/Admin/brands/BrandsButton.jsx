@@ -16,7 +16,7 @@ const BrandsButtons = () => {
     return (
         <Grid className="navButton">
             <SiNike className="iconButtonNav" />
-            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} type='button' className="buttonButton" onClick={handleOpen} variant='contained'>Crear Marca</Button>
+            <Button style={{ backgroundColor: '#555' }} type='button' className="buttonButton" onClick={handleOpen} variant='contained'>Crear Marca</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"

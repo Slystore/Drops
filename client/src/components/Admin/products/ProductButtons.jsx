@@ -19,7 +19,7 @@ const ProductButtons = () => {
         <Grid className="navButton">
             <GiConverseShoe className="iconButtonNav" />
 
-            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
+            <Button style={{ backgroundColor: '#555', }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
