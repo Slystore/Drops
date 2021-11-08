@@ -23,7 +23,7 @@ import Profile from './components/Profile/profile'
 import Categories from './components/Admin/categories/Categories'
 import Brands from './components/Admin/brands/Brands'
 import Pay from './components/Checkout/Pay';
-import ShipmentForm from './components/Forms/orders/ShipmentForm.jsx';
+import ShipmentForm from './components/Checkout/ShipmentForm.jsx';
 
 
 
@@ -40,6 +40,7 @@ function App() {
           <Route exact path="/login" component={FormLogin} />
           <Route exact path="/register" component={FormRegister} />
           <Route exact path="/pay" component={Pay} />
+          <Route exact path="/shipment" component={ShipmentForm} />
           <Route exact path="/catalogue/:id" component={ProductDetail} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/catalogue/:id/reviews" component={ProductDetail} />

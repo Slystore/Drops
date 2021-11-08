@@ -11,6 +11,7 @@ import { getCategories } from "../../redux/category/categoriesActions";
 import { Link } from "react-router-dom";
 import './Catalogue.css';
 import {addToCart, storage} from '../../redux/cart/cartActions';
+import { addToCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 import { getRatings } from "../../redux/rating/ratingActions";
 import { filterPrice } from './../../redux/products/productsAction';
 
@@ -20,9 +21,10 @@ function Catalogue() {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getBrands());
-    dispatch(getCategories());  
-    dispatch(getRatings());  
- }, [dispatch, products]);
+    dispatch(getCategories());
+    dispatch(loadCartTomi())  
+      dispatch(getRatings());  
+ }, [dispatch]);
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
@@ -79,9 +81,10 @@ function Catalogue() {
   }
   
   const handleAddCart = (id) => {
-    dispatch (addToCart(id))
-    dispatch(storage(id));
-  }
+  //   dispatch (addToCart(id))
+  //  dispatch(storage(id));
+  //  dispatch(addToCartTomi(id))
+}
 
 const handlePrice = (e) => {
   e.preventDefault()
@@ -171,8 +174,7 @@ const deleteFilter = (data) => {
                         price={product.price}
                         status={product.status}
                         description={product.description}
-                        key={product.id}
-                        addToCart = {handleAddCart}  
+                        // addToCart = {handleAddCart}  
                       />
                   </div>
                 </Link>)
