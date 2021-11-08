@@ -35,11 +35,11 @@ function Newsletter() {
     }
 
     dispatch(postNewsletter(prueba))
-    newsletter.innerHTML = 'Gracias por tu suscripcion!'
+    newsletter.innerHTML = 'Gracias por tu suscripción!'
   }
     return (
         <div className="NewsletterContainer">
-            <Box>
+            <Box sx={{width:'80%'}}>
                 <Typography variant="h4"><p  className="NewsletterTitle">Newsletter</p></Typography>
                 <Typography variant="h5"><p className="NewsletterSubTitle">Regístrate y recibe por mail promociones y entérate antes de los nuevos productos.</p></Typography>
 

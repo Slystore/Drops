@@ -1,0 +1,107 @@
+.formProduct {
+    display: flex;
+}
+
+.boxInputProduct {
+    height: 70px;
+    width: 270px;
+}
+.titleProduct {
+    font-size: 15px;
+    margin: 0px 0 0 10px;
+    color: #555;
+    width: 60px;
+
+}
+.inputProduct {
+    margin: 0 0 0 10px;
+    outline: none;
+    height: 30px;
+    width: 220px;
+    border: 1px solid  #555;
+    border-radius: 3px ;
+
+}
+.errorText {
+    font-size: 13px;
+    margin: 0 0 0 10px;
+    color: red;
+    width: 220px;
+}
+.secondBoxProduct {
+    width: 50%;
+}
+
+.selectProduct {
+    outline: none;
+    height: 30px;
+    width: 220px;
+    border: 1px solid  #555;
+    border-radius: 3px ;
+}
+.boxSelectProduct {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    width: 235px;
+}
+
+.boxTextarea {
+    height: 90px;
+    margin: 0 0 0 10px;
+
+}
+
+.textarea {
+    width: 220px;
+    height: 70px;
+    border: none;
+    outline: none;
+    border: 1px solid  #555;
+
+
+}
+.boxStockProduct {
+}
+.titleStockProduct {
+    font-size: 15px;
+    margin: 0px 0 0 10px;
+    color: #555;
+    width: 60px;
+}
+
+.buttonStock {
+    height: 30px;
+    margin-left: 10px;
+    width: 100px;
+    border: none;
+    outline: none;
+}
+.stockNumber {
+    font-size: 15px;
+    margin: 0px;
+}
+
+.deleteStock {
+    background-color: red;
+    color: white;
+    outline: none;
+    border:none;
+    width: 15px;
+    height: 16px;
+    border-radius: 10px;
+}
+
+.boxBtnCreate {
+    margin-top: 15px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnCreate {
+    width: 140px;
+    height: 40px;
+    outline: none;
+    border: none;
+}

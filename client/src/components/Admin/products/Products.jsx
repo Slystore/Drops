@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { getProducts } from "../../../redux/products/productsAction"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid } from '@mui/material';
 import ProductButtons from './ProductButtons';
+import ProductUpdateButton from "./ProductUpdateButton"
 
 const Products = () => {
     const dispatch = useDispatch()
@@ -45,7 +46,7 @@ const Products = () => {
                                         <TableCell align="left">{el.price}</TableCell>
                                         <TableCell align="left">{el.status}</TableCell>
                                         <TableCell align="left">
-                                            <Button variant="contained" style={{ backgroundColor: "rgb(240, 240, 255)", color: "blue" }} >Editar</Button>
+                                            <ProductUpdateButton />
                                         </TableCell>
                                     </TableRow>
                                 )

@@ -227,7 +227,19 @@ ul li:hover, ul li a:hover{
     /* border: thin dotted #f00; */
 }
 
+@media (min-width: 1400px) {
+
+    .NavContainerMobile{
+        display: none;
+    }
+    
+}
+
 @media (min-width: 1200px) and (max-width: 1399px) {
+
+    .NavContainerMobile{
+        display: none;
+    }
 
     .Logo{
         width: 120px;
@@ -276,6 +288,165 @@ ul li:hover, ul li a:hover{
         border-radius: 20px;
         padding: 5px;
         font-size: 12px;
+    }
+    
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .NavContainer{
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .MenuContainer, .ToolsContainer, .LogoContainer{
+        display: none;
+    }
+
+    .NavContainerMobile{
+        width: 90vw;
+        margin-top: 6vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /* border: thin dotted #f00; */
+    } 
+    
+    .LogoNavMobile{
+        width: 90vw;
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        justify-content: flex-start;
+        /* border: thin dotted #0f0; */
+    }
+    
+    .NavContainerMobile img{
+        width: 15vw;
+        /* border: thin dotted #f00; */
+    }
+    
+    .MenuNavMobile{
+        width: 10vw;
+        display: flex;
+        flex-direction: row;
+        align-items: right;
+        justify-content: space-between;
+        /* border: thin dotted #00f; */
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .NavContainer{
+        height: 120px;
+        max-height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .MenuContainer, .ToolsContainer, .LogoContainer{
+        display: none;
+    }
+
+    .NavContainerMobile{
+        width: 90vw;
+        margin-top: 3.5vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /* border: thin dotted #f00; */
+    } 
+    
+    .LogoNavMobile{
+        width: 90vw;
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        justify-content: flex-start;
+        /* border: thin dotted #0f0; */
+    }
+    
+    .NavContainerMobile img{
+        width: 22vw;
+        /* border: thin dotted #f00; */
+    }
+    
+    .MenuNavMobile{
+        width: 10vw;
+        display: flex;
+        flex-direction: row;
+        align-items: right;
+        justify-content: space-between;
+        /* border: thin dotted #00f; */
+    }
+    
+}
+
+@media (min-width: 576px) and (max-width:767px){
+
+    .MenuContainer, .ToolsContainer, .LogoContainer{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 575px){
+
+    .NavContainer{
+        height: 70px;
+        max-height: 100px;
+        margin-bottom: 1vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .MenuContainer, .ToolsContainer, .LogoContainer{
+        display: none;
+    }
+
+    .NavContainerMobile{
+        width: 90vw;
+        margin-top: 2.5vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /* border: thin dotted #f00; */
+    } 
+    
+    .LogoNavMobile{
+        width: 90vw;
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        justify-content: flex-start;
+        /* border: thin dotted #0f0; */
+    }
+    
+    .NavContainerMobile img{
+        /* width: 35vw; */
+        width: 25vw;
+        /* border: thin dotted #f00; */
+    }
+    
+    .MenuNavMobile{
+        width: 10vw;
+        display: flex;
+        flex-direction: row;
+        align-items: right;
+        justify-content: space-between;
+        /* border: thin dotted #00f; */
     }
     
 }

@@ -1,13 +1,11 @@
 
 import React, { useState } from "react"
-import FromProductCreate from "../../Forms/product/postProduct"
 import { Grid, Box, Button, Typography, Modal } from '@mui/material';
-import "./productButton.css"
-import FormProductCreate from "../../Forms/product/postProduct";
-import { GiConverseShoe } from "react-icons/gi"
+import UpdateProduct from "../../Forms/updateProduct/updateProduct"
+import "./buttonUpdate.css"
 
 
-const ProductButtons = () => {
+const ProductUpdateButton = () => {
 
     const [open, setOpen] = useState(false);
 
@@ -16,10 +14,9 @@ const ProductButtons = () => {
     const handleClose = () => setOpen(false);
 
     return (
-        <Grid className="navButton">
-            <GiConverseShoe className="iconButtonNav" />
+        <Grid >
 
-            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
+            <Button onClick={handleOpen} variant="contained" style={{ backgroundColor: "rgb(240, 240, 255)", color: "blue" }} >Editar</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -27,10 +24,10 @@ const ProductButtons = () => {
             >
                 <Box className="boxModal">
                     <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h4">
-                        Crear Producto
+                        Editar Usuario
                     </Typography>
                     <div className="formModal">
-                        <FormProductCreate />
+                        < UpdateProduct />
                     </div>
 
                 </Box>
@@ -44,4 +41,4 @@ const ProductButtons = () => {
     )
 }
 
-export default ProductButtons
+export default ProductUpdateButton

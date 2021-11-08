@@ -5,7 +5,7 @@ import Product from "../Product/Product";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Paginado from "./Paginado";
-import { getAll, getProducts, filterBrand, filterCategory, filtersReset } from "../../redux/products/productsAction";
+import { getAll, getProducts, filterBrand, filterCategory, filtersReset, saveFilteredDataBrand, saveFilteredDataCategory, restoreData } from "../../redux/products/productsAction";
 import { getBrands } from "../../redux/brand/brandActions";
 import { getCategories } from "../../redux/category/categoriesActions";
 import { Link } from "react-router-dom";
@@ -32,7 +32,7 @@ function Catalogue() {
   const [cardsxPage, setcardsxPage] = useState(10);
   const [filtros, setFiltros] = useState([]);
   const [precio, setPrecio] = useState(1);
-  // const [nada, setNada] = useState([]);
+  const [nada, setNada] = useState([]);
   
   const lastProduct = currPage * cardsxPage
   const firstProduct =  lastProduct - cardsxPage;
@@ -55,12 +55,17 @@ function Catalogue() {
 
   function handleFilterBrand(e) {
     e.preventDefault();
+    console.log(e.target.value)
+    dispatch(saveFilteredDataBrand(e.target.value));
      dispatch(filterBrand(e.target.value));
      setFiltros([...filtros, e.target.value])
   }
 
   function handleFilterCategory(e) {
     e.preventDefault();
+    console.log(e.target.value)
+
+    dispatch(saveFilteredDataCategory(e.target.value));
    dispatch(filterCategory(e.target.value));
    setFiltros([...filtros, e.target.value])
   }
@@ -86,6 +91,8 @@ const handlePrice = (e) => {
 }
 
 const deleteFilter = (data) => {
+
+  dispatch(restoreData(data))
   setFiltros([
       ...filtros.filter(
           item => data !== item
@@ -155,7 +162,7 @@ const deleteFilter = (data) => {
           {
           currProducts && currProducts.map((product, index) => {
               return (
-                product && product.status === 'disponible' && (<Link to={`/catalogue/${product.id}`} key={index}>
+                product && (<Link to={`/catalogue/${product.id}`} key={index}>
                   <div className="Shoes" key={index}>
                       <Product
                         id={product.id}
@@ -164,6 +171,7 @@ const deleteFilter = (data) => {
                         price={product.price}
                         status={product.status}
                         description={product.description}
+                        key={product.id}
                         addToCart = {handleAddCart}  
                       />
                   </div>
@@ -188,3 +196,92 @@ const deleteFilter = (data) => {
 }
 
 export default Catalogue;
+
+
+// function App() {
+//   const [filtrado, setFiltrado] = useState({})
+//   const [select, setSelect] = useState('')
+//   const [data, setData] = useState(allMocks)
+//   const dispatch = useDispatch()
+  
+
+//   useEffect(  () => {
+    
+
+//   },[dispatch]);
+
+//   const array = [1,2,3,4,5,6,7,8,9,10]
+//   const nada = {}
+//   let sarasa = allMocks.filter(e => e.name.includes('Nike'))
+//   const sarasa2 = allMocks.filter(e => !e.name.includes('Nike'))
+//   let nada2 = {...nada, ['Nike']: sarasa2}
+//   console.log('esto es todo',allMocks)
+//   console.log('esto es el array filtrado',sarasa)
+//   console.log('este es el objeto',nada2)
+//   console.log('este es el interior de la propiedad nike',nada2.Nike)
+
+//   if(nada2.hasOwnProperty('Nike')) {
+//     sarasa = sarasa.concat(nada2['Nike'])
+//     delete nada2['Nike']
+//   } else console.log('chau')
+
+//   console.log('este es el array original sin filtros', allMocks )
+//   console.log('este es el array filtrado despues del concat', sarasa )
+//   console.log('este es el objeto despues del concat', nada2 )
+
+
+//   const filtros = []
+
+//   const handleChange = (e) => {
+//     e.preventDefault()
+//     setSelect(e.target.value)
+//   }
+
+//   const handleSelect = (e) => {
+//     e.preventDefault()
+//     console.log(e.target.value)
+//     const sarasa = data.filter(e => e.name.includes(e.target.value))
+//     console.log(sarasa)
+//     // const sarasa2 = data.filter(e => !e.name.contains(e.target.value))
+//     // setFiltrado({...filtrado, [e.target.value]: sarasa2})
+//     // setData(sarasa)
+
+//   }
+
+//   const handleMinus = (e) => {
+//     e.preventDefault()
+
+//   }
+//   const handlePlus = (e) => {
+//     e.preventDefault()
+
+//   }
+ 
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+      
+//      <select onChange={handleSelect}>
+//         <option> seleccionar</option>
+//         <option value='Nike'> nike</option>
+//         <option value='Jordan'> jordan</option>
+//         {array.map(e => <option value={e}>{e}</option>)}
+       
+//      </select>
+//     
+//      </div>
+//   );
+// }
