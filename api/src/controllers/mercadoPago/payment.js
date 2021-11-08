@@ -38,7 +38,7 @@ const orderm = await Orders.findByPk(external_reference,
         .then(order => {
             order.payment_id = payment_id;
             order.paymentState = status
-            order.orderState = 'COMPLETED'
+            order.status = 'COMPLETED'
             order.save()
                 .then(() => {
                     console.info('redict sucess')

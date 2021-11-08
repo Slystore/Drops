@@ -36,7 +36,7 @@ async function mercadoPago(req, res, next){
     console.log(order, order.Products,"tomimpago")
   const items_ml = order.Products.map(i => ({
     title: i.name,
-    unit_price: i.price,
+    unit_price: Number(i.price),
     quantity: i.OrderDetail.quantity,
   }))
 

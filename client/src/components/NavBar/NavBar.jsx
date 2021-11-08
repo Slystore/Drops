@@ -84,6 +84,7 @@ function NavBar() {
   const[cartStorage ]= useState(JSON.parse(window.localStorage.getItem("cartId")))
   const { cart } = useSelector((state) => state.cartReducer);
   const {storage} = useSelector(state => state.cartReducer)
+  const {items} = useSelector(state => state.cartReducersTomi)
   function handleInputChange(e) {
     e.preventDefault();
     setName(e.target.value);
@@ -146,7 +147,7 @@ function NavBar() {
           </div>
           <Link to={'/shoppingCart'} >
           <div className="Tool spinIn">
-             <Badge badgeContent={cartStorage? cartStorage.length: cart.length} color="error" sx={{color:'black'}}>
+             <Badge badgeContent={items? items.length: cart.length} color="error" sx={{color:'black'}}>
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
           </div></Link>
