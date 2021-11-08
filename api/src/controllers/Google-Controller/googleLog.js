@@ -1,6 +1,6 @@
 const { Users } = require("../../db");
 const { OAuth2Client } = require("google-auth-library");
-const keys = require("./google-keys.json");
+const keys = require("./google-secret-vercel.json");
 const jwt = require("jsonwebtoken");
 const authConfing = require("../../config/auth");
 const googleLog = async (req, res) => {

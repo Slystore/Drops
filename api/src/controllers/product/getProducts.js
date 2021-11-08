@@ -60,7 +60,8 @@ const getProducts = async(req, res, next) => {
                 },
                 {
                     model: Reviews,
-                }
+                    
+                },
             ],
             where: handleWhere(filters),
             //NO BORRAR EL SIGUIENTE COMENTARIO QUE ES PARA EL FILTRO POR TITLE Y GENRE
