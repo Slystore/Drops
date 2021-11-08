@@ -1,25 +1,34 @@
-const { Product, Size, ProductSize } = require("../../db.js");
+const { ProductSize } = require("../../db.js");
 
 const updateProductSize = async (req, res, next) => {
   try {
-    const {id} = req.params;
-    const {productId, sizeId, stock} = req.body;
-
-    const findProductSize = await ProductSize.findAll({
+    const { id } = req.params;
+    let { stock, sizeId }  = req.body;
+    
+    let findProductSize = await ProductSize.findAll({
       where: {
         ProductId: id,
       },
     });
-    findProductSize.forEach(async (el) => {
-      findProductSize.update({
-          ProductId: productId,
-          SizeId: sizeId,
-          stock: stock
-      })
+    const findSize = await Size.findAll({
+      where: {
+        id: sizeId,
+      },
     });
 
-    res.status(200).json({
-      message: "Product Size Updated Successfully",
+    let sizeBody;
+    let stockBody;
+    
+    for (let i = 0; i < stock.length; i++) {
+      [ sizeBody, stockBody] = stock[i];
+      await findProductSize[i].update({
+        sizeId: sizeBody,
+        stock: stockBody,
+      });
+
+    }
+    await res.status(200).json({
+      message: "Updated Succesfully",
       data: findProductSize,
     });
   } catch (err) {
