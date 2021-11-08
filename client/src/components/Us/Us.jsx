@@ -5,23 +5,23 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './Us.css';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    // width: '50vw',
-    // height: '50vw',
-    width: 600,
-    height: 600,
-    bgcolor: 'background.paper',
-    borderRadius: 3,
-    boxShadow: 24,
-    p: 4,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  };
+// const style = {
+//     position: 'absolute',
+//     top: '50%',
+//     left: '50%',
+//     transform: 'translate(-50%, -50%)',
+//     width: '50vw',
+//     height: '50vh',
+//     // width: 600,
+//     // height: 600,
+//     bgcolor: 'background.paper',
+//     borderRadius: 3,
+//     boxShadow: 24,
+//     p: 4,
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center'
+//   };
 
 function Us() {
 
@@ -35,16 +35,17 @@ function Us() {
             <p>Somos el mejor local de street shoes de Argentina, con más de 50 modelos a escoger. <br></br>
             Como amantes de la cultura proveemos los mejores productos 100% originales que hacen match contigo.</p>
             <div className="hvr-grow-shadow">
-                <Button style={{ width: 120, height:35, backgroundColor: 'black', color: 'white', borderRadius: 10}} onClick={handleOpen}>Conócenos</Button></div>
+                <Button style={{ width: 120, height:35, backgroundColor: 'black', color: 'white', borderRadius: 10}} onClick={handleOpen}>Conócenos</Button>
+            </div>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h4" component="h2">
-                        Comunidad Drops
+                <Box className="Style">
+                    <Typography id="modal-modal-title" className="TitleModal" >
+                        <h1>Comunidad Drops</h1>
                     </Typography>
                     <div className="PortadaModal"></div>
                     <Typography id="modal-modal-description" className="TextModal" sx={{ mt: 2 }} variant="h6">
@@ -52,7 +53,7 @@ function Us() {
                         Diseños exclusivos al alcance de tu mano ya sea que vengas a nuestra tienda o para envío inmediato por paquetería.<br /><br />
                         No esperes más y entra en este fabuloso mundo <strong>DROPS</strong> donde toneladas de estilo esperan por tus pies.</p>
                     </Typography>
-                    <Button style={{backgroundColor: 'black', color: 'white', borderRadius: 10, marginTop:25}} href="/catalogue">Ver Modelos</Button>
+                    <Button className="ButtonModal" style={{ backgroundColor:'black',color: 'white', borderRadius: 10}} href="/catalogue">Ver Modelos</Button>
                 </Box>
             </Modal>
         </div>
