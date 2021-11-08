@@ -29,7 +29,8 @@ function Pay() {
     console.log('datos ID', datos)
     console.log('ORDER ID', orderId)
     console.log('userID', userId)
-
+    console.log('products', items)
+    console.log('totales', total)
 
     return (
         <div className="PayContainer">
