@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from "react";
 import { getToken } from "../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 
-import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/Logo.png";
@@ -20,6 +20,7 @@ import {
   titleCategorias,
   titleUserLog,
 } from "./ToolTIps.js";
+import NavBarMobile from './NavBarMobile';
 import "./NavBar.css";
 
 const useStyles = makeStyles(() => ({
@@ -48,8 +49,6 @@ const useStyles = makeStyles(() => ({
     },
   },
 }))
-
-
 
 
 function NavBar() {
@@ -99,6 +98,16 @@ function NavBar() {
   }
   return (
     <div className="NavContainer">
+      <Box className="NavContainerMobile">
+        <div className="LogoNavMobile">
+          <Link to="/">
+            <img src={logo} className="LogoMobile ball" alt="Logo" />  
+          </Link>
+        </div>
+        <div className="MenuNavMobile">
+          <NavBarMobile />  
+        </div>
+      </Box>
       <Box className="LogoContainer">
         <Link to="/">
           <img src={logo} className="Logo ball" alt="Logo"/>  
