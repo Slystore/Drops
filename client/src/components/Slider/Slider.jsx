@@ -8,7 +8,7 @@ function Slider(props) {
     return (
         <div className="SliderContainer">
             <div className="SliderTitle"><h1>Marcas más vendidas</h1></div>
-            <Carousel controls={false} fade={false} style={{width:'50%', height:'200px', marginTop:'10px'}}>
+            <Carousel controls={false} fade={false} className="Carousel" >
                 <Carousel.Item>
                     <div className="Slider">
                         <div className="Marca1"></div>
@@ -34,15 +34,6 @@ function Slider(props) {
                     </div>
                 </Carousel.Item>
             </Carousel>
-           
-            {/* <div className="Slider">
-                <div className="Marca1"></div>
-                <div className="Marca2"></div>
-                <div className="Marca3"></div>
-                <div className="Marca4"></div>
-                <div className="Marca5"></div>
-                <div className="Marca6"></div>
-            </div> */}
         </div>
     )
 }
