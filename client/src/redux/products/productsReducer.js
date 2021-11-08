@@ -11,6 +11,9 @@ import {
   GET_PRODUCT_NAME,
   FILTERS_RESET,
   FILTER_BY_PRICE,
+  SAVE_FILTERED_DATA_BY_BRAND,
+  SAVE_FILTERED_DATA_BY_CATEGORY,
+  RESTORE_DATA
 } from "./productsAction";
 
 export const initialState = {
@@ -20,7 +23,8 @@ export const initialState = {
   productForm: {},
   filtrados: [],
   stockById: [],
-  filtros: []
+  filtros: [],
+  dataFiltrada: {}
 };
 
 function productsReducer(state = initialState, action) {
@@ -45,74 +49,101 @@ function productsReducer(state = initialState, action) {
         productId: action.payload,
       };
     }
+
     case PRODUCT_FORM: {
       return {
         ...state,
         productForm: action.payload,
       };
     }
+
     case FILTER_BY_BRAND: {
-      let productsByBrand = state.filtrados;
+      let productsByBrand = state.products;
       
-      if(state.filtros.length === 0){// Si no hay filtros aplicados previamente
+     
         let filterBrand =
         action.payload === "All"
           ? productsByBrand
           : productsByBrand.filter((el) =>
-              el.Brand.name.includes(action.payload)
+              el.Brand.name === action.payload
             );
-        state.filtros = [...filterBrand]
+        
         return {
           ...state,
-          products: state.filtros,
+          products: filterBrand,
         };
       }
-      else {// Si ya hay filtros aplicados
-        let filterBrand2 =
+
+    case SAVE_FILTERED_DATA_BY_BRAND: {
+      let productsByBrand = state.products;
+      
+      
+        let filterBrand =
         action.payload === "All"
-          ? state.filtros
-          : state.filtros.filter((el) =>
-              el.Brand.name.includes(action.payload)
+          ? productsByBrand
+          : productsByBrand.filter((el) =>
+              el.Brand.name !== action.payload
             );
-            state.filtros = [...filterBrand2]
-            return {
-              ...state,
-              products: state.filtros,
-            };
+            console.log(filterBrand)
+            console.log(state.filtros.length)
+        
+        return {
+          ...state,
+          dataFiltrada: {
+            ...state.dataFiltrada,
+            [action.payload]: filterBrand
+          }
+        };
       }
-    }
 
     case FILTER_BY_CATEGORY: {
-       let productsByCategory = state.filtrados;
+       let productsByCategory = state.products;
       
-      if(state.filtros.length === 0){// Si no hay filtros aplicados previamente
         let filterCategory =
         action.payload === "All"
           ? productsByCategory
           : productsByCategory.filter((el) =>
-              el.Category.name.includes(action.payload)
+              Object.values(el.Category).find(e => e === action.payload)
             );
-        state.filtros = [...filterCategory]
+        
         return {
           ...state,
-          products: state.filtros,
+          products: filterCategory
         };
       }
-      else {// Si ya hay filtros aplicados
-        let filterCategory2 =
+    case SAVE_FILTERED_DATA_BY_CATEGORY: {
+       let productsByCategory = state.products;
+      
+        let filterCategory =
         action.payload === "All"
-          ? state.filtros
-          : state.filtros.filter((el) =>
-              el.Brand.name.includes(action.payload)
+          ? productsByCategory
+          : productsByCategory.filter((el) =>
+              !Object.values(el.Category).find(e => e === action.payload)
             );
-            state.filtros = [...filterCategory2]
-            return {
-              ...state,
-              products: state.filtros,
-            };
+        
+        return {
+          ...state,
+          dataFiltrada: {
+            ...state.dataFiltrada,
+            [action.payload]: filterCategory
+          }
+        };
+      }
+    case RESTORE_DATA: {
+      if(state.dataFiltrada.hasOwnProperty(action.payload)) {
+        let updatedData = state.products = state.products.concat(state.dataFiltrada[action.payload])
+        delete state.dataFiltrada[action.payload]
+        return {
+          ...state,
+          products: updatedData
+        }
+      } else {
+        return {
+          ...state
+        }
       }
     }
-
+    
     case FILTER_BY_PRICE: {
        let productsByPrice = state.filtrados;
       
@@ -149,7 +180,8 @@ function productsReducer(state = initialState, action) {
           ...state,
           products: action.payload,
           filtrados: action.payload,
-          filtros: []
+          filtros: [],
+          dataFiltrada: {}
         };
       }
       
