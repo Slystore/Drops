@@ -16,7 +16,7 @@ const CategoriesButtons = () => {
     return (
         <Grid className="navButton">
             <MdOutlineCategory className="iconButtonNav" />
-            <Button style={{ backgroundColor: 'rgb(206, 198, 253)' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Categoria</Button>
+            <Button style={{ backgroundColor: '#555' }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Categoria</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
