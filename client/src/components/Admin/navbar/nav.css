@@ -41,10 +41,14 @@
     margin: 10px 0;
 }
 .sidebarListItem.active, .sidebarListItem:hover {
-    background-color: rgb(240, 240, 255);
+    /* background-color: rgb(240, 240, 255); */
+    background-color: #00000010;
     color: #555;
 }
+.active {
+    background-color: #00000010;
 
+}
 .sidebarIcon {
     margin-right: 5px;
     font-size: 20px !important;

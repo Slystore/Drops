@@ -16,7 +16,7 @@ const ProductUpdateButton = () => {
     return (
         <Grid >
 
-            <Button onClick={handleOpen} variant="contained" style={{ backgroundColor: "rgb(240, 240, 255)", color: "blue" }} >Editar</Button>
+            <Button onClick={handleOpen} variant="contained" style={{ backgroundColor: "#55555550", color: "#555" }} >Editar</Button>
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
