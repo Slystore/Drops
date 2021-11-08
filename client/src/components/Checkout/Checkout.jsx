@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './Checkout.css';
 
 // function Chekout({products,data}) {
-function Checkout({productos,data}) {
+function Checkout({products,data, total}) {
     // console.log("PRODUCTOS",productos)
 
     useEffect(()=>{
@@ -22,7 +22,7 @@ function Checkout({productos,data}) {
         return () =>{
           document.getElementById('form1').removeChild(script);
         }
-       },[])
+       },[data])
 
 
     return (
@@ -31,10 +31,11 @@ function Checkout({productos,data}) {
 
                 <h4>Listado de Compras</h4>
                 <ul className="listShoppingCart">
-                {productos.map((producto, i) => {
+                {products && products.map((producto, i) => {
                     return(
                     
-                        <li key={i}>{producto.title} - {producto.price} - {producto.quantity}</li>   
+                        <li key={i}>{producto.name} - {producto.price} - {producto.quantity}
+                        - {total}</li>   
                         
                     )
                 })} </ul>  
