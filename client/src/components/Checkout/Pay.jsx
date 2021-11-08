@@ -19,7 +19,7 @@ function Pay() {
 
     useEffect(()=>{
         if(userId){
-    axios.get("http://localhost:3001/api/mercadopago/" + userId)
+    axios.get("/mercadopago/" + userId)
         .then((data)=>{
         setDatos(data.data)
         console.log('numero de orden:', data)
