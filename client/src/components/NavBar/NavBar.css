@@ -463,10 +463,10 @@ ul li:hover, ul li a:hover{
         left: -100%;
         z-index: 100;
         transition: all 0.5s ease;
-        overflow-y: none;
     }
 
     .NavigationMobile.active{
+        background-color: #fff;
         left: 0;
     }
 

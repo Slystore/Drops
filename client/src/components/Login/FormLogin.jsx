@@ -10,7 +10,6 @@ import {
 } from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
-import FormForgot from "../ForgotPassword/FormForgot";
 export default function FormLogin() {
   const dispatch = useDispatch()
   const [logeado, setLogeado] = useState({
