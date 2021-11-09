@@ -5,22 +5,15 @@ import { Form, Field, ErrorMessage, Formik } from "formik";
 import { userLogin, userLoginGoogle } from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
-import { getToken } from './../../redux/users/userActions'
-import jwt_decode from "jwt-decode";
-import { fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 
 export default function FormLogin() {
-  const dispatch = useDispatch();
+
   const [logeado, setLogeado] = useState({
     msg: "",
     state: false,
   });
+
   const history = useHistory();
-  let x
-    if(localStorage.getItem('token')){
-         x = getToken();}
-    const decoded = x?jwt_decode(x): null;
-    let user = decoded?decoded.user.id: null
 
   const responseGoogle = async (response) => {
     try {
@@ -75,7 +68,7 @@ export default function FormLogin() {
                 values.mail
               )
             ) {
-              error.mail = "Por favor ingrese una direccion de correo valida";
+              error.mail = "Por favor ingrese una dirección de correo válida";
             }
             if (!values.password) {
               error.password = "Por favor ingrese una contraseña";

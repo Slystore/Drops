@@ -21,6 +21,8 @@ import {
   titleUserLog,
 } from "./ToolTIps.js";
 import NavBarMobile from './NavBarMobile';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import "./NavBar.css";
 
 const useStyles = makeStyles(() => ({
@@ -79,11 +81,13 @@ function NavBar() {
   }, []);
 
   const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const[cartStorage ]= useState(JSON.parse(window.localStorage.getItem("cartId")))
   const { cart } = useSelector((state) => state.cartReducer);
   const {storage} = useSelector(state => state.cartReducer)
   const {items} = useSelector(state => state.cartReducersTomi)
+  
   function handleInputChange(e) {
     e.preventDefault();
     setName(e.target.value);
@@ -91,12 +95,21 @@ function NavBar() {
 
     console.log(name);
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log(name);
     dispatch(getProductsByName(name));
     // dispatch(cleanAction())
   }
+
+  function handleMenu(){
+    let navigation = document.querySelector('.NavigationMobile')
+    let MenuNavMob = document.querySelector('.MenuNavMobile')
+    navigation.classList.toggle('active')
+    MenuNavMob.classList.toggle('active')
+  }
+
   return (
     <div className="NavContainer">
       <Box className="NavContainerMobile">
@@ -105,9 +118,19 @@ function NavBar() {
             <img src={logo} className="LogoMobile ball" alt="Logo" />  
           </Link>
         </div>
-        <div className="MenuNavMobile">
+        {/* <div className="MenuNavMobile">
           <NavBarMobile />  
+        </div> */}
+        <div className="MenuNavMobile" onClick={handleMenu}>
+          <div className="IconMen"><MenuIcon /></div>
+          <div className="IconMen"><CloseIcon /></div>
         </div>
+        <ul className="NavigationMobile">
+          <li><a className="LinkMobile" href="/login">Login</a></li>
+          <li><a className="LinkMobile" href="/catalogue">Catálogo</a></li>
+          <li><a className="LinkMobile" href="#Nosotros">Nosotros</a></li>
+          <li><a className="LinkMobile" href="#Location">Contacto</a></li>
+        </ul>
       </Box>
       <Box className="LogoContainer">
         <Link to="/">
