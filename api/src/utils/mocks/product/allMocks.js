@@ -256,7 +256,7 @@ const allMocks = [
     description: "",
     price: 255.25,
     status: "disponible",
-    CategoryId: 1,
+    CategoryId: 3,
     BrandId: 3,
   },
 
@@ -716,7 +716,7 @@ const allMocks = [
     description: "",
     price: 385.0,
     status: "disponible",
-    CategoryId: 1,
+    CategoryId: 3,
     BrandId: 7,
   },
   {
@@ -808,7 +808,7 @@ const allMocks = [
     description: "",
     price: 450.99,
     status: "disponible",
-    CategoryId: 1,
+    CategoryId: 3,
     BrandId: 8,
   },
   {

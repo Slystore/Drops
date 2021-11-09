@@ -3,18 +3,19 @@ const { ProductSize } = require("../../db.js");
 const updateProductSize = async (req, res, next) => {
   try {
     const { id } = req.params;
-    let { stock, sizeId }  = req.body;
+    let { stock }  = req.body;
     
     let findProductSize = await ProductSize.findAll({
       where: {
         ProductId: id,
       },
     });
-    const findSize = await Size.findAll({
-      where: {
-        id: sizeId,
-      },
-    });
+
+    // const findSize = await Size.findAll({
+    //   where: {
+    //     id: sizeId,
+    //   },
+    // });
 
     let sizeBody;
     let stockBody;
