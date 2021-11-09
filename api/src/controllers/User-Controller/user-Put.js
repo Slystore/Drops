@@ -13,13 +13,11 @@ const userPut = async (req, res) => {
         id,
       },
     });
-    console.log(user.password);
+
     if (password) {
       const match = await bcrypt.compare(oldPassword, user.password);
       if (match) {
-        console.log("esta es la contraseña nueva ", password);
         let newPassHash = await bcrypt.hash(password, +authConfing.rounds);
-        console.log("esta es la contraseña nueva hasheada", newPassHash);
         let userNewPass = await Users.update(
           { password: newPassHash },
           {

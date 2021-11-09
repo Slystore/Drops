@@ -20,7 +20,6 @@ import {
   titleCategorias,
   titleUserLog,
 } from "./ToolTIps.js";
-import NavBarMobile from './NavBarMobile';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import "./NavBar.css";
@@ -118,9 +117,6 @@ function NavBar() {
             <img src={logo} className="LogoMobile ball" alt="Logo" />  
           </Link>
         </div>
-        {/* <div className="MenuNavMobile">
-          <NavBarMobile />  
-        </div> */}
         <div className="MenuNavMobile" onClick={handleMenu}>
           <div className="IconMen"><MenuIcon /></div>
           <div className="IconMen"><CloseIcon /></div>
