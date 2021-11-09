@@ -1,6 +1,7 @@
 const { Users } = require("../../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const transporter = require("../../config/mailer");
 const authConfing = require("../../config/auth");
 
 const login = async (req, res) => {
@@ -21,12 +22,11 @@ const login = async (req, res) => {
       let token = jwt.sign({ user: user }, authConfing.secret, {
         expiresIn: "999days",
       });
-      return res
-        .status(200)
-        .json({ auth: true, token: token });
+      return res.status(200).json({ auth: true, token: token });
     } else {
       return res.json({
         auth: false,
+        id:user.id,
         msg: "La contraseña o el mail no coinciden con nuestros registros. Por favor intenete de nuevo",
       });
     }

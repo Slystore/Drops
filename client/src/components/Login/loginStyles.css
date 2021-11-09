@@ -64,6 +64,10 @@
     text-decoration: none;
     color: #fc4444;
 }
+.forgot-log{
+    color: #fc4444;
+    cursor: pointer;
+}
 .Field{
     width: 300px;
     height: 35px;

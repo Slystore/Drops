@@ -10,6 +10,7 @@ import Catalogue from "./components/Catalogue/Catalogue.jsx";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import FormRegister from './components/Register/FormRegister.jsx';
 import FormLogin from './components/Login/FormLogin.jsx';
+
 import updateCategory from './components/Forms/updateCategory'
 import updateBrand from './components/Forms/updateBrand'
 import Appointment from './components/Admin/appointment/Appointment';
@@ -24,6 +25,7 @@ import Dashboard from './components/Admin/dashboard/Dashboard';
 import Profile from './components/Profile/profile'
 
 import Pay from './components/Checkout/Pay';
+import FormForgot from './components/ForgotPassword/FormForgot.jsx';
 
 
 
@@ -41,6 +43,7 @@ function App() {
 
           <Route exact path="/login" component={FormLogin} />
           <Route exact path="/register" component={FormRegister} />
+          <Route exact path="/recovery" component={FormForgot} />
           <Route exact path= "/pay" component={Pay} /> 
           <Route exact path="/catalogue/:id" component={ProductDetail} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
