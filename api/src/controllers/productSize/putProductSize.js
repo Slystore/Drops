@@ -10,13 +10,7 @@ const updateProductSize = async (req, res, next) => {
         ProductId: id,
       },
     });
-
-    // const findSize = await Size.findAll({
-    //   where: {
-    //     id: sizeId,
-    //   },
-    // });
-
+    
     let sizeBody;
     let stockBody;
     

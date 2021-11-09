@@ -33,12 +33,6 @@ const getProductById = async(req, res, next) => {
                 {
                     model: Reviews,
                 }
-                // {
-                //     model: ProductSize,
-                //     through: {
-                //         attributes: [],
-                //     },
-                // }
             ],
         });
         res.status(200).json(productById);
