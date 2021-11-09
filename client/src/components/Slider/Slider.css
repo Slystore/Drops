@@ -22,6 +22,10 @@
     /* border: thin dotted #f00; */
 }
 
+.active{
+    background-color: transparent;
+}
+
 .Carousel{
     width: 70%;
     height: 170px;
@@ -109,6 +113,10 @@
 
 .carousel-indicators [data-bs-target]{
     background-color: #ccc;
+}
+
+.Carousel.active{
+    background-color: transparent;
 }
 
 @media (min-width: 1200px) and (max-width: 1399px){

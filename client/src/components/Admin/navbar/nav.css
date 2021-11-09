@@ -45,7 +45,7 @@
     background-color: #00000010;
     color: #555;
 }
-.active {
+.sidebarListItem.active {
     background-color: #00000010;
 
 }
