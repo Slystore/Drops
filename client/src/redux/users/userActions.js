@@ -29,6 +29,18 @@ export const userLoginGoogle = async (payload) => {
   }
 };
 
+export const userForgotPass = async(user) =>{
+  console.log('este es el user ',user)
+  try {
+    let {data} = await axios.put("http://localhost:3001/api/forgotPassword",user)
+    console.log('a ver que data me llega',data)
+    return data;
+
+  } catch (error) {
+    console.log('rompo en el forgot',error)
+  }
+}
+
 export const userLogin = async (payload) => {
   try {
     let { data } = await axios.post("/login", payload);
@@ -61,6 +73,15 @@ export const editUsers = async(userUpdate,id) =>{
     return data 
   }catch(err){
     console.log('rompo en la action de editUsers',err)
+  }
+}
+export const userNewPass = async (newPass,id) =>{
+  console.log('este es el user y la id ',newPass,id)
+  try{
+    let {data} = await axios.put(`http://localhost:3001/api/newPassword/${id}`,newPass)
+    return data;
+  }catch(err){
+    console.log('rompo en la action de newPass',err)
   }
 }
 

@@ -2,17 +2,28 @@ import React, { useState } from "react";
 import "./loginStyles.css";
 import { useDispatch } from "react-redux";
 import { Form, Field, ErrorMessage, Formik } from "formik";
-import { userLogin, userLoginGoogle } from "../../redux/users/userActions";
+import {
+  getUserId,
+  userForgotPass,
+  userLogin,
+  userLoginGoogle,
+} from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
-
+import FormForgot from "../ForgotPassword/FormForgot";
 export default function FormLogin() {
-
+  const dispatch = useDispatch()
   const [logeado, setLogeado] = useState({
     msg: "",
     state: false,
   });
-
+  const [user,setUser] =useState()
+  const [mail, setMail] = useState({ mail: "" });
+  const [forgot, setForgot] = useState({
+    msg: "",
+    auth: false,
+  });
+  const [acc, setAcc] = useState(0);
   const history = useHistory();
 
   const responseGoogle = async (response) => {
@@ -29,7 +40,17 @@ export default function FormLogin() {
       console.log("rompo en response google", err);
     }
   };
-
+  console.log("este es el mail", mail.mail);
+  const forgotClick = async () => {
+    await userForgotPass(mail);
+    console.log('esta es la data del user ', user)
+     dispatch(getUserId(user))
+     localStorage.setItem('userId',user)
+    setForgot({
+      msg: "Se ah enviado un corre electronico para seguir con la recuperacion. Por favor revisar la casilla de spam ",
+      auth: true,
+    });
+  };
   return (
     <div className="log-Cont">
       <div className="log-Box">
@@ -43,17 +64,26 @@ export default function FormLogin() {
           }}
           onSubmit={async (body) => {
             const x = await userLogin(body);
-            console.log(x);
+            setUser(x.id)
+            setMail({ mail: body.mail });
             if (x.msg) {
               setLogeado({
                 state: false,
                 msg: x.msg,
               });
-              setTimeout(() => {
-                setLogeado({
-                  msg: "",
-                });
-              }, 4000);
+              // setTimeout(() => {
+              //   setLogeado({
+              //     msg: "",
+              //   });
+              // }, 4000);
+              setAcc(acc + 1);
+            }
+            console.log(acc);
+            if (acc >= 3) {
+              return setLogeado({
+                state: false,
+                msg: "a ver probando",
+              });
             }
             if (x.auth === true) {
               history.push("/");
@@ -115,7 +145,17 @@ export default function FormLogin() {
                   </button>
                 </div>
                 <div className="data-Field">
-                  {logeado && <p className="log-error">{logeado.msg}</p>}
+                  {logeado && acc >= 3 ? (
+                    <div>
+                      No recuerdas tu contraseña haz{" "}
+                      <span className="forgot-log" onClick={forgotClick}>
+                        Click aqui
+                      </span>
+                    </div>
+                  ) : (
+                    <p className="log-error">{logeado.msg}</p>
+                  )}
+                  {forgot.auth ? <div>{forgot.msg}</div> : ""}
                 </div>
                 <div className="data-Field">
                   <p>

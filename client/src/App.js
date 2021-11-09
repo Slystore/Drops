@@ -24,6 +24,7 @@ import Categories from './components/Admin/categories/Categories'
 import Brands from './components/Admin/brands/Brands'
 import Pay from './components/Checkout/Pay';
 import ShipmentForm from './components/Checkout/ShipmentForm.jsx';
+import FormForgot from './components/ForgotPassword/FormForgot.jsx';
 
 
 
@@ -39,6 +40,7 @@ function App() {
 
           <Route exact path="/login" component={FormLogin} />
           <Route exact path="/register" component={FormRegister} />
+          <Route exact path="/recovery" component={FormForgot} />
           <Route exact path="/pay" component={Pay} />
           <Route exact path="/shipment" component={ShipmentForm} />
           <Route exact path="/catalogue/:id" component={ProductDetail} />
