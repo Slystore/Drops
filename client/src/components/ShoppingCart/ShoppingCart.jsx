@@ -29,7 +29,7 @@ function ShopingCart() {
     const {total} = useSelector((state) => state.cartReducersTomi);
     const {items} = useSelector((state) => state.cartReducersTomi);
     let user = decoded?decoded.user.id: null
-console.log(user,"tomimix2")
+// console.log(user,"tomimix2")
 
   useEffect(() => {
     //  fusionCartTomi()

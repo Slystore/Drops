@@ -14,8 +14,8 @@ async function deleteProductById(req, res, next) {
     //Debe es cambiar el estado
     const { userId, productId } = req.body;
     // console.log("----------------------------")
-    // console.log(userId)
-    // console.log(productId)
+     console.log(req.body)
+     console.log(productId)
     // console.log("----------------------------")
     const order = await Orders.findOne({
       where: {

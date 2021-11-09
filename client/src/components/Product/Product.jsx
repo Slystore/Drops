@@ -40,7 +40,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
         if(user) {
                console.log("entrouser",user)
            await  (fusionCartTomi(id))
-            await  (loadCartTomi())
+            await  dispatch(loadCartTomi())
             await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image))
         }
         // if(cart && product?.quantity >= stock) {
