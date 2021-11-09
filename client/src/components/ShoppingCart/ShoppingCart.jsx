@@ -51,7 +51,7 @@ function ShopingCart() {
     
       if(user){
     await (fusionCartTomi(user))
-    await dispatch(loadCartTomi())
+    await dispatch(loadCartTomi(user))
     console.log(user,"logintomi")
    
     }
