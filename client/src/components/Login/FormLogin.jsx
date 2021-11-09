@@ -4,12 +4,16 @@ import { Form, Field, ErrorMessage, Formik } from "formik";
 import { userLogin, userLoginGoogle } from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
+
 export default function FormLogin() {
+
   const [logeado, setLogeado] = useState({
     msg: "",
     state: false,
   });
+
   const history = useHistory();
+
   const responseGoogle = async (response) => {
     try {
       console.log("a ver la response", response);
@@ -24,6 +28,7 @@ export default function FormLogin() {
       console.log("rompo en response google", err);
     }
   };
+
   return (
     <div className="log-Cont">
       <div className="log-Box">
@@ -62,7 +67,7 @@ export default function FormLogin() {
                 values.mail
               )
             ) {
-              error.mail = "Por favor ingrese una direccion de correo valida";
+              error.mail = "Por favor ingrese una dirección de correo válida";
             }
             if (!values.password) {
               error.password = "Por favor ingrese una contraseña";

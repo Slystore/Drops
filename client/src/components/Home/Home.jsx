@@ -6,7 +6,7 @@ function Home() {
         <div className="HomeContainer">
             <div className="Images">
                 <div className="hvr-pop divTitle">
-                    <div className="Title">DROPS</div>
+                    <div className="Title"><a href="/catalogue">DROPS</a></div>
                 </div>
                 <div className="hvr-pop divTitle2" >
                     <div className="Title2">DROPS</div>

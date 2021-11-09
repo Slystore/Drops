@@ -30,6 +30,25 @@ export default function Product({ name, id, price, image, addToCart }) {
 
     return (
         <div className="ProductContainer" >
+            <div className="IconShoppingContainer">
+                <Link to={`/catalogue`}>
+                    <div className="IconShopping hvr-pulse-grow">
+                        <ShoppingCartIcon 
+                            sx={{
+                                    width:30,
+                                    fontSize:20, 
+                                    marginTop:0.7, 
+                                    color:' rgb(197, 197, 197)',
+                                    '&:hover':{
+                                        color:'#9E0000'
+                                    }}}
+                            onClick={() => addToCart(id)}/>
+                    </div>
+                </Link>
+                <div className="IconShopping hvr-pulse-grow">
+                <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
+            </div>
+            </div>
             <div className="Zapatilla">
                 <img src={image} alt="imagen no encontrada"/>
             </div>
@@ -40,29 +59,30 @@ export default function Product({ name, id, price, image, addToCart }) {
                 <h5>${price}</h5>
             </div>
 
-            <div className="Price">
+            <div className="Rate">
                 <Rating name="read-only" value={data[0] ? data[0].rating : null} readOnly />
                 {/* <h5> Prom {data[0] ? data[0].rating : null}</h5> */}
             </div>
-            <div>
+
+            <div className="TallesProduct">
                 {
-                    name ? 
+                    productId.name ? 
                         <div>
-                            {/* {
+                            {
                                 productId.Sizes.map((size, index) => {
-                                    return (   <div>
-                                        <div className="Talle">#{size.number}</div>
-                                        <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div></div>
+                                    return (   
+                                        <div className="TalleCard">#{size.number}</div>
                                     )}
-                            )} */}
+                            )}
                         </div> 
                         : 
                         <div>No name</div>
                 }
+
             </div>
               
-            <div className="IconShoppingContainer">
-            <Link to={`/catalogue`}>
+            {/* <div className="IconShoppingContainer">
+                <Link to={`/catalogue`}>
                      <div className="IconShopping hvr-pulse-grow">
                         <ShoppingCartIcon 
                             sx={{
@@ -78,7 +98,7 @@ export default function Product({ name, id, price, image, addToCart }) {
                     <div className="IconShopping hvr-pulse-grow">
                     <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
                     </div>
-            </div>
+            </div> */}
         </div>
     )
 }
