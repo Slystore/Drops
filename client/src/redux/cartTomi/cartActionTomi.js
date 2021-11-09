@@ -28,10 +28,10 @@ export const addToCartTomi = (id, quantity, price, name, image) => async (dispat
   let orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   try {
-
+    console.log(user3)
     if (user3) {
       let info = { userId: user3, products: [{ productId: id, quantity, price, name,image }] }
-
+console.log(info, orderId,"addlog")
       if (orderId) {
         await axios.put("/orders/updateOrder/" + orderId, info)
       }
@@ -78,16 +78,17 @@ export const addToCartTomi = (id, quantity, price, name, image) => async (dispat
   }
 };
 
-export const removeFromCartTomi = (id) => (dispatch, getState) => {
+export const removeFromCartTomi = (id) => async (dispatch, getState) => {
 
   try {
     let user3 = decoded?decoded.user.id: null
     let orderId = JSON.parse(localStorage.getItem("orderId"));
-    console.log(user3, id, "tomideletefromcart")
+    console.log(user3, id, "tomideletefromcart", orderId)
     if (user3) {
       // console.log(user3, id, "tomideletefromcart")
       let info = { userId: user3, productId: id }// deleteOrder/:id ?como va
-      axios.delete("/orders/deleteOrder/product/" + orderId, {info  })
+      console.log(info)
+     await axios.delete("/orders/deleteOrder/product/" + orderId, { data: { ...info } } )
     }
     else {
     //   let cart = getState().cart.items;
@@ -162,12 +163,12 @@ export const changeProductQuantityTomi =
     }
   };
 
-export const loadCartTomi = () =>
+export const loadCartTomi = (user) =>
   async (dispatch) => {
   
     let user1 = decoded?decoded.user.id: null
     console.log(user1,'tomimix')
-    if (user1) {
+    if (user1 || user) {
        
       let orderId = JSON.parse(localStorage.getItem("orderId"));
       console.log("here", orderId)
@@ -178,11 +179,11 @@ export const loadCartTomi = () =>
         cart = await axios.get("/orders/" + res.data.orderId)
       }
  console.log(cart.data, "tomiload")
-      cart = cart?cart.data.products.map(e => {
+      cart = cart?cart.data.Products.map(e => {
         // console.log(e, "tomiload")viene productid quantity id userid
         return {
           id: e.id,
-          quantity: e.quantity,
+          quantity: e.OrderDetail.quantity,
           price: e.price,
           name: e.name,
           image: e.image
@@ -234,15 +235,15 @@ export const fusionCartTomi = async (id) => {
         }
       })
     }
- console.log(products,user2,id,"tomisubmit")
-    if (user2) {
 
+    if (user2 || id) {
+      // console.log(products,user2,id,"tomisubmit")
       if (products?.length > 0) {
-        let info = { userId: user2, products }
+        let info = { userId: user2?user2: id, products }
         let res = await axios.post("/orders/createOrderTomi", info)
         // console.log(res,"tomicart")
         if(res.data.status !== "inCart"){
-          res = await axios.post("/orders/createOrderTomi", {userId:user2})
+          res = await axios.post("/orders/createOrderTomi", {userId:user2? user2: id})
         }
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         if (res.data.message === false) {
@@ -250,9 +251,10 @@ export const fusionCartTomi = async (id) => {
         }
       }
       else {
-        let res = await axios.post("/orders/createOrderTomi", { userId: user2 })
+        
+        let res = await axios.post("/orders/createOrderTomi", { userId: user2?user2: id })
         if(res.data.status !== "inCart"){
-          res = await axios.post("/orders/createOrderTomi", {userId:user2})
+          res = await axios.post("/orders/createOrderTomi", {userId:user2? user2: id})
         }
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
       }
