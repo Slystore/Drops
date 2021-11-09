@@ -24,7 +24,10 @@ const getProductById = async(req, res, next) => {
                 {
                     model: Size,
                     through: {
-                        attributes: [],
+                        model: ProductSize,
+                        attributes:{
+                            exclude: ['SizeId', 'ProductId']
+                        }
                     },
                 },
                 {
