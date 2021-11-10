@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 
 const logOut = async () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("gId");
   window.location.reload(false);
 };
 /****************************** TOOLTIPS USER ******************************************/

@@ -1,12 +1,12 @@
 
 import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
+
 import { editUsers, getUsers, getUsersByName } from "../../../redux/users/userActions"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
 import Paginado from "../../Catalogue/Paginado";
 import ProductButtons from "../products/ProductButtons";
 
-import UserMap from "./UserMap"
 
 const Users = () => {
     const dispatch = useDispatch()

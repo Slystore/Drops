@@ -74,3 +74,8 @@ PUT
 /api/orders/updateOrder/:id
 DELETE 
 /api/orders/deleteOrder/:id
+
+<!-- OrderDetails -->
+GET
+/api/orderDetails
+/api/orderDetails/:id
