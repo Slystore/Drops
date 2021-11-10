@@ -5,7 +5,7 @@ const getStockByProductSize = async(req, res, next) => {
     try {
         const id = req.params.id;
         const { SizeId} = req.body;
-        const productSizeByStock = await ProductSize.findAll({
+        const productSizeByStock = await ProductSize.findOne({
             where: {
                 ProductId: id,
                 SizeId: SizeId

@@ -29,7 +29,7 @@ export const addToCartTomi = (id, quantity, price, name, image, Sizes) => async 
   let orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   try {
-    // console.log(user3, Sizes,"tomiusersize")
+     console.log(user3, Sizes,"tomiusersize")
     if (user3) {
       let info = { userId: user3, products: [{ productId: id, quantity, price, name,image, Sizes,SizeId:0 }] }
 // console.log(info, orderId,"addlog")
@@ -84,7 +84,7 @@ export const removeFromCartTomi = (id) => async (dispatch, getState) => {
   try {
     let user3 = decoded?decoded.user.id: null
     let orderId = JSON.parse(localStorage.getItem("orderId"));
-    console.log(user3, id, "tomideletefromcart", orderId)
+    // console.log(user3, id, "tomideletefromcart", orderId)
     if (user3) {
       // console.log(user3, id, "tomideletefromcart")
       let info = { userId: user3, productId: id }// deleteOrder/:id ?como va
@@ -115,7 +115,7 @@ export const cartResetTomi = () => async (dispatch) => {
 
   if (user4 && orderId) {
 
-    console.log("entro aca wey")
+    // console.log("entro aca wey")
     await axios.delete( "/orders/deleteOrder/" + orderId)
     window.localStorage.removeItem("orderId")
   }
@@ -135,13 +135,13 @@ export const cartResetTomi = () => async (dispatch) => {
 
 
 export const changeProductQuantityTomi =
-  (id, quantity, price, name, image) => async (dispatch, getState) => {
+  (id, quantity, price, name, image,Sizes, SizeId) => async (dispatch, getState) => {
 
     let user5 = decoded?decoded.user.id: null
-
+console.log(SizeId.SizeId,id,"SizeIdtomi")
     if (user5) {
       let orderId = JSON.parse(localStorage.getItem("orderId"));
-      let info = {userId: user5, products: [{ productId: id, quantity, price, name,image  }] }
+      let info = {userId: user5, products: [{ productId: id, quantity, price, name,image, Sizes,SizeId:SizeId.SizeId }] }
 
       await axios.put("/orders/updateOrder/" + orderId, info)
       // console.log("entro aca wey tomi")
@@ -181,6 +181,7 @@ export const loadCartTomi = (user) =>
       }
 //  console.log(cart.data, "tomiload")
       cart = cart?cart.data.Products.map(e => {
+        console.log(cart.data, "talleslogueado")
         return {
           id: e.id,
           quantity: e.OrderDetail.quantity,
@@ -269,14 +270,14 @@ export const fusionCartTomi = async (id) => {
   }
 };
 
-export const SelectCartSize =  (id, quantity, price, name, image, SizeId)=>
+export const SelectCartSize =  (id, quantity, price, name, image,Sizes, SizeId)=>
  async (dispatch) => {
 
     let user6 = decoded?decoded.user.id: null
 
     if (user6) {
       let orderId = JSON.parse(localStorage.getItem("orderId"));
-      let info = {userId: user6, products: [{ productId: id, quantity, price, name,image,SizeId  }] }
+      let info = {userId: user6, products: [{ productId: id, quantity, price, name,image,Sizes,SizeId  }] }
 
       await axios.put("/orders/updateOrder/" + orderId,  info)
       // console.log("entro aca wey tomi")

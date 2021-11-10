@@ -213,10 +213,12 @@ export function getProductsByName(payload) {
         }
     };
 }
-export function getProductStockBySize(id, sizeId){
+export function getProductStockBySize(id, body){
     return async (dispatch) => {
-        try {console.log(id, sizeId)
-            const { data } = await axios.get(`/productSizes/stockBySize/${id}`, sizeId)
+        try {
+         
+            let info={SizeId: body.SizeId}
+            const  data  = await axios.get(`/productSizes/stockBySize/${id}`, info )
             console.log(data,"tomiaction")
             return await dispatch({
                 type: GET_PRODUCT_STOCK_SIZE,

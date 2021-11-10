@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { decrementCartStorage, clearCart, incrementCartStorage, deleteItemCartStorage } from '../../redux/cart/cartActions';
-import {  cleanDetail, getProductsById, getProductStockById, getProductStockBySize } from '../../redux/products/productsAction';
+import {  cleanDetail, getProductStockById, getProductStockBySize } from '../../redux/products/productsAction';
 import { getToken } from './../../redux/users/userActions'
 import jwt_decode from "jwt-decode";
 import {  recoveryCart } from '../../redux/cart/cartActions';
@@ -17,10 +17,10 @@ import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartT
 export default function CartItem  ({image, price, title, id, quantity, name, Sizes}) {
 //  const {cart} = useSelector(state => state.cartReducer)
    //  const { id } = props.match.params
-   //  console.log(Sizes,"tomisize")
+   //   console.log(Sizes,"tomisize")
    const history = useHistory()
     const [sizeId, setSizeId] = React.useState({SizeId:0})
-
+const[stockState, setStockState] = React.useState(0)
    const dispatch = useDispatch();
 
    // useEffect(() => {
@@ -31,21 +31,7 @@ export default function CartItem  ({image, price, title, id, quantity, name, Siz
    const {items} = useSelector((state) => state.cartReducersTomi);
    const {productId} = useSelector((state) => state.productReducer);
    const {stockById} = useSelector((state) => state.productReducer);
-// let stockPrev= items? items.map(item => item.Sizes.filter(size => size.id=== item.SizeId)): []
-// let stockByProduct = stockPrev.length>0?stockPrev.map(el => el[0].ProductSize.stock): []  
-  
-//       console.log("Stocktomi",stockByProduct, stockPrev)
-// let obj={productId: 0, SizeId: 0, stock: 0}
-// let array = [];
-// for(let i=0; i<stockByProduct.length; i++){
-//    for(let j=0; j<items.length; j++){
-//     obj.productId=items[j].id
-//          obj.SizeId=items[j].SizeId
-//          obj.stock=stockByProduct[i]
-//          array.push(obj)
-//       }
-//    }
-//    console.log("Objeto",obj, array)
+
 
    async function handleSizeSelect(e){
       e.preventDefault()
@@ -54,18 +40,25 @@ export default function CartItem  ({image, price, title, id, quantity, name, Siz
   
    async function handleCartSize(e){
       e.preventDefault()
-       console.log(sizeId, e.target.value,"sizeidtomi")
+      //  console.log(sizeId, e.target.value,"sizeidtomi")
       // console.log(id,quantity,price,name,image)
-      dispatch(SelectCartSize(id,quantity,price,name,image,Number(e.target.value)))
+      dispatch(SelectCartSize(id,quantity,price,name,image, Sizes,Number(e.target.value)))
    }
    const handleChangeQuantity = async (e) => {
       const { value } = e.target;
-      const stock= await dispatch(getProductStockBySize(id,sizeId))
-      console.log(stock,"stock")
-      await dispatch(changeProductQuantityTomi(id, Number(value), price, name, image))
+      const stockTotal= await dispatch(getProductStockById(id))
+      let stockBySize= await stockTotal.payload.filter(el => el.SizeId== sizeId.SizeId)
+      setStockState(stockBySize.length>0?stockBySize[0].stock:0)
+   if(sizeId.SizeId>0){
+      if(value <= stockBySize[0].stock){
+      await dispatch(changeProductQuantityTomi(id, Number(value), price, name, image,Sizes, sizeId))
       await dispatch(loadCartTomi())
-    };
-
+      // console.log("entrostocktomi")
+    }
+   else{ alert(`No hay suficiente stock, solo ${stockState} pares disponibles `)}
+   }else{
+   alert("Seleccione una talla antes")}
+}
    
   async function handleDeleteItemCart(){
       // dispatch(deleteItemCartStorage(id))
@@ -101,7 +94,7 @@ let x
                <div className="PriceShoppinCart"><h3> Precio: $ {price} </h3></div> 
                <div className="SelectTalle">
                   <select   onChange={handleSizeSelect} onClick={handleCartSize}>
-              {/* <option value="All" >Talles</option> */}
+               <option value="All" >Talles</option> 
                 {Sizes?Sizes.map((size, index) => {
                   return (
                     // <div key={index}>
@@ -123,7 +116,7 @@ let x
             type="number"
             defaultValue={quantity}//manejar stock aca con max
             min={1}
-            // max={detail.stock}
+             max={stockState>0?stockState+1:7}
             onChange={handleChangeQuantity}
           />
                    {/* <div className="QuantityButtons">

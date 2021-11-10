@@ -34,7 +34,7 @@ function ShopingCart() {
   useEffect(() => {
     //  fusionCartTomi()
       dispatch(loadCartTomi())
-    console.log("entrofusion")
+    // console.log("entrofusion")
     // dispatch(fillCartStorage(cartStorage));
   }, [dispatch, user]);
   
@@ -42,18 +42,13 @@ function ShopingCart() {
       dispatch(cartResetTomi())
       history.push('/catalogue')
     }
-    function handleClearCart(){
-      dispatch(clearCart())
-      localStorage.removeItem('cartId');
-      history.push('/catalogue')
-      window.location.replace('')
-    }
+   
     async function  handleSubmit (){
     
       if(user){
     await (fusionCartTomi(user))
     await dispatch(loadCartTomi(user))
-    console.log(user,"logintomi")
+    // console.log(user,"logintomi")
    
     }
     }
@@ -64,16 +59,6 @@ function ShopingCart() {
     window.location.replace('')
   }
   
-    function handleUpdateCart(){
-      let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
-      if(userLogParse){
-          dispatch(recoveryCart(userLogParse))
-          alert("Carrito recuperado, puede avanzar sin completar datos")
-          localStorage.removeItem('cartPost')}
-      else{ 
-          alert("No hay carrito a recuperar")
-      }
-    }
 
  return (
         <div className="ShoppingCartContainer">
@@ -82,7 +67,7 @@ function ShopingCart() {
                 <div className="ShoppingCartTitle"><h1>Shoping Cart</h1></div>
                 <div className="BtnShoppingCart">
                     <button onClick={handleReset} className="CartItemDelete">Vaciar Carrito</button>
-                    <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
+                    <button  className="CartItemDelete">Recuperar Carrito</button>
                     <button onClick={handleCatalogue} className="CartBack">Regresar</button>
                 </div>
             </div>
