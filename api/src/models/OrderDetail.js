@@ -10,5 +10,8 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        sizeId:{
+            type: DataTypes.INTEGER,
+        }
     }, {timestamps: false})
 }

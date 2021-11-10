@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const GET_PRODUCT_STOCK_ID = "GET_PRODUCT_STOCK_ID";
+export const GET_PRODUCT_STOCK_ID="GET_PRODUCT_STOCK_ID";
+export const GET_PRODUCT_STOCK_SIZE="GET_PRODUCT_STOCK_SIZE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_ORDERED_PRODUCTS = 'GET_ORDERED_PRODUCTS'
@@ -212,6 +213,21 @@ export function getProductsByName(payload) {
         }
     };
 }
+export function getProductStockBySize(id, body){
+    return async (dispatch) => {
+        try {
+         
+            let info={SizeId: body.SizeId}
+            const  data  = await axios.get(`/productSizes/stockBySize/${id}`, info )
+            console.log(data,"tomiaction")
+            return await dispatch({
+                type: GET_PRODUCT_STOCK_SIZE,
+                payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
 
 export async function PutProduct(payload) {
     const { data } = axios.put(`/products/updateProduct/`, payload)

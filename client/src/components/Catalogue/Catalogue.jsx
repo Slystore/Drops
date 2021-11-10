@@ -191,6 +191,7 @@ const deleteFilter = (data) => {
         <div className="Productos">
           {
           currProducts && currProducts.map((product, index) => {
+            console.log(product.Sizes,"sizeslogueado")
               return (
                 product && (<Link to={`/catalogue/${product.id}`} key={index}>
                   <div className="Shoes" key={index}>
@@ -201,7 +202,7 @@ const deleteFilter = (data) => {
                         price={product.price}
                         status={product.status}
                         description={product.description}
-                        // addToCart = {handleAddCart}  
+                        Sizes = {product.Sizes}  
                       />
                   </div>
                 </Link>)

@@ -20,7 +20,7 @@ import "./ProductDetail.css";
 function ProductDetail(props) {
   const history = useHistory();
   const dispatch = useDispatch();
-
+const [size, setSize] = useState({SizeId:0});
   const { id } = props.match.params;
   const { productId } = useSelector((state) => state.productReducer);
   const { stockById } = useSelector((state) => state.productReducer);
@@ -61,19 +61,15 @@ const decoded = x?jwt_decode(x): null;
        await  (fusionCartTomi(id))
         await  (loadCartTomi())
         await dispatch(addToCartTomi(id, 1,
-          productId.price, productId.name,productId.image))
+          productId.price, productId.name,productId.image, productId.Sizes))
     }
     await dispatch(addToCartTomi(id,  1,
-      productId.price, productId.name,productId.image))
+      productId.price, productId.name,productId.image,productId.Sizes))
   }
 
   function handleReviews(e) {
     e.preventDefault();
     setBul(!bul);
-
-    // if(prueba2 === true) data = 'visible';
-    // else data = 'hidden'
-    // history.push(`/catalogue/${id}/reviews`)
   }
 
   return (
@@ -107,7 +103,7 @@ const decoded = x?jwt_decode(x): null;
             <div className="Talles">
               <h4>Talles</h4>
               <div className="TallesContainer">
-                {productId.Sizes.map((size, index) => {
+              {productId.Sizes.map((size, index) => {
                   return (
                     <div>
                       <div className="Talle">#{size.number}</div>
@@ -204,28 +200,6 @@ const decoded = x?jwt_decode(x): null;
         </div>
       )}
 
-      {/* 
-
-            <h1>Detail</h1>
-            {productId.name ? <div>
-                <img src={productId.image}  width="200px" height="250px" />
-                <h1 > {productId.name.toUpperCase()} </h1>
-                <h3> {Number(productId.price)} </h3>
-                <h4>{productId.status}</h4>
-                <h4>{productId.Brand.name}</h4>
-                <h4>{productId.Category.name}</h4>
-                <h5>Descripción: {`${productId.description}`}</h5>
-              <h6>Talles: {productId.Sizes.map((size, index) => {
-                return (   <div key={index}>Talle {size.number} Stock {stockById[index]?stockById[index].stock: 0} pares</div>
-                  )}
-              )}
-                  </h6>
-            </div> : <div> <p >Loading...</p></div>}
-            <NavLink to="/catalogue">
-                <button >Volver</button>
-            </NavLink>
-            <div> <button onClick={addCart} 
-            >Agregar a Carrito</button></div>  */}
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTom
 import jwt_decode from "jwt-decode";
 import { getToken } from '../../redux/users/userActions';
 
-export default function Product({ name, id, price, image }) {
+export default function Product({ name, id, price, image, Sizes }) {
     const {items} = useSelector(store => store.cartReducersTomi);
 const dispatch = useDispatch();
 let x
@@ -20,7 +20,6 @@ if(localStorage.getItem('token')){
 const decoded = x?jwt_decode(x): null;
 const { ratings } = useSelector((state) => state.ratingReducer);
     const data = ratings.filter(e => e.id === id)
-    // console.log(data.name, data)
    
     useEffect(() => {
         dispatch(getProductsById(id))
@@ -31,43 +30,20 @@ const { ratings } = useSelector((state) => state.ratingReducer);
     const {productId} = useSelector((state) => state.productReducer);
     const {stockById} = useSelector((state) => state.productReducer);
 
-// console.log("tomiUser",decoded)
     const handleAddToCart = async () => {
     
         let product = items?.find( e => e.id === id)
-    
-        let user = decoded?decoded.user.id: null
+     let user = decoded?decoded.user.id: null
         if(user) {
                console.log("entrouser",user)
            await  (fusionCartTomi(id))
             await  dispatch(loadCartTomi())
-            await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image))
+            await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price,
+                 name, image, Sizes))
         }
-        // if(cart && product?.quantity >= stock) {
-          
-        //   Swal.fire(
-        //     {
-        //       text: 'Ups! Alcanzo el maximo del stock',
-        //       icon: 'warning', 
-        //       width:'20rem', 
-        //       timer: '3000', 
-        //       showConfirmButton: false 
-        //     }
-        //     )
-        //     history.push("/cart")
-        //   }
-        //   else {
-          await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1, price, name, image));
-        //   Swal.fire(
-        //     {
-        //       text:'Se agrego al carrito',
-        //       icon: 'success', 
-        //       width:'20rem', 
-        //       timer: '3000', 
-        //       showConfirmButton: false 
-        //     }
-        //   )
-        // }
+   
+          await dispatch(addToCartTomi(id, product?.quantity ? product.quantity + 1 : 1,
+             price, name, image, Sizes));
       
       };
     return (
@@ -113,7 +89,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                             {
                                 productId.Sizes.map((size, index) => {
                                     return (   
-                                        <div className="TalleCard">#{size.number}</div>
+                                        <div className="TalleCard" >#{size.number}</div>
                                     )}
                             )}
                         </div> 
@@ -122,25 +98,6 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                 }
 
             </div>
-              
-            {/* <div className="IconShoppingContainer">
-                <Link to={`/catalogue`}>
-                     <div className="IconShopping hvr-pulse-grow">
-                        <ShoppingCartIcon 
-                            sx={{
-                                    width:30,
-                                    fontSize:20, 
-                                    marginTop:0.7, 
-                                    color:' rgb(197, 197, 197)',
-                                    '&:hover':{
-                                        color:'#9E0000'
-                                    }}}
-                            onClick={() => handleAddToCart(id)}/>
-                    </div></Link>
-                    <div className="IconShopping hvr-pulse-grow">
-                    <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
-                    </div>
-            </div> */}
         </div>
     )
 }
