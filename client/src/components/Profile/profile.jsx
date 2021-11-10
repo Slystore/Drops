@@ -96,6 +96,7 @@ export default function Profile() {
       if (userDecoded.user) {
         dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
       } else {
+        const gId = localStorage.getItem("gId");
         dispatch(getUserId(gId));
         setUser({
           userData: userDecoded,
@@ -114,8 +115,10 @@ export default function Profile() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleSubmit = async () => {
-    const x = await editUsers(data, user ? user.userData.user.id : gId);
+  const handleSubmit = async (e) => {
+
+    console.log('user en el sub',user)
+    const x = await editUsers(data, user ? gId : user.userData.user.id);
     if (x) return "";
   };
   const handleOpenEdit = () => setEdit(true);
