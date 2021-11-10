@@ -1,13 +1,12 @@
 
 import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
-import { editUsers, getUsers } from "../../../redux/users/userActions"
+import { editUsers, getUsers, getUsersByName } from "../../../redux/users/userActions"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
 import Paginado from "../../Catalogue/Paginado";
 import ProductButtons from "../products/ProductButtons";
 
 import UserMap from "./UserMap"
-import { getUsers, getUsersByName } from './../../../redux/users/userActions';
 
 const Users = () => {
     const dispatch = useDispatch()
@@ -44,12 +43,6 @@ const Users = () => {
     
     let nada = users.slice(firstProduct, lastProduct)
 
-    console.log(users)
-    console.log(productos)
-    console.log(nada)
-
-    
-
     const handleSearch = (e) => {
         e.preventDefault()
         setBusqueda(e.target.value)
@@ -66,14 +59,14 @@ const Users = () => {
         dispatch(getUsers())
     }
 
-    const data = <button onClick={restore}>Restore</button>
+    const button = <button onClick={restore}>Restore</button>
 
 
 
     return(
         <Grid style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
 
-        <ProductButtons searchbar={handleSearch} info={data} restore={restore}/>
+        <ProductButtons searchbar={handleSearch} info={button} restore={restore}/>
             <TableContainer >
                 <Table aria-label="simple table">
                     <TableHead>

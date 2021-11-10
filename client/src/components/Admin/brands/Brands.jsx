@@ -45,7 +45,7 @@ const Brands = () => {
     return (
         <Grid style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
 
-
+        <BrandsButtons/>
             <TableContainer >
                 <Table aria-label="simple table">
                     <TableHead>

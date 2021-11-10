@@ -24,6 +24,9 @@ const BrandsButtons = ({searchbar}) => {
 
     return (
         <Grid className="navButton">
+        <label>Buscar<input type='text' onChange={searchbar}/></label>
+        <button onClick={restore}>Restore</button>
+
             <SiNike className="iconButtonNav" />
             <Button style={{ backgroundColor: '#555' }} type='button' className="buttonButton" onClick={handleOpen} variant='contained'>Crear Marca</Button>
             <Modal open={open}
@@ -32,9 +35,7 @@ const BrandsButtons = ({searchbar}) => {
                 aria-describedby="modal-modal-description"
             >
 
-            <label>Buscar<input type='text' onChange={searchbar}/></label>
-
-            <button onClick={restore}>Restore</button>
+           
 
                 <Box className="boxModalCategories">
                 <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
@@ -57,4 +58,5 @@ const BrandsButtons = ({searchbar}) => {
 }
 
 export default BrandsButtons
+
 
