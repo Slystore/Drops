@@ -5,5 +5,9 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING
         },
+        created: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     }, { timestamps: false });
 };
