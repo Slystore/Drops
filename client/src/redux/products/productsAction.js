@@ -5,6 +5,7 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_PRODUCT_STOCK_ID="GET_PRODUCT_STOCK_ID";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_ORDERED_PRODUCTS = 'GET_ORDERED_PRODUCTS'
 export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
 export const GET_PRODUCT_BY_ID = 'GET_REVIEWS_BY_USER'
 export const FILTER_BY_BRAND = " FILTER_BY_BRAND";
@@ -25,6 +26,20 @@ export function getProducts(pagina){
             return await dispatch({
                 type: GET_PRODUCTS,
                 payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function getOrderedProducts(payload){
+    console.log('entro a la action', payload)
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: GET_ORDERED_PRODUCTS,
+                payload
             })    
         } catch (error) {
             console.log(error)

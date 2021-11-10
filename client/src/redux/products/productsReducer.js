@@ -1,5 +1,6 @@
 import {
   GET_PRODUCTS,
+  GET_ORDERED_PRODUCTS,
 //   GET_ALL,
   GET_PRODUCTS_PER_PAGE,
   GET_PRODUCT_BY_ID,
@@ -43,6 +44,25 @@ function productsReducer(state = initialState, action) {
         productsPerPage: action.payload,
       };
     }
+
+    // case GET_ORDERED_PRODUCTS: {
+    //   console.log(action.payload)
+    //   let orderArray = state.products
+      
+    //   action.payload === 'desc' ?
+    //   orderArray = orderArray.sort( (a,b) => {
+    //     if(a.id < b.id) return -1
+    //     else if(a.id > b.id)  return 1
+    //     else return 0 
+    //   })
+    //  : 
+    //   orderArray = orderArray.sort( (a,b) => b.name - a.name );
+
+    //   return {
+    //     ...state,
+    //     products: orderArray,
+    //   };
+    // }
     case GET_PRODUCT_BY_ID: {
       return {
         ...state,

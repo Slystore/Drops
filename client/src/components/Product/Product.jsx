@@ -84,7 +84,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                                     '&:hover':{
                                         color:'#9E0000'
                                     }}}
-                            onClick={() => addToCart(id)}/>
+                            onClick={() => handleAddToCart(id)}/>
                     </div>
                 </Link>
                 <div className="IconShopping hvr-pulse-grow">
