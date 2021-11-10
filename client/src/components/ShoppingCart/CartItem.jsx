@@ -17,7 +17,7 @@ import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartT
 export default function CartItem  ({image, price, title, id, quantity, name, fillState}) {
 //  const {cart} = useSelector(state => state.cartReducer)
    //  const { id } = props.match.params
-    console.log(id,"tomicomponcart")
+   //  console.log(id,"tomicomponcart")
    const history = useHistory()
    // const [stateCart, setStateCart] = React.useState([])
 
@@ -48,15 +48,15 @@ export default function CartItem  ({image, price, title, id, quantity, name, fil
       dispatch(decrementCartStorage(id))
    } 
    
-   function handleDeleteItemCart(){
+  async function handleDeleteItemCart(){
       // dispatch(deleteItemCartStorage(id))
-dispatch(removeFromCartTomi(id))
+await dispatch(removeFromCartTomi(id))
 let x
     if(localStorage.getItem('token')){
          x = getToken();}
     const decoded = x?jwt_decode(x): null;
     let user = decoded?decoded.user.id: null
-       if(user){ dispatch(loadCartTomi());}
+       if(user){ await dispatch(loadCartTomi());}
    } 
    const handleReset = () => {//resetea a cero carrito tanto si es user o guest 
       dispatch(cartResetTomi())

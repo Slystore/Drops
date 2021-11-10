@@ -1,6 +1,10 @@
 .log-Cont{
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/nikeBotaRoja.jpg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -64,6 +68,10 @@
     text-decoration: none;
     color: #fc4444;
 }
+.forgot-log{
+    color: #fc4444;
+    cursor: pointer;
+}
 .Field{
     width: 300px;
     height: 35px;
@@ -111,13 +119,164 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px){
+
+    .log-Box{
+        width: 90vw;
+        height: 60vh;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #fff;
+        border: solid #ccc 1px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+    
+    .log-Box h1{
+        width: 88vw;
+        text-align: left;
+    }
+    
+    .img-log{
+        /* border: solid blue 1px; */
+        position: absolute;
+        top: 0;
+        left: 50vw;
+        width: 40vw;
+        height: 60vh;
+        background-image: url('../../assets/sneake-new.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover
+    }
+
+    .border-dec{
+        width: 45vw;
+        margin-right: 40vw;
+        border: solid #ccc 1px;
+    }
+    
+    .form-box-log{
+        width: 45vw;
+        margin-top: 15px;
+        margin-right: 47vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 55px;
+        /* width: fit-content; */
+    }
+
+    .Field{
+        font-size: 2vw;
+    }
     
 }
 
 @media (min-width: 576px) and (max-width: 767px){
+
+    .log-Box{
+        width: 70vw;
+        height: 60vh;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #fff;
+        border: solid #ccc 1px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+
+    .log-Box h1{
+        width: 65vw;
+        text-align: left;
+    }
+
+    .img-log{
+        display: none;
+    }
+
+    .border-dec{
+        width: 65vw;
+        border: solid #ccc 1px;
+    }
+    
+    .form-box-log{
+        width: 60vw;
+        margin-top: 15px;
+        margin-right: 8vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 55px;
+        /* width: fit-content; */
+    }
     
 }
 
 @media (max-width: 575px){
+
+    .log-Box{
+        width: 80vw;
+        min-height: 50vh;
+        max-height: 60vh;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #fff;
+        border: solid #ccc 1px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
     
+    .log-Box h1{
+        width: 70vw;
+        text-align: left;
+    }
+
+    .img-log{
+        display: none;
+    }
+
+    .border-dec{
+        width: 65vw;
+        border: solid #ccc 1px;
+    }
+    
+    .form-box-log{
+        width: 70vw;
+        margin-top: 15px;
+        margin-right: 13vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 55px;
+        /* width: fit-content; */
+    }
+
+    .Field{
+        width: 60vw;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: thin solid #ccc;
+        outline: none;
+    }
+
+    .data-Field p{
+        width: 50vw;
+        font-size: 4vw;
+    }
+
+    .data-Field a {
+        text-decoration: none;
+        color: #fc4444;
+    }
+
 }

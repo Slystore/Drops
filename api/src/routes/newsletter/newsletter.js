@@ -45,6 +45,7 @@ router.post('/subscribe', async (req, res, next) => {
                   response.id
                 }.`
               );
+              res.json('Successfully added contact as an audience member')
            
      } else {
          res.status(404).json({message: 'You must enter a correct email'})

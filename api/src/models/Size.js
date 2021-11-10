@@ -5,5 +5,9 @@ module.exports = (sequelize) => {
         number: {
             type: DataTypes.INTEGER
         },
+        created: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     }, { timestamps: false });
 };

@@ -55,13 +55,15 @@ const getProducts = async(req, res, next) => {
                 {
                     model: Size,
                     through: {
-                        attributes: [],
+                        model: ProductSize,
+                        attributes:{
+                            exclude: ['SizeId', 'ProductId']
+                        }
                     },
                 },
                 {
                     model: Reviews,
-                    
-                },
+                }
             ],
             where: handleWhere(filters),
             //NO BORRAR EL SIGUIENTE COMENTARIO QUE ES PARA EL FILTRO POR TITLE Y GENRE

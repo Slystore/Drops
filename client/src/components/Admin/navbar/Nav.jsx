@@ -14,7 +14,7 @@ const AdminNavBar = () => {
     return (
         <div className='sidebar'>
             <div className='sidebarImg'>
-                <img className='img' src={Logo} />
+                <Link to="/" ><img className='img' src={Logo} /></Link>
             </div>
             <div className='sidebarWrapper'>
 

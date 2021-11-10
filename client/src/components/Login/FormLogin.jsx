@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "./loginStyles.css";
 import { useDispatch } from "react-redux";
 import { Form, Field, ErrorMessage, Formik } from "formik";
-import { userLogin, userLoginGoogle } from "../../redux/users/userActions";
+import {
+  getUserId,
+  userForgotPass,
+  userLogin,
+  userLoginGoogle,
+} from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
-import { getToken } from './../../redux/users/userActions'
-import jwt_decode from "jwt-decode";
-import { fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 
 export default function FormLogin() {
   const dispatch = useDispatch();
@@ -15,28 +17,46 @@ export default function FormLogin() {
     msg: "",
     state: false,
   });
+  const [user, setUser] = useState();
+  const [mail, setMail] = useState({ mail: "" });
+  const [forgot, setForgot] = useState({
+    msg: "",
+    auth: false,
+  });
+  const [acc, setAcc] = useState(0);
   const history = useHistory();
-  let x
-    if(localStorage.getItem('token')){
-         x = getToken();}
-    const decoded = x?jwt_decode(x): null;
-    let user = decoded?decoded.user.id: null
 
   const responseGoogle = async (response) => {
     try {
       console.log("a ver la response", response);
       if (response) {
         let x = await userLoginGoogle(response);
+
+        console.log("esta es la x de google ", x);
         if (x.user) {
+          dispatch(getUserId(x.user.id));
+          localStorage.setItem('gId',x.user.id)
           localStorage.setItem("token", response.tokenId);
-          history.push("/");
+          setTimeout(() => {
+            history.push("/");
+          }, 1500);
         }
       }
     } catch (err) {
       console.log("rompo en response google", err);
     }
   };
-
+  console.log("este es el mail", mail.mail);
+  const forgotClick = async () => {
+    await userForgotPass(mail);
+    console.log("esta es la data del user ", user);
+    dispatch(getUserId(user));
+    localStorage.setItem("userId", user);
+    setForgot({
+      msg: "Se ah enviado un corre electronico para seguir con la recuperacion. Por favor revisar la casilla de spam ",
+      auth: true,
+    });
+  };
   return (
     <div className="log-Cont">
       <div className="log-Box">
@@ -50,17 +70,26 @@ export default function FormLogin() {
           }}
           onSubmit={async (body) => {
             const x = await userLogin(body);
-            console.log(x);
+            setUser(x.id);
+            setMail({ mail: body.mail });
             if (x.msg) {
               setLogeado({
                 state: false,
                 msg: x.msg,
               });
-              setTimeout(() => {
-                setLogeado({
-                  msg: "",
-                });
-              }, 4000);
+              // setTimeout(() => {
+              //   setLogeado({
+              //     msg: "",
+              //   });
+              // }, 4000);
+              setAcc(acc + 1);
+            }
+            console.log(acc);
+            if (acc >= 3) {
+              return setLogeado({
+                state: false,
+                msg: "a ver probando",
+              });
             }
             if (x.auth === true) {
               history.push("/");
@@ -75,7 +104,7 @@ export default function FormLogin() {
                 values.mail
               )
             ) {
-              error.mail = "Por favor ingrese una direccion de correo valida";
+              error.mail = "Por favor ingrese una dirección de correo válida";
             }
             if (!values.password) {
               error.password = "Por favor ingrese una contraseña";
@@ -117,12 +146,22 @@ export default function FormLogin() {
                   />
                 </div>
                 <div className="data-Field">
-                  <button className="btn-sub" type="submit" >
+                  <button className="btn-sub" type="submit">
                     Login
                   </button>
                 </div>
                 <div className="data-Field">
-                  {logeado && <p className="log-error">{logeado.msg}</p>}
+                  {logeado && acc >= 3 ? (
+                    <div>
+                      No recuerdas tu contraseña haz{" "}
+                      <span className="forgot-log" onClick={forgotClick}>
+                        Click aqui
+                      </span>
+                    </div>
+                  ) : (
+                    <p className="log-error">{logeado.msg}</p>
+                  )}
+                  {forgot.auth ? <div>{forgot.msg}</div> : ""}
                 </div>
                 <div className="data-Field">
                   <p>
@@ -133,7 +172,10 @@ export default function FormLogin() {
                 <div className="data-Field">
                   <GoogleLogin
                     className="BtnFace"
-                    clientId="867381968121-k4jusja35hahfur6b0ionmv8mc9f8fgj.apps.googleusercontent.com"
+                    //vercel
+                    // clientId="867381968121-k4jusja35hahfur6b0ionmv8mc9f8fgj.apps.googleusercontent.com"
+                    //local
+                    clientId="867381968121-4njd3q5va0695tdivgirjl5tka5n7fqo.apps.googleusercontent.com"
                     buttonText="Sign in with Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
