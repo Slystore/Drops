@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const GET_USERS = "GET_USERS";
-export const GET_USER_ID = 'GET_USER_ID'
+export const GET_USER_ID = 'GET_USER_ID';
+export const GET_USERS_BY_NAME = 'GET_USERS_BY_NAME';
 
 export const userRegister = async (payload) => {
   try {
@@ -104,11 +105,26 @@ export const getUserId = (id)=>{
 export const getUsers = () => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.get("/allUser");
-      console.log(data);
+      console.log('hola')
+      let nada = await axios.get("/allUser");
+      console.log('esto trae el back a la action',nada.data.users);
       return await dispatch({
         type: GET_USERS,
-        payload: data,
+        payload: nada.data.users
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export const getUsersByName = (payload) => {
+  return async (dispatch) => {
+    try {
+      console.log(payload)
+      return await dispatch({
+        type: GET_USERS_BY_NAME,
+        payload
       });
     } catch (error) {
       console.log(error);

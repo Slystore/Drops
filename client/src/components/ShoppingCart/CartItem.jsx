@@ -86,16 +86,6 @@ let x
       return Math.round(m) / 100 * Math.sign(num);
    }
 
-   function handleUpdateCart(){
-      let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
-      if(userLogParse){
-         dispatch(recoveryCart(userLogParse))
-         alert("Carrito recuperado, puede avanzar sin completar datos")
-          localStorage.removeItem('cartPost')}
-      else{ 
-         alert("No hay carrito a recuperar")
-      }
-   }
 
    return (
    <div>
