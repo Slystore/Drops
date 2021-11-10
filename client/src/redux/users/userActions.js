@@ -69,13 +69,14 @@ export const getToken = () => {
 export const editUsers = async(userUpdate,id) =>{
   console.log('este es el userUpdate de la action ',userUpdate)
   try{
-
     let {data} = await axios.put(`/edit/${id}`,userUpdate)
     return data 
   }catch(err){
     console.log('rompo en la action de editUsers',err)
   }
 }
+
+
 export const userNewPass = async (newPass,id) =>{
   console.log('este es el user y la id ',newPass,id)
   try{

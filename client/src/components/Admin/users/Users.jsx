@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
+import { editUsers, getUsers } from "../../../redux/users/userActions"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
 import Paginado from "../../Catalogue/Paginado";
 import ProductButtons from "../products/ProductButtons";
@@ -20,6 +21,9 @@ const Users = () => {
     const lastProduct = currPage * cardsxPage
     const firstProduct =  lastProduct - cardsxPage;
     const {users} = useSelector( state => state.usersReducer);
+    const [data,setData] = useState({
+        userType:""
+    })
     // console.log(users)
 
     useEffect( ()=>{
@@ -27,6 +31,16 @@ const Users = () => {
         setProductos(users)
 
     },[dispatch])
+    const handleSelect = async (e,id) => {
+        console.log('valor del select',e.target.value,id)
+        setData({
+          ...data,
+          userType: e.target.value,
+        });
+        console.log('usertype',data?data.userType:"hola")
+        await editUsers({userType:e.target.value},id)
+        window.location.reload(false)
+      };
     
     let nada = users.slice(firstProduct, lastProduct)
 
@@ -89,7 +103,15 @@ const Users = () => {
                                     <TableCell align="left">{el.mail}</TableCell>
                                     <TableCell align="left">{el.userType}</TableCell>
                                     <TableCell align="left">
-                                        <Button variant="contained" style={{backgroundColor: "rgb(240, 240, 255)", color:"blue"}} >Editar</Button>
+                                        <select onChange={(e)=>{handleSelect(e,el.id)}}>
+                                        <option value="">Elige un type</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                        <option value="banned">Banned</option>
+                                        <option value="disabled">Disabled</option>
+
+                                    </select>
+                                        {/*<Button variant="contained" style={{backgroundColor: "rgb(240, 240, 255)", color:"blue"}} >Editar</Button>*/}
                                     </TableCell>
                                 </TableRow>
                             )

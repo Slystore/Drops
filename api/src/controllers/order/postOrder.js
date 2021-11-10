@@ -1,77 +1,51 @@
 const { Product, Users, OrderDetail, Orders } = require("../../db.js");
 
-const postOrder = async (req, res) => {
-  const {
-    location,
-    totalPrice,
-    paymentId,
-    paymentStatus,
-    merchantOrderId,
-    status,
-    userId,
-    cart,
-  } = req.body;
-
+const postOrderTomi = async (req, res, next) => {
   try {
-    const getOrder = await Orders.findOne({
+    const { products, userId } = req.body;
+
+    const order = await Orders.findOne({
       where: {
         UserId: userId,
+        status: "inCart",
       },
     });
 
-    if (!getOrder) {
-      const user = await Users.findOne({
-        where: {
-          UserId: userId,
-        },
-      });
-
-      if (!user) {
-        return res.status(404).json({
-          message: "User not found",
-        });
-      }
-
-      const order = await Orders.create({
-        date: new Date().toISOString(),
-        location,
-        totalPrice,
-        paymentId,
-        paymentStatus,
-        merchantOrderId,
-        status: status || "pending",
+    if (!order) {
+      const order2 = await Orders.create({
         userId,
-        cart,
+        products,
       });
-      await user.addOrders(order.id);
+      
+      const user = await Users.findByPk(userId);
+      user.addOrders(order2);
 
-      cart?.forEach(async (el) => {
-        const productData = await Product.findByPk(el.productId);
-        order.addProduct(productData.id, {
+      products?.forEach(async (product) => {
+        const productData = await Product.findByPk(product.productId);
+
+        order2.addProduct(productData, {
           through: {
+            quantity: product.quantity,
             price: productData.price,
-            quantity: el.quantity,
-          }
-          });
+          },
+        });
       });
       
       return res.json({
-        status: `${order.status}`,
+        status: `${order2.status}`,
         message: true,
-        orderId: `${order.id}`
+        orderId: `${order2.id}`,
       });
-    }else{
-      res.status(500).json({
-        message: "User already has an Order",
+    } else
+      res.json({
+        status: `${order.status}`,
+        message: false,
+        orderId: `${order.id}`,
       });
-    }
   } catch (err) {
     console.log(err);
-    res.status(500).json({
-      message: "Something went wrong",
-    });
+    next(err);
   }
 };
 
-module.exports = postOrder;
-
+module.exports = postOrderTomi;
