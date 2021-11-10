@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { decrementCartStorage, clearCart, incrementCartStorage, deleteItemCartStorage } from '../../redux/cart/cartActions';
-import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
+import {  cleanDetail, getProductsById, getProductStockById, getProductStockBySize } from '../../redux/products/productsAction';
 import { getToken } from './../../redux/users/userActions'
 import jwt_decode from "jwt-decode";
 import {  recoveryCart } from '../../redux/cart/cartActions';
@@ -12,41 +12,60 @@ import {  recoveryCart } from '../../redux/cart/cartActions';
 import Divider from '@mui/material/Divider';
 
 import './CartItem.css'
-import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartTomi } from '../../redux/cartTomi/cartActionTomi';
+import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartTomi, SelectCartSize } from '../../redux/cartTomi/cartActionTomi';
 
-export default function CartItem  ({image, price, title, id, quantity, name, fillState}) {
+export default function CartItem  ({image, price, title, id, quantity, name, Sizes}) {
 //  const {cart} = useSelector(state => state.cartReducer)
    //  const { id } = props.match.params
-   //  console.log(id,"tomicomponcart")
+   //  console.log(Sizes,"tomisize")
    const history = useHistory()
-   // const [stateCart, setStateCart] = React.useState([])
+    const [sizeId, setSizeId] = React.useState({SizeId:0})
 
    const dispatch = useDispatch();
 
-   useEffect(() => {
-      dispatch(getProductsById(id))
-      dispatch(getProductStockById(id))
-      return () => dispatch(cleanDetail(id))
-   }, [dispatch, id]);
-
+   // useEffect(() => {
+   //    dispatch(getProductsById(id))
+   //    dispatch(getProductStockById(id))
+   //    return () => dispatch(cleanDetail(id))
+   // }, [dispatch, id]);
+   const {items} = useSelector((state) => state.cartReducersTomi);
    const {productId} = useSelector((state) => state.productReducer);
    const {stockById} = useSelector((state) => state.productReducer);
+// let stockPrev= items? items.map(item => item.Sizes.filter(size => size.id=== item.SizeId)): []
+// let stockByProduct = stockPrev.length>0?stockPrev.map(el => el[0].ProductSize.stock): []  
+  
+//       console.log("Stocktomi",stockByProduct, stockPrev)
+// let obj={productId: 0, SizeId: 0, stock: 0}
+// let array = [];
+// for(let i=0; i<stockByProduct.length; i++){
+//    for(let j=0; j<items.length; j++){
+//     obj.productId=items[j].id
+//          obj.SizeId=items[j].SizeId
+//          obj.stock=stockByProduct[i]
+//          array.push(obj)
+//       }
+//    }
+//    console.log("Objeto",obj, array)
 
-   // productId.name ? console.log("ProductID",productId.name) : console.log("No despacha la acción")
-   // console.log("ID",id)
-   // console.log("Stock",stockById.data)
-
-   function handleIncrement(){
-      dispatch(incrementCartStorage(id))
+   async function handleSizeSelect(e){
+      e.preventDefault()
+     await setSizeId({SizeId:Number(e.target.value)})
    } 
+  
+   async function handleCartSize(e){
+      e.preventDefault()
+       console.log(sizeId, e.target.value,"sizeidtomi")
+      // console.log(id,quantity,price,name,image)
+      dispatch(SelectCartSize(id,quantity,price,name,image,Number(e.target.value)))
+   }
    const handleChangeQuantity = async (e) => {
       const { value } = e.target;
+      const stock= await dispatch(getProductStockBySize(id,sizeId))
+      console.log(stock,"stock")
       await dispatch(changeProductQuantityTomi(id, Number(value), price, name, image))
       await dispatch(loadCartTomi())
     };
-   function handleDecrement(){
-      dispatch(decrementCartStorage(id))
-   } 
+
    
   async function handleDeleteItemCart(){
       // dispatch(deleteItemCartStorage(id))
@@ -61,12 +80,6 @@ let x
    const handleReset = () => {//resetea a cero carrito tanto si es user o guest 
       dispatch(cartResetTomi())
     }
-   // function handleClearCart(){
-   //    dispatch(clearCart())
-   //    localStorage.removeItem('cartId');
-   //    history.push('/catalogue')
-   //    window.location.replace('')
-   // }
    
    function round(num) {
       var m = Number((Math.abs(num) * 100).toPrecision(15));
@@ -97,11 +110,19 @@ let x
             <div className="Row">
                <div className="PriceShoppinCart"><h3> Precio: $ {price} </h3></div> 
                <div className="SelectTalle">
-                  <select className="SelectShoppingCart">
+                  <select   onChange={handleSizeSelect} onClick={handleCartSize}>
+              {/* <option value="All" >Talles</option> */}
+                {Sizes?Sizes.map((size, index) => {
+                  return (
+                    // <div key={index}>
+                      <option value={size.id}>{size.number}</option>
+                      );
+                     }):null}
+                  {/* <select className="SelectShoppingCart">
                      <option value="">Talle</option>
                      <option value="">40</option>
                      <option value="">41</option>
-                     <option value="">42</option>
+                     <option value="">42</option> */}
                   </select>
                </div>
             </div>
@@ -148,40 +169,3 @@ let x
 
 
 
-{/* 
-<div> */}
-   {/* <div>
-
-      {
-            productId.Sizes.map((size, index) => {
-               return (   
-                        <div>
-                           <div className="Talle">#{size.number}</div>
-                           <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
-                        </div>
-               )}
-      )}
-   </div> */}
-   {/* <select >
-      <option value="">Talles</option>
-       {
-         productId.Sizes.map((talle, index) => {
-            return (   
-                     <option>{talle.number} | {stockById[index].stock}</option>
-                  //   <div>
-                  //       <div className="Talle">#{size.number}</div>
-                  //       <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
-                  //   </div>
-            )}
-    )
-      } 
-   </select>
-</div> */}
-{/* 
-   </div>
-   
-   <div className="Stock"> Stock 5 pares</div>
-</div> */}
-{/* <div className="BtnCart">
-   <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
-</div> */}

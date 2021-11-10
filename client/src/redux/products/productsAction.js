@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_PRODUCT_STOCK_ID="GET_PRODUCT_STOCK_ID";
+export const GET_PRODUCT_STOCK_SIZE="GET_PRODUCT_STOCK_SIZE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
@@ -191,4 +192,18 @@ export function getProductsByName(payload) {
             alert("Producto no encontrado");
         }
     };
+}
+export function getProductStockBySize(id, sizeId){
+    return async (dispatch) => {
+        try {console.log(id, sizeId)
+            const { data } = await axios.get(`/productSizes/stockBySize/${id}`, sizeId)
+            console.log(data,"tomiaction")
+            return await dispatch({
+                type: GET_PRODUCT_STOCK_SIZE,
+                payload: data
+            })    
+        } catch (error) {
+            console.log(error)
+        }   
+    }
 }

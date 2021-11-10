@@ -40,6 +40,7 @@ function ShopingCart() {
   
     const handleReset = () => {//resetea a cero carrito tanto si es user o guest 
       dispatch(cartResetTomi())
+      history.push('/catalogue')
     }
     function handleClearCart(){
       dispatch(clearCart())
@@ -96,7 +97,7 @@ function ShopingCart() {
                     id={product.id}
                     price={product.price}
                     quantity={product.quantity}
-                 
+                 Sizes={product.Sizes}
                   />
                 )})
       :<p>Carrito Vacio</p>}  

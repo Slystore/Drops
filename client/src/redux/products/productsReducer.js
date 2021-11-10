@@ -13,7 +13,8 @@ import {
   FILTER_BY_PRICE,
   SAVE_FILTERED_DATA_BY_BRAND,
   SAVE_FILTERED_DATA_BY_CATEGORY,
-  RESTORE_DATA
+  RESTORE_DATA,
+  GET_PRODUCT_STOCK_SIZE
 } from "./productsAction";
 
 export const initialState = {
@@ -23,6 +24,7 @@ export const initialState = {
   productForm: {},
   filtrados: [],
   stockById: [],
+  stockBySize: [],
   filtros: [],
   dataFiltrada: {}
 };
@@ -195,6 +197,11 @@ function productsReducer(state = initialState, action) {
         ...state,
         stockById: action.payload,
       };
+      case GET_PRODUCT_STOCK_SIZE:
+        return {
+          ...state,
+          stockBySize: action.payload,
+        };
     case GET_PRODUCT_NAME:
       return {
         ...state,

@@ -174,7 +174,7 @@ const deleteFilter = (data) => {
                         price={product.price}
                         status={product.status}
                         description={product.description}
-                        // addToCart = {handleAddCart}  
+                        Sizes = {product.Sizes}  
                       />
                   </div>
                 </Link>)

@@ -27,6 +27,7 @@ const postOrderTomi = async (req, res, next) => {
           through: {
             quantity: product.quantity,
             price: productData.price,
+            sizeId: product.SizeId? product.SizeId: null
           },
         });
       });

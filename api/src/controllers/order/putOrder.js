@@ -39,12 +39,14 @@ async function putOrder(req, res, next) {
             through: {
               quantity: el.quantity,
               price: productData.price,
+              sizeId: el.SizeId? el.SizeId: null
             },
           });
         } else {
           await productExists.update({
             quantity: el.quantity,
             price: productData.price,
+            sizeId: el.SizeId? el.SizeId: null
           });
         }
       });
