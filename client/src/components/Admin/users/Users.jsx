@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
 import { editUsers, getUsers } from "../../../redux/users/userActions"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow,Grid } from '@mui/material';
 
-import UserMap from "./UserMap"
+
 
 const Users = () => {
     const dispatch = useDispatch()

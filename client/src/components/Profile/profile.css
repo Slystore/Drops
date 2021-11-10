@@ -1,0 +1,19 @@
+.img-profile img{
+    width: 200px;
+    height: 200px;
+    border-radius: 999999px;
+}
+
+.home{
+    text-decoration: none;
+    color:#fc4444;
+}
+.home:hover{
+    color: #ff1313;
+}
+.profile-content{
+    margin-left: 4rem;
+    border: 2px solid red;
+    width: 55rem;
+    height: 40rem;
+}

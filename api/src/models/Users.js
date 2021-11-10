@@ -3,6 +3,11 @@ const { DataTypes, UUIDV4 } = require("sequelize");
 module.exports = (Sequelize) => {
     return Sequelize.define(
         "Users", {
+            id: {
+                type: DataTypes.BIGINT,
+                autoIncrement: true,
+                primaryKey: true
+            },
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
