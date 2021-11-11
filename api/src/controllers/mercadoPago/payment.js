@@ -31,19 +31,31 @@ console.log(req.query)
 const orderm = await Orders.findByPk(external_reference,
     {include: [
         {
-            model: Users,
+            model: Users, 
             attributes: ["mail", "name", "surname"]
-        }]}
+        },{model: OrderDetail}]}
         );
+        console.log('orderm', orderm)
     Orders.findByPk(external_reference)
         .then(order => {
             order.payment_id = payment_id;
             order.paymentState = status
+            if(status === 'approved'){
+                order.order_products.forEach(async (product) => {
+                    await Product.decrement({
+                      stock: product.units
+                    }, {
+                      where: {
+                        id: product.productId
+                      }
+                    });
+                  });
+                }
             order.status = 'completed'
             order.save()
                 .then(() => {
                     console.info('redict sucess')
-                    
+                    //timming para enviar mail
                     return res.redirect("http://localhost:3000/catalogue")
                 })
                 .catch(error => {
