@@ -7,7 +7,7 @@ import FormProductCreate from "../../Forms/product/postProduct";
 import { GiConverseShoe } from "react-icons/gi"
 
 
-const ProductButtons = ({searchbar, info},) => {
+const ProductButtons = ({ searchbar, info },) => {
     // console.log(searchbar)
 
     const [open, setOpen] = useState(false);
@@ -19,13 +19,13 @@ const ProductButtons = ({searchbar, info},) => {
     return (
         <Grid className="navButton">
             <GiConverseShoe className="iconButtonNav" />
+            <input className="searchbarAdmin" type='text' onChange={searchbar} placeholder="Buscar" />
 
             <Button style={{ backgroundColor: '#555', }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
 
-            {info }
+            {info}
 
-            <label>Buscar<input type='text' onChange={searchbar}/></label>
-            
+
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -43,6 +43,7 @@ const ProductButtons = ({searchbar, info},) => {
 
 
             </Modal>
+
         </Grid>
 
 
@@ -52,8 +53,3 @@ const ProductButtons = ({searchbar, info},) => {
 
 export default ProductButtons
 
-// <select onChange={order}>
-//                 <option>Ordenado</option>
-//                 <option value='desc'>A-Z</option>
-//                 <option value='asc'>Z-A</option>
-//             </select>

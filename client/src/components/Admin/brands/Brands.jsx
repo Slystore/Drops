@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { getBrands, getBrandsByName } from '../../../redux/brand/brandActions';
 import BrandsButtons from './BrandsButton';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
-import Paginado from "../../Catalogue/Paginado";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import { PutBrands } from '../../../redux/brand/brandActions';
@@ -40,9 +39,7 @@ const Brands = () => {
         dispatch(getBrandsByName(busqueda));
     }
 
-    const paginado = (pagNumber) => {
-        setCurrPage(pagNumber)
-    }
+
 
     const [input, setInput] = useState({
         id: "",
@@ -80,19 +77,20 @@ const Brands = () => {
 
     async function handleSubmit(e) {
         const x = await PutBrands(input)
-        swal("Good job!", "Marca Creada!", "success");
+        swal("", "Marca Actualizada!", "success", {
+            buttons: false
+        });
         setInput({
             name: "",
         })
-        // history.push('/admin/home')
-        // window.location.replace('')
+        window.location.replace('')
     }
 
 
     return (
         <Grid style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
 
-            <BrandsButtons />
+            <BrandsButtons searchbar={handleSearch} />
             <TableContainer >
                 <Table aria-label="simple table">
                     <TableHead>
@@ -137,36 +135,38 @@ const Brands = () => {
 
 
 
-                <Box className="boxModalCategories">
-
+                <Box className="boxModalBrands">
+                    <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
+                        Editar Marca
+                    </Typography>
                     <div className="formModal">
 
                         <form onSubmit={e => handleSubmit(e)}>
-                            <div className='boxInputBrand'>
+                            <div style={{ marginBottom: 30 }} className='boxInputBrand'>
 
+                                <p className='titleProduct'>ID </p>
                                 <input className='inputProduct'
                                     name="id"
                                     type="text"
                                     onChange={onInputChange}
                                     value={input.id}
-                                    placeholder='Nombre'
                                 />
 
 
                             </div>
                             <div className='boxInputBrand'>
+                                <p className='titleProduct'>Nombre </p>
 
                                 <input className='inputProduct'
                                     name="name"
                                     type="text"
                                     onChange={onInputChange}
                                     value={input.name}
-                                    placeholder='Nombre'
                                 />
 
 
                             </div>
-                            <div className='boxBtnCreate'>
+                            <div style={{ paddingTop: 20 }} className='boxBtnCreate'>
                                 <button className='btnCreate' type='submit'>  Crear</button>
 
                             </div>
@@ -177,8 +177,7 @@ const Brands = () => {
 
 
             </Modal>
-            <Paginado cardsxPage={cardsxPage} products={brands.length}
-                paginado={paginado} />
+
         </Grid>
     );
 };

@@ -1,5 +1,6 @@
 .formProduct {
     display: flex;
+    position: relative;
 }
 
 .boxInputProduct {
@@ -87,9 +88,13 @@
     color: white;
     outline: none;
     border:none;
-    width: 15px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .boxBtnCreate {
@@ -104,4 +109,12 @@
     height: 40px;
     outline: none;
     border: none;
+}
+.renderSizesProduct {
+     height: 27px;
+    display: flex;
+    justify-content: space-evenly;
+    width: auto;
+
+
 }

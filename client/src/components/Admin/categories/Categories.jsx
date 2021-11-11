@@ -1,18 +1,69 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { getCategories } from '../../../redux/category/categoriesActions';
+import { PutCategory } from '../../../redux/category/categoriesActions';
 import CategoriesButtons from './CategoriesButton';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box, Typography } from '@mui/material';
+import swal from 'sweetalert';
 
 const Categories = () => {
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(getCategories())
     }, [dispatch])
 
     const categories = useSelector(state => state.categoriesReducer.categories);
 
+
+
+    const [input, setInput] = useState({
+        id: "",
+        name: "",
+        description: ""
+    })
+
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+
+    const handleClose = () => setOpen(false);
+
+    const seleccionarcategory = (elemento, caso) => {
+        setInput({
+            id: elemento.id
+        })
+        //console.log("esta es mi elemento dsp del set ", elemento.id);
+        if (caso === "Editar") {
+            handleOpen()
+        } else {
+            handleClose()
+        }
+
+    };
+
+    function onInputChange(e) {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value,
+        })
+
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        console.log(input)
+
+        const x = await PutCategory(input)
+        swal("", "Categoria Actualizada!", "success", {
+            buttons: false
+        });
+
+        setInput({
+            name: "",
+        })
+        window.location.replace('')
+    }
 
 
     return (
@@ -40,7 +91,7 @@ const Categories = () => {
                                         </TableCell>
                                         <TableCell align="left">{el.name}</TableCell>
                                         <TableCell align="left">
-                                            <Button variant="contained" disabled style={{ backgroundColor: "rgb(240, 240, 255)", color: "#ccc" }} >Editar</Button>
+                                            <Button variant="contained" style={{ backgroundColor: "#555" }} onClick={() => { seleccionarcategory(el, "Editar") }} >Editar</Button>
                                         </TableCell>
                                     </TableRow>
                                 )
@@ -49,6 +100,60 @@ const Categories = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            <Modal open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box className="boxModalCategories">
+                    <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
+                        Editar Categoria
+                    </Typography>
+                    <div className="formModal">
+                        <form onSubmit={e => handleSubmit(e)}>
+                            <div>
+                                <div className='boxInputProduct'>
+                                    <p className='titleProduct'>ID </p>
+                                    <input className='inputProduct'
+                                        name="id"
+                                        type="text"
+                                        onChange={onInputChange}
+                                        value={input.id} />
+
+
+                                </div>
+                                <div className='boxInputProduct'>
+                                    <p className='titleProduct'>Nombre </p>
+                                    <input className='inputProduct'
+                                        name="name"
+                                        type="text"
+                                        onChange={onInputChange}
+                                        value={input.name} />
+
+
+                                </div>
+                                <div className='boxInpuProduct'>
+                                    <p className='titleProduct'>Descripción </p>
+                                    <input className='inputProduct'
+                                        name="description"
+                                        type="text"
+                                        onChange={onInputChange}
+                                        value={input.description} />
+                                </div>
+                            </div>
+                            <div className='boxBtnCreate'>
+                                <button className='btnCreate' type='submit'>Guardar</button>
+                            </div>
+                        </form >
+                    </div>
+
+                </Box>
+
+
+            </Modal>
+
+
         </Grid>
     );
 };
