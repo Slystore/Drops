@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import './Catalogue.css';
 import {addToCart, storage} from '../../redux/cart/cartActions';
 import { addToCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
-import { getRatings } from "../../redux/rating/ratingActions";
+import { getRatings, getBestRatings } from "../../redux/rating/ratingActions";
 import { getAll, getProducts, filterBrand, filterCategory, filtersReset, saveFilteredDataBrand, saveFilteredDataCategory, restoreData, filterPrice, orderProducts, orderMethod } from "../../redux/products/productsAction";
 import { getBrands } from "../../redux/brand/brandActions";
 import { getCategories } from "../../redux/category/categoriesActions";
@@ -23,12 +23,16 @@ function Catalogue() {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(loadCartTomi())  
-      dispatch(getRatings());  
+    dispatch(getRatings());    
  }, [dispatch]);
+
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
+  const rating = useSelector((state) => state.ratingReducer.ratings);
 
+  console.log(rating)
+  console.log(rating.sort((a,b) => b.rating - a.rating))
 
   const [currPage, setCurrPage] = useState(1);
   const [cardsxPage, setcardsxPage] = useState(10);
@@ -116,6 +120,7 @@ const deleteFilter = (data) => {
       ])
 }
 
+     
   return (
     <div className="CatologueContainer">
        
@@ -203,6 +208,8 @@ const deleteFilter = (data) => {
                         status={product.status}
                         description={product.description}
                         Sizes = {product.Sizes}  
+                        onSale={product.onSale}
+                        discounts={product.Discounts}
                       />
                   </div>
                 </Link>)

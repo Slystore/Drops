@@ -33,10 +33,25 @@ export const initialState = {
 function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
+      let dayVerify = new Date().toLocaleString(
+        'default', {weekday: 'long'}
+      )
+
+      let data = action.payload
+
+      if(dayVerify === 'jueves'){
+        data = data.map(e => {
+          return {
+            ...e,
+            onSale: true,
+            Discounts: '10'
+          }})
+      }
+
       return {
         ...state,
-        products: action.payload,
-        filtrados: action.payload,
+        products: data,
+        filtrados: data,
       };
     }
 

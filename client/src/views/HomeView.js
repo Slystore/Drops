@@ -1,13 +1,15 @@
 import React, { useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import NavBar from '../components/NavBar/NavBar';
 import Brand from '../components/Brand/Brand';
 import Slider from '../components/Slider/Slider';
 import Home from '../components/Home/Home';
 import Footer from '../components/Footer/Footer';
+import BestProducts from '../components/BestProducts.jsx'
 
-import { getReviews, getReviewById, getReviewsByProduct, getReviewsByUser, createReview, deleteReview, updateReview } from '../redux/reviews/reviewsActions';
+import { getReviews } from '../redux/reviews/reviewsActions';
+import { getRatings } from "../redux/rating/ratingActions";
 import { getUsers } from './../redux/users/userActions';
 
 
@@ -23,16 +25,16 @@ function HomeView() {
     useEffect(() => {
         dispatch(getReviews(1))
         dispatch(getUsers())
-        // dispatch(getReviewById(1))
-        // dispatch(getReviewsByUser('Aimee_Hills@hotmail.com'))
-        // dispatch(getReviewsByProduct())
-        // dispatch(createReview({comment: 'Probando los comentarios', rating: 5, user: 5}))
-        // dispatch(updateReview( { id: 21, comment: 'modificando el comentario', rating: 4 }) )
-        // dispatch(deleteReview(1))
-        // setReviews()
+        dispatch(getRatings());    
+       
     }, [dispatch])
 
-    
+    let rating = useSelector((state) => state.ratingReducer.ratings);
+    rating = rating.sort((a,b) => b.rating - a.rating)
+    rating.length = 4
+
+//   console.log(rating)
+//   console.log(rating.sort((a,b) => b.rating - a.rating))
     return (
 
        //<div className='Container'>
@@ -42,6 +44,16 @@ function HomeView() {
             <NavBar />
             <Brand />
             <Slider />
+            
+            <div>
+                <h2> Zapas mas buscadas </h2>
+                <div style={{display: 'flex'}}>
+                { rating.map(e => <BestProducts key={e.id} image={e.image} price={e.price} name={e.name} rating={e.rating}/>) }
+                
+                </div>
+            
+            </div>
+            
             <Home />
             <Us />
             <Newsletter />
