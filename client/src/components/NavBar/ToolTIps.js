@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 
@@ -19,8 +19,6 @@ export const UserTooltip = styled(({ className, ...props }) => (
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: "#FF0000",
     background: "-moz-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
-    background: "-webkit-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
-    background: "linear-gradient(to top, #9E0000 0%, #fc4444 100%)",
     //   backgroundColor: theme.palette.common.white,
     height: 65,
     boxShadow: "0 5px 10px #00000080",
@@ -68,47 +66,66 @@ export const TooltipsMarcas = styled(({ className, ...props }) => (
   },
 }));
 
-
 export const titleMarcas = (
   <div className="ToolTipsMarca">
     <div className="LinkMarcaContainer1">
-      <Link to='/products/bybrand/adidas'><a >Adidas</a></Link>
+      <Link to="/products/bybrand/adidas">
+        <a>Adidas</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer2">
-      <Link to='/products/bybrand/balenciaga'><a >Balenciaga</a></Link>
+      <Link to="/products/bybrand/balenciaga">
+        <a>Balenciaga</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer3">
-      <Link to='/products/bybrand/gucci'><a >Gucci</a></Link>
+      <Link to="/products/bybrand/gucci">
+        <a>Gucci</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer1">
-      <Link to='/products/bybrand/nike'><a >Nike</a></Link>   
+      <Link to="/products/bybrand/nike">
+        <a>Nike</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer2">
-      <Link to='/products/bybrand/offwhite'><a >Off-White</a></Link>    
+      <Link to="/products/bybrand/offwhite">
+        <a>Off-White</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer3">
-      <Link to='/products/bybrand/puma'><a >Puma</a></Link>
+      <Link to="/products/bybrand/puma">
+        <a>Puma</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer1">
-      <Link to='/products/bybrand/reebok'><a >Reebok</a></Link>
+      <Link to="/products/bybrand/reebok">
+        <a>Reebok</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer2">
-      <Link to='/products/bybrand/vans'><a >Vans</a></Link>
+      <Link to="/products/bybrand/vans">
+        <a>Vans</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer3">
-      <Link to='/products/bybrand/underarmour'><a >Under Armour</a></Link>
+      <Link to="/products/bybrand/underarmour">
+        <a>Under Armour</a>
+      </Link>
     </div>
 
     <div className="LinkMarcaContainer1">
-      <Link to='/products/bybrand/jordan'><a >Jordan</a></Link>
+      <Link to="/products/bybrand/jordan">
+        <a>Jordan</a>
+      </Link>
     </div>
   </div>
 );
@@ -136,15 +153,21 @@ export const TooltipsCategorias = styled(({ className, ...props }) => (
 export const titleCategorias = (
   <div className="ToolTipsMarca">
     <div className="LinkCategoriaContainer1">
-      <Link to='/products/bycategories/urbano'><a href="/">Urbano</a></Link>
+      <Link to="/products/bycategories/urbano">
+        <a href="/">Urbano</a>
+      </Link>
     </div>
 
     <div className="LinkCategoriaContainer1">
-      <Link to='/products/bycategories/deportivo'><a href="/">Deportivo</a></Link>
+      <Link to="/products/bycategories/deportivo">
+        <a href="/">Deportivo</a>
+      </Link>
     </div>
 
     <div className="LinkCategoriaContainer1">
-      <Link to='/products/bycategories/sandalias'><a href="/">Sandalias</a></Link>
+      <Link to="/products/bycategories/sandalias">
+        <a href="/">Sandalias</a>
+      </Link>
     </div>
   </div>
 );

@@ -18,7 +18,7 @@ const Gucci = () => {
   const data = products.filter(e => Object.values(e.Brand).includes('Gucci'))
 
   const [currPage, setCurrPage] = useState(1);
-  const [cardsxPage, setcardsxPage] = useState(10);
+  const [cardsxPage, ] = useState(10);
   
   const lastProduct = currPage * cardsxPage
   const firstProduct =  lastProduct - cardsxPage;

@@ -7,7 +7,6 @@ import "./formBrand.css"
 import swal from 'sweetalert';
 
 export default function FormBrand() {
-  const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});
 
