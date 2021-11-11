@@ -10,6 +10,7 @@ const {
   Size,
   Reviews,
   Users,
+  Orders,
   WishList,
 } = require("./src/db.js");
 
@@ -22,8 +23,8 @@ const { productSizeLogicData } = require("./src/utils/mocks/productSize/productS
 const { sizeData } = require("./src/utils/mocks/size/sizeData.js");
 const { reviewData } = require("./src/utils/mocks/review/reviewData.js");
 const { userData } = require("./src/utils/mocks/user/userData.js");
-
-
+const {orderData} = require('./src/utils/mocks/order/orderData.js');
+const {orderDetailLogicData} = require('./src/utils/mocks/orderDetail/orderDetailLogicData.js');
 conn
   .sync({ force: true })
   .then(async () => {
@@ -38,5 +39,7 @@ conn
     await productSizeLogicData();
     await createMockUps(Users, userData);
     await createMockUps(Reviews, reviewData);
+    await createMockUps(Orders, orderData);
+    await orderDetailLogicData();
   })
   .catch((e) => console.log("connection failed", e));

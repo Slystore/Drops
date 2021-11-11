@@ -16,9 +16,6 @@ const updateProductSize = async (req, res, next) => {
          stock: quant
        })
      }
-   
-    
-
     await res.status(200).json({
       message: "Updated Succesfully",
       data: stock,
