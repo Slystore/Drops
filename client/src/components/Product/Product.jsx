@@ -77,7 +77,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                 <h3>{name}</h3>
             </div> 
             <div className="PriceProduct">
-                <h5>${onSale === true ? price - ((parseInt(discounts)/100) * price) : price }</h5>
+                <h5>${onSale === true ? (price - ((parseInt(discounts)/100) * price)).toPrecision(4) : price }</h5>
                 <h5>precio verdadero{ price}</h5>
             </div>
 

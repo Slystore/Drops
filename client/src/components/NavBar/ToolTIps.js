@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 
@@ -67,42 +68,47 @@ export const TooltipsMarcas = styled(({ className, ...props }) => (
   },
 }));
 
+
 export const titleMarcas = (
   <div className="ToolTipsMarca">
     <div className="LinkMarcaContainer1">
-      <a href="/">Adidas</a>
+      <Link to='/products/bybrand/adidas'><a >Adidas</a></Link>
     </div>
 
     <div className="LinkMarcaContainer2">
-      <a href="/">Balenciaga</a>
+      <Link to='/products/bybrand/balenciaga'><a >Balenciaga</a></Link>
     </div>
 
     <div className="LinkMarcaContainer3">
-      <a href="/">Gucci</a>
+      <Link to='/products/bybrand/gucci'><a >Gucci</a></Link>
     </div>
 
     <div className="LinkMarcaContainer1">
-      <a href="/">Nike</a>
+      <Link to='/products/bybrand/nike'><a >Nike</a></Link>   
     </div>
 
     <div className="LinkMarcaContainer2">
-      <a href="/">Off-White</a>
+      <Link to='/products/bybrand/offwhite'><a >Off-White</a></Link>    
     </div>
 
     <div className="LinkMarcaContainer3">
-      <a href="/">Puma</a>
+      <Link to='/products/bybrand/puma'><a >Puma</a></Link>
     </div>
 
     <div className="LinkMarcaContainer1">
-      <a href="/">Reebok</a>
+      <Link to='/products/bybrand/reebok'><a >Reebok</a></Link>
     </div>
 
     <div className="LinkMarcaContainer2">
-      <a href="/">Vans</a>
+      <Link to='/products/bybrand/vans'><a >Vans</a></Link>
     </div>
 
     <div className="LinkMarcaContainer3">
-      <a href="/">Under</a>
+      <Link to='/products/bybrand/underarmour'><a >Under Armour</a></Link>
+    </div>
+
+    <div className="LinkMarcaContainer1">
+      <Link to='/products/bybrand/jordan'><a >Jordan</a></Link>
     </div>
   </div>
 );
@@ -130,15 +136,15 @@ export const TooltipsCategorias = styled(({ className, ...props }) => (
 export const titleCategorias = (
   <div className="ToolTipsMarca">
     <div className="LinkCategoriaContainer1">
-      <a href="/">Urbano</a>
+      <Link to='/products/bycategories/urbano'><a href="/">Urbano</a></Link>
     </div>
 
     <div className="LinkCategoriaContainer1">
-      <a href="/">Deportivo</a>
+      <Link to='/products/bycategories/deportivo'><a href="/">Deportivo</a></Link>
     </div>
 
     <div className="LinkCategoriaContainer1">
-      <a href="/">Sandalias</a>
+      <Link to='/products/bycategories/sandalias'><a href="/">Sandalias</a></Link>
     </div>
   </div>
 );
