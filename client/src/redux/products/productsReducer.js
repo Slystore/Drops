@@ -39,7 +39,7 @@ function productsReducer(state = initialState, action) {
 
       let data = action.payload
 
-      if(dayVerify === 'jueves'){
+      if(dayVerify === 'miercoles' ){
         data = data.map(e => {
           return {
             ...e,
