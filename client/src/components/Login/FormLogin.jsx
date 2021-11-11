@@ -10,14 +10,14 @@ import {
 } from "../../redux/users/userActions";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
-import FormForgot from "../ForgotPassword/FormForgot";
+
 export default function FormLogin() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [logeado, setLogeado] = useState({
     msg: "",
     state: false,
   });
-  const [user,setUser] =useState()
+  const [user, setUser] = useState();
   const [mail, setMail] = useState({ mail: "" });
   const [forgot, setForgot] = useState({
     msg: "",
@@ -31,9 +31,15 @@ export default function FormLogin() {
       console.log("a ver la response", response);
       if (response) {
         let x = await userLoginGoogle(response);
+
+        console.log("esta es la x de google ", x);
         if (x.user) {
+          dispatch(getUserId(x.user.id));
+          localStorage.setItem('gId',x.user.id)
           localStorage.setItem("token", response.tokenId);
-          history.push("/");
+          setTimeout(() => {
+            history.push("/");
+          }, 1500);
         }
       }
     } catch (err) {
@@ -43,9 +49,9 @@ export default function FormLogin() {
   console.log("este es el mail", mail.mail);
   const forgotClick = async () => {
     await userForgotPass(mail);
-    console.log('esta es la data del user ', user)
-     dispatch(getUserId(user))
-     localStorage.setItem('userId',user)
+    console.log("esta es la data del user ", user);
+    dispatch(getUserId(user));
+    localStorage.setItem("userId", user);
     setForgot({
       msg: "Se ah enviado un corre electronico para seguir con la recuperacion. Por favor revisar la casilla de spam ",
       auth: true,
@@ -64,7 +70,7 @@ export default function FormLogin() {
           }}
           onSubmit={async (body) => {
             const x = await userLogin(body);
-            setUser(x.id)
+            setUser(x.id);
             setMail({ mail: body.mail });
             if (x.msg) {
               setLogeado({
@@ -140,7 +146,7 @@ export default function FormLogin() {
                   />
                 </div>
                 <div className="data-Field">
-                  <button className="btn-sub" type="submit" >
+                  <button className="btn-sub" type="submit">
                     Login
                   </button>
                 </div>
@@ -166,7 +172,10 @@ export default function FormLogin() {
                 <div className="data-Field">
                   <GoogleLogin
                     className="BtnFace"
-                    clientId="867381968121-k4jusja35hahfur6b0ionmv8mc9f8fgj.apps.googleusercontent.com"
+                    //vercel
+                    // clientId="867381968121-k4jusja35hahfur6b0ionmv8mc9f8fgj.apps.googleusercontent.com"
+                    //local
+                    clientId="867381968121-4njd3q5va0695tdivgirjl5tka5n7fqo.apps.googleusercontent.com"
                     buttonText="Sign in with Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}

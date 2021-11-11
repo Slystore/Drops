@@ -1,11 +1,10 @@
 const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (Sequelize) => {
-    return Sequelize.define(
-        "WishList", {
-            products: {
-                type: DataTypes.ARRAY(DataTypes.JSON),
-            },
-        }, { timestamps: false }
-    );
+  return Sequelize.define("WishList", {
+    favorite:{
+      type:DataTypes.BOOLEAN,
+      defaultValue:false
+    }
+  }, { timestamps: false });
 };

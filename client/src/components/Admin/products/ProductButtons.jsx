@@ -7,7 +7,8 @@ import FormProductCreate from "../../Forms/product/postProduct";
 import { GiConverseShoe } from "react-icons/gi"
 
 
-const ProductButtons = () => {
+const ProductButtons = ({searchbar, info},) => {
+    // console.log(searchbar)
 
     const [open, setOpen] = useState(false);
 
@@ -20,6 +21,11 @@ const ProductButtons = () => {
             <GiConverseShoe className="iconButtonNav" />
 
             <Button style={{ backgroundColor: '#555', }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
+
+            {info }
+
+            <label>Buscar<input type='text' onChange={searchbar}/></label>
+            
             <Modal open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -45,3 +51,9 @@ const ProductButtons = () => {
 }
 
 export default ProductButtons
+
+// <select onChange={order}>
+//                 <option>Ordenado</option>
+//                 <option value='desc'>A-Z</option>
+//                 <option value='asc'>Z-A</option>
+//             </select>

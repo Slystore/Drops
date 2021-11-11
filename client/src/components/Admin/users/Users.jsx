@@ -1,23 +1,74 @@
 
 import React, { useEffect, useState } from "react" 
 import { useSelector, useDispatch } from "react-redux"
-import { getUsers } from "../../../redux/users/userActions"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
 
-import UserMap from "./UserMap"
+import { editUsers, getUsers, getUsersByName } from "../../../redux/users/userActions"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Grid, Modal, Box } from '@mui/material';
+import Paginado from "../../Catalogue/Paginado";
+import ProductButtons from "../products/ProductButtons";
+
 
 const Users = () => {
     const dispatch = useDispatch()
     
-    useEffect(()=>{
+    const [productos, setProductos] = useState([])
+    const [busqueda, setBusqueda] = useState('')
+    const [ordenar, setOrdenar] = useState('')
+
+    const [cardsxPage, setcardsxPage] = useState(8);
+    const [currPage, setCurrPage] = useState(1);
+    const lastProduct = currPage * cardsxPage
+    const firstProduct =  lastProduct - cardsxPage;
+    const {users} = useSelector( state => state.usersReducer);
+    const [data,setData] = useState({
+        userType:""
+    })
+    // console.log(users)
+
+    useEffect( ()=>{
         dispatch(getUsers())
+        setProductos(users)
+
     },[dispatch])
+
     
-    const usuarios = useSelector( state => state.usersReducer.users.users);
-    console.log(usuarios)
+    const handleSelect = async (e,id) => {
+        console.log('valor del select',e.target.value,id)
+        setData({
+          ...data,
+          userType: e.target.value,
+        });
+        console.log('usertype',data?data.userType:"hola")
+        await editUsers({userType:e.target.value},id)
+        window.location.reload(false)
+      };
+    
+    let nada = users.slice(firstProduct, lastProduct)
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        setBusqueda(e.target.value)
+        console.log(busqueda)
+        dispatch(getUsersByName(busqueda));
+    }
+
+    const paginado = (pagNumber) => {
+        setCurrPage(pagNumber)
+    }
+    
+    const restore = (e) => {
+        e.preventDefault()
+        dispatch(getUsers())
+    }
+
+    const button = <button onClick={restore}>Restore</button>
+
+
 
     return(
         <Grid style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
+
+        <ProductButtons searchbar={handleSearch} info={button} restore={restore}/>
             <TableContainer >
                 <Table aria-label="simple table">
                     <TableHead>
@@ -31,30 +82,42 @@ const Users = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {
-                            usuarios&& usuarios.map(el => {
-                                return (
-                                    <TableRow
-                                        key={el.id}
-                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    >
-                                        <TableCell component="th" scope="row">
-                                            {el.id}
-                                        </TableCell>
-                                        <TableCell align="left">{el.name}</TableCell>
-                                        <TableCell align="left">{el.surname}</TableCell>
-                                        <TableCell align="left">{el.mail}</TableCell>
-                                        <TableCell align="left">{el.userType}</TableCell>
-                                        <TableCell align="left">
-                                            <Button variant="contained" style={{backgroundColor: "rgb(240, 240, 255)", color:"blue"}} >Editar</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                )
-                            })
-                        }
+                       
+                    {
+                        nada && nada.map(el => {
+                            return (
+                                <TableRow
+                                    key={el.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {el.id}
+                                    </TableCell>
+                                    <TableCell align="left">{el.name}</TableCell>
+                                    <TableCell align="left">{el.surname}</TableCell>
+                                    <TableCell align="left">{el.mail}</TableCell>
+                                    <TableCell align="left">{el.userType}</TableCell>
+                                    <TableCell align="left">
+                                        <select onChange={(e)=>{handleSelect(e,el.id)}}>
+                                        <option value="">Elige un type</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                        <option value="banned">Banned</option>
+                                        <option value="disabled">Disabled</option>
+
+                                    </select>
+                                        {/*<Button variant="contained" style={{backgroundColor: "rgb(240, 240, 255)", color:"blue"}} >Editar</Button>*/}
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        })
+                    }
+                   
                     </TableBody>
                 </Table>
             </TableContainer>
+            <Paginado cardsxPage={cardsxPage} products={users.length}
+            paginado={paginado} />
     </Grid>
     )
 }
@@ -76,3 +139,5 @@ export default Users
         //          </div>
         //      </div>
         //  </div>
+
+        

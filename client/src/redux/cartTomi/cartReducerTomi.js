@@ -4,6 +4,7 @@ import {
     CART_RESET,
     LOAD_CART,
     CHANGE_QUANTITY,
+    SELECT_SIZEID,
   } from "./cartActionTomi";
 //   import { USER_LOG_OUT } from "../actions/userActions";
   
@@ -73,7 +74,17 @@ import {
         return{
             ...state,
         }
-  
+        case SELECT_SIZEID:
+            let cart2 = state.items;
+            for (var item2 of cart2) {
+                    if (item2.id === action.payload.id) {
+                      item2.SizeId = action.payload.SizeId;
+                    }
+                  }
+                  localStorage.setItem("cart", JSON.stringify(cart2));
+                  return{
+                    ...state,
+                }
       default:
         return state;
     }

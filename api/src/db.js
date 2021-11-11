@@ -71,8 +71,8 @@ const {
   WishList } = sequelize.models;
 
 //Relaciones de Users
-Users.hasOne(WishList);
-WishList.belongsTo(Users);
+Users.belongsToMany(Product,{through:WishList});
+Product.belongsToMany(Users,{through:WishList});
 
 Users.hasMany(Orders);
 Orders.belongsTo(Users);

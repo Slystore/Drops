@@ -13,7 +13,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import "./profile.css";
 const style = {
   position: "absolute",
   top: "50%",
@@ -80,7 +80,7 @@ export default function Profile() {
     validate: "",
     userDataiD: usersId ? usersId.user : "",
   });
-
+  const gId = localStorage.getItem("gId");
   useEffect(() => {
     console.log("estoy entrando al  useEffect");
     const x = getToken();
@@ -92,13 +92,17 @@ export default function Profile() {
     }
     if (x) {
       const userDecoded = jwtDecode(x);
-      dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
-      console.log("esta es mi data id");
-      console.log("this", userDecoded);
-      setUser({
-        userData: userDecoded,
-        validate: "auth",
-      });
+      console.log("esta es mi data de google", userDecoded);
+      if (userDecoded.user) {
+        dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
+      } else {
+        const gId = localStorage.getItem("gId");
+        dispatch(getUserId(gId));
+        setUser({
+          userData: userDecoded,
+          validate: "auth",
+        });
+      }
     }
   }, [dispatch]);
   console.log("estos son mis users", usersId ? usersId.user : "");
@@ -111,12 +115,13 @@ export default function Profile() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleSubmit = async () => {
-    const x = await editUsers(data, user.userData.user.id);
+  const handleSubmit = async (e) => {
+
+    console.log('user en el sub',user)
+    const x = await editUsers(data, user ? gId : user.userData.user.id);
     if (x) return "";
   };
   const handleOpenEdit = () => setEdit(true);
-  const handleCloseEdit = () => setEdit(false);
 
   console.log("this user", user);
   console.log("this data", usersId);
@@ -146,23 +151,31 @@ export default function Profile() {
           >
             <Tab label="Profile" {...a11yProps(0)} />
             <Tab label="Configuration" {...a11yProps(1)} />
+            <Tab label="WishList" {...a11yProps(2)} />
+            <a href="/" className="home">
+              <Tab label="Home" {...a11yProps(3)} />
+            </a>
           </Tabs>
           <TabPanel value={value} index={0}>
             {usersId.user && (
               <div>
-                <h1>
-                  Hello{" "}
-                  {usersId.user ? usersId.user.name : usersId.user.family_name}
-                </h1>
-                <div>
-                  <img
-                    src={
-                      usersId.user.picture
-                        ? usersId.user.picture
-                        : usersId.user.profileImg
-                    }
-                    alt=""
-                  />
+                <div className="profile-content">
+                  <h1>
+                    Hello{" "}
+                    {usersId.user
+                      ? usersId.user.name
+                      : usersId.user.family_name}
+                  </h1>
+                  <div className="img-profile">
+                    <img
+                      src={
+                        usersId.user.picture
+                          ? usersId.user.picture
+                          : usersId.user.profileImg
+                      }
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -256,20 +269,18 @@ export default function Profile() {
                     password: "",
                     confirmPass: "",
                   }}
-                  onSubmit={async (body,{resetForm}) => {
-                    const x = await editUsers(
-                      body,
-                      user.userData.user.id
-                    );
-                    resetForm()
+                  onSubmit={async (body, { resetForm }) => {
+                    const x = await editUsers(body, user.userData.user.id);
+                    resetForm();
                   }}
-                  validate={(values)=>{
-                    let error = {}
-                    if(!values.oldPassword){
-                      error.oldPassword = "Complete this camp"
+                  validate={(values) => {
+                    let error = {};
+                    if (!values.oldPassword) {
+                      error.oldPassword = "Complete this camp";
                     }
-                    if(values.confirmPass !== values.password){
-                      error.confirmPass = "La contraseña nueva no coincide con esta"
+                    if (values.confirmPass !== values.password) {
+                      error.confirmPass =
+                        "La contraseña nueva no coincide con esta";
                     }
                     return error;
                   }}
@@ -286,7 +297,7 @@ export default function Profile() {
                         name="oldPassword"
                         component={() => <div>{errors.oldPassword}</div>}
                       />
-                        <label>New password</label>
+                      <label>New password</label>
                       <Field
                         type="password"
                         name="password"
@@ -296,7 +307,7 @@ export default function Profile() {
                         name="password"
                         component={() => <div></div>}
                       />
-                        <label>Confirm new password</label>
+                      <label>Confirm new password</label>
                       <Field
                         type="password"
                         name="confirmPass"
@@ -306,7 +317,9 @@ export default function Profile() {
                         name="confirmPass"
                         component={() => <div>{errors.confirmPass}</div>}
                       />
-                      <Button variant="text" type="submit">Change</Button>
+                      <Button variant="text" type="submit">
+                        Change
+                      </Button>
                     </Form>
                   )}
                 </Formik>

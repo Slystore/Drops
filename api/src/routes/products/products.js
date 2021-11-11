@@ -10,7 +10,7 @@ const deleteProduct = require('../../controllers/product/deleteProduct.js');
 router.get('/', getProducts);
 router.get('/:id', getProductById);
 router.post('/createProduct', postProduct);
-router.put('/updateProduct/:id', updateProduct);
+router.put('/updateProduct', updateProduct);
 router.put('/deleteProduct/:id', deleteProduct);
 
 module.exports = router

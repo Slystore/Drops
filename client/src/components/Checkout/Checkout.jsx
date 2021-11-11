@@ -20,7 +20,7 @@ function Checkout({products,data, total}) {
       console.log(data)
         document.getElementById('form1').appendChild(script)
         return () =>{
-        //   document.getElementById('form1').removeChild(script);
+        //    document.getElementById('form1').removeChild(script);
         }
        },[data])
 

@@ -1,4 +1,4 @@
-import { GET_USERS, GET_USER_ID } from "./userActions";
+import { GET_USERS, GET_USER_ID, GET_USERS_BY_NAME } from "./userActions";
 
 export const initialState = {
   users: [],
@@ -13,11 +13,24 @@ function usersReducer(state = initialState, action) {
         users: action.payload,
       };
     }
+
     case GET_USER_ID: {
-      console.log('esta es la dat del reducer',action.payload)
       return {
         ...state,
         userId: action.payload,
+      };
+    }
+
+    case GET_USERS_BY_NAME: {
+      let data = state.users
+      console.log(data)
+
+      let filteredData = action.payload !== '' ? data.filter(e => e.name.toLowerCase().includes(action.payload) || e.surname.toLowerCase().includes(action.payload)) : data
+     
+      console.log(action.payload, filteredData)
+      return {
+        ...state,
+        users: filteredData
       };
     }
     default:

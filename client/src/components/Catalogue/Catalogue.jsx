@@ -5,15 +5,15 @@ import Product from "../Product/Product";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Paginado from "./Paginado";
-import { getAll, getProducts, filterBrand, filterCategory, filtersReset, saveFilteredDataBrand, saveFilteredDataCategory, restoreData } from "../../redux/products/productsAction";
-import { getBrands } from "../../redux/brand/brandActions";
-import { getCategories } from "../../redux/category/categoriesActions";
+
 import { Link } from "react-router-dom";
 import './Catalogue.css';
 import {addToCart, storage} from '../../redux/cart/cartActions';
 import { addToCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
-import { getRatings } from "../../redux/rating/ratingActions";
-import { filterPrice } from './../../redux/products/productsAction';
+import { getRatings, getBestRatings } from "../../redux/rating/ratingActions";
+import { getAll, getProducts, filterBrand, filterCategory, filtersReset, saveFilteredDataBrand, saveFilteredDataCategory, restoreData, filterPrice, orderProducts, orderMethod } from "../../redux/products/productsAction";
+import { getBrands } from "../../redux/brand/brandActions";
+import { getCategories } from "../../redux/category/categoriesActions";
 
 function Catalogue() {
   
@@ -23,18 +23,23 @@ function Catalogue() {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(loadCartTomi())  
-      dispatch(getRatings());  
+    dispatch(getRatings());    
  }, [dispatch]);
+
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
+  const rating = useSelector((state) => state.ratingReducer.ratings);
 
+  console.log(rating)
+  console.log(rating.sort((a,b) => b.rating - a.rating))
 
   const [currPage, setCurrPage] = useState(1);
   const [cardsxPage, setcardsxPage] = useState(10);
   const [filtros, setFiltros] = useState([]);
   const [precio, setPrecio] = useState(1);
   const [nada, setNada] = useState([]);
+  const [order, setOrder] = useState('name');
   
   const lastProduct = currPage * cardsxPage
   const firstProduct =  lastProduct - cardsxPage;
@@ -93,6 +98,18 @@ const handlePrice = (e) => {
   // dispatch(filterPrice(precio))
 }
 
+const handleOrder = (e) => {
+  e.preventDefault()
+  setOrder(e.target.value)
+  dispatch(orderProducts(e.target.value))
+}
+
+const handleOrderMethod = (e) => {
+  e.preventDefault()
+  dispatch(orderMethod(e.target.value, order))
+  console.log(e.target.value)
+}
+
 const deleteFilter = (data) => {
 
   dispatch(restoreData(data))
@@ -103,6 +120,7 @@ const deleteFilter = (data) => {
       ])
 }
 
+     
   return (
     <div className="CatologueContainer">
        
@@ -143,6 +161,20 @@ const deleteFilter = (data) => {
                 })}
             </select>
           </div>
+
+          <div>
+                <select onChange={handleOrder}>
+                  <option> Ordenamiento </option>
+                  <option value='name'> Name </option>
+                  <option value='price'> Price </option>
+                </select>
+          </div>
+
+          
+          <form onClick={handleOrderMethod}>
+            <label>ASC<input type='radio' name='ordenacion' value='asc'/></label>
+            <label>DESC<input type='radio' name='ordenacion' value='desc'/></label>
+          </form>
           
           
           <button onClick={handleResetFilters}> borrar filtros </button>
@@ -164,6 +196,7 @@ const deleteFilter = (data) => {
         <div className="Productos">
           {
           currProducts && currProducts.map((product, index) => {
+            console.log(product.Sizes,"sizeslogueado")
               return (
                 product && (<Link to={`/catalogue/${product.id}`} key={index}>
                   <div className="Shoes" key={index}>
@@ -174,7 +207,9 @@ const deleteFilter = (data) => {
                         price={product.price}
                         status={product.status}
                         description={product.description}
-                        // addToCart = {handleAddCart}  
+                        Sizes = {product.Sizes}  
+                        onSale={product.onSale}
+                        discounts={product.Discounts}
                       />
                   </div>
                 </Link>)

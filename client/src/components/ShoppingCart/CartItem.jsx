@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { decrementCartStorage, clearCart, incrementCartStorage, deleteItemCartStorage } from '../../redux/cart/cartActions';
-import {  cleanDetail, getProductsById, getProductStockById } from '../../redux/products/productsAction';
+import {  cleanDetail, getProductStockById, getProductStockBySize } from '../../redux/products/productsAction';
 import { getToken } from './../../redux/users/userActions'
 import jwt_decode from "jwt-decode";
 import {  recoveryCart } from '../../redux/cart/cartActions';
@@ -12,41 +12,53 @@ import {  recoveryCart } from '../../redux/cart/cartActions';
 import Divider from '@mui/material/Divider';
 
 import './CartItem.css'
-import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartTomi } from '../../redux/cartTomi/cartActionTomi';
+import { cartResetTomi, changeProductQuantityTomi, loadCartTomi, removeFromCartTomi, SelectCartSize } from '../../redux/cartTomi/cartActionTomi';
 
-export default function CartItem  ({image, price, title, id, quantity, name, fillState}) {
+export default function CartItem  ({image, price, title, id, quantity, name, Sizes}) {
 //  const {cart} = useSelector(state => state.cartReducer)
    //  const { id } = props.match.params
-   //  console.log(id,"tomicomponcart")
+   //   console.log(Sizes,"tomisize")
    const history = useHistory()
-   // const [stateCart, setStateCart] = React.useState([])
-
+    const [sizeId, setSizeId] = React.useState({SizeId:0})
+const[stockState, setStockState] = React.useState(0)
    const dispatch = useDispatch();
 
-   useEffect(() => {
-      dispatch(getProductsById(id))
-      dispatch(getProductStockById(id))
-      return () => dispatch(cleanDetail(id))
-   }, [dispatch, id]);
-
+   // useEffect(() => {
+   //    dispatch(getProductsById(id))
+   //    dispatch(getProductStockById(id))
+   //    return () => dispatch(cleanDetail(id))
+   // }, [dispatch, id]);
+   const {items} = useSelector((state) => state.cartReducersTomi);
    const {productId} = useSelector((state) => state.productReducer);
    const {stockById} = useSelector((state) => state.productReducer);
 
-   // productId.name ? console.log("ProductID",productId.name) : console.log("No despacha la acción")
-   // console.log("ID",id)
-   // console.log("Stock",stockById.data)
 
-   function handleIncrement(){
-      dispatch(incrementCartStorage(id))
+   async function handleSizeSelect(e){
+      e.preventDefault()
+     await setSizeId({SizeId:Number(e.target.value)})
    } 
+  
+   async function handleCartSize(e){
+      e.preventDefault()
+      //  console.log(sizeId, e.target.value,"sizeidtomi")
+      // console.log(id,quantity,price,name,image)
+      dispatch(SelectCartSize(id,quantity,price,name,image, Sizes,Number(e.target.value)))
+   }
    const handleChangeQuantity = async (e) => {
       const { value } = e.target;
-      await dispatch(changeProductQuantityTomi(id, Number(value), price, name, image))
+      const stockTotal= await dispatch(getProductStockById(id))
+      let stockBySize= await stockTotal.payload.filter(el => el.SizeId== sizeId.SizeId)
+      setStockState(stockBySize.length>0?stockBySize[0].stock:0)
+   if(sizeId.SizeId>0){
+      if(value <= stockBySize[0].stock){
+      await dispatch(changeProductQuantityTomi(id, Number(value), price, name, image,Sizes, sizeId))
       await dispatch(loadCartTomi())
-    };
-   function handleDecrement(){
-      dispatch(decrementCartStorage(id))
-   } 
+      // console.log("entrostocktomi")
+    }
+   else{ alert(`No hay suficiente stock, solo ${stockState} pares disponibles `)}
+   }else{
+   alert("Seleccione una talla antes")}
+}
    
   async function handleDeleteItemCart(){
       // dispatch(deleteItemCartStorage(id))
@@ -61,28 +73,12 @@ let x
    const handleReset = () => {//resetea a cero carrito tanto si es user o guest 
       dispatch(cartResetTomi())
     }
-   // function handleClearCart(){
-   //    dispatch(clearCart())
-   //    localStorage.removeItem('cartId');
-   //    history.push('/catalogue')
-   //    window.location.replace('')
-   // }
    
    function round(num) {
       var m = Number((Math.abs(num) * 100).toPrecision(15));
       return Math.round(m) / 100 * Math.sign(num);
    }
 
-   function handleUpdateCart(){
-      let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
-      if(userLogParse){
-         dispatch(recoveryCart(userLogParse))
-         alert("Carrito recuperado, puede avanzar sin completar datos")
-          localStorage.removeItem('cartPost')}
-      else{ 
-         alert("No hay carrito a recuperar")
-      }
-   }
 
    return (
    <div>
@@ -97,11 +93,19 @@ let x
             <div className="Row">
                <div className="PriceShoppinCart"><h3> Precio: $ {price} </h3></div> 
                <div className="SelectTalle">
-                  <select className="SelectShoppingCart">
+                  <select   onChange={handleSizeSelect} onClick={handleCartSize}>
+               <option value="All" >Talles</option> 
+                {Sizes?Sizes.map((size, index) => {
+                  return (
+                    // <div key={index}>
+                      <option value={size.id}>{size.number}</option>
+                      );
+                     }):null}
+                  {/* <select className="SelectShoppingCart">
                      <option value="">Talle</option>
                      <option value="">40</option>
                      <option value="">41</option>
-                     <option value="">42</option>
+                     <option value="">42</option> */}
                   </select>
                </div>
             </div>
@@ -112,7 +116,7 @@ let x
             type="number"
             defaultValue={quantity}//manejar stock aca con max
             min={1}
-            // max={detail.stock}
+             max={stockState>0?stockState+1:7}
             onChange={handleChangeQuantity}
           />
                    {/* <div className="QuantityButtons">
@@ -148,40 +152,3 @@ let x
 
 
 
-{/* 
-<div> */}
-   {/* <div>
-
-      {
-            productId.Sizes.map((size, index) => {
-               return (   
-                        <div>
-                           <div className="Talle">#{size.number}</div>
-                           <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
-                        </div>
-               )}
-      )}
-   </div> */}
-   {/* <select >
-      <option value="">Talles</option>
-       {
-         productId.Sizes.map((talle, index) => {
-            return (   
-                     <option>{talle.number} | {stockById[index].stock}</option>
-                  //   <div>
-                  //       <div className="Talle">#{size.number}</div>
-                  //       <div className="Stock"> Stock {stockById[index] ? stockById[index].stock : 0} pares</div>
-                  //   </div>
-            )}
-    )
-      } 
-   </select>
-</div> */}
-{/* 
-   </div>
-   
-   <div className="Stock"> Stock 5 pares</div>
-</div> */}
-{/* <div className="BtnCart">
-   <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
-</div> */}
