@@ -30,6 +30,8 @@ const Users = () => {
         setProductos(users)
 
     },[dispatch])
+
+    
     const handleSelect = async (e,id) => {
         console.log('valor del select',e.target.value,id)
         setData({
