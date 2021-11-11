@@ -1,7 +1,8 @@
 import { TYPES } from "./ratingActions";
 
 export const initialState = {
-  ratings: []
+  ratings: [],
+  bestRatings: []
 };
 
 function ratingReducer(state = initialState, action) {
