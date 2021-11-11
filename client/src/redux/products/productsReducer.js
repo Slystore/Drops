@@ -29,7 +29,8 @@ export const initialState = {
   filtros: [],
   dataFiltrada: {}
 };
-
+// && Object.values(e.Brand).includes('Nike')
+// && Object.values(e.Brand).includes('Nike')
 function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
@@ -39,14 +40,20 @@ function productsReducer(state = initialState, action) {
 
       let data = action.payload
 
-      if(dayVerify === 'miercoles' ){
-        data = data.map(e => {
+      let brandFilter = 'Nike'
+      let categoryFilter = 'Urbanas'
+      let dayFilter = 'jueves'
+
+      data = data.map(e => {
+        if(dayVerify === dayFilter && Object.values(e.Brand).includes(brandFilter)){
           return {
             ...e,
             onSale: true,
             Discounts: '10'
-          }})
-      }
+          }
+        }
+        return e
+      })
 
       return {
         ...state,
