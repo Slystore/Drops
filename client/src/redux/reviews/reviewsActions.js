@@ -26,7 +26,7 @@ export function getReviews(pagina){
 export function getReviewById(id){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/reviews/${id}`)
+            const { data } = await axios.get(`/api/reviews/${id}`)
             return await dispatch({
                 type: GET_REVIEW_BY_ID,
                 payload: data
@@ -40,7 +40,7 @@ export function getReviewById(id){
 export function getReviewsByUser(userMail){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/reviews?user=${userMail}`)
+            const { data } = await axios.get(`/reviews?user=${userMail}`)
             return await dispatch({
                 type: GET_REVIEWS_BY_USER,
                 payload: data
@@ -53,7 +53,7 @@ export function getReviewsByUser(userMail){
 export function getReviewsByProduct(productId){
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/api/reviews?product=${productId}`)
+            const { data } = await axios.get(`/api/reviews?product=${productId}`)
             return await dispatch({
                 type: GET_REVIEWS_BY_PRODUCT,
                 payload: data
@@ -68,7 +68,7 @@ export function getReviewsByProduct(productId){
 export function deleteReview(id){
     return async (dispatch) => {
         try {
-            const { data } = await axios.delete(`http://localhost:3001/api/reviews/delete/${id}`)
+            const { data } = await axios.delete(`/api/reviews/delete/${id}`)
             return await dispatch({
                 type: DELETE_REVIEW,
                 payload: data
@@ -82,7 +82,7 @@ export function deleteReview(id){
 export function createReview({ user, comment, productId, rating}){
     return async () => {
         try {
-            const { data } = await axios.post(`http://localhost:3001/api/reviews/create/`, {comment, rating, user, productId})
+            const { data } = await axios.post(`/api/reviews/create/`, {comment, rating, user, productId})
             return data  
         } catch (error) {
             console.log(error)
@@ -93,7 +93,7 @@ export function createReview({ user, comment, productId, rating}){
 export function updateReview({id, comment, rating }){
     return async (dispatch) => {
         try {
-            const { data } = await axios.put(`http://localhost:3001/api/reviews/update/${id}`, { comment, rating })
+            const { data } = await axios.put(`/api/reviews/update/${id}`, { comment, rating })
             return await dispatch({
                 type: UPDATE_REVIEW,
                 data
