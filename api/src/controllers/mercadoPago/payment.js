@@ -25,32 +25,33 @@ async function payment(req, res, next) {
         processing_mode,    //aggregator
         merchant_account_id,//null
 } = req.query;
+console.log(req.query)
 //Obtenemmos el mail del user
 // const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
 const orderm = await Orders.findByPk(external_reference,
     {include: [
         {
             model: Users,
-            attributes: ["mail", "name", "surName"]
+            attributes: ["mail", "name", "surname"]
         }]}
         );
     Orders.findByPk(external_reference)
         .then(order => {
             order.payment_id = payment_id;
             order.paymentState = status
-            order.status = 'COMPLETED'
+            order.status = 'completed'
             order.save()
                 .then(() => {
                     console.info('redict sucess')
                     
-                    return res.redirect(front)
+                    return res.redirect("http://localhost:3000/catalogue")
                 })
                 .catch(error => {
-                    return res.redirect(`${front}/?error=${error}&where=al+salvar`)
+                    return res.redirect(`http://localhost:3000/catalogue/?error=${error}&where=al+salvar`)
                 })
         })
         .catch(error => {
-            return res.redirect(`${front}/error=${error}&where=al+buscar`)
+            return res.redirect(`http://localhost:3000/catalogue/error=${error}&where=al+buscar`)
         })
 
 }
