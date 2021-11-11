@@ -29,7 +29,7 @@ const Users = () => {
   useEffect(() => {
     dispatch(getUsers());
     setProductos(users);
-  }, [dispatch]);
+  }, [dispatch, users]);
 
   const handleSelect = async (e, id) => {
     console.log("valor del select", e.target.value, id);
