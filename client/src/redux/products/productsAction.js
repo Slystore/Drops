@@ -228,7 +228,7 @@ export function getProductStockBySize(id, body){
             console.log(error)
         }   
     }
-
+}
 export async function PutProduct(payload) {
     const { data } = axios.put(`/products/updateProduct/`, payload)
 
