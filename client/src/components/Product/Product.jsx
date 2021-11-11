@@ -11,7 +11,7 @@ import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTom
 import jwt_decode from "jwt-decode";
 import { getToken } from '../../redux/users/userActions';
 
-export default function Product({ name, id, price, image, Sizes }) {
+export default function Product({ name, id, price, image, Sizes, onSale, discounts }) {
     const {items} = useSelector(store => store.cartReducersTomi);
 const dispatch = useDispatch();
 let x
@@ -46,6 +46,9 @@ const { ratings } = useSelector((state) => state.ratingReducer);
              price, name, image, Sizes));
       
       };
+
+      console.log(onSale)
+      console.log(discounts)
     return (
         <div className="ProductContainer" >
             <div className="IconShoppingContainer">
@@ -74,7 +77,12 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                 <h3>{name}</h3>
             </div> 
             <div className="PriceProduct">
-                <h5>${price}</h5>
+                <h5>${onSale === true ? (price - ((parseInt(discounts)/100) * price)).toPrecision(4) : price }</h5>
+                <h5>precio verdadero{ price}</h5>
+            </div>
+
+            <div >
+                { onSale === true ? <h5>{discounts}</h5> : null }
             </div>
 
             <div className="Rate">

@@ -8,42 +8,40 @@ import {
   getProductStockById,
 } from "../../redux/products/productsAction";
 import jwt_decode from "jwt-decode";
-import { getToken } from '../../redux/users/userActions';
+import { getToken } from "../../redux/users/userActions";
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import RateReviewIcon from '@mui/icons-material/RateReview';
+import RateReviewIcon from "@mui/icons-material/RateReview";
 import ProductReview from "./Reviews";
-import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import {
+  addToCartTomi,
+  fusionCartTomi,
+  loadCartTomi,
+} from "../../redux/cartTomi/cartActionTomi";
 import "./ProductDetail.css";
 
 function ProductDetail(props) {
-  const history = useHistory();
   const dispatch = useDispatch();
-const [size, setSize] = useState({SizeId:0});
   const { id } = props.match.params;
   const { productId } = useSelector((state) => state.productReducer);
   const { stockById } = useSelector((state) => state.productReducer);
-  const {items} = useSelector(store => store.cartReducersTomi);
-  let x
-if(localStorage.getItem('token')){
-     x = getToken();}
-const decoded = x?jwt_decode(x): null;
+  let x;
+  if (localStorage.getItem("token")) {
+    x = getToken();
+  }
+  const decoded = x ? jwt_decode(x) : null;
 
   let [bul, setBul] = useState(false);
-  
+
   useEffect(() => {
     dispatch(getProductsById(id));
     dispatch(getProductStockById(id));
     return () => dispatch(cleanDetail(id));
   }, [dispatch, id]);
 
-
-  console.log('este es mi productId',productId ? productId : "");
-  const prueba = document.getElementById("reviews");
-
   const nada =
-    productId.hasOwnProperty('Reviews') &&
+    productId.hasOwnProperty("Reviews") &&
     productId.Reviews.map((e) => (
       <div>
         {" "}
@@ -51,21 +49,35 @@ const decoded = x?jwt_decode(x): null;
       </div>
     ));
 
-  const  addCart = async (e) => {
+  const addCart = async (e) => {
     e.preventDefault();
-    let product = items?.find( e => e.id === id)
-    
-    let user = decoded?decoded.user.id: null
-    if(user) {
-          // console.log("entrouser",user)
-       await  (fusionCartTomi(id))
-        await  (loadCartTomi())
-        await dispatch(addToCartTomi(id, 1,
-          productId.price, productId.name,productId.image, productId.Sizes))
+    let user = decoded ? decoded.user.id : null;
+    if (user) {
+      // console.log("entrouser",user)
+      await fusionCartTomi(id);
+      await loadCartTomi();
+      await dispatch(
+        addToCartTomi(
+          id,
+          1,
+          productId.price,
+          productId.name,
+          productId.image,
+          productId.Sizes
+        )
+      );
     }
-    await dispatch(addToCartTomi(id,  1,
-      productId.price, productId.name,productId.image,productId.Sizes))
-  }
+    await dispatch(
+      addToCartTomi(
+        id,
+        1,
+        productId.price,
+        productId.name,
+        productId.image,
+        productId.Sizes
+      )
+    );
+  };
 
   function handleReviews(e) {
     e.preventDefault();
@@ -88,7 +100,7 @@ const decoded = x?jwt_decode(x): null;
               <a href="/catalogue">X</a>
             </div>
             <div className="NameShoe">
-              <h1 style={{lineHeight:'40px'}}> {productId.name} </h1>
+              <h1 style={{ lineHeight: "40px" }}> {productId.name} </h1>
             </div>
             <div className="Brand">
               <h4>
@@ -103,7 +115,7 @@ const decoded = x?jwt_decode(x): null;
             <div className="Talles">
               <h4>Talles</h4>
               <div className="TallesContainer">
-              {productId.Sizes.map((size, index) => {
+                {productId.Sizes.map((size, index) => {
                   return (
                     <div>
                       <div className="Talle">#{size.number}</div>
@@ -169,7 +181,7 @@ const decoded = x?jwt_decode(x): null;
                   },
                 }}
                 startIcon={<FavoriteIcon />}
-                >
+              >
                 Wish List
               </Button>
               <Button
@@ -199,7 +211,6 @@ const decoded = x?jwt_decode(x): null;
           <p>Loading...</p>
         </div>
       )}
-
     </div>
   );
 }

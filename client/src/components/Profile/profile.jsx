@@ -116,8 +116,7 @@ export default function Profile() {
     setValue(newValue);
   };
   const handleSubmit = async (e) => {
-
-    console.log('user en el sub',user)
+    console.log("user en el sub", user);
     const x = await editUsers(data, user ? gId : user.userData.user.id);
     if (x) return "";
   };
@@ -270,7 +269,7 @@ export default function Profile() {
                     confirmPass: "",
                   }}
                   onSubmit={async (body, { resetForm }) => {
-                    const x = await editUsers(body, user.userData.user.id);
+                    await editUsers(body, user.userData.user.id);
                     resetForm();
                   }}
                   validate={(values) => {

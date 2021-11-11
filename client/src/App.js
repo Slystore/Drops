@@ -26,6 +26,21 @@ import Pay from './components/Checkout/Pay';
 import ShipmentForm from './components/Checkout/ShipmentForm.jsx';
 import FormForgot from './components/ForgotPassword/FormForgot.jsx';
 
+import Adidas from './views/brands/adidas'
+import Balenciaga from './views/brands/balenciaga'
+import Gucci from './views/brands/gucci'
+import Jordan from './views/brands/jordan'
+import Nike from './views/brands/nike'
+import OffWhite from './views/brands/offWhite'
+import Puma from './views/brands/puma'
+import Reebok from './views/brands/reebok'
+import UnderArmour from './views/brands/underArmour'
+import Vans from './views/brands/vans'
+
+import Deportivo from './views/categories/deportivo'
+import Sandalias from './views/categories/sandalias'
+import Urbano from './views/categories/urbano'
+
 
 
 function App() {
@@ -35,6 +50,23 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={HomeView} />
+          
+          <Route exact path="/products/bybrand/adidas" component={Adidas} />
+          <Route exact path="/products/bybrand/balenciaga" component={Balenciaga} />
+          <Route exact path="/products/bybrand/gucci" component={Gucci} />
+          <Route exact path="/products/bybrand/jordan" component={Jordan} />
+          <Route exact path="/products/bybrand/nike" component={Nike} />
+          <Route exact path="/products/bybrand/offwhite" component={OffWhite} />
+          <Route exact path="/products/bybrand/puma" component={Puma} />
+          <Route exact path="/products/bybrand/reebok" component={Reebok} />
+          <Route exact path="/products/bybrand/underarmour" component={UnderArmour} />
+          <Route exact path="/products/bybrand/vans" component={Vans} />
+
+          <Route exact path="/products/bycategories/deportivo" component={Deportivo} />
+          <Route exact path="/products/bycategories/sandalias" component={Sandalias} />
+          <Route exact path="/products/bycategories/urbano" component={Urbano} />
+
+
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/catalogue" component={Catalogue} />
 

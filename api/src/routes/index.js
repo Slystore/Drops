@@ -12,7 +12,9 @@ const orders = require('./order/order.js');
 const orderDetails = require('./orderDetails/orderDetails.js');
 const newsletter = require('./newsletter/newsletter');
 const mercadopago = require('./mercadoPago/mercadoPago.js');
+const wishList = require('./wishList/wishList')
 
+app.use('/wishList',wishList)
 app.use('/',users);
 app.use('/reviews', reviewsRoutes);
 app.use('/products', products);

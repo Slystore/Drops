@@ -31,7 +31,7 @@ export const userForgotPass = async (user) => {
   console.log("este es el user ", user);
   try {
     let { data } = await axios.put(
-      "http://localhost:3001/api/forgotPassword",
+      "/api/forgotPassword",
       user
     );
     console.log("a ver que data me llega", data);
@@ -79,7 +79,7 @@ export const userNewPass = async (newPass, id) => {
   console.log("este es el user y la id ", newPass, id);
   try {
     let { data } = await axios.put(
-      `http://localhost:3001/api/newPassword/${id}`,
+      `/api/newPassword/${id}`,
       newPass
     );
     return data;

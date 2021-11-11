@@ -1,59 +1,61 @@
-
-import React, { useState } from "react"
-import FromProductCreate from "../../Forms/product/postProduct"
-import { Grid, Box, Button, Typography, Modal } from '@mui/material';
-import "./productButton.css"
+import React, { useState } from "react";
+import FromProductCreate from "../../Forms/product/postProduct";
+import { Grid, Box, Button, Typography, Modal } from "@mui/material";
+import "./productButton.css";
 import FormProductCreate from "../../Forms/product/postProduct";
-import { GiConverseShoe } from "react-icons/gi"
+import { GiConverseShoe } from "react-icons/gi";
 
+const ProductButtons = ({ searchbar, info }) => {
+  const [open, setOpen] = useState(false);
 
-const ProductButtons = ({searchbar, info},) => {
-    // console.log(searchbar)
+  const handleOpen = () => setOpen(true);
 
-    const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
 
-    const handleOpen = () => setOpen(true);
+  return (
+    <Grid className="navButton">
+      <GiConverseShoe className="iconButtonNav" />
+      <input
+        className="searchbarAdmin"
+        type="text"
+        onChange={searchbar}
+        placeholder="Buscar"
+      />
 
-    const handleClose = () => setOpen(false);
+      <Button
+        style={{ backgroundColor: "#555" }}
+        className="buttonButton"
+        type="button"
+        onClick={handleOpen}
+        variant="contained"
+      >
+        Crear Producto
+      </Button>
 
-    return (
-        <Grid className="navButton">
-            <GiConverseShoe className="iconButtonNav" />
+      {info}
 
-            <Button style={{ backgroundColor: '#555', }} className="buttonButton" type='button' onClick={handleOpen} variant='contained'>Crear Producto</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="boxModal">
+          <Typography
+            className="titleModal"
+            id="modal-modal-title"
+            variant="h6"
+            component="h4"
+          >
+            Crear Producto
+          </Typography>
+          <div className="formModal">
+            <FormProductCreate />
+          </div>
+        </Box>
+      </Modal>
+    </Grid>
+  );
+};
 
-            {info }
-
-            <label>Buscar<input type='text' onChange={searchbar}/></label>
-            
-            <Modal open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box className="boxModal">
-                    <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h4">
-                        Crear Producto
-                    </Typography>
-                    <div className="formModal">
-                        <FormProductCreate />
-                    </div>
-
-                </Box>
-
-
-            </Modal>
-        </Grid>
-
-
-
-    )
-}
-
-export default ProductButtons
-
-// <select onChange={order}>
-//                 <option>Ordenado</option>
-//                 <option value='desc'>A-Z</option>
-//                 <option value='asc'>Z-A</option>
-//             </select>
+export default ProductButtons;

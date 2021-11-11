@@ -9,7 +9,6 @@ import {
   GET_PRODUCT_STOCK_ID,
   GET_PRODUCT_NAME,
   FILTERS_RESET,
-  FILTER_BY_PRICE,
   SAVE_FILTERED_DATA_BY_BRAND,
   SAVE_FILTERED_DATA_BY_CATEGORY,
   RESTORE_DATA,
@@ -29,14 +28,36 @@ export const initialState = {
   filtros: [],
   dataFiltrada: {}
 };
-
+// && Object.values(e.Brand).includes('Nike')
+// && Object.values(e.Brand).includes('Nike')
 function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
+      let dayVerify = new Date().toLocaleString(
+        'default', {weekday: 'long'}
+      )
+
+      let data = action.payload
+
+      let brandFilter = 'Nike'
+      let categoryFilter = 'Urbanas'
+      let dayFilter = 'jueves'
+
+      data = data.map(e => {
+        if(dayVerify === dayFilter && Object.values(e.Brand).includes(brandFilter)){
+          return {
+            ...e,
+            onSale: true,
+            Discounts: '10'
+          }
+        }
+        return e
+      })
+
       return {
         ...state,
-        products: action.payload,
-        filtrados: action.payload,
+        products: data,
+        filtrados: data,
       };
     }
 

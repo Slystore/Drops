@@ -148,8 +148,8 @@ export default function FormProductUpdate() {
         if (input.name === undefined || input.description === undefined || input.price <= 0) {
             alert('El formulario esta incompleto')
         } else {
-
-            dispatch(productForm(input))
+            console.log(input)
+            // dispatch(productForm(input))
 
             setInput({
                 name: "",
