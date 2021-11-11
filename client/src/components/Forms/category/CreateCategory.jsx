@@ -43,12 +43,14 @@ export default function FormCategory() {
 
     } else {
       const x = await postCategory(input)
-      swal("Good job!", "Categoria Creada!", "success");
+      swal("", "Categoria Creada!", "success", {
+        buttons: false
+
+      });
 
       setInput({
         name: "",
       })
-      history.push('/admin/categories')
       window.location.replace('')
     }
   }

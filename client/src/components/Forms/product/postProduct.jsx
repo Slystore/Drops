@@ -160,7 +160,7 @@ export default function FormProductCreate() {
         } else {
             console.log(input)
             dispatch(productForm(input))
-            swal("Good job!", "Producto Creado!", "success");
+            swal("", "Producto Creado!", "success");
             setInput({
                 name: "",
                 image: "",
@@ -171,7 +171,8 @@ export default function FormProductCreate() {
                 brandId: 0,
                 categoryId: [],
             })
-            history.push('/admin/products')
+            window.location.replace('')
+
         }
     }
 
@@ -253,11 +254,11 @@ export default function FormProductCreate() {
 
 
 
-                    <div>
+                    <div >
                         {
                             talleUi && talleUi.map(el => {
                                 return (
-                                    <div style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
+                                    <div className="renderSizesProduct">
                                         <p className='stockNumber' key={el[0]}> Talla:{el[0]} - Cantidad:{el[1]}
                                             <button className='deleteStock' onClick={() => deleteCategory(el)}> X </button>
                                         </p>
@@ -277,18 +278,6 @@ export default function FormProductCreate() {
 
 
 
-            {/* <div>
-                {
-                    input.categoryId && input.categoryId.map(el => {
-                        return (
-                            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                                <p> {el} </p>
-                                <button onClick={() => deleteCategory(el)}> X </button>
-                            </div>
-                        )
-                    })
-                }
-            </div> */}
 
         </div>
 

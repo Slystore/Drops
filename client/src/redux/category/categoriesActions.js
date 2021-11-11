@@ -28,3 +28,7 @@ export async function postCategory(payload) {
     const json = await axios.post(`/Categories/createCategory`, payload)
     return json
 }
+export async function PutCategory(payload) {
+    const json = await axios.put(`/Categories/editCategory`, payload)
+    return json
+}

@@ -43,7 +43,9 @@ export default function FormBrand() {
     } else {
       const x = await postBrand(input)
 
-      swal("Good job!", "Marca Creada!", "success");
+      swal("", "Marca Creada!", "success", {
+        buttons: false
+      });
       setInput({
         name: "",
       })

@@ -168,7 +168,9 @@ const Products = () => {
     const handleSubmit = (e) => {
         const x = PutProduct(input)
         console.log(input)
-        swal("Good job!", "Producto Creado!", "success");
+        swal("", "Producto Actualizado!", "success", {
+            buttons: false
+        });
         setInput({
             id: "",
             name: "",
@@ -180,7 +182,6 @@ const Products = () => {
             brandId: 0,
             categoryId: "",
         })
-        history.push(`/admin/products`)
         window.location.replace('')
 
     }
@@ -316,7 +317,7 @@ const Products = () => {
 
                             </div>
                             <div className='boxBtnCreate'>
-                                <button className='btnCreate' type='submit' id='submit' > Crear</button>
+                                <button className='btnCreate' type='submit' id='submit' > Guardar</button>
                             </div>
                         </form>
                     </div>
