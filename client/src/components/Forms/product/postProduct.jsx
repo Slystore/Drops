@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { postBrand } from '../../../redux/brand/brandActions';
 import { productForm } from '../../../redux/products/productsAction';
 import { getBrands } from '../../../redux/brand/brandActions';
 import { getCategories } from '../../../redux/category/categoriesActions';
@@ -27,29 +25,23 @@ function validate(input) {
 export default function FormProductCreate() {
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [errors, setErrors] = useState({});
 
-    //Me traigo el estado de redux de marcas, categorias y talles
     const { brands } = useSelector(state => state.brandReducer)
     const { categories } = useSelector(state => state.categoriesReducer)
     const { sizes } = useSelector(state => state.sizeReducer)
 
-    //aca ejecutamos action que trae las brands, categories y sizes
     useEffect(() => {
         dispatch(getBrands())
         dispatch(getCategories())
         dispatch(getSizes())
     }, [dispatch])
 
-    //estados locales para almacenar data del form
-    const [category, setCategory] = useState('');
+    const [, setCategory] = useState('');
     const [talle, setTalle] = useState(0)
-    const [talleString, setTalleString] = useState(0)
     const [talleUi, setTalleUi] = useState([])
     const [cantidad, setCantidad] = useState(0)
-    //estado local para el formulario entero
     const [input, setInput] = useState({
         name: "",
         image: "",
@@ -61,11 +53,9 @@ export default function FormProductCreate() {
         stock: []
     })
 
-    //variable para validar si el formulario esta completo y en funcion de eso disahabilitar el boton o no
     let prueba = !!(input.name && input.image && input.description && input.price && input.status && input.brandId && input.categoryId && input.stock.length > 0)
 
 
-    //funcion que maneja los cambios en los inputs del formulario
     const handleChangeForm = (e) => {
         if (e.target.name === 'price') {
             setInput((state) => {
@@ -92,7 +82,6 @@ export default function FormProductCreate() {
         }
     }
 
-    //Funcion que maneja el cambio en el estado de category en funcion de lo escrito en el input
     const handleChangeCategory = (e) => {
         e.preventDefault()
 
@@ -106,32 +95,27 @@ export default function FormProductCreate() {
         setCategory(e.target.value)
     }
 
-    // funcion que maneja el option seleccionado del select y lo agrega al array brands del form
     const agregarBrand = (e) => {
         setInput({
             ...input,
             brandId: parseInt(e.target.value)
         })
     }
-    // funcion que maneja el option seleccionado del select del status del productoy lo agrega al form
     const agregarDieta = (e) => {
         setInput({
             ...input,
             status: e.target.value
         })
     }
-    //Guarda en el estado local talle, el talle seleccionado del select
     const handleTalle = (e) => {
         setTalle(e.target.value)
     }
 
-    //Guarda en el estado local cantidad, el stock seleccionado del select para ese talle
     const handleCantidad = (e) => {
         let talle = parseInt(e.target.value)
         setCantidad(talle)
     }
 
-    //Agrega un array con [0]=talle y [1]=cantidad al array (stock) del input (estado local)
 
     const agregarStock = (e) => {
         e.preventDefault()
@@ -148,7 +132,6 @@ export default function FormProductCreate() {
         setCantidad(0)
     }
 
-    // funcion que maneja el submit del formulario y que nos manda a la pagina principal
     const handleSubmit = (e) => {
         e.preventDefault();
 

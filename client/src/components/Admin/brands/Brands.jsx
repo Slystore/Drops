@@ -32,7 +32,7 @@ const Brands = () => {
   useEffect(() => {
     dispatch(getBrands());
     setProductos(brands);
-  }, [dispatch]);
+  }, [dispatch, brands]);
 
   let data = brands.slice(firstProduct, lastProduct);
 
@@ -72,7 +72,7 @@ const Brands = () => {
   }
 
   async function handleSubmit(e) {
-    const x = await PutBrands(input);
+    await PutBrands(input);
     swal("", "Marca Actualizada!", "success", {
       buttons: false,
     });

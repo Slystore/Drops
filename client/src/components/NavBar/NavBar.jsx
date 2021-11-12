@@ -53,9 +53,7 @@ const useStyles = makeStyles(() => ({
 
 
 function NavBar() {
-
   const classes = useStyles();
-
   const [loged, setLoged] = useState({
     userState: false,
     userData: {},
@@ -64,7 +62,6 @@ function NavBar() {
 
   useEffect(() => {
     const x = getToken();
-    console.log("esta es mi x ", x);
     if (x.msg) {
       return setLoged({
         userState: false,
@@ -82,24 +79,18 @@ function NavBar() {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const[cartStorage ]= useState(JSON.parse(window.localStorage.getItem("cartId")))
   const { cart } = useSelector((state) => state.cartReducer);
-  const {storage} = useSelector(state => state.cartReducer)
   const {items} = useSelector(state => state.cartReducersTomi)
   
   function handleInputChange(e) {
     e.preventDefault();
     setName(e.target.value);
     dispatch(getProductsByName(name));
-
-    console.log(name);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(name);
     dispatch(getProductsByName(name));
-    // dispatch(cleanAction())
   }
 
   function handleMenu(){
