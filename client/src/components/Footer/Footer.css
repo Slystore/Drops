@@ -1,5 +1,5 @@
 .FooterContainer{
-    width: 100%;
+    width: 100vw;
     height: 80px;
     display: flex;
     flex-direction: column;
@@ -8,8 +8,11 @@
     margin: 20px 0 10px 0;
 }
 
-.FootText{
-    font-size: 1vw;
+@media (min-width: 1400px){
+    
+    .FootText{
+        font-size: 0.7vw;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 1399px){

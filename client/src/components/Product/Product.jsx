@@ -20,6 +20,8 @@ if(localStorage.getItem('token')){
 const decoded = x?jwt_decode(x): null;
 const { ratings } = useSelector((state) => state.ratingReducer);
     const data = ratings.filter(e => e.id === id)
+
+    console.log("DAATA", data[0]);
    
     useEffect(() => {
         dispatch(getProductsById(id))
@@ -32,8 +34,8 @@ const { ratings } = useSelector((state) => state.ratingReducer);
 
     const handleAddToCart = async () => {
     
-        let product = items?.find( e => e.id === id)
-     let user = decoded?decoded.user.id: null
+    let product = items?.find( e => e.id === id)
+    let user = decoded?decoded.user.id: null
         if(user) {
                console.log("entrouser",user)
            await  (fusionCartTomi(id))
@@ -47,10 +49,8 @@ const { ratings } = useSelector((state) => state.ratingReducer);
       
       };
 
-      console.log(onSale)
-      console.log(discounts)
     return (
-        <div className="ProductContainer" >
+        <div className="ProductContainer"  >
             <div className="IconShoppingContainer">
                 <Link to={`/catalogue`}>
                     <div className="IconShopping hvr-pulse-grow">
@@ -78,19 +78,30 @@ const { ratings } = useSelector((state) => state.ratingReducer);
             </div> 
             <div className="PriceProduct">
                 <h5>${onSale === true ? (price - ((parseInt(discounts)/100) * price)).toPrecision(4) : price }</h5>
-                <h5>precio verdadero{ price}</h5>
+                <h5 className="OldPrice">${price}</h5>
             </div>
 
-            <div >
-                { onSale === true ? <h5>{discounts}</h5> : null }
-            </div>
+            { 
+                onSale === true ? 
+                    <div className="Discount">  
+                         <h5>{discounts}</h5> 
+                    </div>
+                : 
+                null  
+            }
 
-            <div className="Rate">
-                <Rating name="read-only" value={data[0] ? data[0].rating : null} readOnly />
-                {/* <h5> Prom {data[0] ? data[0].rating : null}</h5> */}
-            </div>
-
-            <div className="TallesProduct">
+            {
+               
+              data[0] && data[0].rating? 
+                <div className="Rate">
+                    {console.log("rating",data[0])}
+                    <Rating name="read-only" value={data[0].rating} readOnly />
+                </div>
+                : 
+                <div className="NoRating"><i>Sin calificación, sé el primero</i></div>
+            }
+           
+            {/* <div className="TallesProduct">
                 {
                     productId.name ? 
                         <div>
@@ -105,7 +116,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                         <div>No name</div>
                 }
 
-            </div>
+            </div> */}
         </div>
     )
 }
