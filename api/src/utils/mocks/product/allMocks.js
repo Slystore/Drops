@@ -1024,7 +1024,7 @@ const allMocks = [
     BrandId: 10,
   },
   {
-    name: "Vans Vault Sk8-Mid LX JJJJound Brown",
+    name: "Vans Vault Sk8-Mid LX Jound Brown",
     image: "https://i.postimg.cc/CxvQnH0R/Vans-Vault-Sk8-Mid-LXJJJJound-Brown.jpg",
     description: "",
     price: 115.35,
