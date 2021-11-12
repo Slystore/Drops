@@ -24,6 +24,7 @@ const getOrderById = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    a;
   }
 };
 

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
-import { editUsers, getToken, getUserId } from "../../redux/users/userActions";
+import {
+  editUsers,
+  getToken,
+  getUserId,
+  userWishListGet,
+} from "../../redux/users/userActions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -13,7 +18,9 @@ import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Product from "../Product/Product";
 import "./profile.css";
+import { getProducts } from "../../redux/products/productsAction";
 const style = {
   position: "absolute",
   top: "50%",
@@ -62,6 +69,7 @@ function a11yProps(index) {
 export default function Profile() {
   const dispatch = useDispatch();
   const usersId = useSelector((state) => state.usersReducer.userId);
+  const wishList = useSelector((state) => state.usersReducer.wishList);
   const [value, setValue] = React.useState(0);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState({
@@ -82,6 +90,7 @@ export default function Profile() {
   });
   const gId = localStorage.getItem("gId");
   useEffect(() => {
+    dispatch(getProducts());
     console.log("estoy entrando al  useEffect");
     const x = getToken();
     console.log("this x ", x);
@@ -94,9 +103,11 @@ export default function Profile() {
       const userDecoded = jwtDecode(x);
       console.log("esta es mi data de google", userDecoded);
       if (userDecoded.user) {
+        dispatch(userWishListGet(userDecoded.user.id));
         dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
       } else {
         const gId = localStorage.getItem("gId");
+        dispatch(userWishListGet(gId))
         dispatch(getUserId(gId));
         setUser({
           userData: userDecoded,
@@ -105,6 +116,7 @@ export default function Profile() {
       }
     }
   }, [dispatch]);
+  let { products } = useSelector((state) => state.productReducer);
   console.log("estos son mis users", usersId ? usersId.user : "");
   const handleFormChange = (e) => {
     setData({
@@ -122,8 +134,12 @@ export default function Profile() {
   };
   const handleOpenEdit = () => setEdit(true);
 
-  console.log("this user", user);
-  console.log("this data", usersId);
+
+  let wishFilt = wishList.map(el => el.ProductId)
+  let dataFiltered= products.filter(el => wishFilt.includes(el.id))
+  
+console.log('esta es mi data filtrada',dataFiltered)
+
   return (
     <div>
       {user.validate === "noAuth" ? (
@@ -324,6 +340,25 @@ export default function Profile() {
                 </Formik>
               </div>
             )}
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <div>
+              <h1>WishList</h1>
+              {wishList.length !== 0 ? (
+                <div>
+                  {dataFiltered && dataFiltered.map(el => (
+                    <Product
+                    key = {el.id}
+                    id={el.id}
+                    name = {el.name}
+                    image = {el.image}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div>Todavia no agregaste nada :D</div>
+              )}
+            </div>
           </TabPanel>
         </Box>
       )}

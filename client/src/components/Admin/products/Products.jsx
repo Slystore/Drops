@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {Link} from 'react-router-dom'
 import {
   getProducts,
   getProductsByName,
@@ -24,6 +25,7 @@ import Paginado from "../../Catalogue/Paginado";
 import swal from "sweetalert";
 import { PutProduct } from "../../../redux/products/productsAction";
 
+
 const Products = () => {
   const dispatch = useDispatch();
 
@@ -33,6 +35,8 @@ const Products = () => {
   const [currPage, setCurrPage] = useState(1);
   const lastProduct = currPage * cardsxPage;
   const firstProduct = lastProduct - cardsxPage;
+  const [, setCategory] = useState('');
+
 
   let shoes = useSelector((state) => state.productReducer.products);
   const currProducts = shoes.slice(firstProduct, lastProduct);
@@ -46,7 +50,7 @@ const Products = () => {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(getSizes());
-  }, [dispatch, shoes]);
+  }, [dispatch]);
 
   const [open, setOpen] = useState(false);
 
@@ -110,11 +114,26 @@ const Products = () => {
   };
 
   const handleChangeCategory = (e) => {
-    setInput({
-      ...input,
-      categoryId: ([e.target.name] = e.target.value),
-    });
-  };
+    e.preventDefault()
+
+    let catFilter = categories.filter(cat => cat.name === e.target.value)
+    catFilter = catFilter[0].id
+
+    if(input.categoryId === undefined){
+      setInput(  {
+        ...input,
+      categoryId: [catFilter] 
+    })
+    }
+    else{
+      setInput(  {
+        ...input,
+        categoryId: [...input.categoryId, catFilter] 
+    })
+    
+    setCategory(e.target.value)
+  }
+};
 
   const agregarBrand = (e) => {
     setInput({
@@ -139,15 +158,29 @@ const Products = () => {
 
   const agregarStock = (e) => {
     e.preventDefault();
-    let prueba = sizes.filter((e) => e.number === +talle);
-    setTalleUi([...talleUi, [prueba[0].number, cantidad]]);
-    console.log(talleUi);
-    setInput({
-      ...input,
-      stock: [...input.stock, [parseInt(prueba[0].id), parseInt(cantidad)]],
-    });
-    setCantidad(0);
+    //se filtran los talles para encontrar el objeto cuyo valor coincide el que se aloja en talle
+    let sizeFilter = sizes.filter((e) => e.number === +talle);
+
+    let sizeNumber = sizeFilter[0].number
+    sizeFilter = sizeFilter[0].id
+    //creo un array que guarda el id del talle y su cantidad
+    let sizeStock = [sizeFilter, cantidad]
+    //se guarda en el state local talleUi el talle en numeros y su cantidad, para mostrarlo en la parte de abajo del formulario
+    setTalleUi([...talleUi, [sizeNumber, cantidad] ]);
+    //actualiza el array stock del formulario controlado input con lo guardado en sizeStock
+    if(input.stock === undefined){
+      setInput(  {
+        ...input,
+      stock: [sizeStock] 
+    })
+    } else {
+      setInput(  {
+        ...input,
+      stock: [...input.stock, sizeStock] 
+    })
+    }
   };
+
   const deleteCategory = (data) => {
     setInput({
       ...input,
@@ -156,7 +189,8 @@ const Products = () => {
   };
 
   const handleSubmit = (e) => {
-    PutProduct(input);
+    e.preventDefault()
+    dispatch( PutProduct(input) );
     console.log(input);
     swal("", "Producto Actualizado!", "success", {
       buttons: false,
@@ -175,9 +209,21 @@ const Products = () => {
     window.location.replace("");
   };
 
+  const restore = (e) => {
+    e.preventDefault()
+    dispatch(getProducts())
+    document.getElementById('hola').value= ''
+    setBusqueda('')
+    
+
+}
+  
+
   return (
     <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
-      <ProductButtons searchbar={handleSearch} />
+    <div>
+    <ProductButtons searchbar={handleSearch} restore={restore}/>
+    </div>  
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -387,7 +433,7 @@ const Products = () => {
                 </div>
               </div>
               <div className="boxBtnCreate">
-                <button className="btnCreate" type="submit" id="submit">
+                <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit}>
                   {" "}
                   Guardar
                 </button>

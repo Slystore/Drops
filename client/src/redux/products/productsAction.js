@@ -229,9 +229,13 @@ export function getProductStockBySize(id, body){
         }   
     }
 }
-export async function PutProduct(payload) {
-    const { data } = axios.put(`/products/updateProduct/`, payload)
+export function PutProduct(payload) {
+    return async () => {
+        console.log(payload)
+        const { data } = axios.put(`/products/updateProduct/`, payload)
+    
+        return data
 
-    return data
+    }
 
 }
