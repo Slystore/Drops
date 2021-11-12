@@ -107,6 +107,7 @@ export default function Profile() {
         dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
       } else {
         const gId = localStorage.getItem("gId");
+        dispatch(userWishListGet(gId))
         dispatch(getUserId(gId));
         setUser({
           userData: userDecoded,
