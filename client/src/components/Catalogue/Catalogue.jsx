@@ -154,7 +154,7 @@ function Catalogue() {
             </select>
           </div>
 
-          <form onClick={handleOrderMethod} style={{ margin: "0 0 20px 0" }}>
+          <form onClick={handleOrderMethod} className="FormRadioCatalogue">
             <label htmlFor="ordenacion">ASC</label>
             <input
               className="RadioFilter"
@@ -163,7 +163,7 @@ function Catalogue() {
               value="asc"
             />
 
-            <label htmlFor="ordenacion" style={{ margin: "0 0 0 50px" }}>
+            <label htmlFor="ordenacion" className="RadioFilterLabel">
               DESC
             </label>
             <input
@@ -174,7 +174,7 @@ function Catalogue() {
             />
           </form>
           
-          <div>
+          {/* <div>
               <button 
               className="hvr-grow-shadow" 
               style={{ 
@@ -188,7 +188,7 @@ function Catalogue() {
               onClick={handleResetFilters}> 
               borrar filtros 
               </button>
-          </div>
+          </div> */}
           <div>
             {
                 filtros && filtros.map(el => {
