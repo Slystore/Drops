@@ -137,7 +137,7 @@ const deleteFilter = (data) => {
         
         <div className="Filtros"> 
 
-          <div style={{padding:'20px 0'}}><h1>Filtros</h1></div>
+          <div ><h1>Filtros</h1></div>
           <div className="TitleFilter">Filtrar por Categoría</div>
           <div className="SelectFilter">
             <select className="Select" id='categories' onChange={(e) => handleFilterCategory(e)} >
@@ -186,8 +186,21 @@ const deleteFilter = (data) => {
             <input className="RadioFilter" type='radio' name='ordenacion' value='desc'/>
           </form>
           
-          
-          <button className="hvr-grow-shadow" style={{ width: 120, height:35, backgroundColor: 'black', color: 'white', borderRadius: 10, border:'none'}} onClick={handleResetFilters}> borrar filtros </button>
+          <div>
+              <button 
+              className="hvr-grow-shadow" 
+              style={{ 
+                  width: 120, 
+                  height:35, 
+                  backgroundColor: 'black', 
+                  color: 'white', 
+                  borderRadius: 10, 
+                  border:'none'
+              }} 
+              onClick={handleResetFilters}> 
+              borrar filtros 
+              </button>
+          </div>
           <div>
             {
                 filtros && filtros.map(el => {

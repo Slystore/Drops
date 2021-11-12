@@ -17,27 +17,28 @@ import ProductReview from "./Reviews";
 import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
 import "./ProductDetail.css";
 
+
 function ProductDetail(props) {
   const history = useHistory();
   const dispatch = useDispatch();
-const [size, setSize] = useState({SizeId:0});
+  const [size, setSize] = useState({SizeId:0});
   const { id } = props.match.params;
   const { productId } = useSelector((state) => state.productReducer);
   const { stockById } = useSelector((state) => state.productReducer);
   const {items} = useSelector(store => store.cartReducersTomi);
   let x
-if(localStorage.getItem('token')){
-     x = getToken();}
-const decoded = x?jwt_decode(x): null;
-
-  let [bul, setBul] = useState(false);
-  
-  useEffect(() => {
-    dispatch(getProductsById(id));
-    dispatch(getProductStockById(id));
-    return () => dispatch(cleanDetail(id));
-  }, [dispatch, id]);
-
+  if(localStorage.getItem('token')){
+    x = getToken();}
+    const decoded = x?jwt_decode(x): null;
+    
+    let [bul, setBul] = useState(false);
+    
+    useEffect(() => {
+      dispatch(getProductsById(id));
+      dispatch(getProductStockById(id));
+      return () => dispatch(cleanDetail(id));
+    }, [dispatch, id]);
+    
 
   console.log('este es mi productId',productId ? productId : "");
   const prueba = document.getElementById("reviews");
@@ -123,7 +124,7 @@ const decoded = x?jwt_decode(x): null;
               <div style={{ width: "70%" }}>
                 <div
                   style={{
-                    height: "10px",
+                    height: "20px",
                     fontWeight: "bold",
                     marginTop: "10px",
                   }}

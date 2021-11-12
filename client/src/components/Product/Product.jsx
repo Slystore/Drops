@@ -78,7 +78,7 @@ const { ratings } = useSelector((state) => state.ratingReducer);
             </div> 
             <div className="PriceProduct">
                 <h5>${onSale === true ? (price - ((parseInt(discounts)/100) * price)).toPrecision(4) : price }</h5>
-                <h5 className="OldPrice">${price}</h5>
+                <h4 className="OldPrice">${price}</h4>
             </div>
 
             { 
@@ -101,22 +101,6 @@ const { ratings } = useSelector((state) => state.ratingReducer);
                 <div className="NoRating"><i>Sin calificación, sé el primero</i></div>
             }
            
-            {/* <div className="TallesProduct">
-                {
-                    productId.name ? 
-                        <div>
-                            {
-                                productId.Sizes.map((size, index) => {
-                                    return (   
-                                        <div className="TalleCard" >#{size.number}</div>
-                                    )}
-                            )}
-                        </div> 
-                        : 
-                        <div>No name</div>
-                }
-
-            </div> */}
         </div>
     )
 }
