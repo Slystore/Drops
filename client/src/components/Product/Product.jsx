@@ -75,61 +75,59 @@ export default function Product({
     );
   };
 
-  return (
-    <div className="ProductContainer">
-      <div className="IconShoppingContainer">
-        <Link to={`/catalogue`}>
-          <div className="IconShopping hvr-pulse-grow">
-            <ShoppingCartIcon
-              sx={{
-                width: 30,
-                fontSize: 20,
-                marginTop: 0.7,
-                color: " rgb(197, 197, 197)",
-                "&:hover": {
-                  color: "#9E0000",
-                },
-              }}
-              onClick={() => handleAddToCart(id)}
-            />
-          </div>
-        </Link>
-        <div className="IconShopping hvr-pulse-grow">
-          <FavoriteIcon sx={{ fontSize: 20, marginTop: 0.7 }} />
-        </div>
-      </div>
-      <div className="Zapatilla">
-        <img src={image} alt="imagen no encontrada" />
-      </div>
-      <div className="Name">
-        <h3>{name}</h3>
-      </div>
-      <div className="PriceProduct">
-        <h5>
-          $
-          {onSale === true
-            ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
-            : price}
-        </h5>
-        <h5 className="OldPrice">${price}</h5>
-      </div>
+    return (
+        <div className="ProductContainer"  >
+            <div className="IconShoppingContainer">
+                <Link to={`/catalogue`}>
+                    <div className="IconShopping hvr-pulse-grow">
+                        <ShoppingCartIcon 
+                            sx={{
+                                    width:30,
+                                    fontSize:20, 
+                                    marginTop:0.7, 
+                                    color:' rgb(197, 197, 197)',
+                                    '&:hover':{
+                                        color:'#9E0000'
+                                    }}}
+                            onClick={() => handleAddToCart(id)}/>
+                    </div>
+                </Link>
+                <div className="IconShopping hvr-pulse-grow">
+                    <FavoriteIcon sx={{fontSize:20, marginTop:0.7}}/>
+                </div>
+            
+            <div className="Zapatilla">
+                <img src={image} alt="imagen no encontrada"/>
+            </div>
+            <div className="Name">
+                <h3>{name}</h3>
+            </div> 
+            <div className="PriceProduct">
+                <h5>${onSale === true ? (price - ((parseInt(discounts)/100) * price)).toPrecision(4) : price }</h5>
+                <h4 className="OldPrice">${price}</h4>
+            </div>
 
-      {onSale === true ? (
-        <div className="Discount">
-          <h5>{discounts}</h5>
-        </div>
-      ) : null}
+            { 
+                onSale === true ? 
+                    <div className="Discount">  
+                         <h5>{discounts}</h5> 
+                    </div>
+                : 
+                null  
+            }
 
-      {data[0] && data[0].rating ? (
-        <div className="Rate">
-          {console.log("rating", data[0])}
-          <Rating name="read-only" value={data[0].rating} readOnly />
+            {
+               
+              data[0] && data[0].rating? 
+                <div className="Rate">
+                    {console.log("rating",data[0])}
+                    <Rating name="read-only" value={data[0].rating} readOnly />
+                </div>
+                : 
+                <div className="NoRating"><i>Sin calificación, sé el primero</i></div>
+            }
+           
         </div>
-      ) : (
-        <div className="NoRating">
-          <i>Sin calificación, sé el primero</i>
-        </div>
-      )}
     </div>
   );
 }

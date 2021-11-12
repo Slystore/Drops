@@ -20,6 +20,7 @@ import {
 } from "../../redux/cartTomi/cartActionTomi";
 import "./ProductDetail.css";
 
+
 function ProductDetail(props) {
   const dispatch = useDispatch();
   const { id } = props.match.params;
@@ -134,7 +135,7 @@ function ProductDetail(props) {
               <div style={{ width: "70%" }}>
                 <div
                   style={{
-                    height: "10px",
+                    height: "20px",
                     fontWeight: "bold",
                     marginTop: "10px",
                   }}

@@ -111,10 +111,10 @@ function Catalogue() {
       <div className="Portada"></div>
 
       <div className="Info">
-        <div className="Filtros">
-          <div style={{ padding: "20px 0" }}>
-            <h1>Filtros</h1>
-          </div>
+        
+        <div className="Filtros"> 
+
+          <div ><h1>Filtros</h1></div>
           <div className="TitleFilter">Filtrar por Categoría</div>
           <div className="SelectFilter">
             <select
@@ -180,6 +180,33 @@ function Catalogue() {
               value="desc"
             />
           </form>
+          
+          <div>
+              <button 
+              className="hvr-grow-shadow" 
+              style={{ 
+                  width: 120, 
+                  height:35, 
+                  backgroundColor: 'black', 
+                  color: 'white', 
+                  borderRadius: 10, 
+                  border:'none'
+              }} 
+              onClick={handleResetFilters}> 
+              borrar filtros 
+              </button>
+          </div>
+          <div>
+            {
+                filtros && filtros.map(el => {
+                return(
+                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <p key={el} style={{ fontSize: '10px'}}> {el} </p>
+                        <button style={{ width: '20px', height: '10px', margin: '0 auto', fontSize: '5px'}} onClick={ () => deleteFilter(el) }> X </button>
+                    </div>
+                )})
+            }
+        </div>
 
           <button
             className="hvr-grow-shadow"
