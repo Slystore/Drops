@@ -351,6 +351,10 @@ console.log('esta es mi data filtrada',dataFiltered)
                     key = {el.id}
                     id={el.id}
                     name = {el.name}
+                    price = {el.price}
+                    Sizes = {el.Sizes}
+                    onSale={el.onSale}
+                    discounts= {el.discounts}
                     image = {el.image}
                     />
                   ))}
