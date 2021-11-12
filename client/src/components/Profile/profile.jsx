@@ -115,7 +115,7 @@ export default function Profile() {
       }
     }
   }, [dispatch]);
-  const { products } = useSelector((state) => state.productReducer);
+  let { products } = useSelector((state) => state.productReducer);
   console.log("estos son mis users", usersId ? usersId.user : "");
   const handleFormChange = (e) => {
     setData({
@@ -133,11 +133,12 @@ export default function Profile() {
   };
   const handleOpenEdit = () => setEdit(true);
 
-  console.log("this userWish", wishList);
-  console.log("this data", products);
-  let productWish
 
-  console.log("estos son mis productos con data filtrados ");
+  let wishFilt = wishList.map(el => el.ProductId)
+  let dataFiltered= products.filter(el => wishFilt.includes(el.id))
+  
+console.log('esta es mi data filtrada',dataFiltered)
+
   return (
     <div>
       {user.validate === "noAuth" ? (
@@ -344,26 +345,13 @@ export default function Profile() {
               <h1>WishList</h1>
               {wishList.length !== 0 ? (
                 <div>
-                  {wishList.map((el) => (
-                    <div key={el.ProductId}>
-                      {
-                         productWish = products.filter(
-                          (product) => product.id === el.ProductId
-                        )
-                      }
-                      {console.log(productWish)}
-                      {/* {productWish && productWish.map((elemento) => (
-                        <Product
-                          key={elemento.id}
-                          id={elemento.id}
-                          name={elemento.name}
-                          Sizes={elemento.Sizes}
-                          price={elemento.price}
-                          image={elemento.image}
-                        />
-                      ))} */}
-                      <Product/>
-                    </div>
+                  {dataFiltered && dataFiltered.map(el => (
+                    <Product
+                    key = {el.id}
+                    id={el.id}
+                    name = {el.name}
+                    image = {el.image}
+                    />
                   ))}
                 </div>
               ) : (
