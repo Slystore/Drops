@@ -97,10 +97,13 @@ export default function Product({
               onClick={() => handleAddToCart(id)}
             />
           </div>
+          <div className="IconShopping hvr-pulse-grow">
+            <FavoriteIcon
+              onClick={() => console.log("hola")}
+              sx={{ fontSize: 20, marginTop: 0.7 }}
+            />
+          </div>
         </Link>
-        <div className="IconShopping hvr-pulse-grow">
-          <FavoriteIcon sx={{ fontSize: 20, marginTop: 0.7 }} />
-        </div>
       </div>
       <div className="Zapatilla">
         <img src={image} alt="imagen no encontrada" />
