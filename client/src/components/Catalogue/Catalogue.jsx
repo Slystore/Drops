@@ -5,13 +5,10 @@ import Product from "../Product/Product";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Paginado from "./Paginado";
-
 import { Link } from "react-router-dom";
 import "./Catalogue.css";
-import {
-  loadCartTomi,
-} from "../../redux/cartTomi/cartActionTomi";
-import { getRatings} from "../../redux/rating/ratingActions";
+import { loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import { getRatings } from "../../redux/rating/ratingActions";
 import {
   getProducts,
   filterBrand,
@@ -25,8 +22,12 @@ import {
 } from "../../redux/products/productsAction";
 import { getBrands } from "../../redux/brand/brandActions";
 import { getCategories } from "../../redux/category/categoriesActions";
+import VanillaTilt from "vanilla-tilt";
 
 function Catalogue() {
+  const element = document.querySelectorAll(".Shoes");
+  VanillaTilt.init(element);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
@@ -151,26 +152,50 @@ function Catalogue() {
             </select>
           </div>
 
-          <div>
-            <select onChange={handleOrder}>
-              <option> Ordenamiento </option>
-              <option value="name"> Name </option>
-              <option value="price"> Price </option>
+          <div className="TitleFilter">Ordenamiento</div>
+          <div className="SelectFilter">
+            <select className="Select" onChange={handleOrder}>
+              <option> Tipos </option>
+              <option value="name"> Nombre </option>
+              <option value="price"> Precio </option>
             </select>
           </div>
 
-          <form onClick={handleOrderMethod}>
-            <label>
-              ASC
-              <input type="radio" name="ordenacion" value="asc" />
-            </label>
-            <label>
+          <form onClick={handleOrderMethod} style={{ margin: "0 0 20px 0" }}>
+            <label htmlFor="ordenacion">ASC</label>
+            <input
+              className="RadioFilter"
+              type="radio"
+              name="ordenacion"
+              value="asc"
+            />
+
+            <label htmlFor="ordenacion" style={{ margin: "0 0 0 50px" }}>
               DESC
-              <input type="radio" name="ordenacion" value="desc" />
             </label>
+            <input
+              className="RadioFilter"
+              type="radio"
+              name="ordenacion"
+              value="desc"
+            />
           </form>
 
-          <button onClick={handleResetFilters}> borrar filtros </button>
+          <button
+            className="hvr-grow-shadow"
+            style={{
+              width: 120,
+              height: 35,
+              backgroundColor: "black",
+              color: "white",
+              borderRadius: 10,
+              border: "none",
+            }}
+            onClick={handleResetFilters}
+          >
+            {" "}
+            borrar filtros{" "}
+          </button>
           <div>
             {filtros &&
               filtros.map((el) => {
@@ -211,7 +236,7 @@ function Catalogue() {
               return (
                 product && (
                   <Link to={`/catalogue/${product.id}`} key={index}>
-                    <div className="Shoes" key={index}>
+                    <div className="Shoes" key={index} data-tilt>
                       <Product
                         id={product.id}
                         image={product.image}
@@ -228,17 +253,16 @@ function Catalogue() {
                 )
               );
             })}
-
-          <div className="Paginado">
-            <Paginado
-              cardsxPage={cardsxPage}
-              products={products.length}
-              paginado={paginado}
-            />
-          </div>
         </div>
       </div>
 
+      <div className="Paginado">
+        <Paginado
+          cardsxPage={cardsxPage}
+          products={products.length}
+          paginado={paginado}
+        />
+      </div>
       <Footer />
     </div>
   );

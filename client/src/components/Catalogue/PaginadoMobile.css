@@ -1,0 +1,53 @@
+.PaginadoContainerMobile{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: thin dotted #fff; */
+    /* border: thin dotted #0f0; */
+}
+
+.PaginadoNumbersMobile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.PageMobile{
+    width: 20px;
+    height: 20px;
+    float: left;
+    text-align: center;
+    font-size: 1.5vh;
+    margin: 0 2px;
+    transition: 0.5s all;
+    /* border: thin dotted #00f; */
+}
+
+.PageMobile a{
+    text-decoration: none;
+}
+
+/* .PageCurrent{
+    border-bottom: solid 2px #f00;
+} */
+
+.PageMobile a:hover{
+    cursor: pointer;
+    color: #f00;
+    border-bottom: solid 2px #f00;
+}
+
+.NumberMobile{
+    /* padding: 1px; */
+    /* margin: 0 2px; */
+    color: #000;
+    font-weight: bold;
+}
+
+/* .NumberCurrent{
+    color: #f00;
+} */

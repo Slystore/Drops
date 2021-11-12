@@ -44,8 +44,6 @@ export default function Product({
     return () => dispatch(cleanDetail(id));
   }, [dispatch, id]);
 
-  const { productId } = useSelector((state) => state.productReducer);
-
   const handleAddToCart = async () => {
     let product = items?.find((e) => e.id === id);
     let user = decoded ? decoded.user.id : null;
@@ -77,8 +75,6 @@ export default function Product({
     );
   };
 
-  console.log(onSale);
-  console.log(discounts);
   return (
     <div className="ProductContainer">
       <div className="IconShoppingContainer">
@@ -115,31 +111,25 @@ export default function Product({
             ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
             : price}
         </h5>
-        <h5>precio verdadero{price}</h5>
+        <h5 className="OldPrice">${price}</h5>
       </div>
 
-      <div>{onSale === true ? <h5>{discounts}</h5> : null}</div>
+      {onSale === true ? (
+        <div className="Discount">
+          <h5>{discounts}</h5>
+        </div>
+      ) : null}
 
-      <div className="Rate">
-        <Rating
-          name="read-only"
-          value={data[0] ? data[0].rating : null}
-          readOnly
-        />
-        {/* <h5> Prom {data[0] ? data[0].rating : null}</h5> */}
-      </div>
-
-      <div className="TallesProduct">
-        {productId.name ? (
-          <div>
-            {productId.Sizes.map((size, index) => {
-              return <div className="TalleCard">#{size.number}</div>;
-            })}
-          </div>
-        ) : (
-          <div>No name</div>
-        )}
-      </div>
+      {data[0] && data[0].rating ? (
+        <div className="Rate">
+          {console.log("rating", data[0])}
+          <Rating name="read-only" value={data[0].rating} readOnly />
+        </div>
+      ) : (
+        <div className="NoRating">
+          <i>Sin calificación, sé el primero</i>
+        </div>
+      )}
     </div>
   );
 }
