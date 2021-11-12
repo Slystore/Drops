@@ -25,16 +25,17 @@ export default function FormProductUpdate() {
 
     //saca el id de params
     const id = params.id
+    console.log(id)
 
     const [errors, setErrors] = useState({});
     const [category, setCategory] = useState('');
 
     useEffect(() => {
         //aca ejecutamos action que trae la data de ese product en particular
-        dispatch(getProductsById(id))
-        dispatch(getBrands())
-        dispatch(getCategories())
-        dispatch(getSizes())
+        // dispatch(getProductsById(id))
+        // dispatch(getBrands())
+        // dispatch(getCategories())
+        // dispatch(getSizes())
     }, [dispatch])
 
     //Me traigo el estado de redux

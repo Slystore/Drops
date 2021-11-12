@@ -18,7 +18,7 @@ import OnSale from './components/Admin/onsale/OnSale';
 import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
 import Profile from './components/Profile/profile'
-// import FormProductUpdate from './components/Forms/updateProduct'
+import FormProductUpdate from './components/Forms/updateProduct/updateProduct'
 
 import Categories from './components/Admin/categories/Categories'
 import Brands from './components/Admin/brands/Brands'
@@ -102,6 +102,7 @@ function App() {
           </div>
 
         </Switch>
+              <Route exact path="/admin/product/update/:id" render={({ match }) => <FormProductUpdate />} /> 
 
 
       </Router>

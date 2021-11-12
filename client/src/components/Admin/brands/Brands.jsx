@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getBrands, getBrandsByName } from "../../../redux/brand/brandActions";
+import { getBrands, getBrandsByName, PutBrands } from "../../../redux/brand/brandActions";
 import BrandsButtons from "./BrandsButton";
 import {
   Table,
@@ -16,7 +16,6 @@ import {
   Typography,
 } from "@mui/material";
 import swal from "sweetalert";
-import { PutBrands } from "../../../redux/brand/brandActions";
 
 const Brands = () => {
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const Brands = () => {
   useEffect(() => {
     dispatch(getBrands());
     setProductos(brands);
-  }, [dispatch, brands]);
+  }, [dispatch]);
 
   let data = brands.slice(firstProduct, lastProduct);
 
@@ -82,9 +81,17 @@ const Brands = () => {
     window.location.replace("");
   }
 
+  const restore = (e) => {
+    e.preventDefault()
+    dispatch(getBrands())
+    document.getElementById('restore').value= ''
+    setBusqueda('')
+
+}
+
   return (
     <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
-      <BrandsButtons searchbar={handleSearch} />
+      <BrandsButtons searchbar={handleSearch} restore={restore}/>
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>

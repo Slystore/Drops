@@ -11,6 +11,7 @@ import {
   TableRow,
   Grid,
 } from "@mui/material";
+import Paginado from "../../Catalogue/Paginado";
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,12 @@ const Users = () => {
   const [, setProductos] = useState([]);
 
   const [cardsxPage,] = useState(8);
-  const [currPage, ] = useState(1);
+  const [currPage, setCurrPage] = useState(1);
   const lastProduct = currPage * cardsxPage;
   const firstProduct = lastProduct - cardsxPage;
+
   const { users } = useSelector((state) => state.usersReducer);
+
   const [data, setData] = useState({
     userType: "",
   });
@@ -29,7 +32,7 @@ const Users = () => {
   useEffect(() => {
     dispatch(getUsers());
     setProductos(users);
-  }, [dispatch, users]);
+  }, [dispatch]);
 
   const handleSelect = async (e, id) => {
     console.log("valor del select", e.target.value, id);
@@ -43,6 +46,10 @@ const Users = () => {
   };
 
   let nada = users.slice(firstProduct, lastProduct);
+
+  const paginado = (pagNumber) => {
+    setCurrPage(pagNumber);
+  };
 
   return (
     <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
@@ -100,6 +107,13 @@ const Users = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Paginado
+      style={{ margin: "0 auto" }}
+      cardsxPage={cardsxPage}
+      products={users.length}
+      paginado={paginado}
+    />
     </Grid>
   );
 };
