@@ -1,17 +1,24 @@
 
+.CatologueContainer{
+    width: 99.1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
+    /* border: thin dotted #00f;  */
+}
+
+.FormRadioCatalogue{
+    margin: 0 0 20px 0;
+}
+
+.RadioFilterLabel{
+    margin: 0 0 0 50px;
+}
 
 @media (min-width: 1400px) {
 
-    .CatologueContainer{
-        width: 99.1vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        overflow: hidden;
-        /* border: thin dotted #00f;  */
-    }
-    
     .Portada{
         width: 100%;
         max-height: 400px;
@@ -73,12 +80,11 @@
     }
     
     .Productos{
-        width: 70vw; 
-        height: 80vh;
+        width: 85%; 
+        min-height:100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        /* border: thin dotted #f00; */
     }
     
     .Shoes{
@@ -126,15 +132,6 @@
 
 @media (min-width: 1200px) and (max-width: 1399px){
 
-    .CatologueContainer{
-        width: 99.1vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        overflow: hidden;
-        /* border: thin dotted #00f;  */
-    }
     
     .Portada{
         width: 100%;
@@ -205,9 +202,13 @@
         border: none;
     }
     
+    .RadioFilterLabel{
+        margin: 0 0 0 15px;
+    }
+    
     .Productos{
-        width: 75vw; 
-        height: 72vh;
+        width: 85%; 
+        min-height: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -236,11 +237,145 @@
         width: 16px;
         height: 16px;
         position: relative;
-        top: 3px;
+        top: 1px;
+        border: solid 2px #999;
+        margin-right: 5px;   
+        transition: 0.2s all linear;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .Portada{
+        width: 100%;
+        max-height: 400px;
+        height: 40vh;
+        background-color: #ccccce;
+        background-image: url(../../assets/portada.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        position: relative;
+        top: -50px;
+        /* border: thin dotted #00f;  */
+    }
+
+    .Info{ 
+        width: 95%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        position: relative;
+        top: -50px;
+        /* border: thin dotted #00f;  */
+    }
+
+    .Filtros{
+        width: 100%;
+        height: 100px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: flex-start;
+        border: thin dotted #00f; 
+    }
+    
+    .Filtros h1{
+        display: none;
+    }
+    
+    .TitleFilter{
+        width: 80%;
+        height: 20px;
+        font-size: 1.2vw;
+        font-weight: 500;
+        margin-top: 3px;
+        /* border: thin dotted #00f;  */
+    }
+
+    .SelectFilter{ 
+        width: 100%;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .Select{
+        width: 80%;
+        height: 20px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 0.8em;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .Select:hover{
+        box-shadow: 0 5px 10px #00000030;
+        cursor: pointer;
+        border: none;
+    }
+
+    .FormRadioCatalogue{
+        width: 150%;
+        border: thin dotted #f00;
+    }
+
+    .Productos{
+        width: 95vw; 
+        height: 77vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        /* border: thin dotted #f00; */
+    }
+    
+    .Shoes{
+        position: relative;
+        float: left;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .Paginado{
+        width: 60%;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        /* border: thin dotted #f00; */
+    }
+
+    .RadioFilter{
+        margin: 0 5px;
+        width: 14px;
+        height: 14px;
+        /* position: relative;
+        top: -1px; */
         border: solid 2px #999;
         margin-right: 5px;   
             /* appearance: none; */
         transition: 0.2s all linear;
-        
     }
+
+
+
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+
+}
+
+@media (max-width: 575px){
+
 }
