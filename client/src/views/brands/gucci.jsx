@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getProducts } from "../../redux/products/productsAction";
 import Product from "../../components/Product/Product"
 import Paginado from '../../components/Catalogue/Paginado'
@@ -31,8 +32,10 @@ const Gucci = () => {
 
     return(
         <div>
+
             <div > 
             <h2> Mapeo de Gucci </h2>
+            <Link to='/'><a >volver</a></Link>
 
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', justifyContent: 'center', alignItems: 'center'}}>
             { currProducts && currProducts.map(e => 

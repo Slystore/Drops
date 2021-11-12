@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getProducts } from "../../redux/products/productsAction";
 import Product from "../../components/Product/Product"
 import Paginado from '../../components/Catalogue/Paginado'
@@ -31,33 +32,33 @@ const Adidas = () => {
 
     return(
         <div>
-            <div > 
-            <h2> Mapeo de Adidas </h2>
+            <div >  <h2> Mapeo de Adidas </h2> </div>
+            <div >    <Link to='/' ><a >volver</a></Link> </div>
 
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', justifyContent: 'center', alignItems: 'center'}}>
-            { currProducts && currProducts.map(e => 
-                <Product 
-                id={e.id}
-                image={e.image}
-                name={e.name}
-                price={e.price}
-                status={e.status}
-                description={e.description}
-                Sizes = {e.Sizes}  
-                onSale={e.onSale}
-                discounts={e.Discounts}
-                />)}
-            
+
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', }}>
+                { currProducts && currProducts.map(e => 
+                    <Product 
+                    id={e.id}
+                    image={e.image}
+                    name={e.name}
+                    price={e.price}
+                    status={e.status}
+                    description={e.description}
+                    Sizes = {e.Sizes}  
+                    onSale={e.onSale}
+                    discounts={e.Discounts}
+                    />)}
+
             </div>
 
-             <div className="Paginado">
-                <Paginado 
-                cardsxPage={cardsxPage} 
-                products={data.length}
-                paginado={paginado} 
-                />
-          </div>
-            </div>
+            <div className="Paginado">
+                    <Paginado 
+                    cardsxPage={cardsxPage} 
+                    products={data.length}
+                    paginado={paginado} 
+                    />
+           </div>
         </div>
     )
 }
