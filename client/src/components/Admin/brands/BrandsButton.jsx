@@ -8,7 +8,7 @@ import "./brandsButton.css"
 import { getBrands } from "../../../redux/brand/brandActions";
 import { FaSync } from "react-icons/fa"
 
-const BrandsButtons = ({ searchbar }) => {
+const BrandsButtons = ({ searchbar, restore }) => {
     const dispatch = useDispatch()
 
     const [open, setOpen] = useState(false);
@@ -17,11 +17,7 @@ const BrandsButtons = ({ searchbar }) => {
 
     const handleClose = () => setOpen(false);
 
-    const restore = (e) => {
-        e.preventDefault()
-        dispatch(getBrands())
-
-    }
+   
 
     return (
         <Grid className="navButton">
@@ -29,8 +25,8 @@ const BrandsButtons = ({ searchbar }) => {
             <SiNike className="iconButtonNav" />
 
             <div>
-                <input style={{ marginRight: 10 }} className="searchbarAdmin" type='text' onChange={searchbar} placeholder="Buscar" />
-                <button className="buttonResetAdmin" onClick={restore}> <FaSync /></button>
+                <input style={{ marginRight: 10 }} className="searchbarAdmin" id='restore' type='text' onChange={searchbar} placeholder="Buscar" />
+                <button className="buttonResetAdmin" onClick={restore} > <FaSync /></button>
 
             </div>
 

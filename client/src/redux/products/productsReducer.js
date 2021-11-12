@@ -50,6 +50,8 @@ function productsReducer(state = initialState, action) {
         return e;
       });
 
+      data = data.sort((a,b) => a.id - b.id)
+
       return {
         ...state,
         products: data,
