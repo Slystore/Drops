@@ -33,7 +33,7 @@ async function mercadoPago(req, res, next){
     // order.orderState = "PROCESSING"
     // order.save()
     //Todos los productos de la orden
-    console.log(order, order.Products,"tomimpago")
+    // console.log(order, order.Products,"tomimpago")
   const items_ml = order.Products.map(i => ({
     title: i.name,
     unit_price: Number(i.price),

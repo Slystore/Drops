@@ -1,79 +1,158 @@
-const { Orders, Product, OrderDetail, Users } = require("../../db");
+const { Orders, ProductSize, OrderDetail, Users } = require("../../db");
+// const nodemailer = require('nodemailer');
 
 const { PROD_ACCESS_TOKEN } = process.env;
 const mercadopago = require("mercadopago");
 
 mercadopago.configure({
-    access_token: PROD_ACCESS_TOKEN
-  });
-
-
+  access_token: PROD_ACCESS_TOKEN,
+});
+// const transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     secure: true, // true for 465, false for other ports
+//     auth: {
+//         user:'sportgymfitness198@gmail.com',
+//         pass:'botlgntwqdomgxqo'
+//     },
+//   });
+//   const mensaje = ''
+// let mail = async (userMail,firstName, lastName) => {
+//     await transporter.sendMail({
+//         from: '"Sportgym" <foo@example.com>', // sender address
+//         to: userMail, // list of receivers
+//         subject: `Compra Exitosa ${firstName ? firstName : ""} ✔`, // Subject line
+//         text: `Hola ${firstName && lastName ? `${firstName, lastName}`: "!"}`, // plain text body
+//         html: `<b>Hola ${firstName && lastName ? `${firstName, lastName}`: ""}, excelente compra, te avisaremos cuando se despache la entrega, para  cualquier consulta relacionada o no con tu pedido, te puedes responder este correo electrónico o escribirnos por ... </b>`, // html body
+//     });
+// }
 //mercadopago/pagos
 async function payment(req, res, next) {
-    // console.log('FUNCION PAYMEEEENT')
-    const {
-        payment_id,         //1239191891
-        status,             //approved
-        external_reference, //faac272e-a92d-4a15-a472-c9363559aa00
-        //El resto no lo estamos usando
-        collection_id,      //1239191891
-        payment_type,       //credit_card
-        collection_status,  //approved
-        merchant_order_id,  //3014520874
-        preference_id,      //794718240-10459525-b2bf-4bba-b3fb-fae0b736861a
-        site_id,            //MLA
-        processing_mode,    //aggregator
-        merchant_account_id,//null
-} = req.query;
-//Obtenemmos el mail del user
-// const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
-const orderm = await Orders.findByPk(external_reference,
-    {include: [
-        {
-            model: Users,
-            attributes: ["mail", "name", "surName"]
-        }]}
-        );
-    Orders.findByPk(external_reference)
-        .then(order => {
-            order.payment_id = payment_id;
-            order.paymentState = status
-            order.status = 'COMPLETED'
-            order.save()
-                .then(() => {
-                    console.info('redict sucess')
-                    
-                    return res.redirect(front)
-                })
-                .catch(error => {
-                    return res.redirect(`${front}/?error=${error}&where=al+salvar`)
-                })
+  // console.log('FUNCION PAYMEEEENT')
+  const {
+    payment_id, //1239191891
+    status, //approved
+    external_reference, //faac272e-a92d-4a15-a472-c9363559aa00
+    //El resto no lo estamos usando
+    collection_id, //1239191891
+    payment_type, //credit_card
+    collection_status, //approved
+    merchant_order_id, //3014520874
+    preference_id, //794718240-10459525-b2bf-4bba-b3fb-fae0b736861a
+    site_id, //MLA
+    processing_mode, //aggregator
+    merchant_account_id, //null
+  } = req.query;
+  console.log(req.query);
+  //Obtenemmos el mail del user
+  // const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
+  const orderm = await Orders.findByPk(external_reference, {
+    include: [
+      {
+        model: Users,
+        attributes: ["mail", "name", "surname"],
+      },
+      { model: OrderDetail },
+    ],
+  });
+  console.log("ordermOrderDetail", orderm.OrderDetails);
+  Orders.findByPk(external_reference)
+    .then((order) => {
+      order.payment_id = payment_id;
+      order.paymentState = status;
+      // console.log('order', order)
+      if (status === "approved") {
+        if (order.status !== "pending") {
+          orderm.OrderDetails.forEach(async (product) => {
+            await ProductSize.decrement(
+              {
+                stock: product.quantity,
+              },
+              {
+                where: {
+                  ProductId: product.ProductId,
+                  SizeId: product.sizeId,
+                },
+              }
+            );
+          });
+        //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
+          order.status = "completed";
+        } else {
+          order.status = "completed";
+        }
+      } else if (status === "pending") {
+        orderm.OrderDetails.forEach(async (product) => {
+          await ProductSize.decrement(
+            {
+              stock: product.quantity,
+            },
+            {
+              where: {
+                ProductId: product.ProductId,
+                SizeId: product.sizeId,
+              },
+            }
+          );
+        });
+        order.status = "pending";
+      } else if (status === "rejected") {
+        if (order.status === "pending") {
+          orderm.OrderDetails.forEach(async (product) => {
+            await ProductSize.increment(
+              {
+                stock: product.quantity,
+              },
+              {
+                where: {
+                  ProductId: product.ProductId,
+                  SizeId: product.sizeId,
+                },
+              }
+            );
+          });
+          order.status = "cancelled";
+        } else {
+          order.status = "cancelled";
+        }
+      }
+      order
+        .save()
+        .then(() => {
+          console.info("redict sucess");
+          return res.redirect("http://localhost:3000/catalogue");
         })
-        .catch(error => {
-            return res.redirect(`${front}/error=${error}&where=al+buscar`)
-        })
-
+        .catch((error) => {
+          return res.redirect(
+            `http://localhost:3000/catalogue/?error=${error}&where=al+salvar`
+          );
+        });
+    })
+    .catch((error) => {
+      return res.redirect(
+        `http://localhost:3000/catalogue/error=${error}&where=al+buscar`
+      );
+    });
 }
 //mercadopago/pagos
 
 async function pagosId(req, res) {
-    console.log('pagosId access_token,', PROD_ACCESS_TOKEN)
-    // const mp = new mercadopago(access_token)
-    const mp = new mercadopago(PROD_ACCESS_TOKEN)
-    const id = req.params.id
-    console.info("Buscando el id", id)
-    mp.get(`/v1/payments/search`, { 'status': 'pending' })//{"external_reference":id})
-        .then(resultado => {
-            console.info('resultado', resultado)
-            res.json({ "resultado": resultado })
-        })
-        .catch(err => {
-            console.error('No se consulto:', err)
-            res.json({
-                error: err
-            })
-        })
-
+  console.log("pagosId access_token,", PROD_ACCESS_TOKEN);
+  // const mp = new mercadopago(access_token)
+  const mp = new mercadopago(PROD_ACCESS_TOKEN);
+  const id = req.params.id;
+  console.info("Buscando el id", id);
+  mp.get(`/v1/payments/search`, { status: "pending" }) //{"external_reference":id})
+    .then((resultado) => {
+      console.info("resultado", resultado);
+      res.json({ resultado: resultado });
+    })
+    .catch((err) => {
+      console.error("No se consulto:", err);
+      res.json({
+        error: err,
+      });
+    });
 }
 /*
 4509 9535 6623 3704
@@ -98,6 +177,4 @@ processing_mode        = aggregator
 merchant_account_id    = null
 */
 
-
-module.exports =     payment,
-    pagosId;
+(module.exports = payment), pagosId;
