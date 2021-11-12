@@ -73,7 +73,7 @@ export default function Product({ name, id, price, image, Sizes, onSale, discoun
       </div>
       <div className="PriceProduct">
         <h5>${onSale === true ? (price - ((parseInt(discounts) / 100) * price)).toPrecision(4) : price}</h5>
-        <h4 className="OldPrice">${price}</h4>
+        <h4 className={onSale === true ? "OldPrice" : "OldPriceNO"}>${price}</h4>
       </div>
       {
         onSale === true ?
