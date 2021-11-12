@@ -20,7 +20,7 @@ export const UserTooltip = styled(({ className, ...props }) => (
     backgroundColor: "#FF0000",
     background: "-moz-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
     //   backgroundColor: theme.palette.common.white,
-    height: 65,
+    height: 'auto',
     boxShadow: "0 5px 10px #00000080",
   },
 }));
@@ -29,6 +29,10 @@ export const titleUserLog = (
   <div className="ToolTipsUser">
     <div className="LinkUserContainer">
       <a href="/profile">Mi profile</a>
+    </div>
+
+    <div className="LinkUserContainer">
+      <a href="/admin/home">Admin</a>
     </div>
 
     <div className="LinkUserContainer">
