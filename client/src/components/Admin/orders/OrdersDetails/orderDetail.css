@@ -1,0 +1,46 @@
+.detailOrderBox{
+    display: flex;
+    margin-top: 22px;
+}
+
+.detailFirstBox {
+    width: 50%;
+}
+.detailSecondBox {
+    width: 50%;
+
+}
+.detailListBox {
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    background-color: rgb(246, 248, 244);
+    margin-bottom: 10px;
+}
+.detailList {
+    margin-top: 20px;
+}
+.detailListItem {
+    color: rgb(71, 68, 68);
+}
+
+.blockProduct {
+    display: flex;
+    margin-top: 20px;
+
+}
+.blockFirstProduct {
+    width: 50%;
+}
+.blockSecondProduct {
+    width: 50%;
+
+}
+.blockListProduct {
+    text-align: left;
+}
+.blockDetailProduct {
+    height: 20px;
+    background-color: rgb(246, 248, 244);
+    margin-bottom: 10px;
+}

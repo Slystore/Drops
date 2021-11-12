@@ -9,7 +9,7 @@ import sizeReducer from './sizes/sizeReducer';
 import newsletterReducer from './newsletter/newsletterReducer';
 import cartReducersTomi from './cartTomi/cartReducerTomi';
 import ratingReducer from './rating/ratingReducer';
-
+import ordersReducer from './orders/ordersReducer';
 import cartReducer from './cart/cartReducer';
 
 export const reducers = combineReducers({
@@ -22,7 +22,8 @@ export const reducers = combineReducers({
     newsletterReducer,
     cartReducer,
     cartReducersTomi,
-    ratingReducer
+    ratingReducer,
+    ordersReducer
 });
 
 export default reducers;
