@@ -23,8 +23,8 @@ const { products } = useSelector((state) => state.productReducer);
 
 const data = products.filter(e => Object.values(e.Brand).includes('Balenciaga'))
 
-const [currPage,] = useState(1);
-const [cardsxPage,] = useState(10);
+const [currPage, setCurrPage] = useState(1);
+const [cardsxPage, setcardsxPage] = useState(10);
 
 const lastProduct = currPage * cardsxPage
 const firstProduct =  lastProduct - cardsxPage;
@@ -35,7 +35,6 @@ const currProducts = data.slice(firstProduct, lastProduct);
         <div className="BrandContainer">
             <NavBar />
             <div className="BrandImageBalenciaga">
-                <img />
             </div>
             <div className="BrandProducts">
                 {

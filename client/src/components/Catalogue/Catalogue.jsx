@@ -40,10 +40,6 @@ function Catalogue() {
   const { products } = useSelector((state) => state.productReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { brands } = useSelector((state) => state.brandReducer);
-  const rating = useSelector((state) => state.ratingReducer.ratings);
-
-  console.log(rating);
-  console.log(rating.sort((a, b) => b.rating - a.rating));
 
   const [currPage, setCurrPage] = useState(1);
   const [cardsxPage] = useState(10);
@@ -64,7 +60,6 @@ function Catalogue() {
 
   function handleFilterBrand(e) {
     e.preventDefault();
-    console.log(e.target.value);
     dispatch(saveFilteredDataBrand(e.target.value));
     dispatch(filterBrand(e.target.value));
     setFiltros([...filtros, e.target.value]);
@@ -72,7 +67,6 @@ function Catalogue() {
 
   function handleFilterCategory(e) {
     e.preventDefault();
-    console.log(e.target.value);
 
     dispatch(saveFilteredDataCategory(e.target.value));
     dispatch(filterCategory(e.target.value));
@@ -96,7 +90,6 @@ function Catalogue() {
   const handleOrderMethod = (e) => {
     e.preventDefault();
     dispatch(orderMethod(e.target.value, order));
-    console.log(e.target.value);
   };
 
   const deleteFilter = (data) => {
@@ -208,21 +201,7 @@ function Catalogue() {
             }
         </div>
 
-          <button
-            className="hvr-grow-shadow"
-            style={{
-              width: 120,
-              height: 35,
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: 10,
-              border: "none",
-            }}
-            onClick={handleResetFilters}
-          >
-            {" "}
-            borrar filtros{" "}
-          </button>
+         
           <div>
             {filtros &&
               filtros.map((el) => {
@@ -259,7 +238,6 @@ function Catalogue() {
         <div className="Productos">
           {currProducts &&
             currProducts.map((product, index) => {
-              console.log(product.Sizes, "sizeslogueado");
               return (
                 product && (
                   <Link to={`/catalogue/${product.id}`} key={index}>
