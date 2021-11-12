@@ -13,8 +13,8 @@ function Checkout({ products, data, total }) {
     script.setAttributeNode(attr_data_preference);
 
     document.getElementById("form1").appendChild(script);
-    return () => {
-    };
+    // return () => {
+    // };
   }, [data]);
 
   return (
