@@ -19,6 +19,7 @@ import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
 import Profile from './components/Profile/profile'
 import FormProductUpdate from './components/Forms/updateProduct/updateProduct'
+import OrderDetail from './components/Admin/orders/OrdersDetails/OrderDetail.jsx';
 
 import Categories from './components/Admin/categories/Categories'
 import Brands from './components/Admin/brands/Brands'
@@ -50,7 +51,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={HomeView} />
-          
+
           <Route exact path="/products/bybrand/adidas" component={Adidas} />
           <Route exact path="/products/bybrand/balenciaga" component={Balenciaga} />
           <Route exact path="/products/bybrand/gucci" component={Gucci} />
@@ -97,12 +98,13 @@ function App() {
               <Route path="/admin/newsletter" component={Newsletter} />
               <Route path="/admin/appointment" component={Appointment} />
               <Route path="/admin/orders" component={Orders} />
+              <Route path="/admin/Detail/:id" component={OrderDetail} />
             </div>
 
           </div>
 
         </Switch>
-              <Route exact path="/admin/product/update/:id" render={({ match }) => <FormProductUpdate />} /> 
+        <Route exact path="/admin/product/update/:id" render={({ match }) => <FormProductUpdate />} />
 
 
       </Router>

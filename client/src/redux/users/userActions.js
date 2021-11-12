@@ -4,6 +4,7 @@ export const GET_USERS = "GET_USERS";
 
 export const GET_USER_ID = 'GET_USER_ID';
 export const GET_USERS_BY_NAME = 'GET_USERS_BY_NAME';
+export const GET_USER_WISH = "GET_USER_WISH"
 
 
 export const userRegister = async (payload) => {
@@ -26,6 +27,20 @@ export const userLoginGoogle = async (payload) => {
     console.log("rompo en la action de googleLog", err);
   }
 };
+
+export const userWishListGet =  (id)=>{
+  return async function(dispatch){
+      try {
+      let {data} = await axios.get(`/wishList/wish/${id}`)  
+      return await dispatch({
+        type:GET_USER_WISH,
+        payload:data
+      })  
+      } catch (error) {
+        console.log('rompo action wishGet',error)
+      }
+  }
+}
 
 export const userForgotPass = async (user) => {
   console.log("este es el user ", user);
