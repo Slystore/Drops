@@ -28,6 +28,16 @@ export const userLoginGoogle = async (payload) => {
   }
 };
 
+export const userPostWish = async (userId,productId) => {
+  console.log(userId,productId)
+  try{
+    let {data} = await axios.post('/wishList/addWish',{userId,productId})
+    return data
+  }catch(err){
+    console.log('rompo en la action de postWish',err)
+  }
+}
+
 export const userWishListGet =  (id)=>{
   return async function(dispatch){
       try {
