@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import { getUsers } from "../../redux/users/userActions";
+import axios from "axios";
 import { styled } from "@mui/material/styles";
 
 const logOut = async () => {
@@ -8,6 +10,7 @@ const logOut = async () => {
   localStorage.removeItem("gId");
   window.location.reload(false);
 };
+
 /****************************** TOOLTIPS USER ******************************************/
 export const UserTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
