@@ -2,10 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../redux/products/productsAction";
-import Product from "../../components/Product/Product"
-import Paginado from '../../components/Catalogue/Paginado'
+import Product from "../../components/Product/Product";
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
+import VanillaTilt from 'vanilla-tilt';
 
 const Jordan = () => {
+
+    const element = document.querySelectorAll(".Shoes");
+    VanillaTilt.init(element);
 
     const dispatch = useDispatch();
 
@@ -14,55 +19,43 @@ const Jordan = () => {
         
     }, [dispatch]);
 
-  const { products } = useSelector((state) => state.productReducer);
-  
-  const data = products.filter(e => Object.values(e.Brand).includes('Jordan'))
-
-  const [currPage, setCurrPage] = useState(1);
-  const [cardsxPage, ] = useState(10);
-  
-  const lastProduct = currPage * cardsxPage
-  const firstProduct =  lastProduct - cardsxPage;
-
-  const currProducts = data.slice(firstProduct, lastProduct);
-  
-  const paginado = (pagNumber) => {
-      setCurrPage(pagNumber)
-  }
+    const { products } = useSelector((state) => state.productReducer);
+    
+    const data = products.filter(e => Object.values(e.Brand).includes('Jordan'))
 
     return(
-        <div>
-
-            <div > 
-            <h2> Mapeo de Jordan </h2>
-            <Link to='/'><a >volver</a></Link>
-
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', justifyContent: 'center', alignItems: 'center'}}>
-            { currProducts && currProducts.map(e => 
-                <Product 
-                id={e.id}
-                image={e.image}
-                name={e.name}
-                price={e.price}
-                status={e.status}
-                description={e.description}
-                Sizes = {e.Sizes}  
-                onSale={e.onSale}
-                discounts={e.Discounts}
-                />)}
-            
+        <div className="BrandContainer">
+            <NavBar />
+            <div className="BrandImageJordan">
+                <h3>Jordan</h3>
             </div>
-
-             <div className="Paginado">
-                <Paginado 
-                cardsxPage={cardsxPage} 
-                products={data.length}
-                paginado={paginado} 
-                />
-          </div>
+            <div className="BrandProducts">
+                {
+                    data && data.map((e,index) => 
+                        <Link to={`/catalogue/${e.id}`} key={index}>
+                            <div className="Shoes" data-tilt >
+                                {
+                                    <Product 
+                                    id={e.id}
+                                    image={e.image}
+                                    name={e.name}
+                                    price={e.price}
+                                    status={e.status}
+                                    description={e.description}
+                                    Sizes = {e.Sizes}  
+                                    onSale={e.onSale}
+                                    discounts={e.Discounts}
+                                    />
+                                }
+                            </div>
+                        </Link>
+                    )
+                }
             </div>
+            <Footer />
         </div>
     )
 }
 
-export default Jordan
+export default Jordan 
+

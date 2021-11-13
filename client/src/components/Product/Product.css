@@ -95,7 +95,7 @@
     }
     
     .Name h3{ 
-        width: 100%;
+        width: 95%;
         height: 55px;
         font-size: 1.1vw;
         font-family: 'Zen Kurenaido', sans-serif;
@@ -113,8 +113,9 @@
         justify-content: center;
         /* border: thin dotted #f00; */
     }
-
+    
     .OldPrice{
+        font-size: 1.1vw;
         margin: 0 10px;
         text-decoration:line-through;
         color: #f00;

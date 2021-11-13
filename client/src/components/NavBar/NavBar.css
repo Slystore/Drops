@@ -174,63 +174,67 @@ ul li:hover, ul li a:hover{
     text-shadow: 0 5px 8px #000000;
 }
 
-.LinkMarcaContainer1 a{
-    width: 65px;
-    font-size: 16px;
-    padding: 5px;
-    margin-right: 5px;
-    text-decoration: none;
-    color: #00000070;
-    float: left;
-    transition: 0.5s all;
-    text-align: left;
-    /* border: thin dotted #f00; */
-}
 
-.LinkMarcaContainer2 a{
-    width: 90px;
-    font-size: 16px;
-    padding: 5px;
-    text-decoration: none;
-    color: #00000070;
-    float: left;
-    transition: 0.5s all;
-    text-align: center;
-    /* border: thin dotted #f00; */
-}
 
-.LinkMarcaContainer3 a{
-    width: 75px;
-    font-size: 16px;
-    padding: 5px;
-    text-decoration: none;
-    color: #00000070;
-    float: left;
-    transition: 0.5s all;
-    text-align: right;
-    /* border: thin dotted #f00; */
-}
 
 .LinkMarcaContainer1 a:hover, .LinkMarcaContainer2 a:hover, .LinkMarcaContainer3 a:hover, .LinkCategoriaContainer1 a:hover{
     color: #000000;
 }
 
-.LinkCategoriaContainer1 a{
-    width: 80px;
-    font-size: 16px;
-    padding: 5px;
-    text-decoration: none;
-    color: #00000070;
-    float: left;
-    transition: 0.5s all;
-    text-align: center;
-    /* border: thin dotted #f00; */
-}
+
 
 @media (min-width: 1400px) {
-
+    
     .NavContainerMobile{
         display: none;
+    }
+    
+    .LinkCategoriaContainer1 a{
+        width: 90px;
+        font-size: 16px;
+        padding: 5px 0;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: center;
+    }
+    
+    .LinkMarcaContainer1 a{
+        width: 75px;
+        font-size: 16px;
+        padding: 3px 0;
+        margin-right: 5px;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: left;
+        /* border: thin dotted #0f0; */
+    }
+
+    .LinkMarcaContainer2 a{
+        width: 90px;
+        font-size: 16px;
+        padding: 3px 0;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: center;
+        /* border: thin dotted #f00; */
+    }
+    
+    .LinkMarcaContainer3 a{
+        width: 70px;
+        font-size: 16px;
+        padding: 3px 0;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: right;
+        /* border: thin dotted #00f; */
     }
 
 }

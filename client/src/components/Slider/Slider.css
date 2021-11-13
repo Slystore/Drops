@@ -41,10 +41,6 @@
     /* border: thin dotted #f00; */
 }
 
-.Marca1:hover, .Marca2:hover, .Marca3:hover, .Marca4:hover, .Marca5:hover, .Marca6:hover, .Marca7:hover, .Marca8:hover, .Marca9:hover, .Marca10:hover, .Marca11:hover, .Marca12:hover{
-    cursor: pointer;
-}
-
 .Marca1{
     background-image: url('../../assets/nike.png');
     background-size: 90%;
