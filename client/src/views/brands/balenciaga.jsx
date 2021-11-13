@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getProducts } from "../../redux/products/productsAction";
 import Product from "../../components/Product/Product";
 import NavBar from '../../components/NavBar/NavBar';

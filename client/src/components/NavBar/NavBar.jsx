@@ -76,6 +76,9 @@ function NavBar() {
     }
   }, []);
 
+  console.log("userState",loged.userState)
+  console.log("userAdmin",loged.userAdmin)
+
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");

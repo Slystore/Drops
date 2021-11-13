@@ -1,6 +1,4 @@
-import React, { useEffect} from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-
+import React from 'react';
 import NavBar from '../components/NavBar/NavBar';
 import Brand from '../components/Brand/Brand';
 import Slider from '../components/Slider/Slider';
