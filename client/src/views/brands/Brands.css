@@ -16,7 +16,10 @@
 .BrandImageReebok, 
 .BrandImageVans, 
 .BrandImageUnder, 
-.BrandImageJordan{
+.BrandImageJordan,
+.CategoryImageSport,
+.CategoryImageUrban,
+.CategoryImageFlipFlop{
     width: 100%;
     height: 400px;
     max-height: 400px;
@@ -28,7 +31,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    /* border: thin dotted #f00; */
 }
 
 .BrandImageBalenciaga{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/balenciaga-campaign.jpg') }
@@ -51,6 +53,12 @@
 
 .BrandImageJordan{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/jordan-campaign.jpg') }
 
+.CategoryImageSport{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/deportivaPortada.jpg') }
+
+.CategoryImageUrban{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/urbanPortada.jpg') }
+
+.CategoryImageFlipFlop{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/flipFlopPortada.jpg') }
+
 .BrandImageGucci h3, 
 .BrandImageAdidas h3, 
 .BrandImageNike h3, 
@@ -59,7 +67,10 @@
 .BrandImageReebok h3, 
 .BrandImageVans h3,
 .BrandImageUnder h3,
-.BrandImageJordan h3{
+.BrandImageJordan h3,
+.CategoryImageSport h3,
+.CategoryImageUrban h3,
+.CategoryImageFlipFlop h3{
     margin-top: 50px;
     font-size: 7vw;
     color: white;
@@ -68,7 +79,7 @@
     text-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
 }
 
-.BrandImageUnder h3{
+.BrandImageUnder h3, .CategoryImageSport h3, .CategoryImageUrban h3, .CategoryImageFlipFlop h3{
     letter-spacing: 2vw;
     font-size: 5vw;
 }
