@@ -18,7 +18,6 @@ import OnSale from './components/Admin/onsale/OnSale';
 import Nav from "./components/Admin/navbar/Nav"
 import Dashboard from './components/Admin/dashboard/Dashboard';
 import Profile from './components/Profile/profile'
-import FormProductUpdate from './components/Forms/updateProduct/updateProduct'
 import OrderDetail from './components/Admin/orders/OrdersDetails/OrderDetail.jsx';
 
 import Categories from './components/Admin/categories/Categories'
@@ -104,7 +103,6 @@ function App() {
           </div>
 
         </Switch>
-        <Route exact path="/admin/product/update/:id" render={({ match }) => <FormProductUpdate />} />
 
 
       </Router>

@@ -10,7 +10,6 @@ const OrderDetail = (props) => {
 
 
     const { orderId } = useSelector((state) => state.ordersReducer)
-    console.log("iddata", orderId)
 
 
 
@@ -108,8 +107,12 @@ const OrderDetail = (props) => {
                                         </div>
                                         <div className="blockSecondProduct">
                                             <div >
-                                                <p>{el.name}</p>
+                                                <p className='nameShoesOrder'>{el.name}</p>
+                                                <img
+                                                    className="ImgDetailOrder"
+                                                    src={el.image}
 
+                                                />
                                             </div>
                                         </div>
 

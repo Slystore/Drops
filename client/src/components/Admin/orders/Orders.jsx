@@ -43,7 +43,7 @@ const Orders = () => {
                                         <TableCell align="left">{el.status}</TableCell>
                                         <TableCell style={{ display: "flex", margin: 0, }} align="left">
                                             <Link to={`/admin/detail/${el.id}`}>
-                                                <Button variant="contained" >Ver</Button>
+                                                <Button variant="contained" style={{ backgroundColor: "#555" }} >Ver</Button>
                                             </Link>
                                         </TableCell>
                                     </TableRow>
