@@ -16,7 +16,7 @@ const enviarCorreo =(e) => {
             swal("Correo enviado correctamente", {
                 icon: "success",
                 buttons: false,
-                timer: 2000,
+                timer: 3000,
               });
               
             document.getElementById('name').value = ''

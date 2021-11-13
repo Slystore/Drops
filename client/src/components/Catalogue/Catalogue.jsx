@@ -174,7 +174,7 @@ function Catalogue() {
             />
           </form>
           
-          {/* <div>
+          <div>
               <button 
               className="hvr-grow-shadow" 
               style={{ 
@@ -188,7 +188,7 @@ function Catalogue() {
               onClick={handleResetFilters}> 
               borrar filtros 
               </button>
-          </div> */}
+          </div>
           <div>
             {
                 filtros && filtros.map(el => {

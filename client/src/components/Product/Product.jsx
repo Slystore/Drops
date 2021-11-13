@@ -99,7 +99,7 @@ export default function Product({
             />
           </div>
           <div className="IconShopping hvr-pulse-grow">
-            <FavoriteIcon onClick={()=>handleAddWishList(decoded?decoded.user.id:gId,id)} sx={{ fontSize: 20, marginTop: 0.7 }} />
+            <FavoriteIcon onClick={()=>handleAddWishList(decoded ? decoded.user.id:gId,id)} sx={{ fontSize: 20, marginTop: 0.7 }} />
           </div>
         </Link>
       </div>
@@ -116,7 +116,7 @@ export default function Product({
             ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
             : price}
         </h5>
-        <h4 className="OldPrice">${price}</h4>
+        <h4 className={onSale === true ? "OldPrice" : "OldPriceNO"}>${price}</h4>
       </div>
       {onSale === true ? (
         <div className="Discount">
