@@ -4,6 +4,7 @@ import {
   editUsers,
   getToken,
   getUserId,
+  userDeleteWish,
   userWishListGet,
 } from "../../redux/users/userActions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -107,7 +108,7 @@ export default function Profile() {
         dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
       } else {
         const gId = localStorage.getItem("gId");
-        dispatch(userWishListGet(gId))
+        dispatch(userWishListGet(gId));
         dispatch(getUserId(gId));
         setUser({
           userData: userDecoded,
@@ -128,17 +129,17 @@ export default function Profile() {
     setValue(newValue);
   };
   const handleSubmit = async (e) => {
-    console.log("user en el sub", user);
     const x = await editUsers(data, user ? gId : user.userData.user.id);
     if (x) return "";
   };
   const handleOpenEdit = () => setEdit(true);
+  const handleDeleteWish = async (id, productId) => {
+    await userDeleteWish(id, productId);
+    window.location.replace("")
+  };
 
-
-  let wishFilt = wishList.map(el => el.ProductId)
-  let dataFiltered= products.filter(el => wishFilt.includes(el.id))
-  
-console.log('esta es mi data filtrada',dataFiltered)
+  let wishFilt = wishList.map((el) => el.ProductId);
+  let dataFiltered = products.filter((el) => wishFilt.includes(el.id));
 
   return (
     <div>
@@ -346,18 +347,31 @@ console.log('esta es mi data filtrada',dataFiltered)
               <h1>WishList</h1>
               {wishList.length !== 0 ? (
                 <div>
-                  {dataFiltered && dataFiltered.map(el => (
-                    <Product
-                    key = {el.id}
-                    id={el.id}
-                    name = {el.name}
-                    price = {el.price}
-                    Sizes = {el.Sizes}
-                    onSale={el.onSale}
-                    discounts= {el.discounts}
-                    image = {el.image}
-                    />
-                  ))}
+                  {dataFiltered &&
+                    dataFiltered.map((el) => (
+                      <div>
+                        <button
+                          onClick={() => {
+                            handleDeleteWish(
+                              usersId.user ? usersId.user.id : gId,
+                              el.id
+                            );
+                          }}
+                        >
+                          X
+                        </button>
+                        <Product
+                          key={el.id}
+                          id={el.id}
+                          name={el.name}
+                          price={el.price}
+                          Sizes={el.Sizes}
+                          onSale={el.onSale}
+                          discounts={el.discounts}
+                          image={el.image}
+                        />
+                      </div>
+                    ))}
                 </div>
               ) : (
                 <div>Todavia no agregaste nada :D</div>

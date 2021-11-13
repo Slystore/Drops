@@ -1,7 +1,8 @@
 const { WishList } = require("../../db");
 const unFavorite = async (req, res) => {
-  const { productId } = req.body;
+  const  {productId}  = req.params;
   const { id } = req.params;
+  console.log('productId',productId)
   try {
     await WishList.destroy({
       where: {
