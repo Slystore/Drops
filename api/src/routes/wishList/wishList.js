@@ -7,6 +7,6 @@ const unFavorite = require('../../controllers/WishList/wishList-delete')
 router.post('/addWish',createWish)
 
 router.get('/wish/:id',getWish)
-router.put('/unWish/:id',unFavorite)
+router.delete('/unWish/:id',unFavorite)
 
 module.exports = router
