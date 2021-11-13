@@ -5,8 +5,8 @@ import { getProducts } from "../../redux/products/productsAction";
 import Product from "../../components/Product/Product";
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
-import Paginado from '../../components/Catalogue/Paginado'
 import VanillaTilt from 'vanilla-tilt';
+import Paginado from '../../components/Catalogue/Paginado'
 
 const Adidas = () => {
 
