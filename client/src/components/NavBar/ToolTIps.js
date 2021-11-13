@@ -19,7 +19,8 @@ export const UserTooltip = styled(({ className, ...props }) => (
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: "#FF0000",
     background: "-moz-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
-    //   backgroundColor: theme.palette.common.white,
+    background: "-webkit-linear-gradient(top, #9E0000 0%, #fc4444 100%)",
+    background: "linear-gradient(to top, #9E0000 0%, #fc4444 100%)",
     height: 'auto',
     boxShadow: "0 5px 10px #00000080",
   },
@@ -64,8 +65,9 @@ export const TooltipsMarcas = styled(({ className, ...props }) => (
   },
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.common.white,
-    minWidth: "255px",
-    height: 90,
+    // minWidth: "255px",
+    width: 260,
+    height: 160,
     boxShadow: "0 5px 10px #00000080",
   },
 }));
@@ -122,7 +124,7 @@ export const titleMarcas = (
 
     <div className="LinkMarcaContainer3">
       <Link to="/products/bybrand/underarmour">
-        <a>Under Armour</a>
+        <a>Under</a>
       </Link>
     </div>
 
@@ -144,8 +146,8 @@ export const TooltipsCategorias = styled(({ className, ...props }) => (
   },
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.common.white,
-    minWidth: 90,
-    height: 100,
+    minWidth: 100,
+    height: 150,
     boxShadow: "0 5px 10px #00000080",
     display: "flex",
     flexDirection: "column",
