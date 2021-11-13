@@ -44,3 +44,11 @@
     background-color: rgb(246, 248, 244);
     margin-bottom: 10px;
 }
+.nameShoesOrder {
+    margin: 0px;
+}
+.ImgDetailOrder {
+    width: 110px;
+    height: 125px;
+    border-radius: 100px;
+}
