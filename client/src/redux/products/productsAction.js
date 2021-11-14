@@ -5,6 +5,7 @@ export const GET_PRODUCT_STOCK_ID="GET_PRODUCT_STOCK_ID";
 export const GET_PRODUCT_STOCK_SIZE="GET_PRODUCT_STOCK_SIZE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_PRODUCTS_WITH_DISCOUNTS = 'GET_PRODUCTS_WITH_DISCOUNTS'
 export const GET_ORDERED_PRODUCTS = 'GET_ORDERED_PRODUCTS'
 export const ORDER_METHOD = 'ORDER_METHOD'
 export const GET_PRODUCTS_PER_PAGE = 'GET_PRODUCTS_PER_PAGE'
@@ -20,15 +21,33 @@ export const PRODUCT_FORM = 'PRODUCT_FORM'
 // export const GET_ALL = "GET_ALL";
 
 
-export function getProducts(pagina) {
+export function getProducts() {
+    
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`/products`)
-            return await dispatch({
-                type: GET_PRODUCTS,
-                payload: data
-            })
+
+                return await dispatch({
+                    type: GET_PRODUCTS,
+                    payload: data,
+                })
+
+            
         } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function getProductsWithDiscounts(payload) {
+    
+    return async (dispatch) => {
+        try {
+                const { data } = await axios.put(`/products/discount`, payload)
+                return data
+            }
+          
+         catch (error) {
             console.log(error)
         }
     }

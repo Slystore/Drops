@@ -53,10 +53,13 @@ const Products = () => {
   }, [dispatch]);
 
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   const handleOpen = () => setOpen(true);
+  const handleOpen2 = () => setOpen2(true);
 
   const handleClose = () => setOpen(false);
+  const handleClose2 = () => setOpen2(false);
 
   const seleccionarProduct = (elemento, caso) => {
     setInput({
@@ -70,6 +73,20 @@ const Products = () => {
     }
   };
 
+  const promocionarProduct = (elemento) => {
+    
+      setInput2({
+        ...input2,
+        id: elemento.id,
+      });
+      setInput3({
+        ...input3,
+        id: elemento.id,
+      });
+    
+    handleOpen2()
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
     setBusqueda(e.target.value);
@@ -80,6 +97,7 @@ const Products = () => {
     setCurrPage(pagNumber);
   };
 
+  // const [id, setId] = useState(0);
   const [talle, setTalle] = useState(0);
   const [talleUi, setTalleUi] = useState([]);
   const [cantidad, setCantidad] = useState(0);
@@ -94,6 +112,42 @@ const Products = () => {
     categoryId: "",
     stock: [],
   });
+  const [input2, setInput2] = useState({
+    id: "",
+    porcentage: 0
+  });
+
+  const [input3, setInput3] = useState({
+    id: "",
+    quantity: 0,
+    porcentage: 0
+  });
+
+  const handleChangeForm2 = (e) => {
+    e.preventDefault()
+    setInput2({
+      ...input2,
+      porcentage: parseInt(e.target.value)
+    })
+  }
+  
+  const handleChangeForm3 = (e) => {
+    e.preventDefault()
+    setInput3({
+      ...input3,
+      [e.target.name]: parseInt(e.target.value)
+    })
+  }
+
+  const handleSubmit2 = (e) => {
+    e.preventDefault()
+    console.log(input2)
+  }
+
+  const handleSubmit3 = (e) => {
+    e.preventDefault()
+    console.log(input3)
+  }
 
   const handleChangeForm = (e) => {
     if (e.target.name === "price") {
@@ -233,6 +287,7 @@ const Products = () => {
               <TableCell align="left">Price</TableCell>
               <TableCell align="left">Estado</TableCell>
               <TableCell align="left">Actualizar</TableCell>
+              <TableCell align="left">Promociones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -258,6 +313,15 @@ const Products = () => {
                         }}
                       >
                         Editar
+                      </Button>
+                    </TableCell>
+                    <TableCell align="left">
+                      <Button
+                        variant="contained"
+                        style={{ backgroundColor: "#555" }}
+                        onClick={() => promocionarProduct(el)}
+                        >
+                        Promocionar
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -443,6 +507,112 @@ const Products = () => {
         </Box>
       </Modal>
 
+
+
+      <Modal
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="boxModal">
+          <div className="formModal">
+
+            <form onSubmit={(e) => handleSubmit2(e)}>
+              <div className="formProduct">
+                <div className="firstBoxProduct">
+                {/* Primer formulario -- descuento siempre */ }
+                  <div className="boxInputProduct">
+                    <label> Siempre
+                    <input
+                      className="inputProduct"
+                      type={"checkbox"}
+                      name="id"
+                      value={input2.id}
+                      
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxInputProduct">
+                    <label className="titleProduct"> porcentaje
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="porcentage"
+                      onChange={handleChangeForm2}
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxBtnCreate">
+                  <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit2}>
+                    {" "}
+                    Guardar
+                  </button>
+                </div>
+                </div>
+                </div>
+              </form>
+                           {/* segundo formulario -- descuento por cantidad */ }
+
+            <form onSubmit={(e) => handleSubmit3(e)}>
+              <div className="formProduct">
+                <div className="firstBoxProduct">
+                  <div className="boxInputProduct">
+                    <label> Por cantidad
+                    <input
+                      className="inputProduct"
+                      type={"checkbox"}
+                      name="id"
+                      value={input3.id}
+                      
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxInputProduct">
+                    <label className="titleProduct"> Cantidad
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="quantity"
+                      min={1}
+                      max={10}
+                      onChange={handleChangeForm3}
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxInputProduct">
+                    <label className="titleProduct"> porcentaje
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="porcentage"
+                      min={1}
+                      max={100}
+                      onChange={handleChangeForm3}
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+  
+              <div className="boxBtnCreate">
+                <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit3}>
+                  {" "}
+                  Guardar
+                </button>
+              </div>
+              </div>
+              </div>
+            </form>
+          </div>
+        </Box>
+      </Modal>
+
+
+
       <Paginado
         style={{ margin: "0 auto" }}
         cardsxPage={cardsxPage}
@@ -454,3 +624,5 @@ const Products = () => {
 };
 
 export default Products;
+
+

@@ -211,6 +211,7 @@ export const loadCartTomi = (user) =>
 
 export const checkoutTomi = () => async (dispatch, getState) => {
   const cart = JSON.parse(localStorage.getItem("cart"));
+  console.log(cart)
   try {
     axios.post("/orders/createOrder", { cart });
   } catch (e) {

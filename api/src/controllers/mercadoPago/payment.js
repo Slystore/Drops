@@ -26,13 +26,19 @@ mercadopago.configure({
 //         html: `<b>Hola ${firstName && lastName ? `${firstName, lastName}`: ""}, excelente compra, te avisaremos cuando se despache la entrega, para  cualquier consulta relacionada o no con tu pedido, te puedes responder este correo electrónico o escribirnos por ... </b>`, // html body
 //     });
 // }
+
+
+
 //mercadopago/pagos
+
+
 async function payment(req, res, next) {
   // console.log('FUNCION PAYMEEEENT')
+  console.info('esto trae el request', req)
   const {
     payment_id, //1239191891
     status, //approved
-    external_reference, //faac272e-a92d-4a15-a472-c9363559aa00
+    external_reference, // orderId
     //El resto no lo estamos usando
     collection_id, //1239191891
     payment_type, //credit_card
@@ -44,6 +50,7 @@ async function payment(req, res, next) {
     merchant_account_id, //null
   } = req.query;
   console.log(req.query);
+  console.log('este es el collection id', collection_id);
   //Obtenemmos el mail del user
   // const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
   const orderm = await Orders.findByPk(external_reference, {
@@ -119,6 +126,7 @@ async function payment(req, res, next) {
       order
         .save()
         .then(() => {
+          console.log(res)
           console.info("redict sucess");
           return res.redirect("http://localhost:3000/catalogue");
         })

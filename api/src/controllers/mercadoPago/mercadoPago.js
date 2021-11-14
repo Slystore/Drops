@@ -70,6 +70,7 @@ async function mercadoPago(req, res, next){
   // Este valor reemplazará el string"<%= global.id %>" en tu HTML
     global.id = response.body.id;
     console.log(response.body)
+    console.log(response)
     res.json({id: global.id, init_point: response.body.init_point});
   }).catch(function(error){
     console.log(error);
