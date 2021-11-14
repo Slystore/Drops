@@ -5,7 +5,6 @@ import CreateBrand from "../../Forms/brand/CreateBrand"
 import { SiNike } from "react-icons/si"
 import { Grid, Box, Button, Typography, Modal } from '@mui/material';
 import "./brandsButton.css"
-import { getBrands } from "../../../redux/brand/brandActions";
 import { FaSync } from "react-icons/fa"
 
 const BrandsButtons = ({ searchbar, restore }) => {
@@ -17,7 +16,7 @@ const BrandsButtons = ({ searchbar, restore }) => {
 
     const handleClose = () => setOpen(false);
 
-   
+
 
     return (
         <Grid className="navButton">
@@ -25,7 +24,7 @@ const BrandsButtons = ({ searchbar, restore }) => {
             <SiNike className="iconButtonNav" />
 
             <div>
-                <input style={{ marginRight: 10 }} className="searchbarAdmin" id='restore' type='text' onChange={searchbar} placeholder="Buscar" />
+                <input className="searchbarAdmin" id='restore' type='text' onChange={searchbar} placeholder="Buscar" />
                 <button className="buttonResetAdmin" onClick={restore} > <FaSync /></button>
 
             </div>

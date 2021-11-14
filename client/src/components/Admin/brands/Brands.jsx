@@ -21,10 +21,7 @@ const Brands = () => {
   const dispatch = useDispatch();
   const [, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-  const [cardsxPage] = useState(8);
-  const [currPage] = useState(1);
-  const lastProduct = currPage * cardsxPage;
-  const firstProduct = lastProduct - cardsxPage;
+
 
   const brands = useSelector((state) => state.brandReducer.brands);
 
@@ -33,7 +30,7 @@ const Brands = () => {
     setProductos(brands);
   }, [dispatch]);
 
-  let data = brands.slice(firstProduct, lastProduct);
+
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -84,14 +81,14 @@ const Brands = () => {
   const restore = (e) => {
     e.preventDefault()
     dispatch(getBrands())
-    document.getElementById('restore').value= ''
+    document.getElementById('restore').value = ''
     setBusqueda('')
 
-}
+  }
 
   return (
     <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
-      <BrandsButtons searchbar={handleSearch} restore={restore}/>
+      <BrandsButtons searchbar={handleSearch} restore={restore} />
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -102,8 +99,8 @@ const Brands = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data ? (
-              data.map((el) => {
+            {brands ? (
+              brands.map((el) => {
                 return (
                   <TableRow
                     key={el.id}

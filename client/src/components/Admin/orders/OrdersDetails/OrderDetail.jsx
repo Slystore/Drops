@@ -37,6 +37,12 @@ const OrderDetail = (props) => {
                         <div className="detailListBox">
                             <li className="detailListItem">Numero de Usuario: {orderId.UserId}</li>
                         </div>
+                        {/* <div className="detailListBox">
+                            <li className="detailListItem">Nombre de Usuario:{orderId.User.name}{orderId.User.surname}</li>
+                        </div>
+                        <div className="detailListBox">
+                            <li className="detailListItem">Nombre de Usuario:{orderId.User.mail}</li> 
+                        </div>*/}
                         <div className="detailListBox">
                             <li className="detailListItem">Estado de envio: {orderId.shippingState}</li>
 

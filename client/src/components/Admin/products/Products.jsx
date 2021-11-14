@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
   getProducts,
   getProductsByName,
@@ -119,21 +119,21 @@ const Products = () => {
     let catFilter = categories.filter(cat => cat.name === e.target.value)
     catFilter = catFilter[0].id
 
-    if(input.categoryId === undefined){
-      setInput(  {
+    if (input.categoryId === undefined) {
+      setInput({
         ...input,
-      categoryId: [catFilter] 
-    })
+        categoryId: [catFilter]
+      })
     }
-    else{
-      setInput(  {
+    else {
+      setInput({
         ...input,
-        categoryId: [...input.categoryId, catFilter] 
-    })
-    
-    setCategory(e.target.value)
-  }
-};
+        categoryId: [...input.categoryId, catFilter]
+      })
+
+      setCategory(e.target.value)
+    }
+  };
 
   const agregarBrand = (e) => {
     setInput({
@@ -166,18 +166,18 @@ const Products = () => {
     //creo un array que guarda el id del talle y su cantidad
     let sizeStock = [sizeFilter, cantidad]
     //se guarda en el state local talleUi el talle en numeros y su cantidad, para mostrarlo en la parte de abajo del formulario
-    setTalleUi([...talleUi, [sizeNumber, cantidad] ]);
+    setTalleUi([...talleUi, [sizeNumber, cantidad]]);
     //actualiza el array stock del formulario controlado input con lo guardado en sizeStock
-    if(input.stock === undefined){
-      setInput(  {
+    if (input.stock === undefined) {
+      setInput({
         ...input,
-      stock: [sizeStock] 
-    })
+        stock: [sizeStock]
+      })
     } else {
-      setInput(  {
+      setInput({
         ...input,
-      stock: [...input.stock, sizeStock] 
-    })
+        stock: [...input.stock, sizeStock]
+      })
     }
   };
 
@@ -190,7 +190,7 @@ const Products = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch( PutProduct(input) );
+    dispatch(PutProduct(input));
     console.log(input);
     swal("", "Producto Actualizado!", "success", {
       buttons: false,
@@ -212,18 +212,18 @@ const Products = () => {
   const restore = (e) => {
     e.preventDefault()
     dispatch(getProducts())
-    document.getElementById('hola').value= ''
+    document.getElementById('hola').value = ''
     setBusqueda('')
-    
 
-}
-  
+
+  }
+
 
   return (
     <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
-    <div>
-    <ProductButtons searchbar={handleSearch} restore={restore}/>
-    </div>  
+      <div>
+        <ProductButtons searchbar={handleSearch} restore={restore} />
+      </div>
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -442,13 +442,14 @@ const Products = () => {
           </div>
         </Box>
       </Modal>
-
-      <Paginado
-        style={{ margin: "0 auto" }}
-        cardsxPage={cardsxPage}
-        products={shoes.length}
-        paginado={paginado}
-      />
+      <div style={{ height: 60, marginTop: 10, display: "flex", justifyContent: "center", background: "rgb(246, 248, 244)" }}>
+        <Paginado
+          style={{ margin: "0 auto" }}
+          cardsxPage={cardsxPage}
+          products={shoes.length}
+          paginado={paginado}
+        />
+      </div>
     </Grid>
   );
 };
