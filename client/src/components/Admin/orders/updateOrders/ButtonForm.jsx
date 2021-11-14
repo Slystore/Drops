@@ -30,7 +30,7 @@ const ButtonFormUpdate = () => {
 
 
                 <Box className="boxModalOrder">
-                    <Typography className="titleOrder" id="modal-modal-title" variant="h6" component="h2">
+                    <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
                         Modificar Orden
                     </Typography>
                     <UpdateForm />
