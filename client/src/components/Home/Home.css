@@ -274,69 +274,48 @@
 @media (min-width: 1200px) and (max-width: 1399px){
 
     .Images{
+        width: 75%;
+        height: 500px;
+        max-height: 500px;
+    }
+    
+    .HomeContent{
         width: 80%;
-        height: 600px;
-        max-height: 600px;
+        min-height: 30%;
+        margin: 0 auto;
+        position: relative;
+        top: 32%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(300px);
+        opacity: 0;
+        transition: 0.5s ease;
     }
     
     .Title{
-        width: 60%;
-        height: 20%;
-        display: none;
-        padding: 20px;
-        color: #fff;
-        font-size: 48px;
-        border: solid #fff;
-        position: absolute;
-        top: 40%;
-        left: 20%;
-    }
-    
-    .Title2, .Title3{
-        width: 60%;
-        height: 35%;
-        display: none;
-        padding: 10px;
-        color: #fff;
-        font-size: 48px;
-        border: solid #fff;
-        position: relative;
-        top: 32.5%;
-        left: 20%;
-    }
-    
-    .Title4{
         width: 70%;
-        height: 26%;
-        display: none;
-        padding: 6px;
+        height: 22%;
+        padding: 15px;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
-        position: absolute;
-        top: 37%;
-        left: 15%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
     
-    .Title5{
-        width: 70%;
-        height: 40%;
-        display: none;
-        padding: 5px;
+    .HomeContent p{
+        width: 60%;
+        margin-top: 10px;
+        font-size: 1.2vw;
         color: #fff;
-        font-size: 48px;
-        border: solid #fff;
-        position: absolute;
-        top: 30%;
-        left: 15%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
     }
     
     .divTitle{
         width: 36%;
-        min-width: 36%;
-        max-width: 36.5%;
         height: 100%;
-        margin-right: 10px;
+        margin-right: 14px;
         float: left;
         background-image: url('../../assets/nikeAirForce1.jpg');
         background-repeat: no-repeat;
@@ -345,8 +324,43 @@
         transition: 0.5s all;
     }
     
-    .divTitle:hover  .Title{
-        display: block;
+    .divTitle:hover  .HomeContent{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    
+    .HomeContent2{
+        width: 75%;
+        margin: 0 auto;
+        position: relative;
+        top: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+        /* border: thin dotted #f00; */
+    }
+    
+    .HomeContent2 p{
+        width: 50%;
+        margin-left: 10px;
+        font-size: 1.1vw;
+        text-align: left;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,0.8);
+    }
+    
+    .Title2{
+        width: 50%;
+        height: 40%;
+        padding: 10px;
+        color: #fff;
+        font-size: 2.5vw;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,0.8);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
 
     .divTitle2{
@@ -362,8 +376,42 @@
         transition: 0.5s all;
     }
     
-    .divTitle2:hover  .Title2{
-        display: block;
+    .divTitle2:hover  .HomeContent2{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .Title3{
+        width: 50%;
+        height: 40%;
+        padding: 10px;
+        color: #fff;
+        font-size: 2.5vw;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    .HomeContent3{
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        top: 35%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent3 p{
+        width: 100%;
+        margin-left: 10px;
+        font-size: 1.1vw;
+        text-align: left;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,0.8);
     }
     
     .divTitle3{
@@ -378,8 +426,42 @@
         transition: 0.5s all;
     }
     
-    .divTitle3:hover  .Title3{
-        display: block;
+    .divTitle3:hover  .HomeContent3{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    
+    .HomeContent4{
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        top: 28%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(-400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent4 p{
+        width: 80%;
+        margin-top: 10px;
+        font-size: 1.1vw;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+    }
+
+    .Title4{
+        width: 66%;
+        height: 30%;
+        padding: 12px;
+        color: #fff;
+        font-size: 2.5vw;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
     
     .divTitle4{
@@ -394,8 +476,42 @@
         transition: 0.5s all;
     }
     
-    .divTitle4:hover  .Title4{
-        display: block;
+    .divTitle4:hover  .HomeContent4{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .HomeContent5{
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        top: 27%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent5 p{
+        width: 98%;
+        margin-top: 10px;
+        font-size: 1.1vw;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+    }
+
+    .Title5{
+        width: 66%;
+        height: 40%;
+        padding: 5px;
+        color: #fff;
+        font-size: 2.5vw;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
     
     .divTitle5{
@@ -409,8 +525,9 @@
         transition: 0.5s all;
     }
     
-    .divTitle5:hover  .Title5{
-        display: block;
+    .divTitle5:hover  .HomeContent5{
+        transform: translateX(0px);
+        opacity: 1;
     }
     
 }

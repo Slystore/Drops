@@ -1,38 +1,3 @@
-.BrandContainer{
-    width: 100%;
-    /* height: 100vh; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.BrandImageBalenciaga, 
-.BrandImageGucci, 
-.BrandImageAdidas, 
-.BrandImageNike, 
-.BrandImageOffWhite, 
-.BrandImagePuma, 
-.BrandImageReebok, 
-.BrandImageVans, 
-.BrandImageUnder, 
-.BrandImageJordan,
-.CategoryImageSport,
-.CategoryImageUrban,
-.CategoryImageFlipFlop{
-    width: 100%;
-    height: 400px;
-    max-height: 400px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
 .BrandImageBalenciaga{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/balenciaga-campaign.jpg') }
 
 .BrandImageGucci{ background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/gucci-campaign.jpg') }
@@ -100,4 +65,122 @@
     width: 235px;
     height: 350px;
     /* border: thin dotted #f00; */
+}
+
+@media (min-width: 1400px) {
+
+    .BrandContainer{
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .BrandImageBalenciaga, 
+    .BrandImageGucci, 
+    .BrandImageAdidas, 
+    .BrandImageNike, 
+    .BrandImageOffWhite, 
+    .BrandImagePuma, 
+    .BrandImageReebok, 
+    .BrandImageVans, 
+    .BrandImageUnder, 
+    .BrandImageJordan,
+    .CategoryImageSport,
+    .CategoryImageUrban,
+    .CategoryImageFlipFlop{
+        width: 100%;
+        height: 400px;
+        max-height: 400px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .BrandContainer{
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    } 
+
+    .BrandImageBalenciaga, 
+    .BrandImageGucci, 
+    .BrandImageAdidas, 
+    .BrandImageNike, 
+    .BrandImageOffWhite, 
+    .BrandImagePuma, 
+    .BrandImageReebok, 
+    .BrandImageVans, 
+    .BrandImageUnder, 
+    .BrandImageJordan,
+    .CategoryImageSport,
+    .CategoryImageUrban,
+    .CategoryImageFlipFlop{
+        width: 100%;
+        height: 250px;
+        max-height: 250px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .BrandContainer{
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }    
+
+    .BrandImageBalenciaga, 
+    .BrandImageGucci, 
+    .BrandImageAdidas, 
+    .BrandImageNike, 
+    .BrandImageOffWhite, 
+    .BrandImagePuma, 
+    .BrandImageReebok, 
+    .BrandImageVans, 
+    .BrandImageUnder, 
+    .BrandImageJordan,
+    .CategoryImageSport,
+    .CategoryImageUrban,
+    .CategoryImageFlipFlop{
+        width: 100%;
+        height: 400px;
+        max-height: 400px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
 }

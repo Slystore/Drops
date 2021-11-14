@@ -76,6 +76,7 @@
         transform: translate(-50%, -50%);
         background-color: #fff;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        /* border: thin solid #00f;     */
     }
 
     .UsContainer{
@@ -89,21 +90,22 @@
     }
     
     .UsContainer h1{
-        font-size: 4vw;
+        font-size: 2.5vw;
         font-weight: bold;
     }
     
     .UsContainer p{
-        font-size: 1.8vw;
+        width: 80%;
+        font-size: 1.5vw;
     }
     
     .TextModal p{
         text-align: center;
-        font-size: 1.4vw;
+        font-size: 1.2vw;
     }
 
     .ButtonModal{
-        width: 25%;
+        min-width: 25%;
         min-height: 4vh;
         font-size: 2.5vw;
         background: black;

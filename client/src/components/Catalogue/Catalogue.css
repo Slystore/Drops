@@ -141,12 +141,13 @@
         background-image: url(../../assets/portada.jpg);
         background-position: center center;
         background-repeat: no-repeat;
+        background-size: 70%;
         overflow: hidden;
         /* border: thin dotted #00f;  */
     }
 
     .Info{ 
-        width: 95%;
+        width: 90%;
         margin-top: 30px;
         display: flex;
         flex-direction: row;
@@ -207,7 +208,7 @@
     }
     
     .Productos{
-        width: 85%; 
+        width: 80%; 
         min-height: 100%;
         display: flex;
         flex-wrap: wrap;

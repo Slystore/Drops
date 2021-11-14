@@ -85,7 +85,7 @@ export default function Product({
       <div className="IconShoppingContainer">
         <Link to={`/catalogue`}>
           <div className="IconShopping hvr-pulse-grow">
-            <ShoppingCartIcon
+            <ShoppingCartIcon 
               sx={{
                 width: 30,
                 fontSize: 20,
@@ -94,12 +94,31 @@ export default function Product({
                 "&:hover": {
                   color: "#9E0000",
                 },
+                "@media (min-width: 1200px) and (max-width: 1399px)": {
+                  fontSize: 16,
+                  marginTop: -0.5,
+                  position: "relative",
+                  left: -3
+                },
               }}
               onClick={() => handleAddToCart(id)}
             />
           </div>
           <div className="IconShopping hvr-pulse-grow">
-            <FavoriteIcon onClick={()=>handleAddWishList(decoded ? decoded.user.id:gId,id)} sx={{ fontSize: 20, marginTop: 0.7 }} />
+            <FavoriteIcon 
+              sx={{ 
+                fontSize: 20, 
+                marginTop: 0.7, 
+                color: " rgb(197, 197, 197)", 
+                "&:hover": {
+                  color: "#9E0000",
+                },
+                "@media (min-width: 1200px) and (max-width: 1399px)": {
+                  fontSize: 16,
+                  marginTop: -0.5,
+                },
+              }}
+              onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId.id)}  />
           </div>
         </Link>
       </div>
@@ -120,7 +139,7 @@ export default function Product({
       </div>
       {onSale === true ? (
         <div className="Discount">
-          <h5>{discounts}</h5>
+          <h5>{discounts}%</h5>
         </div>
       ) : null}
 
