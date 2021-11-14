@@ -293,6 +293,54 @@ ul li:hover, ul li a:hover{
         padding: 5px;
         font-size: 12px;
     }
+
+    .LinkCategoriaContainer1 a{
+        width: 90px;
+        font-size: 1.2vw;
+        padding: 5px 0;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: center;
+    }
+    
+    .LinkMarcaContainer1 a{
+        width: 75px;
+        font-size: 1.2vw;
+        padding: 3px 0;
+        margin-right: 5px;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: left;
+        /* border: thin dotted #0f0; */
+    }
+
+    .LinkMarcaContainer2 a{
+        width: 90px;
+        font-size: 1.2vw;
+        padding: 3px 0;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: center;
+        /* border: thin dotted #f00; */
+    }
+    
+    .LinkMarcaContainer3 a{
+        width: 70px;
+        font-size: 1.2vw;
+        padding: 3px 0;
+        text-decoration: none;
+        color: #00000070;
+        float: left;
+        transition: 0.5s all;
+        text-align: right;
+        /* border: thin dotted #00f; */
+    }
     
 }
 

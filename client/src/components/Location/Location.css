@@ -70,6 +70,7 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     /* border: thin dotted #f00; */
 }
+
 .TextAreaFormContact:focus{
     outline: solid 1px #f00;
 }
@@ -96,7 +97,7 @@
 @media (min-width: 1200px) and (max-width: 1399px){
 
     .SubLocation{
-        width: 95vw;
+        width: 90%;
         height: 100%;
         display: flex;
         flex-direction: row;
@@ -116,9 +117,20 @@
     }
 
     .Form{
-        width: 40vw; 
+        width: 50%; 
         height: 600px;
         float: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .Form form{
+        min-width: 40vw;
+        max-width: 40vw;
+        position: relative;
+        margin-top: -50px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -131,19 +143,34 @@
     }
     
     .SubTitleLocation{
-        width: 45vw;
+        width: 80%;
+        margin: 0 auto;
         font-size: 1.2vw;
     }
 
-    .Form form{
-        width: 40vw;
-        position: relative;
-        margin-top: -2vh;
-        font-size: 1.2vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
+
+    .InputFormContact{
+        width: 70%;
+        height: 30px;
+        padding: 10px;
+        margin-left: 11px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 1vw;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .TextAreaFormContact{
+        width: 70%;
+        height: 150px;
+        margin-left: 11px;
+        font-size: 1vw;
+        padding: 10px;
+        resize: none;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 }
 

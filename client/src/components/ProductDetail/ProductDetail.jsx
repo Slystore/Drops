@@ -132,7 +132,7 @@ function ProductDetail(props) {
               </div>
             </div>
             <div className="Description">
-              <div style={{ width: "70%" }}>
+              <div style={{ width: "75%" }}>
                 <div
                   style={{
                     height: "20px",
@@ -162,9 +162,20 @@ function ProductDetail(props) {
                   "&:hover": {
                     backgroundColor: "#00000099",
                   },
+                  "@media (min-width: 1200px) and (max-width: 1399px)": {
+                    width: 150,
+                    height: 25,
+                    fontSize: 10,
+                  },
                 }}
                 onClick={addCart}
-                startIcon={<ShoppingCartIcon />}
+                startIcon={<ShoppingCartIcon 
+                  sx={{
+                    "@media (min-width: 1200px) and (max-width: 1399px)": {
+                      height: 14,
+                    },
+                  }} 
+                />}
               >
                 Agregar a Carrito
               </Button>
@@ -179,9 +190,20 @@ function ProductDetail(props) {
                   "&:hover": {
                     backgroundColor: "#00000099",
                   },
+                  "@media (min-width: 1200px) and (max-width: 1399px)": {
+                    width: 90,
+                    height: 25,
+                    fontSize: 10,
+                  },
                 }}
-                startIcon={<FavoriteIcon />}
-              >
+                startIcon={<FavoriteIcon 
+                  sx={{
+                    "@media (min-width: 1200px) and (max-width: 1399px)": {
+                      height: 14,
+                    },
+                  }} 
+                  />}
+              > 
                 Wish List
               </Button>
               <Button
@@ -195,9 +217,20 @@ function ProductDetail(props) {
                   "&:hover": {
                     backgroundColor: "#00000099",
                   },
+                  "@media (min-width: 1200px) and (max-width: 1399px)": {
+                    width: 90,
+                    height: 25,
+                    fontSize: 10,
+                  },
                 }}
                 onClick={(e) => handleReviews(e)}
-                startIcon={<RateReviewIcon />}
+                startIcon={<RateReviewIcon 
+                  sx={{
+                    "@media (min-width: 1200px) and (max-width: 1399px)": {
+                      height: 14,
+                    },
+                  }} 
+                />}
               >
                 Reviews
               </Button>

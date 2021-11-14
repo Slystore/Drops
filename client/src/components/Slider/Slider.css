@@ -118,7 +118,7 @@
 @media (min-width: 1200px) and (max-width: 1399px){
 
     .SliderContainer{
-        width: 100vw;
+        width: 100%;
         min-height: 260px;
         margin: 100px 0;
         padding: 10px 0 25px 0;
@@ -126,12 +126,12 @@
     
     
     .SliderTitle h1{
-        font-size: 3.5vw;
+        font-size: 2.5vw;
         font-weight: bold;
     }
 
     .Carousel{
-        width: 80%;
+        width: 60%;
         min-height: 110px;
         bottom: 20px;
         /* border: thin dotted #f00; */
@@ -141,6 +141,67 @@
         width: 30px;
         position: relative;
         top: 20px;
+    }
+
+    .Marca1{
+        background-image: url('../../assets/nike.png');
+        background-size: 75%;
+    }
+    
+    .Marca2{
+        background-image: url('../../assets/adidaslogo.png');
+        background-size: 110%;
+    }
+    
+    .Marca3{
+        background-image: url('../../assets/under.png');
+        background-size: 70%;
+    }
+    
+    .Marca4{
+        background-image: url('../../assets/puma.png');
+        background-size: 75%;
+    }
+    
+    .Marca5{
+        background-image: url('../../assets/gucci.png');
+        background-size: 100%;
+    }
+    
+    .Marca6{
+        background-image: url('../../assets/vanslogo.png');
+        background-size: 60%;
+    }
+    
+    .Marca7{
+        background-image: url('../../assets/nike2.png');
+        background-size: 90%;
+    }
+    
+    .Marca8{
+        background-image: url('../../assets/off-white.png');
+        background-size: 60%;
+    }
+    
+    .Marca9{
+        width: 170px;
+        background-image: url('../../assets/balenciaga.png');
+        background-size: 90%;
+    }
+    
+    .Marca10{
+        background-image: url('../../assets/jordan.png');
+        background-size: 70%;
+    }
+    
+    .Marca11{
+        background-image: url('../../assets/reebok.png');
+        background-size: 80%;
+    }
+    
+    .Marca12{
+        background-image: url('../../assets/adidas2.png');
+        background-size: 65%;
     }
 
 }
