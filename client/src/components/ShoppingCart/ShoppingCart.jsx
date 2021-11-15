@@ -36,7 +36,7 @@ function ShopingCart() {
   };
 
   async function handleSubmit() {
-    if (user) {
+    if (user && items.SizeId>0) {
       await fusionCart(user);
       await dispatch(loadCart(user));
     }
