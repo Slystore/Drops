@@ -15,3 +15,324 @@
     border: thin dotted #0ff;
 
 }
+
+
+/******************  SHIPMENTFORM **************************/
+
+@media (min-width: 1400px){
+
+    .ShipmentContainer{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/yeezy-boost.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        /* border: thin dotted #0ff; */
+    }
+    
+    .ShipmentFormContainer{
+        width: 600px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+        /* border: thin solid #f0f; */
+    }
+
+    .ShipmentTitle{
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;   
+        /* border: thin solid #0ff;  */
+    }
+    
+    .ShipmentTitle h5{
+        width: 100%;
+        font-size: 2vw;
+        font-weight: bold;
+    }
+    
+    .ShipmentForm{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        /* border: thin solid #00f; */
+    }
+    
+     .ShipmentForm .Row{
+        width: 450px;
+        height: 50px;
+    }
+    
+    .Row .LabelShipment{
+        width: 140px;
+        padding: 0 10px 0 0;
+        font-weight: bold;
+        text-align: right;
+        /* border: thin solid #f00; */
+    }
+    
+    .Row .InputShipment{
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid  #55555560;
+    }
+
+    .Row .InputShipment:focus{
+        outline: 1px solid #f00;
+        border: none;
+    }
+
+    .ShipmentForm .Row2{
+        width: 450px;
+        height: 50px;
+        margin-top: 10px;
+    }
+
+    .ButtonFormShaipmentDisabled{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        background-color: #ccc;
+    }
+    
+    .ButtonFormShaipment{
+        width: 100px;
+        height: 30px;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    .ButtonFormShaipment:hover{
+        cursor: pointer;
+    }
+
+    .ErrorShipment{
+        width: auto;
+        height: 25px;
+        padding: 0 10px;
+        color: #fff;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: 460px;
+        background-color: rgb(202, 0, 67);
+        box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15); 
+    }
+
+    .ArrowLeft{
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: -160px;
+        margin-top: -40px;
+        color: rgb(202, 0, 67);
+    }
+
+    .ErrorShipment2{
+        width: auto;
+        height: 25px;
+        padding: 0 10px;
+        color: #fff;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: 460px;
+        background-color: rgb(202, 0, 67);
+        box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15); 
+    }
+
+    .ArrowLeft2{
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: -172px;
+        margin-top: -40px;
+        color: rgb(202, 0, 67);
+    }
+
+    .ArrowLeft3{
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: -183px;
+        margin-top: -40px;
+        color: rgb(202, 0, 67);
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .ShipmentContainer{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/yeezy-boost.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        /* border: thin dotted #0ff; */
+    }
+    
+    .ShipmentFormContainer{
+        width: 500px;
+        height: 370px;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+        /* border: thin solid #f0f; */
+    }
+
+    .ShipmentTitle{
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;   
+        /* border: thin solid #0ff;  */
+    }
+    
+    .ShipmentTitle h5{
+        width: 100%;
+        font-size: 1.7vw;
+        font-weight: bold;
+    }
+    
+    .ShipmentForm{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        /* border: thin solid #00f; */
+    }
+    
+     .ShipmentForm .Row{
+        width: 450px;
+        height: 50px;
+    }
+    
+    .Row .LabelShipment{
+        width: 140px;
+        padding: 0 10px 0 0;
+        font-weight: bold;
+        text-align: right;
+        font-size: 1vw;
+        /* border: thin solid #f00; */
+    }
+    
+    .Row .InputShipment{
+        width: 300px;
+        border-radius: 5px;
+        font-size: 1vw;
+        border: 1px solid  #55555560;
+    }
+
+    .Row .InputShipment:focus{
+        outline: 1px solid #f00;
+        border: none;
+    }
+
+    .ShipmentForm .Row2{
+        width: 450px;
+        height: 50px;
+        margin-top: 10px;
+    }
+
+    .ButtonFormShaipmentDisabled{
+        width: 80px;
+        height: 25px;
+        border-radius: 10px;
+        border: none;
+        background-color: #ccc;
+    }
+    
+    .ButtonFormShaipment{
+        width: 80px;
+        height: 25px;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    .ButtonFormShaipment:hover{
+        cursor: pointer;
+    }
+
+    .ErrorShipment{
+        width: auto;
+        height: 25px;
+        padding: 0 10px;
+        color: #fff;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: 460px;
+        background-color: rgb(202, 0, 67);
+        box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15); 
+    }
+
+    .ArrowLeft{
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: -160px;
+        margin-top: -40px;
+        color: rgb(202, 0, 67);
+    }
+
+    .ErrorShipment2{
+        width: auto;
+        height: 25px;
+        padding: 0 10px;
+        color: #fff;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: 460px;
+        background-color: rgb(202, 0, 67);
+        box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15); 
+    }
+
+    .ArrowLeft2{
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: -172px;
+        margin-top: -40px;
+        color: rgb(202, 0, 67);
+    }
+
+    .ArrowLeft3{
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        border-radius: 10px;
+        margin-left: -183px;
+        margin-top: -40px;
+        color: rgb(202, 0, 67);
+    }
+
+}
