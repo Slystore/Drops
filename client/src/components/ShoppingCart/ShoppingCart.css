@@ -90,6 +90,39 @@
     background-color: rgb(49, 102, 202);
 }
 
+@media (min-width: 1400px){
+
+    .TotalShoppingCart{
+        width: 25%;
+        margin-top: 20px;
+    }
+
+    .TotalShoppingCart p{ 
+        padding: 5px 10px;
+        border-radius: 10px;
+        background-color: #000;
+        color: #fff;
+        font-size: 1.2vw; 
+        font-weight: bold;
+    }
+
+    .ContinuarBtnShoppingCart{
+        width: 100px;
+        height: 22px;
+        border: none;
+        margin: 0 5px;
+        border-radius: 10px;
+        font-size: 0.8vw;
+        color: #fff;
+        background-color: rgb(49, 102, 202);
+    }
+
+    .ContinuarBtnShoppingCart:hover{
+        color:#fff;
+    }
+    
+}
+
 @media (min-width: 1200px) and (max-width: 1399px){
 
     .ShoppingCartNav{
