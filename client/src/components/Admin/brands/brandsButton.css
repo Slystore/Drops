@@ -4,8 +4,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    width: auto;
-    height: auto;
+    width: 500;
+    height: 500;
     box-shadow: 0px 5px 15px rgba(0, 0 , 0, 0.90);
     padding: 5px;
     border-radius: 5px;
@@ -15,6 +15,7 @@
     border: none;
     outline: none;
     border-radius: 10px;
-    font-size: 25px;
+    font-size: 20px;
     background-color: transparent;
+    color: #555;
 }

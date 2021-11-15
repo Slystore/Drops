@@ -85,65 +85,82 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
   }
 
   return (
-    <div>
-      <div className="CartItemContainer">
+    <div className="CartItemContainer">
         <div className="CartItemImage">
           <img src={image} alt="imagen no encontrada" height="250" />
         </div>
-        <div className="CartItemInfo">
-          <div className="NameProduct">
-            <h2>{name}</h2>
-          </div>
-          <div className="Row">
-            <div className="PriceShoppinCart">
-              <h3> Precio: $ {price} </h3>
-            </div>
-            <div className="SelectTalle">
-              <select onChange={handleSizeSelect} onClick={handleCartSize}>
-                <option value="All">Talles</option>
-                {Sizes
-                  ? Sizes.map((size, index) => {
-                      return <option value={size.id}>{size.number}</option>;
-                    })
-                  : null}
-              </select>
-            </div>
-          </div>
-          <div className="Row">
-            <div className="QuantityTitle">
-              <h2>Cantidad</h2>
-            </div>
-            <div className="QuantityNumber">
-              <h2>{quantity}</h2>
-            </div>
-            <input
-              type="number"
-              defaultValue={quantity}
-              min={1}
-              max={stockState > 0 ? stockState + 1 : 7}
-              onChange={handleChangeQuantity}
-            />
-
-            <div className="CartPrice">
-              <div className="BtnCart">
-                <button
-                  onClick={handleDeleteItemCart}
-                  className="CartItemButtonOption"
-                >
-                  Quitar de Carrito
-                </button>
+        
+      <div className="CartItemInfo">
+          <div className="InfoProduct">
+              <div className="NameProduct">
+                <h2>{name}</h2>
               </div>
+
+              <div className="Row">
+                  <div className="PriceShoppinCart">
+                      <h3> Precio: $ {price} </h3>
+                  </div>
+                  <div className="SelectTalle">
+                      <select className="SelectShoppingCart" onChange={handleSizeSelect} onClick={handleCartSize}>
+                        <option value="All">Talles</option>
+                        {Sizes
+                          ? Sizes.map((size, index) => {
+                              return <option value={size.id}>{size.number}</option>;
+                            })
+                          : null}
+                      </select>
+                  </div>
+              </div>
+
+              <div className="Row">
+                  <div className="QuantityTitle">
+                      <h2>Cantidad:</h2>
+                  </div>
+
+                  <div className="QuantityNumber">
+                    <h2>{quantity}</h2>
+                  </div>    
+
+                  <input
+                    className="QuantityNumberInput"
+                    type="number"
+                    defaultValue={quantity}
+                    min={1}
+                    max={stockState > 0 ? stockState + 1 : 7}
+                    onChange={handleChangeQuantity}
+                  />
+              </div>
+
+          </div>
+          
+          <div className="CartPrice">
+              <div className="BtnCart">
+                    <button
+                      onClick={handleDeleteItemCart}
+                      className="CartItemButtonOption"
+                    >
+                      Quitar de Carrito
+                    </button>
+              </div>
+
+              <div className="BtnCart">
+                  <button onClick="" className="CartItemButtonOption">
+                    Wish List
+                  </button>
+              </div>
+
               <div className="Total">
                 <h2>${round(price * quantity)}</h2>
               </div>
-            </div>
-
-            <div style={{ marginTop: 10, clear: "both" }}>
-              <Divider />
-            </div>
+            
           </div>
-        </div>
-      </div>
+          
+          <div style={{ marginTop: -10,  }}>
+              <Divider />
+          </div> 
+
+
+          </div>
     </div>
   );
 }

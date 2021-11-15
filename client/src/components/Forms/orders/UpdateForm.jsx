@@ -12,7 +12,7 @@ const UpdateForm = () => {
 
     function handleChange(e) {
         setInput({
-            shippingState: [e.target.name] = e.target.value
+            shippingState: e.target.value
         })
     }
 
@@ -32,14 +32,16 @@ const UpdateForm = () => {
     return (
         <div>
             <form onSubmit={e => { handleSubmit(e) }}>
-                <p>Estado de envio</p>
-                <select onChange={e => { handleChange(e) }}>
+                <p style={{ width: "auto" }} className="titleProduct">Estado de envio</p>
+                <select style={{ marginLeft: 10 }} className='selectProduct' onChange={e => { handleChange(e) }}>
                     <option value="not initialized"> Inactivo</option>
                     <option value="initial">Inicial</option>
                     <option value="despachado">Despachado</option>
                     <option value="entregado">Entregado</option>
                 </select>
-                <button type='submit'> Actualizar</button>
+                <div className="boxBtnCreate">
+                    <button className='btnCreate' type='submit'> Actualizar</button>
+                </div>
             </form>
         </div>
     );

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { FaSync } from "react-icons/fa"
+import { FaUsers } from "react-icons/fa";
 import { editUsers, getUsers } from "../../../redux/users/userActions";
+import { getUsersByName } from "../../../redux/users/userActions";
 import {
   Table,
   TableBody,
@@ -11,17 +13,14 @@ import {
   TableRow,
   Grid,
 } from "@mui/material";
-import Paginado from "../../Catalogue/Paginado";
+
 
 const Users = () => {
   const dispatch = useDispatch();
 
   const [, setProductos] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
 
-  const [cardsxPage,] = useState(8);
-  const [currPage, setCurrPage] = useState(1);
-  const lastProduct = currPage * cardsxPage;
-  const firstProduct = lastProduct - cardsxPage;
 
   const { users } = useSelector((state) => state.usersReducer);
 
@@ -45,14 +44,32 @@ const Users = () => {
     window.location.reload(false);
   };
 
-  let nada = users.slice(firstProduct, lastProduct);
+  const restore = (e) => {
+    e.preventDefault()
+    dispatch(getUsers())
+    document.getElementById('restore').value = ''
+    setBusqueda('')
 
-  const paginado = (pagNumber) => {
-    setCurrPage(pagNumber);
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setBusqueda(e.target.value);
+    dispatch(getUsersByName(busqueda));
   };
 
   return (
+
     <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
+      <div className="navButton">
+        <FaUsers className="iconButtonNav" />
+        <div style={{ paddingRight: 10 }}>
+          <input className="searchbarAdmin" id='restore' type='text' onChange={handleSearch} placeholder="Buscar" />
+          <button className="buttonResetAdmin" onClick={restore}  > <FaSync /></button>
+        </div>
+
+
+      </div>
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -66,8 +83,8 @@ const Users = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {nada &&
-              nada.map((el) => {
+            {users &&
+              users.map((el) => {
                 return (
                   <TableRow
                     key={el.id}
@@ -107,13 +124,6 @@ const Users = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <Paginado
-      style={{ margin: "0 auto" }}
-      cardsxPage={cardsxPage}
-      products={users.length}
-      paginado={paginado}
-    />
     </Grid>
   );
 };

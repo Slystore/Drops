@@ -89,11 +89,11 @@ function ShopingCart() {
         <div className="TotalShoppingCart">
           <p>Total ${total}</p>
         </div>
-        <div style={{ height: "30px", padding: "10px 0", clear: "both" }}>
-          <Divider />
+        <div style={{ height: "25px", padding: "5px 0", clear: "both" }}>
+          <Divider sx={{ border: 'thin', color:'#00000080'}} />
         </div>
-        <div style={{ margin: "0 0 20px 0" }}>
-          <Link
+        <div style={{ margin: "0 0 10px 0" }}>
+          <Link 
             to={!user ? "/login" : "/shipment"}
             className="ContinuarBtnShoppingCart"
             onClick={handleSubmit}
