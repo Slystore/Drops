@@ -13,6 +13,7 @@ const OrderDetail = (props) => {
 
 
 
+
     useEffect(() => {
         dispatch(getOrdersById(id))
     }, [dispatch])
@@ -37,12 +38,15 @@ const OrderDetail = (props) => {
                         <div className="detailListBox">
                             <li className="detailListItem">Numero de Usuario: {orderId.UserId}</li>
                         </div>
-                        {/* <div className="detailListBox">
-                            <li className="detailListItem">Nombre de Usuario:{orderId.User.name}{orderId.User.surname}</li>
+                        <div className="detailListBox">
+                            <li className="detailListItem">Usuario: {orderId.User ? orderId.User.name : "no entro"}</li>
                         </div>
                         <div className="detailListBox">
-                            <li className="detailListItem">Nombre de Usuario:{orderId.User.mail}</li> 
-                        </div>*/}
+                            <li className="detailListItem">Apellido: {orderId.User ? orderId.User.surname : "no entro"}</li>
+                        </div>
+                        <div className="detailListBox">
+                            <li className="detailListItem">E-mail: {orderId.User ? orderId.User.mail : "no entro"}</li>
+                        </div>
                         <div className="detailListBox">
                             <li className="detailListItem">Estado de envio: {orderId.shippingState}</li>
 
