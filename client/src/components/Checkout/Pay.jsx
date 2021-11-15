@@ -23,7 +23,7 @@ function Pay() {
         .get("/mercadopago/" + userId)
         .then((data) => {
           setDatos(data.data);
-          console.log("numero de orden:", data);
+          // console.log("numero de orden:", data);
         })
         .catch((err) => console.error(err));
     }
