@@ -1,38 +1,21 @@
 const { Orders, ProductSize, OrderDetail, Users } = require("../../db");
-// const nodemailer = require('nodemailer');
+const mail = require('../../config/smtpMail')
 
-const { PROD_ACCESS_TOKEN } = process.env;
 const mercadopago = require("mercadopago");
+
+const { PROD_ACCESS_TOKEN, CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
 
 mercadopago.configure({
   access_token: PROD_ACCESS_TOKEN,
 });
-// const transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 465,
-//     secure: true, // true for 465, false for other ports
-//     auth: {
-//         user:'sportgymfitness198@gmail.com',
-//         pass:'botlgntwqdomgxqo'
-//     },
-//   });
-//   const mensaje = ''
-// let mail = async (userMail,firstName, lastName) => {
-//     await transporter.sendMail({
-//         from: '"Sportgym" <foo@example.com>', // sender address
-//         to: userMail, // list of receivers
-//         subject: `Compra Exitosa ${firstName ? firstName : ""} ✔`, // Subject line
-//         text: `Hola ${firstName && lastName ? `${firstName, lastName}`: "!"}`, // plain text body
-//         html: `<b>Hola ${firstName && lastName ? `${firstName, lastName}`: ""}, excelente compra, te avisaremos cuando se despache la entrega, para  cualquier consulta relacionada o no con tu pedido, te puedes responder este correo electrónico o escribirnos por ... </b>`, // html body
-//     });
-// }
-//mercadopago/pagos
+
 async function payment(req, res, next) {
   // console.log('FUNCION PAYMEEEENT')
+  console.info('esto trae el request', req)
   const {
     payment_id, //1239191891
     status, //approved
-    external_reference, //faac272e-a92d-4a15-a472-c9363559aa00
+    external_reference, // orderId
     //El resto no lo estamos usando
     collection_id, //1239191891
     payment_type, //credit_card
@@ -44,6 +27,7 @@ async function payment(req, res, next) {
     merchant_account_id, //null
   } = req.query;
   console.log(req.query);
+  console.log('este es el collection id', collection_id);
   //Obtenemmos el mail del user
   // const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
   const orderm = await Orders.findByPk(external_reference, {
@@ -77,6 +61,9 @@ async function payment(req, res, next) {
             );
           });
         //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
+        mail()
+          .then((result) => console.log('Email sent...', result))
+          .catch((error) => console.log(error.message));
           order.status = "completed";
         } else {
           order.status = "completed";
@@ -119,6 +106,7 @@ async function payment(req, res, next) {
       order
         .save()
         .then(() => {
+          console.log(res)
           console.info("redict sucess");
           return res.redirect("http://localhost:3000/catalogue");
         })
@@ -154,6 +142,9 @@ async function pagosId(req, res) {
       });
     });
 }
+
+(module.exports = payment), pagosId;
+
 /*
 4509 9535 6623 3704
 11/25
@@ -177,4 +168,28 @@ processing_mode        = aggregator
 merchant_account_id    = null
 */
 
-(module.exports = payment), pagosId;
+// const transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     secure: true, // true for 465, false for other ports
+//     auth: {
+//         user:'sportgymfitness198@gmail.com',
+//         pass:'botlgntwqdomgxqo'
+//     },
+//   });
+//   const mensaje = ''
+// let mail = async (userMail,firstName, lastName) => {
+//     await transporter.sendMail({
+//         from: '"Sportgym" <foo@example.com>', // sender address
+//         to: userMail, // list of receivers
+//         subject: `Compra Exitosa ${firstName ? firstName : ""} ✔`, // Subject line
+//         text: `Hola ${firstName && lastName ? `${firstName, lastName}`: "!"}`, // plain text body
+//         html: `<b>Hola ${firstName && lastName ? `${firstName, lastName}`: ""}, excelente compra, te avisaremos cuando se despache la entrega, para  cualquier consulta relacionada o no con tu pedido, te puedes responder este correo electrónico o escribirnos por ... </b>`, // html body
+//     });
+// }
+
+
+
+//mercadopago/pagos
+
+

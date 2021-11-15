@@ -13,6 +13,7 @@ const orderDetails = require('./orderDetails/orderDetails.js');
 const newsletter = require('./newsletter/newsletter');
 const mercadopago = require('./mercadoPago/mercadoPago.js');
 const wishList = require('./wishList/wishList')
+const discounts = require('./discounts/discounts')
 
 app.use('/wishList',wishList)
 app.use('/',users);
@@ -26,5 +27,6 @@ app.use('/orders', orders);
 app.use('/orderDetails', orderDetails);
 app.use('/newsletter', newsletter);
 app.use('/mercadopago', mercadopago);
+app.use('/discounts', discounts);
 
 module.exports = app; 

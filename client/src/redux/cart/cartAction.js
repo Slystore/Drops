@@ -1,6 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { getToken } from '../users/userActions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
@@ -11,6 +12,9 @@ export const LOAD_CART = "LOAD_CART";
 export const UPDATE_TOTAL = "UPDATE_TOTAL";
 export const FUSION_CART = "FUSION_CART";
 export const SELECT_SIZEID="SELECT_SIZEID"
+
+
+
 let x
 if(localStorage.getItem('token')){
      x = getToken();}
@@ -210,7 +214,11 @@ export const loadCart = (user) =>
   };
 
 export const checkout = () => async (dispatch, getState) => {
+
+  const discounts = useSelector(state => state.discountsReducer)
+  console.log(discounts)
   const cart = JSON.parse(localStorage.getItem("cart"));
+  console.log(cart)
   try {
     axios.post("/orders/createOrder", { cart });
   } catch (e) {

@@ -22,6 +22,7 @@ import {
 } from "../../redux/products/productsAction";
 import { getBrands } from "../../redux/brand/brandActions";
 import { getCategories } from "../../redux/category/categoriesActions";
+import { getDiscounts } from "../../redux/discounts/discountsActions";
 import VanillaTilt from "vanilla-tilt";
 
 function Catalogue() {
@@ -35,6 +36,7 @@ function Catalogue() {
     dispatch(getCategories());
     dispatch(loadCart());
     dispatch(getRatings());
+    dispatch(getDiscounts());
   }, [dispatch]);
 
   const { products } = useSelector((state) => state.productReducer);
