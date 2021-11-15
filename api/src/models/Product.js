@@ -29,6 +29,6 @@ module.exports = (sequelize) => {
         discountDay: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
     }, {timestamps: false})
 }

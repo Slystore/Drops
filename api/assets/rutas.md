@@ -68,14 +68,26 @@ GET
 GET
 /api/orders
 /api/orders/:id
+api/orders/userId/:id
 POST
 /api/orders/createOrder
 PUT
 /api/orders/updateOrder/:id
 DELETE 
 /api/orders/deleteOrder/:id
-
 <!-- OrderDetails -->
 GET
 /api/orderDetails
 /api/orderDetails/:id
+
+<!-- Discounts -->
+PUT 
+/api/discounts/discount
+PUT 
+api/discounts/discount/:id
+PUT
+api/discounts/:id/discountOff
+GET 
+api/discounts/
+POST
+api/discounts/create
