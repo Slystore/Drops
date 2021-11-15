@@ -1,10 +1,11 @@
-import { GET_ORDERS, GET_ORDERS_BY_ID } from "./ordersAction";
+import { GET_ORDERS, GET_ORDERS_BY_ID,GET_USER_ORDER_ID } from "./ordersAction";
 
 
 
 export const initialState = {
     orders: [],
     orderId: {},
+    userOrder:[]
 
 };
 
@@ -25,7 +26,12 @@ function OrdersReducer(state = initialState, action) {
                     orderId: action.payload,
                 }
             }
-
+        case GET_USER_ORDER_ID:{
+            return{
+                ...state,
+                userOrder:action.payload
+            }
+        }
         default:
             return state
 
