@@ -1,36 +1,13 @@
 const { Orders, ProductSize, OrderDetail, Users } = require("../../db");
-// const nodemailer = require('nodemailer');
+const mail = require('../../config/smtpMail')
 
-const { PROD_ACCESS_TOKEN } = process.env;
 const mercadopago = require("mercadopago");
+
+const { PROD_ACCESS_TOKEN, CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
 
 mercadopago.configure({
   access_token: PROD_ACCESS_TOKEN,
 });
-// const transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 465,
-//     secure: true, // true for 465, false for other ports
-//     auth: {
-//         user:'sportgymfitness198@gmail.com',
-//         pass:'botlgntwqdomgxqo'
-//     },
-//   });
-//   const mensaje = ''
-// let mail = async (userMail,firstName, lastName) => {
-//     await transporter.sendMail({
-//         from: '"Sportgym" <foo@example.com>', // sender address
-//         to: userMail, // list of receivers
-//         subject: `Compra Exitosa ${firstName ? firstName : ""} ✔`, // Subject line
-//         text: `Hola ${firstName && lastName ? `${firstName, lastName}`: "!"}`, // plain text body
-//         html: `<b>Hola ${firstName && lastName ? `${firstName, lastName}`: ""}, excelente compra, te avisaremos cuando se despache la entrega, para  cualquier consulta relacionada o no con tu pedido, te puedes responder este correo electrónico o escribirnos por ... </b>`, // html body
-//     });
-// }
-
-
-
-//mercadopago/pagos
-
 
 async function payment(req, res, next) {
   // console.log('FUNCION PAYMEEEENT')
@@ -84,6 +61,9 @@ async function payment(req, res, next) {
             );
           });
         //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
+        mail()
+          .then((result) => console.log('Email sent...', result))
+          .catch((error) => console.log(error.message));
           order.status = "completed";
         } else {
           order.status = "completed";
@@ -162,6 +142,9 @@ async function pagosId(req, res) {
       });
     });
 }
+
+(module.exports = payment), pagosId;
+
 /*
 4509 9535 6623 3704
 11/25
@@ -185,4 +168,28 @@ processing_mode        = aggregator
 merchant_account_id    = null
 */
 
-(module.exports = payment), pagosId;
+// const transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     secure: true, // true for 465, false for other ports
+//     auth: {
+//         user:'sportgymfitness198@gmail.com',
+//         pass:'botlgntwqdomgxqo'
+//     },
+//   });
+//   const mensaje = ''
+// let mail = async (userMail,firstName, lastName) => {
+//     await transporter.sendMail({
+//         from: '"Sportgym" <foo@example.com>', // sender address
+//         to: userMail, // list of receivers
+//         subject: `Compra Exitosa ${firstName ? firstName : ""} ✔`, // Subject line
+//         text: `Hola ${firstName && lastName ? `${firstName, lastName}`: "!"}`, // plain text body
+//         html: `<b>Hola ${firstName && lastName ? `${firstName, lastName}`: ""}, excelente compra, te avisaremos cuando se despache la entrega, para  cualquier consulta relacionada o no con tu pedido, te puedes responder este correo electrónico o escribirnos por ... </b>`, // html body
+//     });
+// }
+
+
+
+//mercadopago/pagos
+
+

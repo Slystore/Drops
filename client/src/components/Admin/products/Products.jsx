@@ -23,7 +23,7 @@ import { getCategories } from "../../../redux/category/categoriesActions";
 import { getSizes } from "../../../redux/sizes/sizeActions";
 import Paginado from "../../Catalogue/Paginado";
 import swal from "sweetalert";
-import { PutProduct } from "../../../redux/products/productsAction";
+import { PutProduct, updateDiscountById, unSubscribeDiscountById } from "../../../redux/products/productsAction";
 
 
 const Products = () => {
@@ -78,6 +78,7 @@ const Products = () => {
       setInput2({
         ...input2,
         id: elemento.id,
+        porcentage2: elemento.Discounts !== null ? elemento.Discounts : ''
       });
       setInput3({
         ...input3,
@@ -114,7 +115,8 @@ const Products = () => {
   });
   const [input2, setInput2] = useState({
     id: "",
-    porcentage: 0
+    porcentage: 0,
+    porcentage2: 0
   });
 
   const [input3, setInput3] = useState({
@@ -141,7 +143,19 @@ const Products = () => {
 
   const handleSubmit2 = (e) => {
     e.preventDefault()
+    setInput(input2 => {
+      return {
+        id: input2.id,
+        porcentage: input2.porcentage
+      }
+    })
+    dispatch(updateDiscountById(input2))
     console.log(input2)
+  }
+
+  const handleUndo = (e) => {
+    e.preventDefault()
+    dispatch(unSubscribeDiscountById(input2.id))
   }
 
   const handleSubmit3 = (e) => {
@@ -544,12 +558,27 @@ const Products = () => {
                       autoComplete="off"
                     />
                     </label>
+                    <label className="titleProduct"> porcentaje2
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="porcentage"
+                      autoComplete="off"
+                      value={input2.porcentage2}
+                    />
+                    </label>
                   </div>
                   <div className="boxBtnCreate">
                   <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit2}>
                     {" "}
                     Guardar
                   </button>
+                    {
+                      input2.porcentage2 ? <button className="btnCreate" type="submit" id="submit" onClick={handleUndo}> Deshacer </button>
+                      :
+                      null
+                    }
+
                 </div>
                 </div>
                 </div>

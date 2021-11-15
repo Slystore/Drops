@@ -21,7 +21,7 @@ export const PRODUCT_FORM = 'PRODUCT_FORM'
 // export const GET_ALL = "GET_ALL";
 
 
-export function getProducts() {
+export function getProducts(dayDiscount) {
     
     return async (dispatch) => {
         try {
@@ -30,6 +30,7 @@ export function getProducts() {
                 return await dispatch({
                     type: GET_PRODUCTS,
                     payload: data,
+                    dayDiscount
                 })
 
             
@@ -52,6 +53,36 @@ export function getProductsWithDiscounts(payload) {
         }
     }
 }
+
+export function updateDiscountById(payload) {
+    let { id } = payload
+    console.log('entro la action')
+    return async () => {
+        try {
+                const { data } = await axios.put(`/products/discount/${id}`, payload)
+                return data
+            }
+         catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function unSubscribeDiscountById(payload) {
+    
+    // console.log('entro la action')
+    return async () => {
+        try {
+                const { data } = await axios.put(`/products/${payload}/discountOff`) 
+                return data
+            }
+         catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
 
 export function orderProducts(payload) {
     return async (dispatch) => {

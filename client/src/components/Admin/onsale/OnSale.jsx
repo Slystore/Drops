@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBrands } from '../../../redux/brand/brandActions';
 import { getCategories } from '../../../redux/category/categoriesActions';
 import { getProductsWithDiscounts } from '../../../redux/products/productsAction';
+import { getDiscountsByQuantity } from '../../../redux/discounts/discountsActions';
 // import ToggleSwitch from 'toggle-switch-rn'
 
 const OnSale = () => {
@@ -105,7 +106,7 @@ const OnSale = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         e.target.name === 'input1' ? dispatch(getProductsWithDiscounts(input)) :
-        dispatch(getProductsWithDiscounts(input2))
+        dispatch(getDiscountsByQuantity(input2))
     }
 
     let marca = document.getElementById('marca')
