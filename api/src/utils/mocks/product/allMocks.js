@@ -8,7 +8,8 @@ const allMocks = [
     price: 105.25,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 1
+    BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Force 1 Gore Tex High White DS",
@@ -18,6 +19,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Max 720 Orange DS",
@@ -27,6 +29,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Max 720 OG DS",
@@ -36,6 +39,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Max 1 Terra",
@@ -45,6 +49,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Max 1 Parra DS",
@@ -54,6 +59,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   //-------------------deportivo -------------------//
   {
@@ -64,6 +70,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Nike Winflo 8",
@@ -73,6 +80,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Nike Revolution 5",
@@ -81,7 +89,8 @@ const allMocks = [
     price: 105.25,
     status: "disponible",
     CategoryId: 2,
-    BrandId: 1
+    BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Nike Downshifter 11",
@@ -91,6 +100,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Nike Air Max Excee",
@@ -100,6 +110,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
   {
     name: "Nike Quest 4",
@@ -109,6 +120,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 1,
+    BranchOfficeId: 1,
   },
 
   // Jordan Products
@@ -121,6 +133,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 1 Retro High OG Bloodline",
@@ -130,6 +143,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Jordan 4 Cactus Jack",
@@ -139,6 +153,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 1 Retro High Hyper Royal Smoke Grey",
@@ -147,7 +162,8 @@ const allMocks = [
     price: 800,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 2
+    BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 1 Retro High J Balvin",
@@ -157,6 +173,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 1 Retro High Dark Mocha",
@@ -166,6 +183,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 11 Retro Playoffs Bred 2019",
@@ -175,6 +193,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 4 Retro Lightning 2021",
@@ -184,6 +203,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 4 Retro Bred 2019",
@@ -192,7 +212,8 @@ const allMocks = [
     price: 800,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 2
+    BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Jordan 3 UNC",
@@ -202,6 +223,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Jordan 1 Mid Military Olive",
@@ -211,6 +233,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
   {
     name: "Air Jordan 1 Mid SE Purple",
@@ -220,6 +243,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 2,
+    BranchOfficeId: 1,
   },
 
   // OFF-WHITE products
@@ -231,6 +255,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 3,
+    BranchOfficeId: 1,
   },
   {
     name: "Off-White Vulc Low Eco Canvas",
@@ -240,6 +265,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 3,
+    BranchOfficeId: 1,
   },
   {
     name: "Off-White Low Vulc",
@@ -248,7 +274,8 @@ const allMocks = [
     price: 335.35,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 3
+    BrandId: 3,
+    BranchOfficeId: 1,
   },
   {
     name: "Off-white Drowning Man Logo Slides",
@@ -258,6 +285,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 3,
     BrandId: 3,
+    BranchOfficeId: 1,
   },
 
   //adidas products
@@ -270,6 +298,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Ultra Boost OG Beyonce Ivy Park Hi Res Yellow",
@@ -279,6 +308,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas X9000L3 ",
@@ -288,6 +318,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   //---------------------------Deportivo -----------------------------//
   //---------------------------Urbano --------------------------------//
@@ -300,6 +331,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Superstar",
@@ -309,6 +341,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas 3MC Vulc",
@@ -318,6 +351,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Advantage Base",
@@ -327,6 +361,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Nite Jogger",
@@ -336,6 +371,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas OZWEEGO Celox",
@@ -345,6 +381,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Gazelle",
@@ -354,6 +391,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas CRAZYCHAOS SHADOW 2.0",
@@ -363,6 +401,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   //---------------------------Urbano --------------------------------//
 
@@ -375,6 +414,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy 350 v2 Citrin Reflective",
@@ -384,6 +424,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy 350 v2 Static ",
@@ -393,6 +434,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy 500 Enflame",
@@ -402,6 +444,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy 500 Taupe Light",
@@ -411,6 +454,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy 700 MNVN Bright Cyan",
@@ -420,6 +464,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy Boost 700 V2 Geode",
@@ -429,6 +474,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "adidas Yeezy Boost 700 Salt",
@@ -438,6 +484,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy Foam RNNR MX Cream Cl",
@@ -447,6 +494,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy Slide Enflame Orange",
@@ -456,6 +504,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy Slide Pure",
@@ -465,6 +514,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   {
     name: "Adidas Yeezy Slide Soot",
@@ -474,6 +524,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 4,
+    BranchOfficeId: 1,
   },
   // PUMA Products
   //---------------------------Urbano --------------------------------//
@@ -485,6 +536,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   {
     name: "Puma RS-X3 Puzzle Limestone",
@@ -494,6 +546,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   //---------------------------Urbano --------------------------------//
   //---------------------------Deportivo -----------------------------//
@@ -505,6 +558,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   {
     name: "Puma Magnify Nitro SP",
@@ -514,6 +568,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   {
     name: "Puma Cell Fraction",
@@ -523,6 +578,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   {
     name: "Puma Eternity Nitro",
@@ -532,6 +588,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   {
     name: "Puma FUSE",
@@ -541,6 +598,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
   {
     name: "Puma DEVIATE NITRO",
@@ -550,6 +608,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 5,
+    BranchOfficeId: 1,
   },
 
   //---------------------------Deportivo -----------------------------//
@@ -563,6 +622,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok  Nano X1 Adventure",
@@ -572,6 +632,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Nano X1 Power Rangers",
@@ -581,6 +642,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Nano X1 VEGAN",
@@ -590,6 +652,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Flexagon Energy TR 3",
@@ -599,6 +662,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok  Flashfilm Train 2",
@@ -608,6 +672,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Wonder Woman Nano X",
@@ -617,6 +682,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok HIIT",
@@ -626,6 +692,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Advanced Trainer",
@@ -635,6 +702,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Reago Essential 2 Reebok",
@@ -644,6 +712,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Ztaur Run",
@@ -653,6 +722,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
   {
     name: "Reebok Zig Dynamica",
@@ -662,6 +732,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 6,
+    BranchOfficeId: 1,
   },
 
   // GUCCI products
@@ -673,6 +744,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 3,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Ace",
@@ -682,6 +754,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Ace  Interlocking G",
@@ -691,6 +764,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Ace Stripe Black",
@@ -700,6 +774,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Rhyton",
@@ -709,6 +784,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Slides",
@@ -718,6 +794,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 3,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Ace Blade",
@@ -727,6 +804,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Ace Embroidered Snake",
@@ -736,6 +814,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Stripe Slide White",
@@ -745,6 +824,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci GG Slide Rubber Black",
@@ -754,6 +834,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci Screener Mini GG White",
@@ -763,6 +844,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
   {
     name: "Gucci AceEmbroidered",
@@ -772,6 +854,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 7,
+    BranchOfficeId: 1,
   },
 
   // BALENCIAGA products
@@ -783,6 +866,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Triple S",
@@ -792,6 +876,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Track",
@@ -801,6 +886,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Pool Slides",
@@ -810,6 +896,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 3,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Track Black",
@@ -819,6 +906,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Speed Graffiti Trainers Black White",
@@ -828,6 +916,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Track Trainers Burgundy Black",
@@ -837,6 +926,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Track Trainer Pink",
@@ -846,6 +936,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Triple S Crystal Clear Sole",
@@ -855,6 +946,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Triple S Pink",
@@ -864,6 +956,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Triple S Light Blue",
@@ -873,6 +966,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
   {
     name: "Balenciaga Furry Slide Black",
@@ -882,6 +976,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 8,
+    BranchOfficeId: 1,
   },
 
   // UNDER ARMOR products
@@ -893,6 +988,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Charged Bandit 6 LAM",
@@ -902,6 +998,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Charged Pursuit 2 LAM",
@@ -911,6 +1008,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Charged Essential",
@@ -920,6 +1018,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Sonic 3",
@@ -929,6 +1028,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Charged Essential 2",
@@ -938,6 +1038,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Curry 7 Sour Patch Kids Peach",
@@ -947,6 +1048,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Project Rock 2 Black White",
@@ -956,6 +1058,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour The Rock Delta Steeltown Gold",
@@ -965,6 +1068,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Mirage 3.0 Black/Black-Black",
@@ -974,6 +1078,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Curry 6 Dub Nation",
@@ -983,6 +1088,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
   {
     name: "Under Armour Curry 1 Lux Red",
@@ -992,6 +1098,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 2,
     BrandId: 9,
+    BranchOfficeId: 1,
   },
 
   // VANS Products
@@ -1003,6 +1110,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Era Horror Pack It Pennywise",
@@ -1012,6 +1120,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Vault Sk8-Mid LX Jound Brown",
@@ -1021,6 +1130,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Sk8-Hi Black White",
@@ -1030,6 +1140,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Classic Slip-On Horror Pack The Shining",
@@ -1039,6 +1150,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Old Skool Notre Off-White",
@@ -1048,6 +1160,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Lampin Commedes Garcons",
@@ -1057,6 +1170,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Old Skool Yacht Club",
@@ -1066,6 +1180,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Era WTAPS Bones Black",
@@ -1075,6 +1190,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Old Skool MoMA Salvador Dali",
@@ -1084,6 +1200,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Old Skool Pac Sun ASAP Rocky Black",
@@ -1093,6 +1210,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
   {
     name: "Vans Sk8-Hi The Simpsons Lisa",
@@ -1102,6 +1220,7 @@ const allMocks = [
     status: "disponible",
     CategoryId: 1,
     BrandId: 10,
+    BranchOfficeId: 1,
   },
 ];
 

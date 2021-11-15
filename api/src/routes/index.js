@@ -10,10 +10,12 @@ const sizes = require('./sizes/sizes.js');
 const productSizes = require('./productSize/productSize.js');
 const orders = require('./order/order.js');
 const orderDetails = require('./orderDetails/orderDetails.js');
+const branchOffice = require('./branchOffice/branchOffice.js');
 const newsletter = require('./newsletter/newsletter');
 const mercadopago = require('./mercadoPago/mercadoPago.js');
 const wishList = require('./wishList/wishList')
 const discounts = require('./discounts/discounts')
+
 
 app.use('/wishList',wishList)
 app.use('/',users);
@@ -25,6 +27,7 @@ app.use('/productSizes', productSizes);
 app.use('/sizes', sizes);
 app.use('/orders', orders);
 app.use('/orderDetails', orderDetails);
+app.use('/branchOffice', branchOffice);
 app.use('/newsletter', newsletter);
 app.use('/mercadopago', mercadopago);
 app.use('/discounts', discounts);

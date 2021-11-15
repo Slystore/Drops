@@ -27,6 +27,7 @@ const updateOrCreateProduct = async (data, id = null) => {
       status: data.status,
       CategoryId: data.categoryId,
       BrandId: data.brandId,
+      BranchOfficeId: 1
     });
   }
 
