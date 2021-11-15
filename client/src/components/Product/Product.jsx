@@ -12,10 +12,10 @@ import Rating from "@mui/material/Rating";
 import "./Product.css";
 import { Link } from "react-router-dom";
 import {
-  addToCartTomi,
-  fusionCartTomi,
-  loadCartTomi,
-} from "../../redux/cartTomi/cartActionTomi";
+  addToCart,
+  fusionCart,
+  loadCart,
+} from "../../redux/cart/cartAction";
 import jwt_decode from "jwt-decode";
 import { getToken, userPostWish } from "../../redux/users/userActions";
 
@@ -28,7 +28,7 @@ export default function Product({
   onSale,
   discounts,
 }) {
-  const { items } = useSelector((store) => store.cartReducersTomi);
+  const { items } = useSelector((store) => store.cartReducers);
   const dispatch = useDispatch();
   let x;
   if (localStorage.getItem("token")) {
@@ -49,10 +49,10 @@ export default function Product({
     let product = items?.find((e) => e.id === id);
     let user = decoded ? decoded.user.id : null;
     if (user) {
-      await fusionCartTomi(id);
-      await dispatch(loadCartTomi());
+      await fusionCart(id);
+      await dispatch(loadCart());
       await dispatch(
-        addToCartTomi(
+        addToCart(
           id,
           product?.quantity ? product.quantity + 1 : 1,
           price,
@@ -63,7 +63,7 @@ export default function Product({
       );
     }
     await dispatch(
-      addToCartTomi(
+      addToCart(
         id,
         product?.quantity ? product.quantity + 1 : 1,
         price,
@@ -75,8 +75,8 @@ export default function Product({
   };
 
   const handleAddWishList = async (userId,productId)=> {
-    console.log('esta es la userId',userId)
-    console.log('esta es la id hardc',decoded ? decoded.id:decoded)
+    // console.log('esta es la userId',userId)
+    // console.log('esta es la id hardc',decoded ? decoded.id:decoded)
     const x = await userPostWish(userId,productId)
   }
 

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  cartResetTomi,
-  fusionCartTomi,
-  loadCartTomi,
-} from "../../redux/cartTomi/cartActionTomi";
+  cartReset,
+  fusionCart,
+  loadCart,
+} from "../../redux/cart/cartAction";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import Divider from "@mui/material/Divider";
@@ -22,23 +22,23 @@ function ShopingCart() {
     x = getToken();
   }
   const decoded = x ? jwt_decode(x) : null;
-  const { total } = useSelector((state) => state.cartReducersTomi);
-  const { items } = useSelector((state) => state.cartReducersTomi);
+  const { total } = useSelector((state) => state.cartReducers);
+  const { items } = useSelector((state) => state.cartReducers);
   let user = decoded ? decoded.user.id : null;
 
   useEffect(() => {
-    dispatch(loadCartTomi());
+    dispatch(loadCart());
   }, [dispatch, user]);
 
   const handleReset = () => {
-    dispatch(cartResetTomi());
+    dispatch(cartReset());
     history.push("/catalogue");
   };
 
   async function handleSubmit() {
     if (user) {
-      await fusionCartTomi(user);
-      await dispatch(loadCartTomi(user));
+      await fusionCart(user);
+      await dispatch(loadCart(user));
     }
   }
 
@@ -62,7 +62,6 @@ function ShopingCart() {
           <button onClick={handleReset} className="CartItemDelete">
             Vaciar Carrito
           </button>
-          <button className="CartItemDelete">Recuperar Carrito</button>
           <button onClick={handleCatalogue} className="CartBack">
             Regresar
           </button>
