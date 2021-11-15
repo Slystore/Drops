@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import Paginado from "./Paginado";
 import { Link } from "react-router-dom";
 import "./Catalogue.css";
-import { loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import { loadCart } from "../../redux/cart/cartAction";
 import { getRatings } from "../../redux/rating/ratingActions";
 import {
   getProducts,
@@ -34,7 +34,7 @@ function Catalogue() {
     dispatch(getProducts());
     dispatch(getBrands());
     dispatch(getCategories());
-    dispatch(loadCartTomi());
+    dispatch(loadCart());
     dispatch(getRatings());
     dispatch(getDiscounts());
   }, [dispatch]);

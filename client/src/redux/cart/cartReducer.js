@@ -1,144 +1,92 @@
 import {
-  ADD_TO_CART,
-  FILL_CART_STORAGE,
-  GET_PRODUCTS,
-  STORAGE,
-  INCREMENT_CART_STORAGE,
-  DECREMENT_CART_STORAGE,
-  CLEAR_CART,
-  RECOVERY_CART,
-  DELETE_ITEM_CART_STORAGE
-} from "./cartActions";
-
-export const initialState = {
-  cart: [],
-  products: [],
-  storage: [],
-  cartFill: [],
-};
-
-function cartReducer(state = initialState, action) {
-
-  switch (action.type) {
-
-    case ADD_TO_CART: {
-      let newItem = state.products.find(
-        (product) => product.id === action.payload
-      );
-      let iteminCart = state.cart.find((item) => item.id === newItem.id);
-
-      return iteminCart
-        ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === newItem.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cart: [...state.cart, { ...newItem, quantity: 1 }],
-          };
-    }
-
-    case GET_PRODUCTS: {
-      return {
-        ...state,
-        products: action.payload,
-      };
-    }
-
-    case STORAGE:{
-      let estado = state.cart;
-      window.localStorage.setItem("cartId", JSON.stringify(estado));
-      let store2 = JSON.parse(window.localStorage.getItem("cartId"));
-      return {
-        ...state,
-        storage: store2,
-      };
-    }
-
-    case FILL_CART_STORAGE: {
-      let storage3 = JSON.parse(window.localStorage.getItem("cartId"));
-      return {
-        ...state,
-        cartFill: action.payload !== null ? action.payload : [],
-        storage: storage3,
-      };
-    }
-
-    case CLEAR_CART: {
-      return {
-        ...state,
-        cart: [],
-        cartFill: [],
-      };
-    }
-
-    case INCREMENT_CART_STORAGE: {
-
-      let estado = state.cartFill;
-      
-      console.log("ESTADO CARTFILL",estado)
-      console.log(window.localStorage.getItem("cartId"))
-
-
-      let filtro = state.cartFill.find((item) => item.id === action.payload);
-      return filtro
-        ? {
-            ...state,
-            cartFill: state.cartFill.map((item) =>
-              item.id === action.payload
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cartFill: [...state.cartFill, { ...action.payload, quantity: 1 }],
-          };
-
-    }
-
-    case DECREMENT_CART_STORAGE: {
-      let filtro = state.cartFill.find((item) => item.id === action.payload);
-      return filtro
-        ? {
-            ...state,
-            cartFill: state.cartFill.map((item) =>
-              item.id === action.payload
-                ? { ...item, quantity: --item.quantity  }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cartFill: [...state.cartFill, { ...action.payload, quantity: 1 }],
-          };
-
-    }
-    
-    case RECOVERY_CART:
-      return {
-        ...state,
-        // ?: action.payload,
-      };
-      
-      case DELETE_ITEM_CART_STORAGE: {
-        let deleteItem = state.cartFill.filter((item) => item.id !== action.payload);
-        console.log(deleteItem)
+    ADD_TO_CART,
+    REMOVE_FROM_CART,
+    CART_RESET,
+    LOAD_CART,
+    CHANGE_QUANTITY,
+    SELECT_SIZEID,
+  } from "./cartAction";
+//   import { USER_LOG_OUT } from "../actions/userActions";
+  
+  const initialState = {
+    items: JSON.parse(localStorage.getItem("cart") || "[]"),
+    total: 0,
+  };
+  
+  export default function cartReducers(state = initialState, action) {
+    switch (action.type) {
+      case ADD_TO_CART:
         return {
           ...state,
-          cartFill: deleteItem,
+          items: action.payload.sort( (a,b) => a.productId - b.productId),
         };
-      }
-
-
-
-    default:
-      return state;
+      case REMOVE_FROM_CART:
+        let cartFilter = state.items;
+        let newCart = cartFilter.filter((e) => e.id !== action.payload);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        return {
+          ...state,
+          items: newCart.sort( (a,b) => a.productId - b.productId),
+          total: newCart.reduce( (t,s) => {
+            return t + (s.price * s.quantity)
+          },0)
+        };
+      case CART_RESET:
+        return {
+          ...state,
+          items: action.payload.items,
+          total: action.payload.total
+        };
+      case LOAD_CART:
+        if(!action.regiter){// es register corregir
+          return {
+            ...state,
+            items: action.payload.sort( (a,b) => a.productId - b.productId),
+            total: action.payload.reduce( (t,s) => {
+              return t + (s.price * s.quantity)
+            },0).toFixed(2)
+          };
+        }
+        else {
+  
+  
+          return {
+            ...state,
+            items: action.payload.sort( (a,b) => a.productId - b.productId),
+            total: action.payload.reduce( (t,s) => {
+              return t + (s.price * s.quantity)
+            },0).toFixed(2)
+          }
+        }
+        // case USER_LOG_OUT: return {
+        //   ...state,
+        //   items: [],
+        //   total: 0
+        // }
+        case CHANGE_QUANTITY:
+            let cart = state.items;
+            for (var item of cart) {
+                    if (item.id === action.payload.id) {
+                      item.quantity = action.payload.quantity;
+                    }
+                  }
+                  localStorage.setItem("cart", JSON.stringify(cart));
+        return{
+            ...state,
+        }
+        case SELECT_SIZEID:
+            let cart2 = state.items;
+            for (var item2 of cart2) {
+                    if (item2.id === action.payload.id) {
+                      item2.SizeId = action.payload.SizeId;
+                    }
+                  }
+                  localStorage.setItem("cart", JSON.stringify(cart2));
+                  return{
+                    ...state,
+                }
+      default:
+        return state;
+    }
   }
-}
-
-export default cartReducer;
+  

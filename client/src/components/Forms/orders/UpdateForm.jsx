@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { putOrder } from '../../../redux/orders/ordersAction';
 
-const UpdateForm = () => {
+const UpdateForm = (id) => {
     const dispatch = useDispatch()
-
+    // const { id } = props.match.params;
+    console.log(id.id.id,"updateorderid")
     const [input, setInput] = useState({
         shippingState: '',
     })
@@ -19,7 +20,7 @@ const UpdateForm = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(input);
-        await putOrder(input)
+        await putOrder(id.id.id, input)
 
         swal("", "Orden Actualizada!", "success", {
             buttons: false,
