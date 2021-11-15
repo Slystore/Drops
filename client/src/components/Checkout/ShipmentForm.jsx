@@ -75,9 +75,9 @@ export default function ShipmentForm() {
       input.shippingLocated === undefined &&
       input.shippingCity === undefined
     )
-      console.log("El formulario esta incompleto");
+       alert("El formulario esta incompleto");
     else {
-      console.log(input, orderId, "shippingform");
+      // console.log(input, orderId, "shippingform");
       try {
         const { data } = await axios.put(
           `/orders/updateOrder/${orderId}`,

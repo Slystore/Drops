@@ -4,9 +4,9 @@ import { MdProductionQuantityLimits } from "react-icons/md"
 import UpdateForm from '../../../Forms/orders/UpdateForm';
 import "./buttonForm.css"
 
-const ButtonFormUpdate = () => {
+const ButtonFormUpdate = (id) => {
 
-
+console.log(id,"updateorderid")//{id:9}
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -33,7 +33,7 @@ const ButtonFormUpdate = () => {
                     <Typography className="titleModal" id="modal-modal-title" variant="h6" component="h2">
                         Modificar Orden
                     </Typography>
-                    <UpdateForm />
+                    <UpdateForm id={id} />
 
                 </Box>
 
