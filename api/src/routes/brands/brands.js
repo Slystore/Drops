@@ -7,6 +7,6 @@ const editBrand = require("../../controllers/brands/putBrands");
 router.post("/create", createBrand);
 router.get("/getAllBrands", getBrands);
 router.get("/getOneBrand/:id", getBrands);
-router.put("/editBrand/:id", editBrand);
+router.put("/editBrand", editBrand);
 
 module.exports = router;

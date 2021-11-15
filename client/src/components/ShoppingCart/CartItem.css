@@ -195,6 +195,427 @@
     /* border: thin dotted #000; */
 }
 
+@media (min-width: 1400px){
+
+    .CartItemContainer{
+        width: 100%;
+        height: 150px;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        border-bottom: solid 1px #00000020;
+    }
+    
+    .CartItemImage{
+        width: 20%;
+        height: 100%; 
+        float: left;
+        overflow: hidden;
+        /* border: thin dotted #f00; */
+    }
+    
+    .CartItemImage img{
+        height: 150px;
+        position: relative;
+        top: -5px;
+    }
+    
+    .CartItemInfo{
+        width: 80%;
+        max-width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: 15px;
+        margin-right: 15px;
+        /* border: thin dotted #00f;    */
+    }
+    
+    .InfoProduct{
+        width: 70%;
+        height: 100%;
+    }
+    
+    .NameProduct h2{ 
+        width: 100%;
+        text-align: left;
+        font-size: 22px;
+        color: #00000050;
+    }
+    
+    .Row{
+        width: 100%;
+        height: 33px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: stretch;
+    }
+    
+    .PriceShoppinCart{
+        width: 49%;
+        height: 30px;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: stretch;
+    }
+
+    .PriceShoppinCart h3{
+        font-size: 18px;
+    }
+    
+    .SelectTalle{
+        width: 50%;
+        height: 100%;
+    }
+    
+    .SelectShoppingCart{
+        width: 40%;
+        height: 25px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 0.8vw;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .SelectShoppingCart:hover, .QuantityNumberInput:hover{
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 5px 10px #00000030;
+    }
+    
+    .Quantity{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        border: thin dotted #000;
+    }
+    
+    .QuantityTitle h2{
+        /* width: 100%; */
+        font-size: 18px;
+        text-align: left;
+        /* font-weight: bold; */
+        /* border: thin dotted #0f0; */
+    }
+    
+    .QuantityNumber h2{
+        width: 30px;
+        color: red;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 18px;
+        /* border: thin dotted #0f0; */
+    }
+
+    .QuantityNumberInput{
+        width: 10%;
+        height: 20px;
+        margin-left: 10px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 5px 0 5px;
+        font-size: 0.8vw;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .CartItemSelect{
+        width: 170px;
+        height: 20px;
+        float: left;
+    }
+    
+    .CartPrice{
+        width: 30%;
+        max-width: 100%;
+        height: 100%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 1));
+        /* background:  #cccccc50; */
+        /* border: thin dotted #000; */
+    }
+    
+    .BtnCart{
+        width: 100%;
+        /* border: thin dotted #000; */
+    }
+    
+    .CartItemButtonOption{
+        width: 100px;
+        height: 22px;
+        border: none;
+        margin: 0 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        color: #fff;
+        background-color: rgb(49, 102, 202);
+    }
+    
+    .CartItemButtonOption:hover{
+        background-color: rgb(27, 73, 158);
+    }
+    
+    .CartItemButton:hover, .CartItemButtonOption:hover{
+        cursor: pointer;
+        box-shadow: 0 5px 10px #00000030;
+    }
+    
+    .CartItemButton{
+        width: 40px;
+        height: 25px;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        transition: all 0.25s ease;
+    }
+    
+    .Total{
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        /* border: thin dotted #000; */
+    }
+
+    .Total h2{
+        font-size: 1.5vw;
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .CartItemContainer{
+        width: 100%;
+        height: 150px;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        border-bottom: solid 1px #00000020;
+    }
+    
+    .CartItemImage{
+        width: 20%;
+        height: 100%; 
+        float: left;
+        overflow: hidden;
+        /* border: thin dotted #f00; */
+    }
+    
+    .CartItemImage img{
+        height: 150px;
+        position: relative;
+        top: -5px;
+    }
+    
+    .CartItemInfo{
+        width: 80%;
+        max-width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: 15px;
+        margin-right: 15px;
+        /* border: thin dotted #00f;    */
+    }
+    
+    .InfoProduct{
+        width: 70%;
+        height: 100%;
+        /* border: thin dotted #00f;    */
+    }
+    
+    .NameProduct h2{ 
+        width: 100%;
+        text-align: left;
+        font-size: 22px;
+        color: #00000050;
+        /* border: thin dotted #f00; */
+    }
+    
+    .Row{
+        width: 100%;
+        height: 33px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: stretch;
+        /* border: thin dotted #f00; */
+    }
+    
+    .PriceShoppinCart{
+        width: 49%;
+        height: 30px;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: stretch;
+        /* border: thin dotted #f00; */
+    }
+    .PriceShoppinCart h3{
+        font-size: 18px;
+    }
+    
+    .SelectTalle{
+        width: 50%;
+        height: 100%;
+        /* border: thin dotted #f00; */
+    }
+    
+    .SelectShoppingCart{
+        width: 50%;
+        height: 22px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 1vw;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .SelectShoppingCart:hover, .QuantityNumberInput:hover{
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 5px 10px #00000030;
+    }
+    
+    .Quantity{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        border: thin dotted #000;
+    }
+    
+    .QuantityTitle h2{
+        /* width: 100%; */
+        font-size: 18px;
+        text-align: left;
+        /* font-weight: bold; */
+        /* border: thin dotted #0f0; */
+    }
+    
+    .QuantityNumber h2{
+        width: 30px;
+        color: red;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 18px;
+        /* border: thin dotted #0f0; */
+    }
+
+    .QuantityNumberInput{
+        width: 15%;
+        height: 20px;
+        margin-left: 10px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 5px 0 5px;
+        font-size: 1vw;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .CartItemSelect{
+        width: 170px;
+        height: 20px;
+        float: left;
+    }
+    
+    .CartPrice{
+        width: 30%;
+        max-width: 100%;
+        height: 100%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 1));
+        /* background:  #cccccc50; */
+        /* border: thin dotted #000; */
+    }
+    
+    .BtnCart{
+        width: 100%;
+        /* border: thin dotted #000; */
+    }
+    
+    .CartItemButtonOption{
+        width: 100px;
+        height: 22px;
+        border: none;
+        margin: 0 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        color: #fff;
+        background-color: rgb(49, 102, 202);
+    }
+    
+    .CartItemButtonOption:hover{
+        background-color: rgb(27, 73, 158);
+    }
+    
+    .CartItemButton:hover, .CartItemButtonOption:hover{
+        cursor: pointer;
+        box-shadow: 0 5px 10px #00000030;
+    }
+    
+    .CartItemButton{
+        width: 40px;
+        height: 25px;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        transition: all 0.25s ease;
+    }
+    
+    .Total{
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        /* border: thin dotted #000; */
+    }
+
+    .Total h2{
+        font-size: 2vw;
+    }
+
+
+}
+
 
 /************ STEP 2 ***********/
 

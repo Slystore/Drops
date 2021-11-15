@@ -1,47 +1,25 @@
-import React, { useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux';
-
+import React from 'react';
 import NavBar from '../components/NavBar/NavBar';
 import Brand from '../components/Brand/Brand';
 import Slider from '../components/Slider/Slider';
 import Home from '../components/Home/Home';
 import Footer from '../components/Footer/Footer';
-
-import { getReviews, getReviewById, getReviewsByProduct, getReviewsByUser, createReview, deleteReview, updateReview } from '../redux/reviews/reviewsActions';
-import { getUsers } from './../redux/users/userActions';
-
-
 import Us from '../components/Us/Us';
 import Newsletter from '../components/Newsletter/Newsletter';
 import Location from '../components/Location/Location';
+import MoreRating from '../components/MoreRating/MoreRating';
 
 
 function HomeView() {
-    const dispatch = useDispatch()
-    // const [reviews, setReviews] = useState([])
-
-    useEffect(() => {
-        dispatch(getReviews(1))
-        dispatch(getUsers())
-        // dispatch(getReviewById(1))
-        // dispatch(getReviewsByUser('Aimee_Hills@hotmail.com'))
-        // dispatch(getReviewsByProduct())
-        // dispatch(createReview({comment: 'Probando los comentarios', rating: 5, user: 5}))
-        // dispatch(updateReview( { id: 21, comment: 'modificando el comentario', rating: 4 }) )
-        // dispatch(deleteReview(1))
-        // setReviews()
-    }, [dispatch])
-
-    
+  
     return (
-
-       //<div className='Container'>
         
         <div style={{width: '99.1vw'}}>
           
             <NavBar />
             <Brand />
             <Slider />
+            <MoreRating />
             <Home />
             <Us />
             <Newsletter />
@@ -53,3 +31,5 @@ function HomeView() {
 }
 
 export default HomeView
+
+

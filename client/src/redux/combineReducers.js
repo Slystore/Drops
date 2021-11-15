@@ -7,10 +7,10 @@ import brandReducer from './brand/brandReducer';
 import categoriesReducer from './category/categoriesReducer';
 import sizeReducer from './sizes/sizeReducer';
 import newsletterReducer from './newsletter/newsletterReducer';
-import cartReducersTomi from './cartTomi/cartReducerTomi';
+import cartReducers from './cart/cartReducer';
 import ratingReducer from './rating/ratingReducer';
-
-import cartReducer from './cart/cartReducer';
+import ordersReducer from './orders/ordersReducer';
+import discountsReducer from './discounts/discountsReducer';
 
 export const reducers = combineReducers({
     reviewsReducer,
@@ -20,9 +20,10 @@ export const reducers = combineReducers({
     categoriesReducer,
     sizeReducer,
     newsletterReducer,
-    cartReducer,
-    cartReducersTomi,
-    ratingReducer
+    cartReducers,
+    ratingReducer,
+    ordersReducer,
+    discountsReducer
 });
 
 export default reducers;

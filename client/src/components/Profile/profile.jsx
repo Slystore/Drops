@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
-import { editUsers, getToken, getUserId } from "../../redux/users/userActions";
+import {
+  editUsers,
+  getToken,
+  getUserId,
+  userDeleteWish,
+  userWishListGet,
+} from "../../redux/users/userActions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -13,7 +19,9 @@ import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Product from "../Product/Product";
 import "./profile.css";
+import { getProducts } from "../../redux/products/productsAction";
 const style = {
   position: "absolute",
   top: "50%",
@@ -62,6 +70,7 @@ function a11yProps(index) {
 export default function Profile() {
   const dispatch = useDispatch();
   const usersId = useSelector((state) => state.usersReducer.userId);
+  const wishList = useSelector((state) => state.usersReducer.wishList);
   const [value, setValue] = React.useState(0);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState({
@@ -82,6 +91,7 @@ export default function Profile() {
   });
   const gId = localStorage.getItem("gId");
   useEffect(() => {
+    dispatch(getProducts());
     console.log("estoy entrando al  useEffect");
     const x = getToken();
     console.log("this x ", x);
@@ -94,8 +104,11 @@ export default function Profile() {
       const userDecoded = jwtDecode(x);
       console.log("esta es mi data de google", userDecoded);
       if (userDecoded.user) {
+        dispatch(userWishListGet(userDecoded.user.id));
         dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
       } else {
+        const gId = localStorage.getItem("gId");
+        dispatch(userWishListGet(gId));
         dispatch(getUserId(gId));
         setUser({
           userData: userDecoded,
@@ -104,6 +117,7 @@ export default function Profile() {
       }
     }
   }, [dispatch]);
+  let { products } = useSelector((state) => state.productReducer);
   console.log("estos son mis users", usersId ? usersId.user : "");
   const handleFormChange = (e) => {
     setData({
@@ -114,14 +128,19 @@ export default function Profile() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleSubmit = async () => {
-    const x = await editUsers(data, user ? user.userData.user.id : gId);
+  const handleSubmit = async (e) => {
+    const x = await editUsers(data, user ? gId : user.userData.user.id);
     if (x) return "";
   };
   const handleOpenEdit = () => setEdit(true);
+  const handleDeleteWish = async (id, productId) => {
+    await userDeleteWish(id, productId);
+    window.location.replace("")
+  };
 
-  console.log("this user", user);
-  console.log("this data", usersId);
+  let wishFilt = wishList.map((el) => el.ProductId);
+  let dataFiltered = products.filter((el) => wishFilt.includes(el.id));
+
   return (
     <div>
       {user.validate === "noAuth" ? (
@@ -267,7 +286,7 @@ export default function Profile() {
                     confirmPass: "",
                   }}
                   onSubmit={async (body, { resetForm }) => {
-                    const x = await editUsers(body, user.userData.user.id);
+                    await editUsers(body, user.userData.user.id);
                     resetForm();
                   }}
                   validate={(values) => {
@@ -322,6 +341,42 @@ export default function Profile() {
                 </Formik>
               </div>
             )}
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <div>
+              <h1>WishList</h1>
+              {wishList.length !== 0 ? (
+                <div>
+                  {dataFiltered &&
+                    dataFiltered.map((el) => (
+                      <div>
+                        <button
+                          onClick={() => {
+                            handleDeleteWish(
+                              usersId.user ? usersId.user.id : gId,
+                              el.id
+                            );
+                          }}
+                        >
+                          X
+                        </button>
+                        <Product
+                          key={el.id}
+                          id={el.id}
+                          name={el.name}
+                          price={el.price}
+                          Sizes={el.Sizes}
+                          onSale={el.onSale}
+                          discounts={el.discounts}
+                          image={el.image}
+                        />
+                      </div>
+                    ))}
+                </div>
+              ) : (
+                <div>Todavia no agregaste nada :D</div>
+              )}
+            </div>
           </TabPanel>
         </Box>
       )}

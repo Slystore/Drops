@@ -17,5 +17,18 @@ module.exports = (sequelize) => {
         status:{
             type: DataTypes.ENUM('disponible', 'no disponible'),
         },
+        onSale: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        Discounts: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        discountDay: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
     }, {timestamps: false})
 }

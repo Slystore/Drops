@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import {
   cleanDetail,
@@ -8,42 +7,41 @@ import {
   getProductStockById,
 } from "../../redux/products/productsAction";
 import jwt_decode from "jwt-decode";
-import { getToken } from '../../redux/users/userActions';
+import { getToken } from "../../redux/users/userActions";
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import RateReviewIcon from '@mui/icons-material/RateReview';
+import RateReviewIcon from "@mui/icons-material/RateReview";
 import ProductReview from "./Reviews";
-import { addToCartTomi, fusionCartTomi, loadCartTomi } from "../../redux/cartTomi/cartActionTomi";
+import {
+  addToCart,
+  fusionCart,
+  loadCart,
+} from "../../redux/cart/cartAction";
 import "./ProductDetail.css";
 
-function ProductDetail(props) {
-  const history = useHistory();
-  const dispatch = useDispatch();
 
+function ProductDetail(props) {
+  const dispatch = useDispatch();
   const { id } = props.match.params;
   const { productId } = useSelector((state) => state.productReducer);
   const { stockById } = useSelector((state) => state.productReducer);
-  const {items} = useSelector(store => store.cartReducersTomi);
-  let x
-if(localStorage.getItem('token')){
-     x = getToken();}
-const decoded = x?jwt_decode(x): null;
+  let x;
+  if (localStorage.getItem("token")) {
+    x = getToken();
+  }
+  const decoded = x ? jwt_decode(x) : null;
 
   let [bul, setBul] = useState(false);
-  
+
   useEffect(() => {
     dispatch(getProductsById(id));
     dispatch(getProductStockById(id));
     return () => dispatch(cleanDetail(id));
   }, [dispatch, id]);
 
-
-  console.log('este es mi productId',productId ? productId : "");
-  const prueba = document.getElementById("reviews");
-
   const nada =
-    productId.hasOwnProperty('Reviews') &&
+    productId.hasOwnProperty("Reviews") &&
     productId.Reviews.map((e) => (
       <div>
         {" "}
@@ -51,29 +49,39 @@ const decoded = x?jwt_decode(x): null;
       </div>
     ));
 
-  const  addCart = async (e) => {
+  const addCart = async (e) => {
     e.preventDefault();
-    let product = items?.find( e => e.id === id)
-    
-    let user = decoded?decoded.user.id: null
-    if(user) {
-          // console.log("entrouser",user)
-       await  (fusionCartTomi(id))
-        await  (loadCartTomi())
-        await dispatch(addToCartTomi(id, 1,
-          productId.price, productId.name,productId.image))
+    let user = decoded ? decoded.user.id : null;
+    if (user) {
+      // console.log("entrouser",user)
+      await fusionCart(id);
+      await loadCart();
+      await dispatch(
+        addToCart(
+          id,
+          1,
+          productId.price,
+          productId.name,
+          productId.image,
+          productId.Sizes
+        )
+      );
     }
-    await dispatch(addToCartTomi(id,  1,
-      productId.price, productId.name,productId.image))
-  }
+    await dispatch(
+      addToCart(
+        id,
+        1,
+        productId.price,
+        productId.name,
+        productId.image,
+        productId.Sizes
+      )
+    );
+  };
 
   function handleReviews(e) {
     e.preventDefault();
     setBul(!bul);
-
-    // if(prueba2 === true) data = 'visible';
-    // else data = 'hidden'
-    // history.push(`/catalogue/${id}/reviews`)
   }
 
   return (
@@ -92,7 +100,7 @@ const decoded = x?jwt_decode(x): null;
               <a href="/catalogue">X</a>
             </div>
             <div className="NameShoe">
-              <h1 style={{lineHeight:'40px'}}> {productId.name} </h1>
+              <h1 style={{ lineHeight: "40px" }}> {productId.name} </h1>
             </div>
             <div className="Brand">
               <h4>
@@ -124,10 +132,10 @@ const decoded = x?jwt_decode(x): null;
               </div>
             </div>
             <div className="Description">
-              <div style={{ width: "70%" }}>
+              <div style={{ width: "75%" }}>
                 <div
                   style={{
-                    height: "10px",
+                    height: "20px",
                     fontWeight: "bold",
                     marginTop: "10px",
                   }}
@@ -154,9 +162,20 @@ const decoded = x?jwt_decode(x): null;
                   "&:hover": {
                     backgroundColor: "#00000099",
                   },
+                  "@media (min-width: 1200px) and (max-width: 1399px)": {
+                    width: 150,
+                    height: 25,
+                    fontSize: 10,
+                  },
                 }}
                 onClick={addCart}
-                startIcon={<ShoppingCartIcon />}
+                startIcon={<ShoppingCartIcon 
+                  sx={{
+                    "@media (min-width: 1200px) and (max-width: 1399px)": {
+                      height: 14,
+                    },
+                  }} 
+                />}
               >
                 Agregar a Carrito
               </Button>
@@ -171,9 +190,20 @@ const decoded = x?jwt_decode(x): null;
                   "&:hover": {
                     backgroundColor: "#00000099",
                   },
+                  "@media (min-width: 1200px) and (max-width: 1399px)": {
+                    width: 90,
+                    height: 25,
+                    fontSize: 10,
+                  },
                 }}
-                startIcon={<FavoriteIcon />}
-                >
+                startIcon={<FavoriteIcon 
+                  sx={{
+                    "@media (min-width: 1200px) and (max-width: 1399px)": {
+                      height: 14,
+                    },
+                  }} 
+                  />}
+              > 
                 Wish List
               </Button>
               <Button
@@ -187,9 +217,20 @@ const decoded = x?jwt_decode(x): null;
                   "&:hover": {
                     backgroundColor: "#00000099",
                   },
+                  "@media (min-width: 1200px) and (max-width: 1399px)": {
+                    width: 90,
+                    height: 25,
+                    fontSize: 10,
+                  },
                 }}
                 onClick={(e) => handleReviews(e)}
-                startIcon={<RateReviewIcon />}
+                startIcon={<RateReviewIcon 
+                  sx={{
+                    "@media (min-width: 1200px) and (max-width: 1399px)": {
+                      height: 14,
+                    },
+                  }} 
+                />}
               >
                 Reviews
               </Button>
@@ -203,29 +244,6 @@ const decoded = x?jwt_decode(x): null;
           <p>Loading...</p>
         </div>
       )}
-
-      {/* 
-
-            <h1>Detail</h1>
-            {productId.name ? <div>
-                <img src={productId.image}  width="200px" height="250px" />
-                <h1 > {productId.name.toUpperCase()} </h1>
-                <h3> {Number(productId.price)} </h3>
-                <h4>{productId.status}</h4>
-                <h4>{productId.Brand.name}</h4>
-                <h4>{productId.Category.name}</h4>
-                <h5>Descripción: {`${productId.description}`}</h5>
-              <h6>Talles: {productId.Sizes.map((size, index) => {
-                return (   <div key={index}>Talle {size.number} Stock {stockById[index]?stockById[index].stock: 0} pares</div>
-                  )}
-              )}
-                  </h6>
-            </div> : <div> <p >Loading...</p></div>}
-            <NavLink to="/catalogue">
-                <button >Volver</button>
-            </NavLink>
-            <div> <button onClick={addCart} 
-            >Agregar a Carrito</button></div>  */}
     </div>
   );
 }

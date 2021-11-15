@@ -53,9 +53,7 @@ const useStyles = makeStyles(() => ({
 
 
 function NavBar() {
-
   const classes = useStyles();
-
   const [loged, setLoged] = useState({
     userState: false,
     userData: {},
@@ -64,7 +62,6 @@ function NavBar() {
 
   useEffect(() => {
     const x = getToken();
-    console.log("esta es mi x ", x);
     if (x.msg) {
       return setLoged({
         userState: false,
@@ -79,27 +76,23 @@ function NavBar() {
     }
   }, []);
 
+  // console.log("userState",loged.userState)
+  // console.log("userAdmin",loged.userAdmin)
+
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const[cartStorage ]= useState(JSON.parse(window.localStorage.getItem("cartId")))
-  const { cart } = useSelector((state) => state.cartReducer);
-  const {storage} = useSelector(state => state.cartReducer)
-  const {items} = useSelector(state => state.cartReducersTomi)
+  const {items} = useSelector(state => state.cartReducers)
   
   function handleInputChange(e) {
     e.preventDefault();
     setName(e.target.value);
     dispatch(getProductsByName(name));
-
-    console.log(name);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(name);
     dispatch(getProductsByName(name));
-    // dispatch(cleanAction())
   }
 
   function handleMenu(){
@@ -175,7 +168,7 @@ function NavBar() {
           </div>
           <Link to={'/shoppingCart'} >
           <div className="Tool spinIn">
-             <Badge badgeContent={items? items.length: cart.length} color="error" sx={{color:'black'}}>
+             <Badge badgeContent={items? items.length: 0} color="error" sx={{color:'black'}}>
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
           </div></Link>
@@ -184,12 +177,12 @@ function NavBar() {
                 <UserTooltip title={titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
-                </div>
-              </UserTooltip>
+                 </div>
+                </UserTooltip>
               ) : (
                 <UserTooltip title={titleUser}>
                   <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all", '&:hover':{color: 'red',cursor: "pointer"}}}/></div>
-              </UserTooltip>
+                </UserTooltip>
               )
           }
         </div>

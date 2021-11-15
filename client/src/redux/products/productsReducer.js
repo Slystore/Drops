@@ -1,5 +1,6 @@
 import {
   GET_PRODUCTS,
+  GET_PRODUCTS_WITH_DISCOUNTS,
   GET_PRODUCTS_PER_PAGE,
   GET_PRODUCT_BY_ID,
   PRODUCT_FORM,
@@ -9,12 +10,12 @@ import {
   GET_PRODUCT_STOCK_ID,
   GET_PRODUCT_NAME,
   FILTERS_RESET,
-  FILTER_BY_PRICE,
   SAVE_FILTERED_DATA_BY_BRAND,
   SAVE_FILTERED_DATA_BY_CATEGORY,
   RESTORE_DATA,
+  GET_PRODUCT_STOCK_SIZE,
   GET_ORDERED_PRODUCTS,
-  ORDER_METHOD
+  ORDER_METHOD,
 } from "./productsAction";
 
 export const initialState = {
@@ -24,19 +25,119 @@ export const initialState = {
   productForm: {},
   filtrados: [],
   stockById: [],
+  stockBySize: [],
   filtros: [],
-  dataFiltrada: {}
+  dataFiltrada: {},
 };
-
 function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
+                  console.log(action.dayDiscount)
+
+      let discountD
+      let dayVerify = new Date().toLocaleString("default", { weekday: "long" });
+      let data = action.payload; //trae los products
+      data = data.map( el => {
+        if(el.discountDay !== null) discountD = el.discountDay.toLowerCase() 
+        if(el.onSale === false) return el
+        if(el.discountDay === null) return el
+        else if(el.onSale === true && discountD !== null && discountD !== dayVerify){
+          return {
+            ...el,
+            onSale: false,
+            Discounts: null,
+            discountDay: null
+          };
+        }
+        
+      })
       return {
         ...state,
-        products: action.payload,
-        filtrados: action.payload,
+        products: data,
+        filtrados: data,
       };
+
+
+      if(action.dayDiscount === null || action.dayDiscount === undefined){
+                    console.log('entro aca')
+
+        return {
+          ...state,
+          products: data,
+          filtrados: data,
+        }    
+      }
+      else if(discountD !== null && discountD !== dayVerify ){
+                    console.log('entro aca con day discount')
+
+        data = data.map(e => {
+           discountD = e.discountDay.toLowerCase()
+
+            // console.log('entro aca')
+            // console.log(discountD, dayVerify, action.dayDiscount)
+            return {
+              ...e,
+              onSale: false,
+              Discounts: null,
+              discountDay: null
+            };
+          })
+         
+        }
     }
+
+    // case GET_PRODUCTS_WITH_DISCOUNTS: {
+      
+    //   // day, discount, target [marca/categoria, string, id]
+    //   let data = action.payload; //trae los products
+     
+    //   let dayVerify = new Date().toLocaleString("default", { weekday: "long" });
+    //   let filterType = action.target[0]; // guarda en una variable si es marca o categoria
+    //   let brandFilter = action.target[1]; // guarda que marca o categoria es
+    //   let dayFilter = action.day.toLocaleLowerCase(); // guarda en la variable el dia de la semana que esa marca o categoria estara en oferta
+
+    //   console.log('antes de agregar data', data)
+    //   if (filterType === 'marca') {// Busca entre los productos aquellos que coincidan con la marca que me traje como parametro
+    //     console.log('etro en el if de marcas', filterType)
+    //     data = data.map((e) => {
+         
+    //       if (
+    //         dayVerify === dayFilter &&
+    //         Object.values(e.Brand).includes(brandFilter)
+    //       ) {
+    //        console.log('entra')
+    //         return {
+    //           ...e,
+    //           onSale: true,
+    //           Discounts: action.discount,
+    //         };
+    //       }
+    //       return e;
+    //     })
+    //   } else {// Busca entre los productos aquellos que coincidan con la categoria que me traje como parametro
+    //     console.log(filterType)
+    //     data = data.map((e) => {
+    //       if (
+    //         dayVerify === dayFilter &&
+    //         Object.values(e.Category).includes(brandFilter)
+    //       ) {
+    //         return {
+    //           ...e,
+    //           onSale: true,
+    //           Discounts: action.discount,
+    //         };
+    //       }
+    //       return e;
+    //     })
+    //   };
+    //   //
+    //   console.log(data)
+    //   return {
+    //     ...state,
+    //     products: data,
+    //     filtrados: data
+    //   }
+    // }
 
     case GET_PRODUCTS_PER_PAGE: {
       return {
@@ -45,44 +146,40 @@ function productsReducer(state = initialState, action) {
       };
     }
 
-    case GET_ORDERED_PRODUCTS: 
-      let array = state.products
-      
-      let orderedArray = action.payload === 'price' ?
-       array.sort( (a,b) => a.price - b.price)
-     : 
-     action.payload === 'name' ? 
-     array.sort( (a,b) => a.name.localeCompare(b.name)) 
-     :
-     array
+    case GET_ORDERED_PRODUCTS:
+      let array = state.products;
+
+      let orderedArray =
+        action.payload === "price"
+          ? array.sort((a, b) => a.price - b.price)
+          : action.payload === "name"
+          ? array.sort((a, b) => a.name.localeCompare(b.name))
+          : array;
 
       return {
         ...state,
-        products: orderedArray
+        products: orderedArray,
       };
-    
-    case ORDER_METHOD: 
-    console.log('hola', action.payload)
-    console.log('hola', action.order)
-      let array2 = state.products
-      
-      let orderedArray2 = action.payload === 'asc' && action.order === 'price' ?
-        array2.sort( (a,b) => a.price - b.price)
-      : 
-      action.payload === 'desc' && action.order === 'price' ? 
-      array2.sort( (a,b) => b.price - a.price) 
-      :
-      action.payload === 'asc' && action.order === 'name' ? 
-      array2.sort( (a,b) => a.name.localeCompare(b.name)) 
-      : 
-      action.payload === 'desc' && action.order === 'name' ? 
-      array2.sort( (a,b) => b.name.localeCompare(a.name)) 
-      :
-      array2
+
+    case ORDER_METHOD:
+      console.log("hola", action.payload);
+      console.log("hola", action.order);
+      let array2 = state.products;
+
+      let orderedArray2 =
+        action.payload === "asc" && action.order === "price"
+          ? array2.sort((a, b) => a.price - b.price)
+          : action.payload === "desc" && action.order === "price"
+          ? array2.sort((a, b) => b.price - a.price)
+          : action.payload === "asc" && action.order === "name"
+          ? array2.sort((a, b) => a.name.localeCompare(b.name))
+          : action.payload === "desc" && action.order === "name"
+          ? array2.sort((a, b) => b.name.localeCompare(a.name))
+          : array2;
 
       return {
         ...state,
-        products: orderedArray2
+        products: orderedArray2,
       };
     case GET_PRODUCT_BY_ID: {
       return {
@@ -100,94 +197,88 @@ function productsReducer(state = initialState, action) {
 
     case FILTER_BY_BRAND: {
       let productsByBrand = state.products;
-      
-     
-        let filterBrand =
+
+      let filterBrand =
         action.payload === "All"
           ? productsByBrand
-          : productsByBrand.filter((el) =>
-              el.Brand.name === action.payload
-            );
-        
-        return {
-          ...state,
-          products: filterBrand,
-        };
-      }
+          : productsByBrand.filter((el) => el.Brand.name === action.payload);
+
+      return {
+        ...state,
+        products: filterBrand,
+      };
+    }
 
     case SAVE_FILTERED_DATA_BY_BRAND: {
       let productsByBrand = state.products;
-      
-      
-        let filterBrand =
+
+      let filterBrand =
         action.payload === "All"
           ? productsByBrand
-          : productsByBrand.filter((el) =>
-              el.Brand.name !== action.payload
-            );
-            console.log(filterBrand)
-            console.log(state.filtros.length)
-        
-        return {
-          ...state,
-          dataFiltrada: {
-            ...state.dataFiltrada,
-            [action.payload]: filterBrand
-          }
-        };
-      }
+          : productsByBrand.filter((el) => el.Brand.name !== action.payload);
+      return {
+        ...state,
+        dataFiltrada: {
+          ...state.dataFiltrada,
+          [action.payload]: filterBrand,
+        },
+      };
+    }
 
     case FILTER_BY_CATEGORY: {
-       let productsByCategory = state.products;
-      
-        let filterCategory =
+      let productsByCategory = state.products;
+
+      let filterCategory =
         action.payload === "All"
           ? productsByCategory
           : productsByCategory.filter((el) =>
-              Object.values(el.Category).find(e => e === action.payload)
+              Object.values(el.Category).find((e) => e === action.payload)
             );
-        
-        return {
-          ...state,
-          products: filterCategory
-        };
-      }
+
+      return {
+        ...state,
+        products: filterCategory,
+      };
+    }
     case SAVE_FILTERED_DATA_BY_CATEGORY: {
-       let productsByCategory = state.products;
-      
-        let filterCategory =
+      let productsByCategory = state.products;
+
+      let filterCategory =
         action.payload === "All"
           ? productsByCategory
-          : productsByCategory.filter((el) =>
-              !Object.values(el.Category).find(e => e === action.payload)
+          : productsByCategory.filter(
+              (el) =>
+                !Object.values(el.Category).find((e) => e === action.payload)
             );
-        
-        return {
-          ...state,
-          dataFiltrada: {
-            ...state.dataFiltrada,
-            [action.payload]: filterCategory
-          }
-        };
-      }
+
+      return {
+        ...state,
+        dataFiltrada: {
+          ...state.dataFiltrada,
+          [action.payload]: filterCategory,
+        },
+      };
+    }
     case RESTORE_DATA: {
-      if(state.dataFiltrada.hasOwnProperty(action.payload)) {
-        let updatedData = state.products = state.products.concat(state.dataFiltrada[action.payload])
-        delete state.dataFiltrada[action.payload]
+      if (state.dataFiltrada.hasOwnProperty(action.payload)) {
+        let updatedData = (state.products = state.products.concat(
+          state.dataFiltrada[action.payload]
+        ));
+        delete state.dataFiltrada[action.payload];
         return {
           ...state,
-          products: updatedData
-        }
+          products: updatedData,
+        };
       } else {
         return {
-          ...state
-        }
+          ...state,
+        };
       }
     }
-    
+
     // case FILTER_BY_PRICE: {
     //    let productsByPrice = state.filtrados;
-      
+
     //   if(state.filtros.length === 0){// Si no hay filtros aplicados previamente
     //     let filterPrice =
     //     action.payload === "1"
@@ -216,16 +307,15 @@ function productsReducer(state = initialState, action) {
     //   }
     // }
     case FILTERS_RESET: {
-      
-        return {
-          ...state,
-          products: action.payload,
-          filtrados: action.payload,
-          filtros: [],
-          dataFiltrada: {}
-        };
-      }
-      
+      return {
+        ...state,
+        products: action.payload,
+        filtrados: action.payload,
+        filtros: [],
+        dataFiltrada: {},
+      };
+    }
+
     case CLEAN_DETAIL:
       return {
         ...state,
@@ -235,6 +325,11 @@ function productsReducer(state = initialState, action) {
       return {
         ...state,
         stockById: action.payload,
+      };
+    case GET_PRODUCT_STOCK_SIZE:
+      return {
+        ...state,
+        stockBySize: action.payload,
       };
     case GET_PRODUCT_NAME:
       return {
