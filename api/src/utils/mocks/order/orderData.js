@@ -91,6 +91,7 @@ const orderData = [
   },
   {
     UserId: 7,
+    status: "pending",
     products: [
       {
         productId: 61,
@@ -106,6 +107,7 @@ const orderData = [
   },
   {
     UserId: 8,
+    status: "processing",
     products: [
       {
         productId: 71,
@@ -121,6 +123,7 @@ const orderData = [
   },
   {
     UserId: 9,
+    status: "cancelled",
     products: [
       {
         productId: 81,
@@ -136,6 +139,7 @@ const orderData = [
   },
   {
     UserId: 10,
+    status: "completed",
     products: [
       {
         productId: 91,
