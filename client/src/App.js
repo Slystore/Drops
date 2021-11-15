@@ -50,7 +50,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={HomeView} />
-          
+
           <Route exact path="/products/bybrand/adidas" component={Adidas} />
           <Route exact path="/products/bybrand/balenciaga" component={Balenciaga} />
           <Route exact path="/products/bybrand/gucci" component={Gucci} />
@@ -97,6 +97,7 @@ function App() {
               <Route path="/admin/newsletter" component={Newsletter} />
               <Route path="/admin/appointment" component={Appointment} />
               <Route path="/admin/orders" component={Orders} />
+              <Route path="/admin/detail/:id" component={OrderDetail} />
             </div>
 
           </div>
@@ -108,7 +109,8 @@ function App() {
 
 
     </div>
-  )}
+  )
+}
 
 export default App;
 

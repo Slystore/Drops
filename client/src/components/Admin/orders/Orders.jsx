@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Grid, Button, } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Grid, Button, Select, } from "@mui/material";
 import { getOrders } from "../../../redux/orders/ordersAction";
 import { Link } from "react-router-dom";
+import { MdProductionQuantityLimits } from "react-icons/md"
+import { filterByStatus } from "../../../redux/orders/ordersAction";
+
+
 const Orders = () => {
     const dispatch = useDispatch()
 
@@ -12,8 +16,26 @@ const Orders = () => {
         dispatch(getOrders())
     }, [dispatch])
 
+
+    function handleFilterByStatus(e) {
+        e.preventDefault();
+        dispatch(filterByStatus(e.target.value))
+    }
+
     return (
         <Grid style={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
+            <div className="navButton">
+                <MdProductionQuantityLimits className='iconButtonNav ' />
+
+                <select className="selectProduct" style={{ backgroundColor: "#555", color: "white", marginRight: 15, width: 130, border: "transparent" }} onChange={(e) => { handleFilterByStatus(e) }}>
+                    <option value="All">Ordenes</option>
+                    <option value="inCart">En carrito</option>
+                    <option value="pending">Pendiente</option>
+                    <option value="processing">Procesando</option>
+                    <option value="cancelled">Cancelada</option>
+                    <option value="completed">Completa</option>
+                </select>
+            </div>
             <TableContainer>
                 <Table aria-label="simple table">
                     <TableHead >

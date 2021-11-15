@@ -1,6 +1,7 @@
 import axios from "axios";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDERS_BY_ID = "GET_ORDERS_BY_ID";
+export const FILTER_BY_STATUS = "FILTER_BY_STATUS";
 
 
 
@@ -23,6 +24,20 @@ export function getOrdersById(id) {
         })
     }
 
+}
+
+
+export function filterByStatus(payload) {
+    return async (dispatch) => {
+        try {
+            return await dispatch({
+                type: FILTER_BY_STATUS,
+                payload
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 export async function putOrder(id, payload) {
