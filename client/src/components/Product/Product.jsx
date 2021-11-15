@@ -50,7 +50,6 @@ export default function Product({
     let user = decoded ? decoded.user.id : null;
     if (user) {
       await fusionCart(id);
-      await dispatch(loadCart());
       await dispatch(
         addToCart(
           id,
@@ -61,6 +60,7 @@ export default function Product({
           Sizes
         )
       );
+      await dispatch(loadCart());
     }
     await dispatch(
       addToCart(

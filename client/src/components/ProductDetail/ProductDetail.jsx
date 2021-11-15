@@ -55,7 +55,6 @@ function ProductDetail(props) {
     if (user) {
       // console.log("entrouser",user)
       await fusionCart(id);
-      await loadCart();
       await dispatch(
         addToCart(
           id,
@@ -66,6 +65,7 @@ function ProductDetail(props) {
           productId.Sizes
         )
       );
+      await loadCart();
     }
     await dispatch(
       addToCart(

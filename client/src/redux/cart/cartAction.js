@@ -183,7 +183,7 @@ export const loadCart = (user) =>
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         cart = await axios.get("/orders/" + res.data.orderId)
       }
-//  console.log(cart.data, "tomiload")
+  console.log(cart.data, "tomiload")
       cart = cart?cart.data.Products.map(e => {
          console.log(cart.data, "talleslogueado")
         return {
