@@ -395,21 +395,51 @@ export default function Profile() {
             </div>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <div>
-           
-              <div>
-                {userOrder ? (
-                  userOrder.map((el) =>( 
-                  <div key={el.id}>
-                    <TableRow  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                      <TableCell align="left">{el.id}</TableCell>
+            <Grid
+              style={{
+                overflow: "scroll",
+                overflowX: "hidden",
+                height: "100vh",
+                width: "150vh",
+              }}
+            >
+              <TableContainer>
+                <Table aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Orders ID</TableCell>
+                      <TableCell align="left">User ID</TableCell>
+                      <TableCell align="left">Estado de envio</TableCell>
+                      <TableCell align="left">Estado de compra</TableCell>
+                      <TableCell align="left">Status</TableCell>
+                      <TableCell align="left">Rewiew</TableCell>
                     </TableRow>
-                  </div>))
-                ) : (
-                  <div>Aun no tienes compras </div>
-                )}
-              </div>
-            </div>
+                  </TableHead>
+                  <TableBody>
+                    {userOrder ? (
+                      userOrder.map((el) => (
+                        <TableRow
+                          key={el.id}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            {el.id}
+                          </TableCell>
+                          <TableCell align="left">{el.UserId}</TableCell>
+                          <TableCell align="left">{el.shippingState}</TableCell>
+                          <TableCell align="left">{el.paymentState}</TableCell>
+                          <TableCell align="left">{el.status}</TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <div>Aun no tienes compras </div>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
           </TabPanel>
         </Box>
       )}
