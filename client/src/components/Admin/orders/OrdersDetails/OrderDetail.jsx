@@ -24,7 +24,7 @@ const OrderDetail = (props) => {
     return (
         <div style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
             <div>
-                <ButtonFormUpdate />
+                <ButtonFormUpdate id={id} />
             </div>
 
             <div className='detailOrderBox'>

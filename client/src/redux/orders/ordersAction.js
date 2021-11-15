@@ -26,6 +26,7 @@ export function getOrdersById(id) {
 }
 
 export async function putOrder(id, payload) {
+    console.log("data", id, payload)
     const { data } = await axios.put(`orders/updateOrder/${id}`, payload)
     console.log("data", data)
     return data
