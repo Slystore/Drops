@@ -23,10 +23,12 @@ module.exports = (sequelize) => {
             defaultValue: false
         },
         Discounts: {
-            type: DataTypes.ENUM,
-            values: ['false', '10', '15', '20'],
-            allowNull: false,
-            defaultValue: 'false'
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        discountDay: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }, {timestamps: false})
 }

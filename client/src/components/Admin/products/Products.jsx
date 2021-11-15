@@ -23,7 +23,7 @@ import { getCategories } from "../../../redux/category/categoriesActions";
 import { getSizes } from "../../../redux/sizes/sizeActions";
 import Paginado from "../../Catalogue/Paginado";
 import swal from "sweetalert";
-import { PutProduct } from "../../../redux/products/productsAction";
+import { PutProduct, updateDiscountById, unSubscribeDiscountById } from "../../../redux/products/productsAction";
 
 
 const Products = () => {
@@ -53,22 +53,39 @@ const Products = () => {
   }, [dispatch]);
 
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   const handleOpen = () => setOpen(true);
+  const handleOpen2 = () => setOpen2(true);
 
   const handleClose = () => setOpen(false);
+  const handleClose2 = () => setOpen2(false);
 
   const seleccionarProduct = (elemento, caso) => {
     setInput({
       id: elemento.id,
     });
-    //console.log("esta es mi elemento dsp del set ", elemento.id);
     if (caso === "Editar") {
       handleOpen();
     } else {
       handleClose();
     }
   };
+
+  const promocionarProduct = (elemento) => {
+    
+      setInput2({
+        ...input2,
+        id: elemento.id,
+        porcentage2: elemento.Discounts !== null ? elemento.Discounts : ''
+      });
+      setInput3({
+        ...input3,
+        id: elemento.id,
+      });
+    
+    handleOpen2()
+  }
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -80,6 +97,7 @@ const Products = () => {
     setCurrPage(pagNumber);
   };
 
+  // const [id, setId] = useState(0);
   const [talle, setTalle] = useState(0);
   const [talleUi, setTalleUi] = useState([]);
   const [cantidad, setCantidad] = useState(0);
@@ -94,6 +112,53 @@ const Products = () => {
     categoryId: "",
     stock: [],
   });
+  const [input2, setInput2] = useState({
+    id: "",
+    porcentage: 0,
+    porcentage2: 0
+  });
+
+  const [input3, setInput3] = useState({
+    id: "",
+    quantity: 0,
+    porcentage: 0
+  });
+
+  const handleChangeForm2 = (e) => {
+    e.preventDefault()
+    setInput2({
+      ...input2,
+      porcentage: parseInt(e.target.value)
+    })
+  }
+  
+  const handleChangeForm3 = (e) => {
+    e.preventDefault()
+    setInput3({
+      ...input3,
+      [e.target.name]: parseInt(e.target.value)
+    })
+  }
+
+  const handleSubmit2 = (e) => {
+    e.preventDefault()
+    setInput(input2 => {
+      return {
+        id: input2.id,
+        porcentage: input2.porcentage
+      }
+    })
+    dispatch(updateDiscountById(input2))
+  }
+
+  const handleUndo = (e) => {
+    e.preventDefault()
+    dispatch(unSubscribeDiscountById(input2.id))
+  }
+
+  const handleSubmit3 = (e) => {
+    e.preventDefault()
+  }
 
   const handleChangeForm = (e) => {
     if (e.target.name === "price") {
@@ -233,6 +298,7 @@ const Products = () => {
               <TableCell align="left">Price</TableCell>
               <TableCell align="left">Estado</TableCell>
               <TableCell align="left">Actualizar</TableCell>
+              <TableCell align="left">Promociones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -258,6 +324,15 @@ const Products = () => {
                         }}
                       >
                         Editar
+                      </Button>
+                    </TableCell>
+                    <TableCell align="left">
+                      <Button
+                        variant="contained"
+                        style={{ backgroundColor: "#555" }}
+                        onClick={() => promocionarProduct(el)}
+                        >
+                        Promocionar
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -442,16 +517,136 @@ const Products = () => {
           </div>
         </Box>
       </Modal>
-      <div style={{ height: 60, marginTop: 10, display: "flex", justifyContent: "center", background: "rgb(246, 248, 244)" }}>
-        <Paginado
-          style={{ margin: "0 auto" }}
-          cardsxPage={cardsxPage}
-          products={shoes.length}
-          paginado={paginado}
-        />
-      </div>
+
+
+
+      <Modal
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="boxModal">
+          <div className="formModal">
+
+            <form onSubmit={(e) => handleSubmit2(e)}>
+              <div className="formProduct">
+                <div className="firstBoxProduct">
+                  <div className="boxInputProduct">
+                    <label> Siempre
+                    <input
+                      className="inputProduct"
+                      type={"checkbox"}
+                      name="id"
+                      value={input2.id}
+                      
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxInputProduct">
+                    <label className="titleProduct"> porcentaje
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="porcentage"
+                      onChange={handleChangeForm2}
+                      autoComplete="off"
+                    />
+                    </label>
+                    <label className="titleProduct"> porcentaje2
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="porcentage"
+                      autoComplete="off"
+                      value={input2.porcentage2}
+                    />
+                    </label>
+                  </div>
+                  <div className="boxBtnCreate">
+                  <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit2}>
+                    {" "}
+                    Guardar
+                  </button>
+                    {
+                      input2.porcentage2 ? <button className="btnCreate" type="submit" id="submit" onClick={handleUndo}> Deshacer </button>
+                      :
+                      null
+                    }
+
+                </div>
+                </div>
+                </div>
+              </form>
+
+            <form onSubmit={(e) => handleSubmit3(e)}>
+              <div className="formProduct">
+                <div className="firstBoxProduct">
+                  <div className="boxInputProduct">
+                    <label> Por cantidad
+                    <input
+                      className="inputProduct"
+                      type={"checkbox"}
+                      name="id"
+                      value={input3.id}
+                      
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxInputProduct">
+                    <label className="titleProduct"> Cantidad
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="quantity"
+                      min={1}
+                      max={10}
+                      onChange={handleChangeForm3}
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+                  <div className="boxInputProduct">
+                    <label className="titleProduct"> porcentaje
+                    <input
+                      className="inputProduct"
+                      type={"number"}
+                      name="porcentage"
+                      min={1}
+                      max={100}
+                      onChange={handleChangeForm3}
+                      autoComplete="off"
+                    />
+                    </label>
+                  </div>
+  
+              <div className="boxBtnCreate">
+                <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit3}>
+                  {" "}
+                  Guardar
+                </button>
+              </div>
+              </div>
+              </div>
+            </form>
+          </div>
+        </Box>
+      </Modal>
+
+
+
+      <Paginado
+        style={{ margin: "0 auto" }}
+        cardsxPage={cardsxPage}
+        products={shoes.length}
+        paginado={paginado}
+      />
     </Grid>
   );
 };
 
 export default Products;
+
+

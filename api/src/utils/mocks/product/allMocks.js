@@ -8,9 +8,7 @@ const allMocks = [
     price: 105.25,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 1,
-    onSale: true,
-    Discounts: '15'
+    BrandId: 1
   },
   {
     name: "Air Force 1 Gore Tex High White DS",
@@ -83,9 +81,7 @@ const allMocks = [
     price: 105.25,
     status: "disponible",
     CategoryId: 2,
-    BrandId: 1,
-    onSale: true,
-    Discounts: '20'
+    BrandId: 1
   },
   {
     name: "Nike Downshifter 11",
@@ -151,9 +147,7 @@ const allMocks = [
     price: 800,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 2,
-    onSale: true,
-    Discounts: '20'
+    BrandId: 2
   },
   {
     name: "Jordan 1 Retro High J Balvin",
@@ -198,9 +192,7 @@ const allMocks = [
     price: 800,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 2,
-    onSale: true,
-    Discounts: '15'
+    BrandId: 2
   },
   {
     name: "Jordan 3 UNC",
@@ -256,9 +248,7 @@ const allMocks = [
     price: 335.35,
     status: "disponible",
     CategoryId: 1,
-    BrandId: 3,
-    onSale: true,
-    Discounts: '20'
+    BrandId: 3
   },
   {
     name: "Off-white Drowning Man Logo Slides",

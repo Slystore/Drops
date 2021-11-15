@@ -12,6 +12,7 @@ const productSizeModel = require("./models/ProductSize.js");
 const sizeModel = require("./models/Size.js");
 const brandModel = require("./models/Brand.js");
 const categoryModel = require("./models/Category.js");
+const discountsModel = require("./models/Discounts");
 
 const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } = process.env;
 
@@ -57,6 +58,7 @@ ordersModel(sequelize);
 orderDetailModel(sequelize);
 
 wishListsModel(sequelize);
+discountsModel(sequelize);
 
 const {
   Product,
