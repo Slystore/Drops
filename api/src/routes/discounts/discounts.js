@@ -9,7 +9,7 @@ const router = Router()
 router.get('/', getDiscounts);
 router.post('/create', postDiscount);
 router.put('/discount', putForDiscounts);
-router.put('/discount/:id', putDiscountsById);
-router.put('/:id/discountOff', discountUnsubscribe);
+// router.put('/discount/:id', putDiscountsById);
+// router.put('/:id/discountOff', discountUnsubscribe);
 
 module.exports = router

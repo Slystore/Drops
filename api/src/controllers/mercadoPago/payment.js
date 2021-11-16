@@ -1,4 +1,4 @@
-const { Orders, ProductSize, OrderDetail, Users } = require("../../db");
+const { Orders, ProductSize, OrderDetail, Users, Product } = require("../../db");
 const mail = require('../../config/smtpMail')
 
 const mercadopago = require("mercadopago");
@@ -26,7 +26,7 @@ async function payment(req, res, next) {
     processing_mode, //aggregator
     merchant_account_id, //null
   } = req.query;
-  console.log(req.query);
+  console.log('esta es la query!!!', req.query);
   console.log('este es el collection id', collection_id);
   //Obtenemmos el mail del user
   // const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
@@ -37,11 +37,44 @@ async function payment(req, res, next) {
         attributes: ["mail", "name", "surname"],
       },
       { model: OrderDetail },
+      { model: Product },
     ],
+    raw: true,
+    // nest: true
   });
-  console.log("ordermOrderDetail", orderm.OrderDetails);
+
+  // const hola = orderm.get({plain: true})
+
+  console.log("ESTA ES TODA LA DATA!!!!--------------------", orderm);
+  // console.log("hola--------------------", hola);
+  // console.log("ESTA ES TODA LA DATA!!!!--------------------", orderm.get({plain: true}));
+  console.log("Direcciones--------------------", orderm.shippingAddress);
+  console.log("Direcciones--------------------", orderm.shippingLocated);
+  console.log("Direcciones--------------------", orderm.shippingCity);
+  console.log("USUARIO--------------------", orderm.User.mail);
+  console.log("USUARIO--------------------", orderm.User.name);
+  console.log("USUARIO--------------------", orderm.User.surname);
+  console.log("Producto--------------------", orderm.Products.name);
+  console.log("Producto--------------------", orderm.Products.image);
+  console.log("Producto--------------------", orderm.Products.price);
+  // console.log("Producto--------------------", orderm.Products.sizes);
+
+  // // console.log("ordermOrderDetail", orderm.OrderDetails);
+  // console.log("PRODUCTOS-------------------------------", orderm.Products.toJSON());
+  // console.log("USUARIO--------------------", orderm.User.Users.mail);
+  // console.log("USUARIO--------------------", orderm.User.Users.name);
+  // console.log("USUARIO--------------------", orderm.User.Users.surname);
+  // console.log("Producto--------------------", orderm.Products.priceDiscount);
+  // console.log("Producto--------------------", orderm.Products.Product);
+  // console.log("Producto--------------------", orderm.Products.Product.name);
+  // console.log("Producto--------------------", orderm.Products.Product.image);
+  // console.log("Producto--------------------", orderm.Products.Product.priceDiscount);
+  // console.log("Producto--------------------", orderm.Products.Product.price);
   Orders.findByPk(external_reference)
     .then((order) => {
+      console.log(order)
+      console.log(payment_id)
+      console.log(status)
       order.payment_id = payment_id;
       order.paymentState = status;
       // console.log('order', order)
@@ -61,9 +94,9 @@ async function payment(req, res, next) {
             );
           });
         //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
-        mail()
-          .then((result) => console.log('Email sent...', result))
-          .catch((error) => console.log(error.message));
+        // mail()
+        //   .then((result) => console.log('Email sent...', result))
+        //   .catch((error) => console.log(error.message));
           order.status = "completed";
         } else {
           order.status = "completed";

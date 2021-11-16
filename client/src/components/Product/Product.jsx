@@ -54,7 +54,9 @@ export default function Product({
         addToCart(
           id,
           product?.quantity ? product.quantity + 1 : 1,
-          price,
+          onSale === true ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
+          : price,
+          // price,
           name,
           image,
           Sizes
@@ -66,7 +68,9 @@ export default function Product({
       addToCart(
         id,
         product?.quantity ? product.quantity + 1 : 1,
-        price,
+        onSale === true ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
+          : price,
+        // price,
         name,
         image,
         Sizes

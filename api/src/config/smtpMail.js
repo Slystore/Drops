@@ -1,19 +1,23 @@
 
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+const OAuth2 = google.auth.OAuth2
 
-const { CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
+// console.log(CLIENT_ID)
+// console.log(CLIENT_SECRET)
+// console.log(REDIRECT_URI)
+// console.log(REFRESH_TOKEN)
 
-  const oAuth2Client = new google.auth.OAuth2(
+  const OAuth2Client = new OAuth2(
     CLIENT_ID,
-    CLEINT_SECRET,
-    REDIRECT_URI
+    CLIENT_SECRET
   );
-  oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+  OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
   
-  async function sendMail() {
+  async function sendMail(name, recipient) {
     try {
-      const accessToken = await oAuth2Client.getAccessToken();
+      const accessToken = OAuth2Client.getAccessToken();
   
       const transport = nodemailer.createTransport({
         service: 'gmail',
@@ -21,25 +25,35 @@ const { CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
           type: 'OAuth2',
           user: 'dropshoes.info@gmail.com',
           clientId: CLIENT_ID,
-          clientSecret: CLEINT_SECRET,
+          clientSecret: CLIENT_SECRET,
           refreshToken: REFRESH_TOKEN,
           accessToken: accessToken,
         },
+        tls: {
+            rejectUnauthorized: false
+        }
       });
   
       const mailOptions = {
         from: 'DROPS SHOES <dropshoes.info@gmail.com>',
-        to: 'soygentebien@hotmail.com',
+        to: recipient,
         subject: 'Hello from gmail using API',
-        text: 'Hello from gmail email using API',
-        html: '<h1>Hello from gmail email using API</h1>',
+        html: getHtmlMessage(name),
       };
   
-      const result = await transport.sendMail(mailOptions);
-      return result;
-    } catch (error) {
-      return error;
-    }
-  }
+     transport.sendMail(mailOptions, (error, result) => {
+         if(error) console.log('Error', error)
+         else console.log('Success', result)
+         transpport.close()
+     });
+     
+  } catch(error){}
+}
 
+const getHtmlMessage = (name) => {
+    return `
+    <h3> ${name} </h3>
+    
+    `
+}
   module.exports = sendMail

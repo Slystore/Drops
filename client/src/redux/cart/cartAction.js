@@ -21,6 +21,7 @@ if(localStorage.getItem('token')){
 const decoded = x?jwt_decode(x): null;
 // const decoded = 4
 export const addToCart = (id, quantity, price, name, image, Sizes) => async (dispatch) => {
+  console.log(id, quantity, price, name, image, Sizes)
   let product = {
     id,
     quantity,
@@ -189,7 +190,7 @@ export const loadCart = (user) =>
         return {
           id: e.id,
           quantity: e.OrderDetail.quantity,
-          price: e.price,
+          price: e.OrderDetail.price,
           name: e.name,
           image: e.image,
           Sizes: cart.data.products[0].Sizes,

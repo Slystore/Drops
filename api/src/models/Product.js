@@ -17,6 +17,7 @@ module.exports = (sequelize) => {
         priceDiscount:{
             type: DataTypes.VIRTUAL,
             get(){
+                // if( (this.getDataValue('Discounts') !== null )
                 return parseFloat( (this.getDataValue('price') - (this.getDataValue('Discounts') / 100) * this.getDataValue('price')).toPrecision(4));
             }
         },
