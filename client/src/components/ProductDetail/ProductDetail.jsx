@@ -14,10 +14,10 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import ProductReview from "./Reviews";
 import {
-  addToCartTomi,
-  fusionCartTomi,
-  loadCartTomi,
-} from "../../redux/cartTomi/cartActionTomi";
+  addToCart,
+  fusionCart,
+  loadCart,
+} from "../../redux/cart/cartAction";
 import "./ProductDetail.css";
 
 
@@ -54,10 +54,9 @@ function ProductDetail(props) {
     let user = decoded ? decoded.user.id : null;
     if (user) {
       // console.log("entrouser",user)
-      await fusionCartTomi(id);
-      await loadCartTomi();
+      await fusionCart(id);
       await dispatch(
-        addToCartTomi(
+        addToCart(
           id,
           1,
           productId.price,
@@ -66,9 +65,10 @@ function ProductDetail(props) {
           productId.Sizes
         )
       );
+      await loadCart();
     }
     await dispatch(
-      addToCartTomi(
+      addToCart(
         id,
         1,
         productId.price,

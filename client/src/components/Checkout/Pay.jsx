@@ -8,8 +8,8 @@ import { getToken } from "../../redux/users/userActions";
 
 function Pay() {
   const [datos, setDatos] = useState("");
-  const { total } = useSelector((state) => state.cartReducersTomi);
-  const { items } = useSelector((state) => state.cartReducersTomi);
+  const { total } = useSelector((state) => state.cartReducers);
+  const { items } = useSelector((state) => state.cartReducers);
   let x;
   if (localStorage.getItem("token")) {
     x = getToken();
@@ -23,7 +23,7 @@ function Pay() {
         .get("/mercadopago/" + userId)
         .then((data) => {
           setDatos(data.data);
-          console.log("numero de orden:", data);
+          // console.log("numero de orden:", data);
         })
         .catch((err) => console.error(err));
     }

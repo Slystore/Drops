@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 import { getToken } from '../users/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const ADD_TO_CART_TOMI = "ADD_TO_CART_TOMI";
+export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const CART_RESET = "CART_RESET";
 export const CHANGE_PRODUCT_QTY = "CHANGE_PRODUCT_QTY";
@@ -20,7 +20,7 @@ if(localStorage.getItem('token')){
      x = getToken();}
 const decoded = x?jwt_decode(x): null;
 // const decoded = 4
-export const addToCartTomi = (id, quantity, price, name, image, Sizes) => async (dispatch) => {
+export const addToCart = (id, quantity, price, name, image, Sizes) => async (dispatch) => {
   let product = {
     id,
     quantity,
@@ -33,7 +33,7 @@ export const addToCartTomi = (id, quantity, price, name, image, Sizes) => async 
   let orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   try {
-     console.log(user3, Sizes,"tomiusersize")
+    //  console.log(user3, Sizes,"tomiusersize")
     if (user3) {
       let info = { userId: user3, products: [{ productId: id, quantity, price, name,image, Sizes,SizeId:0 }] }
 // console.log(info, orderId,"addlog")
@@ -72,7 +72,7 @@ export const addToCartTomi = (id, quantity, price, name, image, Sizes) => async 
       }
 
       dispatch({
-        type: ADD_TO_CART_TOMI,
+        type: ADD_TO_CART,
         payload: JSON.parse(localStorage.getItem("cart")),
       });
 
@@ -83,7 +83,7 @@ export const addToCartTomi = (id, quantity, price, name, image, Sizes) => async 
   }
 };
 
-export const removeFromCartTomi = (id) => async (dispatch, getState) => {
+export const removeFromCart = (id) => async (dispatch, getState) => {
 
   try {
     let user3 = decoded?decoded.user.id: null
@@ -92,7 +92,7 @@ export const removeFromCartTomi = (id) => async (dispatch, getState) => {
     if (user3) {
       // console.log(user3, id, "tomideletefromcart")
       let info = { userId: user3, productId: id }// deleteOrder/:id ?como va
-      console.log(info)
+      // console.log(info)
      await axios.delete("/orders/deleteOrder/product/" + orderId, { data: { ...info } } )
     }
     else {
@@ -112,7 +112,7 @@ export const removeFromCartTomi = (id) => async (dispatch, getState) => {
   //sweetAlert("Eliminado", "success", "OK", 1000);
 };
 
-export const cartResetTomi = () => async (dispatch) => {
+export const cartReset = () => async (dispatch) => {
 
   let user4 = decoded?decoded.user.id: null
   let orderId = JSON.parse(localStorage.getItem("orderId"));
@@ -138,11 +138,11 @@ export const cartResetTomi = () => async (dispatch) => {
 };
 
 
-export const changeProductQuantityTomi =
+export const changeProductQuantity =
   (id, quantity, price, name, image,Sizes, SizeId) => async (dispatch, getState) => {
 
     let user5 = decoded?decoded.user.id: null
-console.log(SizeId.SizeId,id,"SizeIdtomi")
+// console.log(SizeId.SizeId,id,"SizeIdtomi")
     if (user5) {
       let orderId = JSON.parse(localStorage.getItem("orderId"));
       let info = {userId: user5, products: [{ productId: id, quantity, price, name,image, Sizes,SizeId:SizeId.SizeId }] }
@@ -168,7 +168,7 @@ console.log(SizeId.SizeId,id,"SizeIdtomi")
     }
   };
 
-export const loadCartTomi = (user) =>
+export const loadCart = (user) =>
   async (dispatch) => {
   
     let user1 = decoded?decoded.user.id: null
@@ -183,9 +183,9 @@ export const loadCartTomi = (user) =>
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         cart = await axios.get("/orders/" + res.data.orderId)
       }
-//  console.log(cart.data, "tomiload")
+  console.log(cart.data, "tomiload")
       cart = cart?cart.data.Products.map(e => {
-        console.log(cart.data, "talleslogueado")
+         console.log(cart.data, "talleslogueado")
         return {
           id: e.id,
           quantity: e.OrderDetail.quantity,
@@ -193,7 +193,7 @@ export const loadCartTomi = (user) =>
           name: e.name,
           image: e.image,
           Sizes: cart.data.products[0].Sizes,
-          SizeId:0
+          SizeId:e.OrderDetail.sizeId
         }
       }):[];
 
@@ -213,7 +213,7 @@ export const loadCartTomi = (user) =>
     }
   };
 
-export const checkoutTomi = () => async (dispatch, getState) => {
+export const checkout = () => async (dispatch, getState) => {
 
   const discounts = useSelector(state => state.discountsReducer)
   console.log(discounts)
@@ -226,12 +226,12 @@ export const checkoutTomi = () => async (dispatch, getState) => {
   }
 };
 
-export const updateTotalTomi = () => {
+export const updateTotal = () => {
   return { type: UPDATE_TOTAL };
 };
 
 
-export const fusionCartTomi = async (id) => {
+export const fusionCart = async (id) => {
   try {
     let user2 = decoded?decoded.user.id: null
     let products = JSON.parse(localStorage.getItem("cart"));

@@ -76,14 +76,13 @@ function NavBar() {
     }
   }, []);
 
-  console.log("userState",loged.userState)
-  console.log("userAdmin",loged.userAdmin)
+  // console.log("userState",loged.userState)
+  // console.log("userAdmin",loged.userAdmin)
 
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const { cart } = useSelector((state) => state.cartReducer);
-  const {items} = useSelector(state => state.cartReducersTomi)
+  const {items} = useSelector(state => state.cartReducers)
   
   function handleInputChange(e) {
     e.preventDefault();
@@ -169,7 +168,7 @@ function NavBar() {
           </div>
           <Link to={'/shoppingCart'} >
           <div className="Tool spinIn">
-             <Badge badgeContent={items? items.length: cart.length} color="error" sx={{color:'black'}}>
+             <Badge badgeContent={items? items.length: 0} color="error" sx={{color:'black'}}>
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
           </div></Link>

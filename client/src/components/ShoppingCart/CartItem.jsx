@@ -5,11 +5,11 @@ import { getToken } from "./../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 import Divider from "@mui/material/Divider";
 import {
-  changeProductQuantityTomi,
-  loadCartTomi,
-  removeFromCartTomi,
+  changeProductQuantity,
+  loadCart,
+  removeFromCart,
   SelectCartSize,
-} from "../../redux/cartTomi/cartActionTomi";
+} from "../../redux/cart/cartAction";
 import "./CartItem.css";
 
 export default function CartItem({ image, price, id, quantity, name, Sizes }) {
@@ -46,7 +46,7 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
     if (sizeId.SizeId > 0) {
       if (value <= stockBySize[0].stock) {
         await dispatch(
-          changeProductQuantityTomi(
+          changeProductQuantity(
             id,
             Number(value),
             price,
@@ -56,7 +56,7 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
             sizeId
           )
         );
-        await dispatch(loadCartTomi());
+        await dispatch(loadCart());
       } else {
         alert(`No hay suficiente stock, solo ${stockState} pares disponibles `);
       }
@@ -66,7 +66,7 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
   };
 
   async function handleDeleteItemCart() {
-    await dispatch(removeFromCartTomi(id));
+    await dispatch(removeFromCart(id));
     let x;
     if (localStorage.getItem("token")) {
       x = getToken();
@@ -74,7 +74,7 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
     const decoded = x ? jwt_decode(x) : null;
     let user = decoded ? decoded.user.id : null;
     if (user) {
-      await dispatch(loadCartTomi());
+      await dispatch(loadCart());
     }
   }
 
