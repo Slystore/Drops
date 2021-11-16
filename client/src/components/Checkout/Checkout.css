@@ -1,20 +1,209 @@
 .CheckoutContainer{
-    width: 70%;
-    height: 600px;
+    width: 1000px;
+    height: auto;
     margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2)
+}
+
+.CheckoutContainerTitle{
+    width: 900px;
+    height: 70px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* border: thin dotted #f00; */
+}
+
+.CheckoutLogo{
+    width: 30%;
+    /* border: thin dotted #f00; */
+}
+
+.CheckoutLogo img{
+    width: 70%;
+}
+
+.CheckoutTitle{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: thin dotted #0ff; */
+}
+
+.CheckoutTitle h4{
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.CheckoutInfoShop{
+    width: 900px;
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+    /* border: thin dotted #00f; */
+}
+
+.CheckoutInfoProduct{
+    width: 60%;
+    height: auto;
+    /* overflow-y:  scroll;
+    overflow-x: hidden; */
+    /* border: thin dotted #00f; */
+}
+
+.CheckoutInfoUser{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around ;
+    /* border: thin dotted #00f; */
+}
+
+.UserPay{
+    width: 100%;
+    height: 10%;
+    /* border: thin dotted #0ff; */
+}
+
+.listShoppingCart{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    /* border: thin dotted #0ff; */
+}
+
+.ImgCheckout{
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+    /* border: thin dotted #0ff; */
+}
+
+.ImgCheckout img{
+    width: 100%;
+    position: relative;
+    bottom: 20px;
+}
+
+.DetailCheckout{
+    width: 75%;
+    height: 100%;
+}
+
+.DetailCheckoutName{
+    width: 100%;
+    height: 30px;
+    font-size: 1.2vw;
+    letter-spacing: -1px;
+    font-weight: bold;
+    color: #00000050;
+}
+
+.DetailCheckoutPrice{
+    width: 100%;
+    height: 40px;
+    font-size: 1.2vw;
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.DetailCheckoutQuantity{
+    width: 100%;
+    height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    border: thin dotted #0ff;
+    justify-content: center;
 }
 
-.listShoppingCart li{
-    width: 300px;
-    height: 35px;
-    border: thin dotted #0ff;
-
+.DetailCheckoutQuantity i{
+    font-size: 1vw;
+    font-weight: bold;
 }
+
+.DetailCheckoutQuantity h3{
+    color: #f00;
+    font-size: 1.1vw;
+    padding: 0 8px;
+    margin-top: 8px;
+}
+
+.DataUserCheckout{
+    width: 100%;
+    height: 90%;
+    /* border: thin dotted #0ff; */
+}
+
+.UserPay{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: thin dotted #0ff; */
+}
+
+.LinkMercadoPago{
+    width: 100px;
+    height: 30px;
+    border: none;
+    margin: 0 5px;
+    padding: 0 15px;
+    border-radius: 5px;
+    line-height: 25px;
+    font-size: 0.8vw;
+    color: #fff;
+    background-color: rgb(49, 102, 202);
+}
+
+.LinkMercadoPago:hover{
+    color: #fff;
+    background-color: rgb(31, 73, 153);
+}
+
+.DetailCheckoutTotal{
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.DataUserCheckoutRowTitle h5{
+    font-size: 1.2vw;
+}
+
+.DataUserCheckoutRow{
+    padding: 3px;
+    font-size: 0.9vw;
+}
+
+.DataUserName h5{
+    font-size: 1.2vw;
+    margin-bottom: 10px;
+}
+
+.DataUserDivider{
+    width: 70%;
+    height: 20px;
+    padding-top: 10px;
+    margin: 0 auto;
+}
+
 
 
 /******************  SHIPMENTFORM **************************/
@@ -43,7 +232,7 @@
         padding: 15px;
         border-radius: 10px;
         background-color: #fff;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2)
         /* border: thin solid #f0f; */
     }
 
