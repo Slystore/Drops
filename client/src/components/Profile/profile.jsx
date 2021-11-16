@@ -16,12 +16,24 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
+
 import Button from "@mui/material/Button";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Product from "../Product/Product";
 import "./profile.css";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Grid,
+} from "@mui/material";
+
 import { getProducts } from "../../redux/products/productsAction";
+import { getUserOrderId } from "../../redux/orders/ordersAction";
 const style = {
   position: "absolute",
   top: "50%",
@@ -80,8 +92,7 @@ export default function Profile() {
     phone: "",
     adress: "",
   });
-
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [user, setUser] = React.useState({
@@ -105,10 +116,12 @@ export default function Profile() {
       console.log("esta es mi data de google", userDecoded);
       if (userDecoded.user) {
         dispatch(userWishListGet(userDecoded.user.id));
+        dispatch(getUserOrderId(userDecoded.user.id));
         dispatch(getUserId(userDecoded.user.id ? userDecoded.user.id : ""));
       } else {
         const gId = localStorage.getItem("gId");
         dispatch(userWishListGet(gId));
+        dispatch(getUserOrderId(gId));
         dispatch(getUserId(gId));
         setUser({
           userData: userDecoded,
@@ -117,6 +130,7 @@ export default function Profile() {
       }
     }
   }, [dispatch]);
+  let { userOrder } = useSelector((state) => state.ordersReducer);
   let { products } = useSelector((state) => state.productReducer);
   console.log("estos son mis users", usersId ? usersId.user : "");
   const handleFormChange = (e) => {
@@ -135,7 +149,7 @@ export default function Profile() {
   const handleOpenEdit = () => setEdit(true);
   const handleDeleteWish = async (id, productId) => {
     await userDeleteWish(id, productId);
-    window.location.replace("")
+    window.location.replace("");
   };
 
   let wishFilt = wishList.map((el) => el.ProductId);
@@ -165,11 +179,12 @@ export default function Profile() {
             aria-label="Vertical tabs example"
             sx={{ borderRight: 1, borderColor: "divider" }}
           >
-            <Tab label="Profile" {...a11yProps(0)} />
-            <Tab label="Configuration" {...a11yProps(1)} />
-            <Tab label="WishList" {...a11yProps(2)} />
+            <Tab label="Perfil" {...a11yProps(0)} />
+            <Tab label="Configuracion" {...a11yProps(1)} />
+            <Tab label=" Mis deseados" {...a11yProps(2)} />
+            <Tab label="Mis compras" {...a11yProps(3)} />
             <a href="/" className="home">
-              <Tab label="Home" {...a11yProps(3)} />
+              <Tab label="Home" {...a11yProps(4)} />
             </a>
           </Tabs>
           <TabPanel value={value} index={0}>
@@ -377,6 +392,54 @@ export default function Profile() {
                 <div>Todavia no agregaste nada :D</div>
               )}
             </div>
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            <Grid
+              style={{
+                overflow: "scroll",
+                overflowX: "hidden",
+                height: "100vh",
+                width: "150vh",
+              }}
+            >
+              <TableContainer>
+                <Table aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Orders ID</TableCell>
+                      <TableCell align="left">User ID</TableCell>
+                      <TableCell align="left">Estado de envio</TableCell>
+                      <TableCell align="left">Estado de compra</TableCell>
+                      <TableCell align="left">Status</TableCell>
+                      <TableCell align="left">Rewiew</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {userOrder ? (
+                      userOrder.map((el) => (
+                        <TableRow
+                          key={el.id}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            {el.id}
+                          </TableCell>
+                          <TableCell align="left">{el.UserId}</TableCell>
+                          <TableCell align="left">{el.shippingState}</TableCell>
+                          <TableCell align="left">{el.paymentState}</TableCell>
+                          <TableCell align="left">{el.status}</TableCell>
+                          {el.status === "completed"?<TableCell align ="left"><button>Deja una reseña</button></TableCell>:<button disabled>Deja una reseña</button>}
+                        </TableRow>
+                      ))
+                    ) : (
+                      <div>Aun no tienes compras </div>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
           </TabPanel>
         </Box>
       )}
