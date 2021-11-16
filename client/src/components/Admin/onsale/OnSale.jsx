@@ -122,13 +122,13 @@ const OnSale = () => {
                     <label> semanal <input type='checkbox' name='week' onClick={handleInput1}/> </label>
                     <select name='day' onChange={handleInput1}>
                          <option > Dia </option>
-                         <option value='Lunes'> lunes</option>
-                         <option value='Martes' >  martes</option>
-                         <option value='Miércoles' > miércoles </option>
-                         <option value='Jueves' > jueves </option>
-                         <option value='Viernes' > viernes </option>
-                         <option value='Sábado' > sábado </option>
-                         <option value='Domingo' >  domingo </option>
+                         <option value='lunes'> lunes</option>
+                         <option value='martes' >  martes</option>
+                         <option value='miércoles' > miércoles </option>
+                         <option value='jueves' > jueves </option>
+                         <option value='viernes' > viernes </option>
+                         <option value='sábado' > sábado </option>
+                         <option value='domingo' >  domingo </option>
                     </select>
                    <label> Descuento <input type='number' name='discount' min={1} max={100} onChange={handleInput1}/> </label>
                    <label> Marca <input type='radio' name='descuento' id='marca'  onClick={handleRadioInput}/> </label>

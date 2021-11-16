@@ -14,6 +14,13 @@ module.exports = (sequelize) => {
         price:{
             type: DataTypes.DECIMAL(10,2),
         },
+        priceDiscount:{
+            type: DataTypes.VIRTUAL,
+            get(){
+                return parseFloat( (this.getDataValue('price') - (this.getDataValue('Discounts') / 100) * this.getDataValue('price')).toPrecision(4));
+            }
+        },
+
         status:{
             type: DataTypes.ENUM('disponible', 'no disponible'),
         },
