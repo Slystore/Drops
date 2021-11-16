@@ -92,8 +92,7 @@ export default function Profile() {
     phone: "",
     adress: "",
   });
-
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [user, setUser] = React.useState({
@@ -431,6 +430,7 @@ export default function Profile() {
                           <TableCell align="left">{el.shippingState}</TableCell>
                           <TableCell align="left">{el.paymentState}</TableCell>
                           <TableCell align="left">{el.status}</TableCell>
+                          {el.status === "completed"?<TableCell align ="left"><button>Deja una reseña</button></TableCell>:<button disabled>Deja una reseña</button>}
                         </TableRow>
                       ))
                     ) : (
