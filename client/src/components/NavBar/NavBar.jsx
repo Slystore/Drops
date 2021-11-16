@@ -139,10 +139,10 @@ function NavBar() {
               <a href="/catalogue">catálogo</a>
             </li>
             <li className="Menu swoopInTop">
-              <a href="#Nosotros">nosotros</a>
+              <a href="/#Nosotros">nosotros</a>
             </li>
             <li className="Menu swoopInTop">
-              <a href="#Location" className="">
+              <a href="/#Location" className="">
                 contacto
               </a>
             </li>
