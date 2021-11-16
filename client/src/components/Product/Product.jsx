@@ -118,7 +118,7 @@ export default function Product({
                   marginTop: -0.5,
                 },
               }}
-              onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId.id)}  />
+              onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId, id)}  />
           </div>
         </Link>
       </div>
