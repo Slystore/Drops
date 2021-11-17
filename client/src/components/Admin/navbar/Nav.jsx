@@ -9,7 +9,7 @@ import {
   MdOutlineLocalShipping,
   MdOutlineCategory,
 } from "react-icons/md";
-import { GiConverseShoe } from "react-icons/gi";
+import { GiConverseShoe, GiExitDoor } from "react-icons/gi";
 import { AiOutlineMail } from "react-icons/ai";
 import { SiNike } from "react-icons/si";
 
@@ -27,7 +27,7 @@ const AdminNavBar = () => {
           <ul className="sidebarList">
             <li className="sidebarListItem">
               <MdLineStyle className="sidebarIcon" />
-              <Link to="/admin/home">Home</Link>
+              <Link to="/admin/home">Panel</Link>
             </li>
             <li className="sidebarListItem">
               <MdTrendingUp className="sidebarIcon" />
@@ -54,25 +54,17 @@ const AdminNavBar = () => {
               <FaUsers className="sidebarIcon" />
               <Link to="/admin/users">Users</Link>
             </li>
-            <li className="sidebarListItem">
+            <li className="sidebarListItem ">
               <MdProductionQuantityLimits className="sidebarIcon" />
               <Link to="/admin/orders">Reportes</Link>
             </li>
-          </ul>
-        </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Informacion</h3>
-          <ul className="sidebarList">
             <li className="sidebarListItem">
-              <AiOutlineMail className="sidebarIcon" />
-              <Link to="/admin/newsletter">Newsletter</Link>
-            </li>
-            <li className="sidebarListItem">
-              <MdOutlineLocalShipping className="sidebarIcon" />
-              <Link to="/admin/appointment">Turnos</Link>
+              <GiExitDoor className="sidebarIcon" />
+              <Link to="/">Volver</Link>
             </li>
           </ul>
         </div>
+
       </div>
     </div>
   );
