@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getToken} from "../../redux/users/userActions";
+import { getToken, getUserId} from "../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 
 import Box from "@mui/material/Box";
@@ -88,19 +88,19 @@ function NavBar() {
   const {items} = useSelector(state => state.cartReducers)
   
   /****************************************************** */
-  const {users} = useSelector(state => state.usersReducer)
   
   var UserGoogle = localStorage.getItem('gId');
-  console.log("IdGoogle",UserGoogle)
-  
-  const dat = users.filter((e) => e.id === UserGoogle);
 
-  console.log("Filtro",dat)
+  useEffect(() => {
+    dispatch(getUserId(UserGoogle));
+  }, [dispatch]);
   
+  const { userId } = useSelector(state => state.usersReducer)
 
+
+  // console.log("DDDD",userId.user)
 
   /****************************************************** */
-  // const x = getToken();
   
   function handleInputChange(e) {
     e.preventDefault();
@@ -192,19 +192,21 @@ function NavBar() {
           </div></Link>
           {console.log("USER_TYPE",loged.userAdmin)}
           {
-              loged.userState ? (
+              loged.userState === 'true' ? (
                 <UserTooltip title={loged.userAdmin === 'admin' ? titleAdminLog : titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
                  </div>
                 </UserTooltip>
-              ) : dat[0] && dat[0].userType? (
-                <UserTooltip title={dat[0].userType === 'admin' ? titleAdminLog : titleUserLog}>
+               ) 
+              : userId.user ? (
+                <UserTooltip title={userId.user.userType === 'admin' ? titleAdminLog : titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
                  </div>
                 </UserTooltip>
-              ) :
+              )
+              :
               (
                 <UserTooltip title={titleUser}>
                   <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all", '&:hover':{color: 'red',cursor: "pointer"}}}/></div>
