@@ -15,8 +15,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import Backdrop from "@mui/material/Backdrop";
-
+// import Backdrop from "@mui/material/Backdrop";
+import ModalUnstyled from "@mui/core/ModalUnstyled";
+import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,6 +35,8 @@ import {
 
 import { getProducts } from "../../redux/products/productsAction";
 import { getUserOrderId } from "../../redux/orders/ordersAction";
+import { createReview } from "../../redux/reviews/reviewsActions";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -45,6 +48,29 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const StyledModal = styled(ModalUnstyled)`
+  position: fixed;
+  z-index: 1300;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Backdrop = styled("div")`
+  z-index: -1;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-tap-highlight-color: transparent;
+`;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -92,6 +118,10 @@ export default function Profile() {
     phone: "",
     adress: "",
   });
+  const [comment, setComment] = useState({
+    comment: "",
+    rating: 0,
+  });
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -103,9 +133,9 @@ export default function Profile() {
   const gId = localStorage.getItem("gId");
   useEffect(() => {
     dispatch(getProducts());
-    console.log("estoy entrando al  useEffect");
+
     const x = getToken();
-    console.log("this x ", x);
+
     if (x.msg) {
       return setUser({
         validate: "noAuth",
@@ -113,7 +143,7 @@ export default function Profile() {
     }
     if (x) {
       const userDecoded = jwtDecode(x);
-      console.log("esta es mi data de google", userDecoded);
+
       if (userDecoded.user) {
         dispatch(userWishListGet(userDecoded.user.id));
         dispatch(getUserOrderId(userDecoded.user.id));
@@ -132,7 +162,7 @@ export default function Profile() {
   }, [dispatch]);
   let { userOrder } = useSelector((state) => state.ordersReducer);
   let { products } = useSelector((state) => state.productReducer);
-  console.log("estos son mis users", usersId ? usersId.user : "");
+
   const handleFormChange = (e) => {
     setData({
       ...data,
@@ -150,6 +180,16 @@ export default function Profile() {
   const handleDeleteWish = async (id, productId) => {
     await userDeleteWish(id, productId);
     window.location.replace("");
+  };
+  const handleSumbitComment = async (e, user, comment, productId, rating) => {
+    e.preventDefault();
+    await createReview(user, comment, productId, rating);
+  };
+  const commnentCapture = (e) => {
+    setComment({
+      ...comment,
+      [e.target.name]: e.target.value,
+    });
   };
 
   let wishFilt = wishList.map((el) => el.ProductId);
@@ -430,7 +470,48 @@ export default function Profile() {
                           <TableCell align="left">{el.shippingState}</TableCell>
                           <TableCell align="left">{el.paymentState}</TableCell>
                           <TableCell align="left">{el.status}</TableCell>
-                          {el.status === "completed"?<TableCell align ="left"><button>Deja una reseña</button></TableCell>:<button disabled>Deja una reseña</button>}
+                          {el.status === "completed" ? (
+                            <TableCell align="left">
+                              <button onClick={handleOpen}>
+                                Deja una reseña
+                              </button>
+                              <StyledModal
+                                aria-labelledby="unstyled-modal-title"
+                                aria-describedby="unstyled-modal-description"
+                                open={open}
+                                onClose={handleClose}
+                                BackdropComponent={Backdrop}
+                              >
+                                <Box sx={style}>
+                                  <form
+                                    onSubmit={(e) =>
+                                      handleSumbitComment(
+                                        e,
+                                        usersId.user ? usersId.user.id : gId,
+                                        comment,
+                                        el.id
+                                      )
+                                    }
+                                  >
+                                    <label>Comentario</label>
+                                    <input
+                                      onChange={commnentCapture}
+                                      name="comment"
+                                      type="text"
+                                    />
+                                    <input
+                                      type="number"
+                                      name="rating"
+                                      onChange={commnentCapture}
+                                    />
+                                    <button type="submit">Comentar</button>
+                                  </form>
+                                </Box>
+                              </StyledModal>
+                            </TableCell>
+                          ) : (
+                            <button disabled>Deja una reseña</button>
+                          )}
                         </TableRow>
                       ))
                     ) : (
