@@ -19,7 +19,7 @@
     border-right: 5px solid red;
 }
 .title {
-    font-size: 25px;
+    font-size: 20px;
     margin: 0 0 4px 6px;
     color: #555;
 
@@ -33,7 +33,7 @@
     
 }
 .number {
-    font-size: 30px;
+    font-size: 15px;
     color: #555;
 
     /* color: rgb(187, 186, 186); */
