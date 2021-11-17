@@ -17,6 +17,7 @@ const OnSale = () => {
     }, [dispatch])
 
     const [radio, setRadio] = useState()
+    const [check, setCheck] = useState(true)
     const [input, setInput] = useState({
         week: false,
         day: '',
@@ -46,6 +47,7 @@ const OnSale = () => {
                 ...input,
                 [e.target.name]: true
             })
+            setCheck(!check)
         }
         else if( e.target.name === 'target'){
 
@@ -114,13 +116,13 @@ const OnSale = () => {
 
     return(
         <div>
-            <div style={{height: '200px', width: '1000px', margin: '25% auto', border: '1px black solid'}}> 
-            <h2> Mapeo de ofertas </h2>
-            <div>
+            <div > 
+            <h2> Ofertas </h2>
+           
                 <form name='input1' onSubmit={handleSubmit}>
                     <h2>Semanal</h2>
-                    <label> semanal <input type='checkbox' name='week' onClick={handleInput1}/> </label>
-                    <select name='day' onChange={handleInput1}>
+                    <label> activar <input type='radio' name='week' onClick={handleInput1}/> </label>
+                    <select name='day' disabled={check} onChange={handleInput1}>
                          <option > Dia </option>
                          <option value='lunes'> lunes</option>
                          <option value='martes' >  martes</option>
@@ -130,9 +132,9 @@ const OnSale = () => {
                          <option value='sábado' > sábado </option>
                          <option value='domingo' >  domingo </option>
                     </select>
-                   <label> Descuento <input type='number' name='discount' min={1} max={100} onChange={handleInput1}/> </label>
-                   <label> Marca <input type='radio' name='descuento' id='marca'  onClick={handleRadioInput}/> </label>
-                   <label> Categoria <input type='radio' name='descuento' id='categoria' onClick={handleRadioInput}  /> </label>
+                   <label> Descuento <input type='number' name='discount' min={1} max={100} onChange={handleInput1} disabled={check}/> </label>
+                   <label> Marca <input type='radio' name='descuento' id='marca'  onClick={handleRadioInput} disabled={check}/> </label>
+                   <label> Categoria <input type='radio' name='descuento' id='categoria' onClick={handleRadioInput}  disabled={check}/> </label>
                 {
                     marca && marca.checked ? 
                     <select name='target' onChange={handleInput1}>
@@ -148,7 +150,7 @@ const OnSale = () => {
                      :
                     null
                 }
-                <button> crear oferta </button>
+                <button disabled={check}> crear oferta </button>
 
                     
                 </form>
@@ -162,7 +164,7 @@ const OnSale = () => {
 
 
             </form>*/}
-            </div>
+           
             </div>
         </div>
     )

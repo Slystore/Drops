@@ -193,17 +193,7 @@ function Catalogue() {
               borrar filtros 
               </button>
           </div>
-          <div>
-            {
-                filtros && filtros.map(el => {
-                return(
-                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <p key={el} style={{ fontSize: '10px'}}> {el} </p>
-                        <button style={{ width: '20px', height: '10px', margin: '0 auto', fontSize: '5px'}} onClick={ () => deleteFilter(el) }> X </button>
-                    </div>
-                )})
-            }
-        </div>
+         
 
          
           <div>
@@ -219,7 +209,7 @@ function Catalogue() {
                   >
                     <p key={el} style={{ fontSize: "10px" }}>
                       {" "}
-                      {el}{" "}
+                      {el}
                     </p>
                     <button
                       style={{
