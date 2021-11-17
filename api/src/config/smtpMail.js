@@ -49,7 +49,7 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
       transport.sendMail(mailOptions, (error, result) => {
           if(error) console.log('Error', error)
           else console.log('Success', result)
-          transpport.close()
+          transport.close()
       });
      
   }).catch (error => {
