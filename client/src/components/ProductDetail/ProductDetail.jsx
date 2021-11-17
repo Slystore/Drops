@@ -7,7 +7,7 @@ import {
   getProductStockById,
 } from "../../redux/products/productsAction";
 import jwt_decode from "jwt-decode";
-import { getToken } from "../../redux/users/userActions";
+import { getToken, userPostWish } from "../../redux/users/userActions";
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -31,6 +31,7 @@ function ProductDetail(props) {
     x = getToken();
   }
   const decoded = x ? jwt_decode(x) : null;
+  const gId = localStorage.getItem('gId')
 
   let [bul, setBul] = useState(false);
 
@@ -83,7 +84,9 @@ function ProductDetail(props) {
     e.preventDefault();
     setBul(!bul);
   }
-
+  const handleAddWishList = async (userId,productId)=> {
+    const x = await userPostWish(userId,productId)
+  }
   return (
     <div className="DetailContainer">
       {productId.name ? (
@@ -196,6 +199,7 @@ function ProductDetail(props) {
                     fontSize: 10,
                   },
                 }}
+                onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}
                 startIcon={<FavoriteIcon 
                   sx={{
                     "@media (min-width: 1200px) and (max-width: 1399px)": {
