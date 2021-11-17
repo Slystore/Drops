@@ -11,6 +11,7 @@ import cartReducers from './cart/cartReducer';
 import ratingReducer from './rating/ratingReducer';
 import ordersReducer from './orders/ordersReducer';
 import discountsReducer from './discounts/discountsReducer';
+import dashReducer from './dashboard/dashReducer';
 
 export const reducers = combineReducers({
     reviewsReducer,
@@ -23,7 +24,8 @@ export const reducers = combineReducers({
     cartReducers,
     ratingReducer,
     ordersReducer,
-    discountsReducer
+    discountsReducer,
+    dashReducer
 });
 
 export default reducers;

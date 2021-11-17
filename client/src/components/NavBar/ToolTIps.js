@@ -29,7 +29,7 @@ export const UserTooltip = styled(({ className, ...props }) => (
   },
 }));
 
-export const titleUserLog = (
+export const titleAdminLog = (
   <div className="ToolTipsUser">
     <div className="LinkUserContainer">
       <a href="/profile">Mi profile</a>
@@ -37,6 +37,20 @@ export const titleUserLog = (
 
     <div className="LinkUserContainer">
       <a href="/admin/home">Admin</a>
+    </div>
+
+    <div className="LinkUserContainer">
+      <a href="/" onClick={logOut}>
+        Log out
+      </a>
+    </div>
+  </div>
+);
+
+export const titleUserLog = (
+  <div className="ToolTipsUser">
+    <div className="LinkUserContainer">
+      <a href="/profile">Mi profile</a>
     </div>
 
     <div className="LinkUserContainer">

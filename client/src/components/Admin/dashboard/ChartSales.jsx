@@ -8,43 +8,43 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-const Chart = (usersCount) => {
-let usersActive = usersCount.users.users
+const ChartSales = (usersCount) => {
+let salesCount= usersCount.sales
   const data = [
     {
       name: "Junio",
-      "Users Activos": 8,
+      sales: 5000,
     },
     {
       name: "Julio",
-      "Users Activos": 30,
+      sales: 10500,
     },
     {
       name: "Agosto",
-      "Users Activos": 20,
+      sales: 9300,
     },
     {
       name: "Septiembre",
-      "Users Activos": 10,
+      sales: 6100,
     },
     {
       name: "Octubre",
-      "Users Activos": 10,
+      sales: 6100,
     },
     {
       name: "Noviembre",
-      "Users Activos": usersActive,
+      sales: salesCount,
     },
    
   ];
  
   return (
     <div className="chart">
-      <p className="chartTitle">Actividad de Usuarios</p>
+      <p className="chartTitle">Facturación Bruta</p>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
         <LineChart data={data}>
           <XAxis dataKey="name" stroke="#555" />
-          <Line type="monotone" dataKey="Users Activos" stroke="#BC8CF2" />
+          <Line type="monotone" dataKey="sales" stroke="#BC8CF2" />
           <Tooltip />
           <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />
         </LineChart>
@@ -53,4 +53,4 @@ let usersActive = usersCount.users.users
   );
 };
 
-export default Chart;
+export default ChartSales;
