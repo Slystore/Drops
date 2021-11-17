@@ -476,6 +476,7 @@ const Products = () => {
                 <button
                   className="buttonStock"
                   onClick={(e) => agregarStock(e)}
+                  disabled={  !cantidad  ? true : false }
                 >
                   {" "}
                   Agregar{" "}
