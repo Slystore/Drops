@@ -73,17 +73,17 @@ const Products = () => {
   };
 
   const promocionarProduct = (elemento) => {
-    
-      setInput2({
-        ...input2,
-        id: elemento.id,
-        porcentage2: elemento.Discounts !== null ? elemento.Discounts : ''
-      });
-      setInput3({
-        ...input3,
-        id: elemento.id,
-      });
-    
+
+    setInput2({
+      ...input2,
+      id: elemento.id,
+      porcentage2: elemento.Discounts !== null ? elemento.Discounts : ''
+    });
+    setInput3({
+      ...input3,
+      id: elemento.id,
+    });
+
     handleOpen2()
   }
 
@@ -131,7 +131,7 @@ const Products = () => {
       porcentage: parseInt(e.target.value)
     })
   }
-  
+
   const handleChangeForm3 = (e) => {
     e.preventDefault()
     setInput3({
@@ -331,7 +331,7 @@ const Products = () => {
                         variant="contained"
                         style={{ backgroundColor: "#555" }}
                         onClick={() => promocionarProduct(el)}
-                        >
+                      >
                         Promocionar
                       </Button>
                     </TableCell>
@@ -355,6 +355,7 @@ const Products = () => {
                   <div className="boxInputProduct">
                     <p className="titleProduct"> ID </p>
                     <input
+                      disabled
                       className="inputProduct"
                       type={"text"}
                       name="id"
@@ -534,101 +535,101 @@ const Products = () => {
                 <div className="firstBoxProduct">
                   <div className="boxInputProduct">
                     <label> Siempre
-                    <input
-                      className="inputProduct"
-                      type={"checkbox"}
-                      name="id"
-                      value={input2.id}
-                      
-                      autoComplete="off"
-                    />
+                      <input
+                        className="inputProduct"
+                        type={"checkbox"}
+                        name="id"
+                        value={input2.id}
+
+                        autoComplete="off"
+                      />
                     </label>
                   </div>
                   <div className="boxInputProduct">
                     <label className="titleProduct"> porcentaje
-                    <input
-                      className="inputProduct"
-                      type={"number"}
-                      name="porcentage"
-                      onChange={handleChangeForm2}
-                      autoComplete="off"
-                    />
+                      <input
+                        className="inputProduct"
+                        type={"number"}
+                        name="porcentage"
+                        onChange={handleChangeForm2}
+                        autoComplete="off"
+                      />
                     </label>
                     <label className="titleProduct"> porcentaje2
-                    <input
-                      className="inputProduct"
-                      type={"number"}
-                      name="porcentage"
-                      autoComplete="off"
-                      value={input2.porcentage2}
-                    />
+                      <input
+                        className="inputProduct"
+                        type={"number"}
+                        name="porcentage"
+                        autoComplete="off"
+                        value={input2.porcentage2}
+                      />
                     </label>
                   </div>
                   <div className="boxBtnCreate">
-                  <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit2}>
-                    {" "}
-                    Guardar
-                  </button>
+                    <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit2}>
+                      {" "}
+                      Guardar
+                    </button>
                     {
                       input2.porcentage2 ? <button className="btnCreate" type="submit" id="submit" onClick={handleUndo}> Deshacer </button>
-                      :
-                      null
+                        :
+                        null
                     }
 
+                  </div>
                 </div>
-                </div>
-                </div>
-              </form>
+              </div>
+            </form>
 
             <form onSubmit={(e) => handleSubmit3(e)}>
               <div className="formProduct">
                 <div className="firstBoxProduct">
                   <div className="boxInputProduct">
                     <label> Por cantidad
-                    <input
-                      className="inputProduct"
-                      type={"checkbox"}
-                      name="id"
-                      value={input3.id}
-                      
-                      autoComplete="off"
-                    />
+                      <input
+                        className="inputProduct"
+                        type={"checkbox"}
+                        name="id"
+                        value={input3.id}
+
+                        autoComplete="off"
+                      />
                     </label>
                   </div>
                   <div className="boxInputProduct">
                     <label className="titleProduct"> Cantidad
-                    <input
-                      className="inputProduct"
-                      type={"number"}
-                      name="quantity"
-                      min={1}
-                      max={10}
-                      onChange={handleChangeForm3}
-                      autoComplete="off"
-                    />
+                      <input
+                        className="inputProduct"
+                        type={"number"}
+                        name="quantity"
+                        min={1}
+                        max={10}
+                        onChange={handleChangeForm3}
+                        autoComplete="off"
+                      />
                     </label>
                   </div>
                   <div className="boxInputProduct">
                     <label className="titleProduct"> porcentaje
-                    <input
-                      className="inputProduct"
-                      type={"number"}
-                      name="porcentage"
-                      min={1}
-                      max={100}
-                      onChange={handleChangeForm3}
-                      autoComplete="off"
-                    />
+                      <input
+                        className="inputProduct"
+                        type={"number"}
+                        name="porcentage"
+                        min={1}
+                        max={100}
+                        onChange={handleChangeForm3}
+                        autoComplete="off"
+                      />
                     </label>
                   </div>
-  
-              <div className="boxBtnCreate">
-                <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit3}>
-                  {" "}
-                  Guardar
-                </button>
-              </div>
-              </div>
+
+                  <div className="boxBtnCreate">
+                    <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit3}>
+                      {" "}
+                      Guardar
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

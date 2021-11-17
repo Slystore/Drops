@@ -5,46 +5,54 @@ const ChartTwo = () => {
 
     const data = [
         {
-            name: 'Mayo',
-            gucci: 4000,
-            balenciaga: 2400,
-            amt: 2400,
+            name: 'Nike',
+            Cantidad: 10,
+
         },
         {
-            name: 'Junio',
-            gucci: 3000,
-            balenciaga: 1398,
-            amt: 2210,
+            name: 'Adidas',
+            Cantidad: 10,
+
         },
         {
-            name: 'Julio',
-            gucci: 2000,
-            balenciaga: 9800,
-            amt: 2290,
+            name: 'Balenciaga',
+            Cantidad: 10,
+
         },
         {
-            name: 'Agosto',
-            gucci: 2780,
-            balenciaga: 3908,
-            amt: 2000,
+            name: 'Off-White',
+            Cantidad: 4,
+
         },
         {
-            name: 'Septiembre',
-            gucci: 1890,
-            balenciaga: 4800,
-            amt: 2181,
+            name: 'Gucci',
+            Cantidad: 10,
+
         },
         {
-            name: 'Octubre',
-            gucci: 2390,
-            balenciaga: 3800,
-            amt: 2500,
+            name: 'Puma',
+            Cantidad: 10,
+
         },
         {
-            name: 'Noviembre',
-            gucci: 3490,
-            balenciaga: 4300,
-            amt: 2100,
+            name: 'Rebook',
+            Cantidad: 10,
+
+        },
+        {
+            name: 'vans',
+            Cantidad: 10,
+
+        },
+        {
+            name: 'Under Armour',
+            Cantidad: 10,
+
+        },
+        {
+            name: 'Jordan',
+            Cantidad: 10,
+
         },
     ];
 
@@ -52,29 +60,12 @@ const ChartTwo = () => {
     return (
         <div className="graphic">
             <p className="chartTitle" style={{ marginLeft: 23 }}>Marcas mas Populares</p>
-            <ResponsiveContainer aspect={4 / 1}>
-                <BarChart
-                    width={500}
-                    height={340}
-                    data={data}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-
-                    <XAxis dataKey="name" />
-                    <YAxis />
+            <ResponsiveContainer width="100%" aspect={4 / 1}>
+                <BarChart width={100} height={40} data={data}>
+                    <XAxis dataKey="name" stroke="#555" />
+                    <Bar dataKey="Cantidad" fill="#BC8CF2" />
                     <Tooltip />
-
-                    <Bar dataKey="gucci" fill="#BC8CF2" />
-                    <Bar dataKey="balenciaga" fill="rgb(206, 198, 253)" />
-
                 </BarChart>
-
             </ResponsiveContainer>
         </div>
     );

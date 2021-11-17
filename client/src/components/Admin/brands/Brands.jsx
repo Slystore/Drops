@@ -111,7 +111,9 @@ const Brands = () => {
                     </TableCell>
                     <TableCell align="left">{el.name}</TableCell>
                     <TableCell align="left">
+
                       <Button
+                        disabled={el.created === true}
                         variant="contained"
                         style={{ backgroundColor: "#555" }}
                         onClick={() => {
@@ -153,6 +155,7 @@ const Brands = () => {
               <div style={{ marginBottom: 30 }} className="boxInputBrand">
                 <p className="titleProduct">ID </p>
                 <input
+                  disabled
                   className="inputProduct"
                   name="id"
                   type="text"
@@ -181,7 +184,7 @@ const Brands = () => {
           </div>
         </Box>
       </Modal>
-    </Grid>
+    </Grid >
   );
 };
 
