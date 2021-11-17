@@ -181,8 +181,12 @@
 @media (min-width: 576px) and (max-width: 767px){
 
     .NewsletterTitle{
-        font-size: 5vw;
-        margin-top: 3vh;
+        font-size: 30px;
+        margin-top: 30px;
+    }
+
+    .NewsletterSubTitle{
+        font-size: 16px;
     }
     
     .NewsletterContainer{
@@ -197,7 +201,7 @@
     .NewsletterInput{
         width: 55vw;
         height: 30px;
-        font-size: 2.5vw;
+        font-size: 16px;
         border: none;
         padding: 10px;
         border-radius: 5px;
@@ -225,7 +229,8 @@
 @media (max-width: 575px){
 
     .NewsletterContainer{
-        min-height: 320px;
+        min-height: 250px;
+        height: 300px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -234,11 +239,11 @@
     }
 
     .NewsletterTitle{
-        font-size: 7vw;
+        font-size: 28px;
     }
 
     .NewsletterSubTitle{
-        font-size: 4vw;
+        font-size: 16px;
     }
 
     .NewsletterInput{
@@ -250,5 +255,10 @@
         border-radius: 5px;
         margin: 20px 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .ButtonNewsletter{
+        width: 80px;
+        height: 30px;
     }
 }

@@ -76,7 +76,6 @@
         transform: translate(-50%, -50%);
         background-color: #fff;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-        /* border: thin solid #00f;     */
     }
 
     .UsContainer{
@@ -169,7 +168,6 @@
         border-radius: 10px;
         margin-top: 35px;
         position: relative;
-        /* top: -20px; */
     }
 }
 
@@ -199,7 +197,6 @@
         align-items: center;
         margin: 10px 0;
         padding: 20px;
-        /* border: thin solid #00f;     */
     }
 
     .UsContainer h1{
@@ -262,20 +259,9 @@
         padding: 10px;
     }
 
-    .PortadaModal{
-        width: 100%;
-        min-height: 20%;
-        position: relative;
-        margin-top: 2vh;
-        /* background-image: url(../../assets/adidas-pureboost-dpr.jpg); */
-        background-size: cover;
-        background-position: center center;
-        background-color:black;
-    }
-    
     .Style{
-        width: 70vw;
-        max-height: 75vh;
+        width: 80vw;
+        max-height: 500px;
         padding: 15px;
         position: absolute;
         top: 50%;
@@ -289,32 +275,49 @@
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     }
 
-    .ButtonModal{
+    .PortadaModal{
+        width: 100%;
+        min-height: 50px;
+        height: 130px;
         position: relative;
-        top: -6vh;
-        /* border: thin dotted #f00; */
+        margin-top: 5px;
+        /* background-image: url(../../assets/adidas-pureboost-dpr.jpg); */
+        background-size: cover;
+        background-position: center center;
+        background-color:black;
+    }
+    
+    .TextModal p{
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        position: relative;
+        top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .TitleModal h1{
+        font-size: 28px;
     }
     
     .UsContainer h1{
-        font-size: 7vw;
+        font-size: 28px;
         font-weight: bold;
     }
     
     .UsContainer p{
-        width: 80%;
-        font-size: 5vw;
-    }
-    
-    .TextModal p{
-        font-size: 3.3vw;
-        text-align: center;
-        position: relative;
-        top: -4vh;
-        margin-bottom: 2vh;
+        width: 85%;
+        font-size: 16px;
     }
 
-    .TitleModal h1{
-        font-size: 6vw;
+    .BtnUsModal{
+        width: 100px;
+        height: 30px;
+    }
+
+    .ButtonModal{
+        width: 120px;
+        height: 30px;
     }
 
 }
