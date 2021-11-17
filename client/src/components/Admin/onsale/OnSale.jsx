@@ -153,7 +153,7 @@ const OnSale = () => {
                     
                 </form>
 
-                <form name='input2' onSubmit={handleSubmit}>
+                {/*<form name='input2' onSubmit={handleSubmit}>
                     <h2> Por Cantidad </h2>
                     <label> cantidad <input type='checkbox' name='byQuantity' onClick={handleInput2}/> </label>
                     <label> cuantos debo comprar <input type='number' name='quantity' min={1} max={10} onChange={handleInput2}/> </label>
@@ -161,7 +161,7 @@ const OnSale = () => {
                     <button> crear oferta </button>
 
 
-                </form>
+            </form>*/}
             </div>
             </div>
         </div>

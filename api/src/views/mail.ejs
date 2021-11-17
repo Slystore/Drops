@@ -7,22 +7,30 @@
     <title>Prueba</title>
 </head>
 <body>
-    <div>
+    <div style='display: flex; justify-content: space-between'>
         <div> 
-            <img src='../utils/Logo.png' alt='logo' > 
+            <img src='../utils/Logo.png'  alt='logo' > 
         </div>
-        <p> <%= nombre  %> </p>
+        <div>
+            <p> <%= data.name %> </p>
+        </div>
     </div>
 
-    <div> compraste ... ALGO </div>
-    <div> FOTOS </div>
+    
 
+     
+    <div>  
+        <p>Compraste</p>
+        <p> <%= data.pName %> </p>  
+    </div> 
+    <div> <img src=<%= data.pImage %> alt=<% data.name %> > </div>
+   
     <div>
         <h3> Resumen de tu compra</h3>
         <p> Envio a domicilio: </p>
-        <p> ACA VA EL DOMICILIO </p>
+        <p> <%= data.shippingAddress + data.shippingLocated + data.shippingCity %></p> 
         <p> Pagaste: </p>
-        <p> ACA VA EL PRECIO </p>
+        <p>  <%= data.pPrice %> </p> 
     </div>
 
     <div> <button> Mis compras </button></div>

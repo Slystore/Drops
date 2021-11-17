@@ -1,9 +1,11 @@
 const { Orders, ProductSize, OrderDetail, Users, Product } = require("../../db");
 const mail = require('../../config/smtpMail')
+const path = require('path');
+
 
 const mercadopago = require("mercadopago");
 
-const { PROD_ACCESS_TOKEN, CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
+const { PROD_ACCESS_TOKEN } = process.env;
 
 mercadopago.configure({
   access_token: PROD_ACCESS_TOKEN,
@@ -39,20 +41,27 @@ async function payment(req, res, next) {
       { model: OrderDetail },
       { model: Product },
     ],
-    raw: true,
+    // raw: true,
   });
 
   const prueba = {
     shippingAddress: orderm.shippingAddress,
     shippingLocated: orderm.shippingLocated,
     shippingCity: orderm.shippingCity,
-    mail: orderm['User.mail'],
-    name: orderm['User.name'],
-    surname: orderm['User.surname'],
-    pName: orderm['Products.name'],
-    pImage: orderm['Products.image'],
-    pPrice: orderm['Products.price']
+    mail: orderm.User.mail,
+    name: orderm.User.name,
+    surname: orderm.User.surname,
+    pName: orderm.Products.forEach(el => el.name),
+    pImage: orderm.Products.forEach(el => el.image),
+    pPrice: orderm.Products.forEach(el => el.priceDiscount),
+    logo: path.join(__dirname, '../../utils/Logo.png')
   }
+
+  console.log(orderm)
+  // console.log('USER',orderm.User.name)
+  // console.log('PRODUCT',orderm.Products[0].name)
+  console.log('PRODUCT',prueba)
+  // console.log('PRODUCT',orderm.Products[0].priceDiscount)
  
   Orders.findByPk(external_reference)
     .then((order) => {
@@ -76,7 +85,7 @@ async function payment(req, res, next) {
             );
           });
         //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
-        // mail()
+        // mail('bisu59@dummymails.cc')
         //   .then((result) => console.log('Email sent...', result))
         //   .catch((error) => console.log(error.message));
           order.status = "completed";
@@ -121,6 +130,9 @@ async function payment(req, res, next) {
       order
         .save()
         .then(() => {
+          mail(prueba.mail, prueba)
+          // .then((result) => console.log('Email sent...', result))
+          // .catch((error) => console.log(error.message));
           console.log(res)
           console.info("redict sucess");
           return res.redirect("http://localhost:3000/catalogue");
