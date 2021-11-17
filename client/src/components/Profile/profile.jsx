@@ -507,7 +507,7 @@ export default function Profile() {
                                         e,
                                         usersId.user ? usersId.user.id : gId,
                                         comment,
-                                        el.id
+                                        el.products[0].productId
                                       )
                                     }
                                   >
