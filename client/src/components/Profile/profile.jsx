@@ -174,7 +174,7 @@ export default function Profile() {
     setValue(newValue);
   };
   const handleSubmit = async (e) => {
-    const x = await editUsers(data, user ? gId : user.userData.user.id);
+    const x = await editUsers(data, usersId.user ? usersId.user.id  : gId);
     if (x) return "";
   };
   const handleOpenEdit = () => setEdit(true);
@@ -184,18 +184,18 @@ export default function Profile() {
   };
   const handleSumbitComment = async (e, user, comment, productId, rating) => {
     e.preventDefault();
-   const x = await createReview(user, comment, productId, rating);
-    if(x){
+    const x = await createReview(user, comment, productId, rating);
+    if (x) {
       setComment({
-        comment:"",
-        rating:0.        
-      })
+        comment: "",
+        rating: 0,
+      });
       swal({
-        title:"Reseña dejada con exito!",
-        text:"Tu comentario fue dejado con exito!",
-        icon:"success",
-        buttons:false
-      })
+        title: "Reseña dejada con exito!",
+        text: "Tu comentario fue dejado con exito!",
+        icon: "success",
+        buttons: false,
+      });
     }
   };
   const commnentCapture = (e) => {
@@ -267,25 +267,30 @@ export default function Profile() {
           <TabPanel value={value} index={1}>
             {usersId.user && (
               <div>
-                <h1>Profile Configuration</h1>
-                <div>
-                  <span>
-                    {usersId.user
-                      ? usersId.user.name
-                      : usersId.user.family_name}
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    {usersId.user
-                      ? usersId.user.surname
-                      : usersId.user.given_name}
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    {usersId.user ? usersId.user.mail : usersId.user.email}
-                  </span>
+                <div className="profile-cont">
+                  <h1>Profile Configuration</h1>
+                  <div>
+                    <label className="label-profile">Nombre</label>
+                    <span>
+                      {usersId.user
+                        ? usersId.user.name
+                        : usersId.user.family_name}
+                    </span>
+                  </div>
+                  <div>
+                    <label className="label-profile">Apellido</label>
+                    <span>
+                      {usersId.user
+                        ? usersId.user.surname
+                        : usersId.user.given_name}
+                    </span>
+                  </div>
+                  <div>
+                    <label className="label-profile">Mail</label>
+                    <span>
+                      {usersId.user ? usersId.user.mail : usersId.user.email}
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
@@ -354,7 +359,7 @@ export default function Profile() {
                     confirmPass: "",
                   }}
                   onSubmit={async (body, { resetForm }) => {
-                    await editUsers(body, user.userData.user.id);
+                    await editUsers(body, usersId ? gId : usersId.user.id);
                     resetForm();
                   }}
                   validate={(values) => {
@@ -502,7 +507,7 @@ export default function Profile() {
                                         e,
                                         usersId.user ? usersId.user.id : gId,
                                         comment,
-                                        el.id
+                                        el.products[0].productId
                                       )
                                     }
                                   >
