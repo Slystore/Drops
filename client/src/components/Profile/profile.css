@@ -17,3 +17,19 @@
     width: 55rem;
     height: 40rem;
 }
+.profile-cont{
+    margin-left: 4rem;
+    border: 2px solid red;
+    width: 55rem;
+    height: 21rem;
+}
+.label-profile{
+    margin-right: 12px;
+    font-weight: 700;
+    width: 85px;
+    background-color: rgb(211, 211, 211);
+}
+.label-cont{
+    border: 1px solid red;
+    width: max-content;
+}

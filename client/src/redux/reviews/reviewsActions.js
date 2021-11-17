@@ -80,6 +80,7 @@ export function deleteReview(id) {
 
 export async function createReview(user, coment, productId) {
   let { comment, rating } = coment;
+  console.log('este es mi productId',productId)
 
   try {
     const { data } = await axios.post(`/reviews/create/`, {
