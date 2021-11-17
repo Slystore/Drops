@@ -16,6 +16,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 // import Backdrop from "@mui/material/Backdrop";
+import { BsFillGearFill } from "react-icons/bs"
 import ModalUnstyled from "@mui/core/ModalUnstyled";
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
@@ -268,7 +269,7 @@ export default function Profile() {
             {usersId.user && (
               <div>
                 <div className="profile-cont">
-                  <h1>Profile Configuration</h1>
+                  <h1>Profile Configuration <BsFillGearFill/></h1>
                   <div>
                     <label className="label-profile">Nombre</label>
                     <span>
