@@ -3,7 +3,7 @@ const mail = require("../../config/smtpMail");
 
 const getReviews = async (req, res, next) => {
   try {
-    mail('juan','riris64@man2man.xyz')
+    mail('juan_itu@yahoo.com.ar')
     // const reviews = await Reviews.findAll({
 
     // });

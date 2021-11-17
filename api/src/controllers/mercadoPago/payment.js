@@ -40,41 +40,23 @@ async function payment(req, res, next) {
       { model: Product },
     ],
     raw: true,
-    // nest: true
   });
 
-  // const hola = orderm.get({plain: true})
-
-  console.log("ESTA ES TODA LA DATA!!!!--------------------", orderm);
-  // console.log("hola--------------------", hola);
-  // console.log("ESTA ES TODA LA DATA!!!!--------------------", orderm.get({plain: true}));
-  console.log("Direcciones--------------------", orderm.shippingAddress);
-  console.log("Direcciones--------------------", orderm.shippingLocated);
-  console.log("Direcciones--------------------", orderm.shippingCity);
-  console.log("USUARIO--------------------", orderm.User.mail);
-  console.log("USUARIO--------------------", orderm.User.name);
-  console.log("USUARIO--------------------", orderm.User.surname);
-  console.log("Producto--------------------", orderm.Products.name);
-  console.log("Producto--------------------", orderm.Products.image);
-  console.log("Producto--------------------", orderm.Products.price);
-  // console.log("Producto--------------------", orderm.Products.sizes);
-
-  // // console.log("ordermOrderDetail", orderm.OrderDetails);
-  // console.log("PRODUCTOS-------------------------------", orderm.Products.toJSON());
-  // console.log("USUARIO--------------------", orderm.User.Users.mail);
-  // console.log("USUARIO--------------------", orderm.User.Users.name);
-  // console.log("USUARIO--------------------", orderm.User.Users.surname);
-  // console.log("Producto--------------------", orderm.Products.priceDiscount);
-  // console.log("Producto--------------------", orderm.Products.Product);
-  // console.log("Producto--------------------", orderm.Products.Product.name);
-  // console.log("Producto--------------------", orderm.Products.Product.image);
-  // console.log("Producto--------------------", orderm.Products.Product.priceDiscount);
-  // console.log("Producto--------------------", orderm.Products.Product.price);
+  const prueba = {
+    shippingAddress: orderm.shippingAddress,
+    shippingLocated: orderm.shippingLocated,
+    shippingCity: orderm.shippingCity,
+    mail: orderm['User.mail'],
+    name: orderm['User.name'],
+    surname: orderm['User.surname'],
+    pName: orderm['Products.name'],
+    pImage: orderm['Products.image'],
+    pPrice: orderm['Products.price']
+  }
+ 
   Orders.findByPk(external_reference)
     .then((order) => {
-      console.log(order)
-      console.log(payment_id)
-      console.log(status)
+     
       order.payment_id = payment_id;
       order.paymentState = status;
       // console.log('order', order)
