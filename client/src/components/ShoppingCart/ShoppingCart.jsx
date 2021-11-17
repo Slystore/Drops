@@ -46,7 +46,6 @@ function ShopingCart() {
   }else{
     history.push("/shoppingCart");
       swal("Por Favor, elegir talle antes de seguir");
-      window.location.replace('');
     }
   }
 

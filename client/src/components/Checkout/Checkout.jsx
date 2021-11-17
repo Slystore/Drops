@@ -4,10 +4,13 @@ import Divider from "@mui/material/Divider";
 import logo from '../../assets/Logo.png';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Checkout.css";
+import { getSizes } from "../../redux/sizes/sizeActions";
+import { useDispatch, useSelector } from "react-redux";
 
 function Checkout({ products, data, total, user }) {
-
-
+const dispatch = useDispatch();
+let SizeId= products.map(el=>el.SizeId);
+console.log(SizeId,"match");
   const [orderUser, setorderUser] = useState("");
 
   let orderId = JSON.parse(localStorage.getItem("orderId"));
@@ -22,9 +25,18 @@ function Checkout({ products, data, total, user }) {
         })
         .catch((err) => console.error(err));
     }
+    dispatch(getSizes());
   }, [orderId]);
-
-
+  const { sizes } = useSelector((state) => state.sizeReducer);
+  let array = [];
+for(let i=0;i<SizeId.length;i++){
+  for(let j=0;j<sizes.length;j++){
+    if(SizeId[i]===sizes[j].id){
+      array.push(sizes[j].number);
+    }
+  }
+}
+console.log("NUMBERSIZE", array)
   // useEffect(() => {
   //   const script = document.createElement("script");
   //   const attr_data_preference = document.createAttribute("data-preference-id");
@@ -71,6 +83,7 @@ function Checkout({ products, data, total, user }) {
                               <div className="DetailCheckout">
                                   <div className="DetailCheckoutName">{producto.name}</div>
                                   <div className="DetailCheckoutPrice">${producto.price}</div>
+                                  <div className="DetailCheckoutPrice">Talle: {array[i]}</div>
                                   <div className="DetailCheckoutQuantity">
                                       <i>Cantidad:</i> 
                                       <h3>{producto.quantity}</h3> 

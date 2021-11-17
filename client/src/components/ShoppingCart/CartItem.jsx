@@ -36,6 +36,7 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
         Number(e.target.value)
       )
     );
+    dispatch(loadCart());
   }
   const handleChangeQuantity = async (e) => {
     const { value } = e.target;
