@@ -13,6 +13,7 @@ import logo from "../../assets/Logo.png";
 import { getToken } from "./../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 import "./ShoppingCart.css";
+import swal from "sweetalert";
 
 function ShopingCart() {
   const dispatch = useDispatch();
@@ -44,8 +45,8 @@ function ShopingCart() {
     }
   }else{
     history.push("/shoppingCart");
-      alert("Por Favor, elegir talle antes de seguir");
-     window.location.reload();
+      swal("Por Favor, elegir talle antes de seguir");
+      window.location.replace('');
     }
   }
 
