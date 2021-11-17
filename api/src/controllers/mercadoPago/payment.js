@@ -61,9 +61,9 @@ async function payment(req, res, next) {
             );
           });
         //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
-        mail()
-          .then((result) => console.log('Email sent...', result))
-          .catch((error) => console.log(error.message));
+        // mail()
+        //   .then((result) => console.log('Email sent...', result))
+        //   .catch((error) => console.log(error.message));
           order.status = "completed";
         } else {
           order.status = "completed";
