@@ -21,6 +21,7 @@ import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import swal from "sweetalert";
 import Product from "../Product/Product";
 import "./profile.css";
 import {
@@ -183,7 +184,19 @@ export default function Profile() {
   };
   const handleSumbitComment = async (e, user, comment, productId, rating) => {
     e.preventDefault();
-    await createReview(user, comment, productId, rating);
+   const x = await createReview(user, comment, productId, rating);
+    if(x){
+      setComment({
+        comment:"",
+        rating:0.        
+      })
+      swal({
+        title:"Reseña dejada con exito!",
+        text:"Tu comentario fue dejado con exito!",
+        icon:"success",
+        buttons:false
+      })
+    }
   };
   const commnentCapture = (e) => {
     setComment({
