@@ -8,32 +8,32 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-const Chart = () => {
-
+const Chart = (usersCount) => {
+let usersActive = usersCount.users.users
   const data = [
     {
-      name: "Enero",
+      name: "Junio",
       "Users Activos": 8,
     },
     {
-      name: "Febrero",
+      name: "Julio",
       "Users Activos": 50,
     },
     {
-      name: "Marzo",
+      name: "Agosto",
       "Users Activos": 20,
     },
     {
-      name: "Abril",
+      name: "Septiembre",
       "Users Activos": 10,
     },
     {
-      name: "Mayo",
+      name: "Octubre",
       "Users Activos": 10,
     },
     {
-      name: "Junio",
-      "Users Activos": 20,
+      name: "Noviembre",
+      "Users Activos": usersActive,
     },
     // {
     //   name: "Julio",

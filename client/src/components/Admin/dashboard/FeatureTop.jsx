@@ -1,13 +1,14 @@
 import React from 'react';
 import "./featureTop.css"
-const FeatureTop = () => {
+const FeatureTop = (usersCount, difer) => {
+  
     return (
         <div className='boxes'>
             <div className="box">
                 <p className='title'>Clientes</p>
                 <div className='div'>
-                    <p className='number'>2150</p>
-                    <span>+ 10%</span>
+                    <p className='number'>{usersCount.users.users}</p>
+                    <span>+{usersCount.difer}%</span>
                 </div>
                 <span className="text">Comparado el ultimo mes</span>
 
