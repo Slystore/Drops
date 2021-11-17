@@ -96,6 +96,7 @@ const Categories = () => {
                     <TableCell align="left">{el.name}</TableCell>
                     <TableCell align="left">
                       <Button
+                        disabled={el.created === true}
                         variant="contained"
                         style={{ backgroundColor: "#555" }}
                         onClick={() => {
@@ -133,6 +134,7 @@ const Categories = () => {
                 <div className="boxInputProduct">
                   <p className="titleProduct">ID </p>
                   <input
+                    disabled
                     className="inputProduct"
                     name="id"
                     type="text"

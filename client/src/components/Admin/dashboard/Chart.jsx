@@ -9,51 +9,52 @@ import {
   ResponsiveContainer,
 } from "recharts";
 const Chart = () => {
+
   const data = [
     {
       name: "Enero",
-      "Users Activos": 4000,
+      "Users Activos": 8,
     },
     {
       name: "Febrero",
-      "Users Activos": 3000,
+      "Users Activos": 50,
     },
     {
       name: "Marzo",
-      "Users Activos": 5000,
+      "Users Activos": 20,
     },
     {
       name: "Abril",
-      "Users Activos": 4000,
+      "Users Activos": 10,
     },
     {
       name: "Mayo",
-      "Users Activos": 3000,
+      "Users Activos": 10,
     },
     {
       name: "Junio",
-      "Users Activos": 4000,
+      "Users Activos": 20,
     },
-    {
-      name: "Julio",
-      "Users Activos": 2000,
-    },
-    {
-      name: "Agosto",
-      "Users Activos": 4000,
-    },
-    {
-      name: "Septiembre",
-      "Users Activos": 3000,
-    },
-    {
-      name: "Octubre",
-      "Users Activos": 1000,
-    },
-    {
-      name: "Noviembre",
-      "Users Activos": 5000,
-    },
+    // {
+    //   name: "Julio",
+    //   "Users Activos": 2000,
+    // },
+    // {
+    //   name: "Agosto",
+    //   "Users Activos": 4000,
+    // },
+    // {
+    //   name: "Septiembre",
+    //   "Users Activos": 3000,
+    // },
+    // {
+    //   name: "Octubre",
+    //   "Users Activos": 1000,
+    // },
+    // {
+    //   name: "Noviembre",
+    //   "Users Activos": 5000,
+    // },
   ];
 
   return (

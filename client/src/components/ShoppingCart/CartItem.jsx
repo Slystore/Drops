@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { getProductStockById } from "../../redux/products/productsAction";
-import { getToken } from "./../../redux/users/userActions";
+import { getToken, userPostWish } from "./../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 import Divider from "@mui/material/Divider";
 import {
@@ -11,6 +11,7 @@ import {
   SelectCartSize,
 } from "../../redux/cart/cartAction";
 import "./CartItem.css";
+import swal from "sweetalert";
 
 export default function CartItem({ image, price, id, quantity, name, Sizes }) {
   const [sizeId, setSizeId] = React.useState({ SizeId: 0 });
@@ -58,26 +59,30 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
         );
         await dispatch(loadCart());
       } else {
-        alert(`No hay suficiente stock, solo ${stockState} pares disponibles `);
+        swal(`No hay suficiente stock, solo ${stockState} pares disponibles `);
       }
     } else {
-      alert("Seleccione una talla antes");
+      swal("Seleccione una talla antes");
     }
   };
-
-  async function handleDeleteItemCart() {
-    await dispatch(removeFromCart(id));
-    let x;
+  let x;
     if (localStorage.getItem("token")) {
       x = getToken();
     }
     const decoded = x ? jwt_decode(x) : null;
+    const gId = localStorage.getItem('gId')
+  async function handleDeleteItemCart() {
+    await dispatch(removeFromCart(id));
+  
     let user = decoded ? decoded.user.id : null;
     if (user) {
       await dispatch(loadCart());
     }
   }
 
+  const handleAddWishList = async (userId,productId)=> {
+    const x = await userPostWish(userId,productId)
+  }
 
   function round(num) {
     var m = Number((Math.abs(num) * 100).toPrecision(15));
@@ -144,7 +149,7 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
               </div>
 
               <div className="BtnCart">
-                  <button onClick="" className="CartItemButtonOption">
+                  <button onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)} className="CartItemButtonOption">
                     Wish List
                   </button>
               </div>
