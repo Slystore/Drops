@@ -1,61 +1,33 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {useEffect} from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { getBrands } from '../../../redux/brand/brandActions.js';
+import {getProductQuantity} from '../../../redux/dashboard/dashAction.js';
 
-const ChartTwo = () => {
+const ChartTwo = (props) => {
+    const dispatch = useDispatch();
 
-    const data = [
-        {
-            name: 'Nike',
-            Cantidad: 10,
+    useEffect(() => {
+        dispatch(getBrands());
+        dispatch(getProductQuantity());
+    }, [dispatch]);
 
-        },
-        {
-            name: 'Adidas',
-            Cantidad: 10,
+    const data = []; 
+    const brands = useSelector((state) => state.brandReducer.brands);
+    const productQuantity = useSelector((state) => state.dashReducer.productQuantity);
 
-        },
-        {
-            name: 'Balenciaga',
-            Cantidad: 10,
+    let brandNames = brands.map(el => el.name);
+    let productCount = productQuantity.map(el => el.data.data.count)
+    
+    console.log(brandNames)
+    for(let i = 0; i < brandNames.length; i++){
+        data.push({name: brandNames[i], quantity: ''});
+    }
 
-        },
-        {
-            name: 'Off-White',
-            Cantidad: 4,
-
-        },
-        {
-            name: 'Gucci',
-            Cantidad: 10,
-
-        },
-        {
-            name: 'Puma',
-            Cantidad: 10,
-
-        },
-        {
-            name: 'Rebook',
-            Cantidad: 10,
-
-        },
-        {
-            name: 'vans',
-            Cantidad: 10,
-
-        },
-        {
-            name: 'Under Armour',
-            Cantidad: 10,
-
-        },
-        {
-            name: 'Jordan',
-            Cantidad: 10,
-
-        },
-    ];
-
+    for(let i = 0; i < data.length; i++){
+        data[i].quantity = productCount[i];
+    }
 
     return (
         <div className="graphic">
@@ -63,12 +35,12 @@ const ChartTwo = () => {
             <ResponsiveContainer width="100%" aspect={4 / 1}>
                 <BarChart width={100} height={40} data={data}>
                     <XAxis dataKey="name" stroke="#555" />
-                    <Bar dataKey="Cantidad" fill="#BC8CF2" />
+                    <Bar dataKey="quantity" fill="#BC8CF2" />
                     <Tooltip />
                 </BarChart>
             </ResponsiveContainer>
         </div>
-    );
-};
+    )
+}
 
 export default ChartTwo;
