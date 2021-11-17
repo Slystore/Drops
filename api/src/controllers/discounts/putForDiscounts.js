@@ -10,6 +10,7 @@ const putForDiscounts = async (req, res, next) => {
         
     if(ref === 'marca'){
         const products = await Product.update({
+            // priceDiscount: price - (discount / 100) * price,
             onSale: true,
             Discounts: discount,
             discountDay: day

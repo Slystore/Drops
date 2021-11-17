@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+</head>
+<body>
+    <div style='display: flex; justify-content: space-between'>
+        <div> 
+            <img src='../utils/Logo.png'  alt='logo' > 
+        </div>
+        <div>
+            <p> <%= data.name %> </p>
+        </div>
+    </div>
+
+    
+
+     
+    <div>  
+        <p>Compraste</p>
+        <p> <%= data.pName %> </p>  
+    </div> 
+    <div> <img src=<%= data.pImage %> alt=<% data.name %> > </div>
+   
+    <div>
+        <h3> Resumen de tu compra</h3>
+        <p> Envio a domicilio: </p>
+        <p> <%= data.shippingAddress + data.shippingLocated + data.shippingCity %></p> 
+        <p> Pagaste: </p>
+        <p>  <%= data.pPrice %> </p> 
+    </div>
+
+    <div> <button> Mis compras </button></div>
+    
+</body>
+</html>
+
+    

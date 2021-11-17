@@ -1,9 +1,11 @@
-const { Orders, ProductSize, OrderDetail, Users } = require("../../db");
+const { Orders, ProductSize, OrderDetail, Users, Product } = require("../../db");
 const mail = require('../../config/smtpMail')
+const path = require('path');
+
 
 const mercadopago = require("mercadopago");
 
-const { PROD_ACCESS_TOKEN, CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
+const { PROD_ACCESS_TOKEN } = process.env;
 
 mercadopago.configure({
   access_token: PROD_ACCESS_TOKEN,
@@ -26,7 +28,7 @@ async function payment(req, res, next) {
     processing_mode, //aggregator
     merchant_account_id, //null
   } = req.query;
-  console.log(req.query);
+  console.log('esta es la query!!!', req.query);
   console.log('este es el collection id', collection_id);
   //Obtenemmos el mail del user
   // const orderm = await Order.findByPk('cc64ab40-bd46-4b02-9cac-277301c294d8',
@@ -37,11 +39,33 @@ async function payment(req, res, next) {
         attributes: ["mail", "name", "surname"],
       },
       { model: OrderDetail },
+      { model: Product },
     ],
+    // raw: true,
   });
-  console.log("ordermOrderDetail", orderm.OrderDetails);
+
+  const prueba = {
+    shippingAddress: orderm.shippingAddress,
+    shippingLocated: orderm.shippingLocated,
+    shippingCity: orderm.shippingCity,
+    mail: orderm.User.mail,
+    name: orderm.User.name,
+    surname: orderm.User.surname,
+    pName: orderm.Products.forEach(el => el.name),
+    pImage: orderm.Products.forEach(el => el.image),
+    pPrice: orderm.Products.forEach(el => el.priceDiscount),
+    logo: path.join(__dirname, '../../utils/Logo.png')
+  }
+
+  console.log(orderm)
+  // console.log('USER',orderm.User.name)
+  // console.log('PRODUCT',orderm.Products[0].name)
+  console.log('PRODUCT',prueba)
+  // console.log('PRODUCT',orderm.Products[0].priceDiscount)
+ 
   Orders.findByPk(external_reference)
     .then((order) => {
+     
       order.payment_id = payment_id;
       order.paymentState = status;
       // console.log('order', order)
@@ -106,6 +130,9 @@ async function payment(req, res, next) {
       order
         .save()
         .then(() => {
+          mail(prueba.mail, prueba)
+          // .then((result) => console.log('Email sent...', result))
+          // .catch((error) => console.log(error.message));
           console.log(res)
           console.info("redict sucess");
           return res.redirect("http://localhost:3000/catalogue");

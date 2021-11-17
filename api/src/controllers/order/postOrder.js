@@ -26,7 +26,7 @@ const postOrderTomi = async (req, res, next) => {
         order2.addProduct(productData, {
           through: {
             quantity: product.quantity,
-            price: productData.price,
+            price: productData.priceDiscount,
             sizeId: product.SizeId? product.SizeId: null
           },
         });

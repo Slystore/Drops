@@ -38,14 +38,14 @@ async function putOrder(req, res, next) {
           order.addProduct(productData, {
             through: {
               quantity: el.quantity,
-              price: productData.price,
+              price: productData.priceDiscount,
               sizeId: el.SizeId? el.SizeId: null
             },
           });
         } else {
           await productExists.update({
             quantity: el.quantity,
-            price: productData.price,
+            price: productData.priceDiscount,
             sizeId: el.SizeId? el.SizeId: null
           });
         }

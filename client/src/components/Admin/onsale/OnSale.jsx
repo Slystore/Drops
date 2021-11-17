@@ -122,13 +122,13 @@ const OnSale = () => {
                     <label> semanal <input type='checkbox' name='week' onClick={handleInput1}/> </label>
                     <select name='day' onChange={handleInput1}>
                          <option > Dia </option>
-                         <option value='Lunes'> lunes</option>
-                         <option value='Martes' >  martes</option>
-                         <option value='Miércoles' > miércoles </option>
-                         <option value='Jueves' > jueves </option>
-                         <option value='Viernes' > viernes </option>
-                         <option value='Sábado' > sábado </option>
-                         <option value='Domingo' >  domingo </option>
+                         <option value='lunes'> lunes</option>
+                         <option value='martes' >  martes</option>
+                         <option value='miércoles' > miércoles </option>
+                         <option value='jueves' > jueves </option>
+                         <option value='viernes' > viernes </option>
+                         <option value='sábado' > sábado </option>
+                         <option value='domingo' >  domingo </option>
                     </select>
                    <label> Descuento <input type='number' name='discount' min={1} max={100} onChange={handleInput1}/> </label>
                    <label> Marca <input type='radio' name='descuento' id='marca'  onClick={handleRadioInput}/> </label>
@@ -153,7 +153,7 @@ const OnSale = () => {
                     
                 </form>
 
-                <form name='input2' onSubmit={handleSubmit}>
+                {/*<form name='input2' onSubmit={handleSubmit}>
                     <h2> Por Cantidad </h2>
                     <label> cantidad <input type='checkbox' name='byQuantity' onClick={handleInput2}/> </label>
                     <label> cuantos debo comprar <input type='number' name='quantity' min={1} max={10} onChange={handleInput2}/> </label>
@@ -161,7 +161,7 @@ const OnSale = () => {
                     <button> crear oferta </button>
 
 
-                </form>
+            </form>*/}
             </div>
             </div>
         </div>

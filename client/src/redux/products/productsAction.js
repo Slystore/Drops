@@ -26,6 +26,7 @@ export function getProducts(dayDiscount) {
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`/products`)
+            console.log(data)
 
                 return await dispatch({
                     type: GET_PRODUCTS,
