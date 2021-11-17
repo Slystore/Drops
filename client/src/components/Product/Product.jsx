@@ -123,7 +123,6 @@ export default function Product({
                 },
               }}
               onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}  />
-
           </div>
         </Link>
       </div>

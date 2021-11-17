@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getToken } from "../../redux/users/userActions";
+import { getToken} from "../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 
 import Box from "@mui/material/Box";
@@ -19,6 +19,7 @@ import {
   titleMarcas,
   titleCategorias,
   titleUserLog,
+  titleAdminLog,
 } from "./ToolTIps.js";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -60,6 +61,10 @@ function NavBar() {
     userAdmin: {},
   });
 
+  const [userGoogleLocal, setuserGoogleLocal] = useState({
+    userDataLocal: {},
+  });
+
   useEffect(() => {
     const x = getToken();
     if (x.msg) {
@@ -76,13 +81,26 @@ function NavBar() {
     }
   }, []);
 
-  // console.log("userState",loged.userState)
-  // console.log("userAdmin",loged.userAdmin)
 
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const {items} = useSelector(state => state.cartReducers)
+  
+  /****************************************************** */
+  const {users} = useSelector(state => state.usersReducer)
+  
+  var UserGoogle = localStorage.getItem('gId');
+  console.log("IdGoogle",UserGoogle)
+  
+  const dat = users.filter((e) => e.id === UserGoogle);
+
+  console.log("Filtro",dat)
+  
+
+
+  /****************************************************** */
+  // const x = getToken();
   
   function handleInputChange(e) {
     e.preventDefault();
@@ -172,14 +190,22 @@ function NavBar() {
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
           </div></Link>
+          {console.log("USER_TYPE",loged.userAdmin)}
           {
               loged.userState ? (
-                <UserTooltip title={titleUserLog}>
+                <UserTooltip title={loged.userAdmin === 'admin' ? titleAdminLog : titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
                  </div>
                 </UserTooltip>
-              ) : (
+              ) : dat[0] && dat[0].userType? (
+                <UserTooltip title={dat[0].userType === 'admin' ? titleAdminLog : titleUserLog}>
+                  <div className="Tool spinIn">
+                     <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
+                 </div>
+                </UserTooltip>
+              ) :
+              (
                 <UserTooltip title={titleUser}>
                   <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all", '&:hover':{color: 'red',cursor: "pointer"}}}/></div>
                 </UserTooltip>
