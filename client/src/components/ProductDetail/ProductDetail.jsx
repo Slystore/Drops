@@ -19,7 +19,8 @@ import {
   loadCart,
 } from "../../redux/cart/cartAction";
 import "./ProductDetail.css";
-
+import { switchClasses } from "@mui/material";
+import swal from "sweetalert";
 
 function ProductDetail(props) {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function ProductDetail(props) {
   const addCart = async (e) => {
     e.preventDefault();
     let user = decoded ? decoded.user.id : null;
+    if(productId.status ==="disponible"){
     if (user) {
       // console.log("entrouser",user)
       await fusionCart(id);
@@ -66,6 +68,7 @@ function ProductDetail(props) {
           productId.Sizes
         )
       );
+      swal("Produto adicionado al carrito!", "success")
       await loadCart();
     }
     await dispatch(
@@ -76,10 +79,13 @@ function ProductDetail(props) {
         productId.name,
         productId.image,
         productId.Sizes
-      )
+      ),
+      swal("Produto adicionado al carrito!", "success")
     );
+  }else{
+    swal("Oops...", "Este producto todavía no esta disponible", "error");
+  }
   };
-
   function handleReviews(e) {
     e.preventDefault();
     setBul(!bul);

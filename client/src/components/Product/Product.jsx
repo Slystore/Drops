@@ -18,12 +18,14 @@ import {
 } from "../../redux/cart/cartAction";
 import jwt_decode from "jwt-decode";
 import { getToken, userPostWish } from "../../redux/users/userActions";
+import swal from "sweetalert";
 
 export default function Product({
   name,
   id,
   price,
   image,
+  status,
   Sizes,
   onSale,
   discounts,
@@ -48,6 +50,7 @@ export default function Product({
   const handleAddToCart = async () => {
     let product = items?.find((e) => e.id === id);
     let user = decoded ? decoded.user.id : null;
+    if(status ==="disponible"){
     if (user) {
       await fusionCart(id);
       await dispatch(
@@ -76,12 +79,16 @@ export default function Product({
         Sizes
       )
     );
+  }else{
+    swal("Oops...", "Este producto todavía no esta disponible", "error");
+  }
   };
 
   const handleAddWishList = async (userId,productId)=> {
     // console.log('esta es la userId',userId)
     // console.log('esta es la id hardc',decoded ? decoded.id:decoded)
     const x = await userPostWish(userId,productId)
+    swal("Produto agregado a tu wishList!", "success")
   }
 
   return (
