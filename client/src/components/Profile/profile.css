@@ -1,37 +1,135 @@
-.img-profile img{
-    width: 200px;
-    height: 200px;
-    border-radius: 999999px;
+.img-profile img {
+  width: 200px;
+  height: 200px;
+  border-radius: 999999px;
 }
+.home {
+  text-decoration: none;
+  color: #fc4444;
+}
+.home:hover {
+  color: #ff1313;
+}
+.profile-content {
+  margin-left: 4rem;
+  /* border: 2px solid red; */
+  width: 55rem;
+  height: 40rem;
+}
+.icon-prof {
+  height: 28px;
+}
+.profile-cont {
+  margin-left: 4rem;
+  /* border: 2px solid red; */
+  width: 55rem;
+  height: 21rem;
+}
+.profile-box {
+  display: flex;
+  margin-top: 15px;
+  align-content: space-around;
+  align-items: flex-start;
+  flex-flow: column wrap;
+  height: 180px;
+  justify-content: center;
+  /* border: 1px solid blue; */
+}
+.label-profile {
+  margin-right: 12px;
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 15px;
+  width: 85px;
+  text-align: start;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.5px 1.5px 2.4 px;
+  background-color: rgb(211, 211, 211);
+}
+.label-content {
+  padding-top: 8px;
+}
+.inputs-content {
+  margin: 0 auto;
+  display: flex;
+  margin-top: 5px;
+  padding-top: 15px;
+  width: 390px;
+  /* border: 1px solid red; */
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+.input-newPass {
+  border: thin solid #ccc;
+  outline: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 300px;
+}
+.button-close {
+  position: relative;
+  margin-right: 10px;
+  float: right;
+}
+.label-pass {
+  margin-left: 10px;
+}
+.field-content {
+  padding-top: 15px;
+}
+.form-change-cont {
+  margin-left: 4rem;
+  border: thin solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 250px;
+}
+.buttons-edit-cont {
+  margin: 0 auto;
+  margin-left: 4rem;
+}
+.form-user-cont {
+  height: 250px;
+  /* border: 1px solid green; */
+  margin: 0 auto;
+}
+.inputs-user-content {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
 
-.home{
-    text-decoration: none;
-    color:#fc4444;
+  /* border: 1px solid red; */
+  margin: 0 auto;
 }
-.home:hover{
-    color: #ff1313;
+.label-user-change {
+  padding-right: 5px;
 }
-.profile-content{
-    margin-left: 4rem;
-    border: 2px solid red;
-    width: 55rem;
-    height: 40rem;
+.input-change-user {
+  border-radius: 5px;
+  border: thin solid #ccc;
+  outline: none;
+  margin:0 auto;
+  margin-left: 10px;
 }
-.profile-cont{
-    margin-left: 4rem;
-    border: 2px solid red;
-    width: 55rem;
-    height: 21rem;
+.wish-content{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-self: space-between;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    width: 1000px;
+    height: 800px;
 }
-.label-profile{
-    margin-right: 12px;
-    font-weight: 700;
-    width: 85px;
-    background-color: rgb(211, 211, 211);
+.product-cont{
+ /* border: 1px solid blue; */
+
+ margin-right: 15px;
 }
-.label-cont{
-    border: 1px solid red;
-    width: max-content;
+.delete-Wish{
+    height: 20px;
+    width: 5px;
 }
 
 .Modal-Profile-Row{
@@ -55,4 +153,3 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
