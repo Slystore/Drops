@@ -194,6 +194,9 @@ function Catalogue() {
               borrar filtros
             </button>
           </div>
+         
+
+         
           <div>
             {filtros &&
               filtros.map((el) => {
@@ -207,7 +210,7 @@ function Catalogue() {
                   >
                     <p key={el} style={{ fontSize: "10px" }}>
                       {" "}
-                      {el}{" "}
+                      {el}
                     </p>
                     <button
                       style={{
