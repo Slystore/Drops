@@ -1,22 +1,27 @@
 const { Router } = require("express");
 const router = Router();
 
-const getProducts = require('../../controllers/product/getProducts.js');
-const getProductById = require('../../controllers/product/getProductById.js');
-const {postProduct} = require('../../controllers/product/postProduct.js');
-const updateProduct = require('../../controllers/product/putProduct.js');
-const deleteProduct = require('../../controllers/product/deleteProduct.js');
-const putDiscountsById = require('../../controllers/discounts/putDiscountsById');
-const putForDiscount = require('../../controllers/discounts/putForDiscounts');
-const discountUnsubscribe = require('../../controllers/discounts/discountUnsubscribe');
+const multer = require("multer");
+const {storageMulter, uploadImage} = require('./storageMulter.js');
+const upload = multer({ storage: storageMulter });
 
-router.get('/', getProducts);
-router.get('/:id', getProductById);
-router.post('/createProduct', postProduct);
-router.put('/updateProduct', updateProduct);
-router.put('/deleteProduct/:id', deleteProduct);
-router.put('/discount/:id', putDiscountsById);
-router.put('/discount', putForDiscount);
-router.put('/:id/discountOff', discountUnsubscribe);
+const getProducts = require("../../controllers/product/getProducts.js");
+const getProductById = require("../../controllers/product/getProductById.js");
+const { postProduct } = require("../../controllers/product/postProduct.js");
+const updateProduct = require("../../controllers/product/putProduct.js");
+const deleteProduct = require("../../controllers/product/deleteProduct.js");
+const putDiscountsById = require("../../controllers/discounts/putDiscountsById");
+const putForDiscount = require("../../controllers/discounts/putForDiscounts");
+const discountUnsubscribe = require("../../controllers/discounts/discountUnsubscribe");
 
-module.exports = router;
+router.get("/", getProducts);
+router.get("/:id", getProductById);
+router.post("/createProduct", postProduct);
+router.put("/updateProduct", updateProduct);
+router.put("/deleteProduct/:id", deleteProduct);
+router.put("/discount/:id", putDiscountsById);
+router.put("/discount", putForDiscount);
+router.put("/:id/discountOff", discountUnsubscribe);
+router.post("/addProductPhoto", upload.single('image'), uploadImage);
+
+module.exports = router ;
