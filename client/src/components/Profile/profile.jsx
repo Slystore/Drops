@@ -48,9 +48,10 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "none",
   boxShadow: 24,
   p: 4,
+  paddingLeft: "50px",
 };
 
 const StyledModal = styled(ModalUnstyled)`
@@ -315,12 +316,15 @@ export default function Profile() {
                 </div>
               </div>
             )}
+
+
             <div className="buttons-edit-cont">
               <Button onClick={handleOpen}>Editar perfil</Button>
               <Button variant="text" onClick={handleOpenEdit}>
                 Cambiar contraseña
               </Button>
             </div>
+
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -332,7 +336,7 @@ export default function Profile() {
                 timeout: 500,
               }}
             >
-              <Fade in={open}>
+              <Fade in={open} >
                 <Box sx={style}>
                   <form onSubmit={handleSubmit}>
                     <div className="form-user-cont">
@@ -382,6 +386,7 @@ export default function Profile() {
                 </Box>
               </Fade>
             </Modal>
+
             {edit && (
               <div>
                 <Formik
@@ -397,7 +402,7 @@ export default function Profile() {
                   validate={(values) => {
                     let error = {};
                     if (!values.oldPassword) {
-                      error.oldPassword = "Complete this camp";
+                      error.oldPassword = "Completa este campo";
                     }
                     if (values.confirmPass !== values.password) {
                       error.confirmPass =

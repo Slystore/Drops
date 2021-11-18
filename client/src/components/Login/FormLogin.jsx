@@ -53,7 +53,7 @@ export default function FormLogin() {
     dispatch(getUserId(user));
     localStorage.setItem("userId", user);
     setForgot({
-      msg: "Se ah enviado un corre electronico para seguir con la recuperacion. Por favor revisar la casilla de spam ",
+      msg: "Se ha enviado un correo electrónico para seguir con la recuperación. Por favor revisa la casilla de spam ",
       auth: true,
     });
   };
@@ -98,7 +98,7 @@ export default function FormLogin() {
           validate={(values) => {
             let error = {};
             if (!values.mail) {
-              error.mail = "Por favor ingrese un mail";
+              error.mail = "Por favor ingrese un email";
             } else if (
               !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
                 values.mail
@@ -165,8 +165,8 @@ export default function FormLogin() {
                 </div>
                 <div className="data-Field">
                   <p>
-                    Don't you have an account yet?{" "}
-                    <a href="/register">Register here</a> or Sign in with google
+                    Aún no tienes una cuenta? <br />
+                    <a href="/register">Registrate aquí</a> <br />o entra con Google
                   </p>
                 </div>
                 <div className="data-Field">
@@ -176,7 +176,7 @@ export default function FormLogin() {
                     // clientId="867381968121-k4jusja35hahfur6b0ionmv8mc9f8fgj.apps.googleusercontent.com"
                     //local
                     clientId="867381968121-4njd3q5va0695tdivgirjl5tka5n7fqo.apps.googleusercontent.com"
-                    buttonText="Sign in with Google"
+                    buttonText="Loguear con Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={"single_host_origin"}
