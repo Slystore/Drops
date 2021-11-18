@@ -1,6 +1,7 @@
 const orderData = [
   {
     UserId: 1,
+    status: "completed",
     products: [
       {
         productId: 1,
@@ -16,6 +17,7 @@ const orderData = [
   },
   {
     UserId: 2,
+    status: "completed",
     products: [
       {
         productId: 11,
@@ -31,6 +33,7 @@ const orderData = [
   },
   {
     UserId: 3,
+    status: "completed",
     products: [
       {
         productId: 21,
@@ -46,6 +49,7 @@ const orderData = [
   },
   {
     UserId: 4,
+    status: "completed",
     products: [
       {
         productId: 31,
@@ -61,6 +65,7 @@ const orderData = [
   },
   {
     UserId: 5,
+    status: "completed",
     products: [
       {
         productId: 41,
@@ -76,6 +81,7 @@ const orderData = [
   },
   {
     UserId: 6,
+    status: "completed",
     products: [
       {
         productId: 51,
