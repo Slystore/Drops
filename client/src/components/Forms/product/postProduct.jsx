@@ -186,12 +186,12 @@ export default function FormProductCreate() {
                         </div>
 
                         <div className='boxInputProduct'>
-                            <p className='titleProduct'> Price </p>
+                            <p className='titleProduct'> Precio </p>
                             <input className='inputProduct' type={'number'} name='price' onChange={handleChangeForm} />
                             {errors.price && (<p className='errorText'>{errors.price}</p>)}
                         </div>
                         <div className='boxTextarea'>
-                            <textarea className='textarea' name='description' onChange={handleChangeForm} placeholder='Describe the product' />
+                            <textarea className='textarea' name='description' onChange={handleChangeForm} placeholder='Describe el producto' />
                             {errors.description && (<p className='errorText'>{errors.description}</p>)}
                         </div>
                     </div>
@@ -206,7 +206,7 @@ export default function FormProductCreate() {
 
                         <div className='boxSelectProduct'>
                             <select className='selectProduct' onChange={(e) => handleChangeCategory(e)}>
-                                <option> Categoria </option>
+                                <option> Categoría </option>
                                 {categories && categories.map(e => <option key={e.id} value={e.name}> {e.name} </option>)}
                             </select>
                         </div>
@@ -214,56 +214,55 @@ export default function FormProductCreate() {
                         <div className='boxSelectProduct'>
                             <select className='selectProduct' onChange={(e) => agregarDieta(e)}>
                                 <option > Estado </option>
-                                <option> disponible </option>
-                                <option> no disponible </option>
+                                <option> Disponible </option>
+                                <option> No disponible </option>
                             </select>
                         </div>
 
-                        <div className='boxSelectProduct'>
-                            <select className='selectProduct' onChange={(e) => handleTalle(e)}>
+                        <div className='boxSelectSizes'>
+                            <select className='selectSize' onChange={(e) => handleTalle(e)}>
                                 <option> Tallas </option>
                                 {sizes && sizes.map(e => <option key={e.id} value={e.number}> {e.number} </option>)}
 
                             </select>
                         </div>
 
+                        <div className='boxSelectSizes2'>
+                            <p className='titleStockProduct'>Existencias </p>
+                            <input className='inputStock' type={'number'} name='stock' onChange={(e) => handleCantidad(e)} />
+                        </div>
+
+                        <div className='boxSelectProduct'>
+                            <button className='buttonStock' onClick={e => agregarStock(e)}> Agregar </button>
+                        </div>
+
                     </div>
                 </div>
 
-                <div className='boxStockProduct'>
-                    <p className='titleStockProduct'>Existencias </p>
-                    <input className='inputProduct' type={'number'} name='stock' onChange={(e) => handleCantidad(e)} />
-                    <button className='buttonStock' onClick={e => agregarStock(e)}> Agregar </button>
-
-
-
-                    <div >
-                        {
-                            talleUi && talleUi.map(el => {
-                                return (
-                                    <div className="renderSizesProduct">
-                                        <p className='stockNumber' key={el[0]}> Talla:{el[0]} - Cantidad:{el[1]}
-                                            <button className='deleteStock' onClick={() => deleteCategory(el)}> X </button>
-                                        </p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-
-
-
+                <div className="AddTallesContainer">
+                    <label style={{fontSize: 12, color: '#00000050', paddingLeft:5, position: 'relative', top: -3, }}>Tallas agregadas</label>
+                    {
+                        talleUi && talleUi.map(el => {
+                            return (
+                                <div className="renderSizesProduct">
+                                    <p className='stockNumber' key={el[0]}> Talla:{el[0]} - Cantidad:{el[1]}
+                                        <button className='deleteStock' onClick={() => deleteCategory(el)}> X </button>
+                                    </p>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
+                    
                 <div className='boxBtnCreate'>
                     <button className='btnCreate' type='submit' id='submit' disabled={prueba ? false : true}> Crear</button>
                 </div>
+
+
+
             </form>
 
-
-
-
         </div>
-
 
     )
 
