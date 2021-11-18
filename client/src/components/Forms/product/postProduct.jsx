@@ -322,7 +322,7 @@ export default function FormProductCreate() {
             </div>
 
             <div className="boxSelectProduct">
-              <button className="buttonStock" onClick={(e) => agregarStock(e)}>
+              <button disabled={  !cantidad  ? true : false } className="buttonStock" onClick={(e) => agregarStock(e)}>
                 {" "}
                 Agregar{" "}
               </button>

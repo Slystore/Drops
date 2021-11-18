@@ -15,6 +15,7 @@ const newsletter = require('./newsletter/newsletter');
 const mercadopago = require('./mercadoPago/mercadoPago.js');
 const wishList = require('./wishList/wishList')
 const discounts = require('./discounts/discounts')
+const mail = require('./mail')
 
 
 app.use('/wishList',wishList)
@@ -31,5 +32,6 @@ app.use('/branchOffice', branchOffice);
 app.use('/newsletter', newsletter);
 app.use('/mercadopago', mercadopago);
 app.use('/discounts', discounts);
+app.use('/mail', mail);
 
 module.exports = app; 
