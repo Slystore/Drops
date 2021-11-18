@@ -1,45 +1,61 @@
 
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+const path = require('path');
+const ejs = require("ejs");
 
-const { CLIENT_ID, CLEINT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
+// const mail = require('../views/mail.ejs')
 
-  const oAuth2Client = new google.auth.OAuth2(
+const OAuth2 = google.auth.OAuth2
+let emailTemplate;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
+
+  const OAuth2Client = new OAuth2(
     CLIENT_ID,
-    CLEINT_SECRET,
-    REDIRECT_URI
+    CLIENT_SECRET
   );
-  oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+  OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
   
-  async function sendMail() {
-    try {
-      const accessToken = await oAuth2Client.getAccessToken();
+  function sendMail( recipient, data) {
+    const accessToken = OAuth2Client.getAccessToken();
+
+    const transport = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: 'dropshoes.info@gmail.com',
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken: accessToken,
+      },
+      tls: {
+          rejectUnauthorized: false
+      }
+    });
   
-      const transport = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          type: 'OAuth2',
-          user: 'dropshoes.info@gmail.com',
-          clientId: CLIENT_ID,
-          clientSecret: CLEINT_SECRET,
-          refreshToken: REFRESH_TOKEN,
-          accessToken: accessToken,
-        },
-      });
-  
-      const mailOptions = {
-        from: 'DROPS SHOES <dropshoes.info@gmail.com>',
-        to: 'soygentebien@hotmail.com',
-        subject: 'Hello from gmail using API',
-        text: 'Hello from gmail email using API',
-        html: '<h1>Hello from gmail email using API</h1>',
+      ejs.renderFile(path.join(__dirname, "../views/mail.ejs"),{data})
+      .then( result => {
+        emailTemplate = result;
+
+        const mailOptions = {
+          from: 'DROPS SHOES <dropshoes.info@gmail.com>',
+          to: recipient,
+          subject: 'Hello from gmail using API',
+          html: emailTemplate,
       };
   
-      const result = await transport.sendMail(mailOptions);
-      return result;
-    } catch (error) {
-      return error;
-    }
-  }
+      transport.sendMail(mailOptions, (error, result) => {
+          if(error) console.log('Error', error)
+          else console.log('Success', result)
+          transport.close()
+      });
+     
+  }).catch (error => {
+    console.log(error)
+  })
+}
 
-  module.exports = sendMail
+module.exports = sendMail
+

@@ -581,7 +581,7 @@ const Products = () => {
               </div>
             </form>
 
-            <form onSubmit={(e) => handleSubmit3(e)}>
+            {/*<form onSubmit={(e) => handleSubmit3(e)}>
               <div className="formProduct">
                 <div className="firstBoxProduct">
                   <div className="boxInputProduct">
@@ -631,7 +631,7 @@ const Products = () => {
                   </div>
                 </div>
               </div>
-            </form>
+                  </form>*/}
           </div>
         </Box>
       </Modal>
