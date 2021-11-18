@@ -37,6 +37,7 @@ import {
 import { getProducts } from "../../redux/products/productsAction";
 import { getUserOrderId } from "../../redux/orders/ordersAction";
 import { createReview } from "../../redux/reviews/reviewsActions";
+import { deleteNewsletter } from "../../redux/newsletter/newsletterActions";
 
 const style = {
   position: "absolute",
@@ -112,6 +113,7 @@ export default function Profile() {
   const wishList = useSelector((state) => state.usersReducer.wishList);
   const [value, setValue] = React.useState(0);
   const [edit, setEdit] = useState(false);
+  const [newsletter, setNewsletter] = useState(false);
   const [data, setData] = useState({
     // id: usersId.user ? usersId.user.id : "",
     name: "",
@@ -205,6 +207,18 @@ export default function Profile() {
     });
   };
 
+  const handleClick = (e) => {
+    e.preventDefault()
+    dispatch(deleteNewsletter({email: usersId.user.mail}))
+    swal({
+      title: "Te has desuscripto al newsletter con exito!",
+      icon: "success",
+      buttons: false,
+    });
+    setNewsletter(true)
+    // console.log(usersId.user.mail)
+  }
+
   let wishFilt = wishList.map((el) => el.ProductId);
   let dataFiltered = products.filter((el) => wishFilt.includes(el.id));
 
@@ -236,6 +250,7 @@ export default function Profile() {
             <Tab label="Configuracion" {...a11yProps(1)} />
             <Tab label=" Mis deseados" {...a11yProps(2)} />
             <Tab label="Mis compras" {...a11yProps(3)} />
+            <Tab label="Newsletter" {...a11yProps(4)} />
             <a href="/" className="home">
               <Tab label="Home" {...a11yProps(4)} />
             </a>
@@ -539,6 +554,9 @@ export default function Profile() {
                 </Table>
               </TableContainer>
             </Grid>
+          </TabPanel>
+          <TabPanel value={value} index={4}> 
+                      <button disabled={newsletter} onClick={handleClick}> desuscribirme </button>
           </TabPanel>
         </Box>
       )}
