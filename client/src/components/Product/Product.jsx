@@ -111,6 +111,12 @@ export default function Product({
                   position: "relative",
                   left: -3
                 },
+                "@media (min-width: 0px) and (max-width: 1199px)": {
+                  fontSize: 14,
+                  marginTop: -1,
+                  position: "relative",
+                  left: -3
+                },
               }}
               onClick={() => handleAddToCart(id)}
             />
@@ -127,6 +133,12 @@ export default function Product({
                 "@media (min-width: 1200px) and (max-width: 1399px)": {
                   fontSize: 16,
                   marginTop: -0.5,
+                },
+                "@media (min-width: 0px) and (max-width: 1199px)": {
+                  fontSize: 14,
+                  marginTop: -1,
+                  position: "relative",
+                  
                 },
               }}
               onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}  />
