@@ -44,6 +44,20 @@ async function payment(req, res, next) {
     // raw: true,
   });
 
+  let productData = []
+  let productData2 = []
+  let productData3 = []
+  
+  for (let i = 0; i < orderm.Products.length; i++) {
+    productData.push(orderm.Products[i].name)
+    productData2.push(orderm.Products[i].image)
+    productData3.push(orderm.Products[i].priceDiscount)
+    
+  }
+
+  // orderm.Products.forEach(el => el['name']);
+  // const productData2 = orderm.Products.forEach(el => el['image']);
+  // const productData3 = orderm.Products.forEach(el => el['priceDiscount']);
   const prueba = {
     shippingAddress: orderm.shippingAddress,
     shippingLocated: orderm.shippingLocated,
@@ -51,16 +65,17 @@ async function payment(req, res, next) {
     mail: orderm.User.mail,
     name: orderm.User.name,
     surname: orderm.User.surname,
-    pName: orderm.Products.forEach(el => el.name),
-    pImage: orderm.Products.forEach(el => el.image),
-    pPrice: orderm.Products.forEach(el => el.priceDiscount),
-    logo: path.join(__dirname, '../../utils/Logo.png')
+    pName: productData,
+    pImage: productData2,
+    pPrice: productData3,
+    // logo: path.join(__dirname, '../../utils/Logo.png')
   }
 
-  console.log(orderm)
+  // console.log(orderm)
+  // orderm.Products.forEach(el => console.log(el.name) )
   // console.log('USER',orderm.User.name)
   // console.log('PRODUCT',orderm.Products[0].name)
-  console.log('PRODUCT',prueba)
+  // console.log('PRODUCT',prueba)
   // console.log('PRODUCT',orderm.Products[0].priceDiscount)
  
   Orders.findByPk(external_reference)
@@ -84,10 +99,7 @@ async function payment(req, res, next) {
               }
             );
           });
-        //   await mail(orderm.Users.mail, orderm.Users.name, orderm.User.surname);
-        // mail()
-        //   .then((result) => console.log('Email sent...', result))
-        //   .catch((error) => console.log(error.message));
+      
           order.status = "completed";
         } else {
           order.status = "completed";

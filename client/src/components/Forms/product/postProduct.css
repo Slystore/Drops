@@ -6,13 +6,14 @@
 .boxInputProduct {
     height: 70px;
     width: 270px;
+    /* border: 1px solid  #f00; */
 }
 .titleProduct {
     font-size: 15px;
     margin: 0px 0 0 10px;
     color: #555;
     width: 60px;
-
+    
 }
 .inputProduct {
     margin: 0 0 0 10px;
@@ -21,7 +22,7 @@
     width: 220px;
     border: 1px solid  #555;
     border-radius: 3px ;
-
+    
 }
 .errorText {
     font-size: 13px;
@@ -31,6 +32,7 @@
 }
 .secondBoxProduct {
     width: 50%;
+    /* border: 1px solid  #f00; */
 }
 
 .selectProduct {
@@ -41,45 +43,84 @@
     border-radius: 3px ;
     color: #555;
 }
+
+.selectSize, .inputStock {
+    outline: none;
+    height: 30px;
+    width: 80px;
+    padding-left: 10px;
+    border: 1px solid  #555;
+    border-radius: 3px ;
+    color: #555;
+}
+
 .boxSelectProduct {
     height: 70px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 235px;
+    /* border: thin solid #0f0; */
+}
+
+.boxSelectSizes {
+    width: 115px;
+    height: 70px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: thin solid rgb(255, 230, 0); */
+}
+
+.boxSelectSizes2 {
+    width: 115px;
+    height: 70px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 25px;
+    /* border: thin solid rgb(255, 230, 0); */
 }
 
 .boxTextarea {
     height: 90px;
     margin: 0 0 0 10px;
-
 }
 
 .textarea {
     width: 220px;
-    height: 70px;
+    height: 90px;
     border: none;
     outline: none;
+    resize: none;
+    font-size: 14px;
+    padding-left: 5px;
     border: 1px solid  #555;
-
-
 }
 
 .titleStockProduct {
+    width: 80px;
     font-size: 15px;
     margin: 0px 0 0 10px;
     color: #555;
-    width: 60px;
 }
 
 .buttonStock {
-    height: 30px;
+    width: 140px;
+    height: 40px;
     margin-left: 10px;
-    width: 100px;
+    margin-bottom: 35px;
     border: none;
     outline: none;
 }
+
 .stockNumber {
-    font-size: 15px;
+    font-size: 14px;
     margin: 0px;
 }
 
@@ -99,11 +140,13 @@
 
 .boxBtnCreate {
     margin-top: 15px;
+    margin-right: 36px;
     height: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
 }
+
 .btnCreate {
     width: 140px;
     height: 40px;
@@ -116,11 +159,29 @@
     border-radius: 5px;
     color: white;
 }
+
 .renderSizesProduct {
-     height: 27px;
+    height: 27px;
     display: flex;
     justify-content: space-evenly;
     width: auto;
-
-
 }
+
+.AddTallesContainer{
+    padding: 0 20px 0 0;
+    width: 220px;
+    height: 100px;
+    position: absolute;
+    left: 15px;
+    border-radius: 5px;
+    top: 380px;
+    overflow-y:  scroll;
+    z-index: 99999999;
+    border: thin solid #ccc;
+    /* border: thin solid #f00; */
+}
+
+.boxStockProduct{
+    border: thin solid #0f0;
+}
+

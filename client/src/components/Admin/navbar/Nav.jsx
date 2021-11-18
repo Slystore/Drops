@@ -44,7 +44,7 @@ const AdminNavBar = () => {
             </li>
             <li className="sidebarListItem">
               <MdOutlineCategory className="sidebarIcon" />
-              <Link to="/admin/categories">Categorias</Link>
+              <Link to="/admin/categories">Categorías</Link>
             </li>
             <li className="sidebarListItem">
               <SiNike className="sidebarIcon" />
@@ -52,7 +52,7 @@ const AdminNavBar = () => {
             </li>
             <li className="sidebarListItem">
               <FaUsers className="sidebarIcon" />
-              <Link to="/admin/users">Users</Link>
+              <Link to="/admin/users">Usuarios</Link>
             </li>
             <li className="sidebarListItem ">
               <MdProductionQuantityLimits className="sidebarIcon" />

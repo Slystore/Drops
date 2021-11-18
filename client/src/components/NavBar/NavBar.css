@@ -15,11 +15,11 @@
     /* border: thin dotted #f00; */
 }
 
-.Logo{
+.LogoNav{
     width: 150px;
 }
 
-.Logo:hover{ 
+.LogoNav:hover{ 
     cursor: pointer;
 }
 
@@ -466,8 +466,8 @@ ul li:hover, ul li a:hover{
     }
 
     .NavContainerMobile{
-        width: 90vw;
-        margin-top: 2.5vh;
+        width: 90%;
+        margin-top: 30px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -476,7 +476,7 @@ ul li:hover, ul li a:hover{
     } 
 
     .LogoNavMobile{
-        width: 90vw;
+        width: 90%;
         display: flex;
         flex-direction: row;
         align-items: left;
@@ -487,12 +487,12 @@ ul li:hover, ul li a:hover{
     
     .NavContainerMobile img{
         /* width: 35vw; */
-        width: 25vw;
+        width: 150px;
         /* border: thin dotted #f00; */
     }
 
     .MenuNavMobile{
-        width: 10vw;
+        width: 10%;
         display: flex;
         flex-direction: row;
         align-items: right;
@@ -560,12 +560,21 @@ ul li:hover, ul li a:hover{
 
 @media (min-width: 576px) and (max-width:767px){
 
+    .NavContainer{
+        height: 120px;
+        max-height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .MenuContainer, .ToolsContainer, .LogoContainer{
         display: none;
     }
 
     .NavContainerMobile{
-        width: 90vw;
+        width: 90%;
         margin-top: 2.5vh;
         display: flex;
         flex-direction: row;

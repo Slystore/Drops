@@ -4,6 +4,7 @@ const { google } = require('googleapis');
 const path = require('path');
 const ejs = require("ejs");
 
+
 // const mail = require('../views/mail.ejs')
 
 const OAuth2 = google.auth.OAuth2
@@ -42,7 +43,7 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
         const mailOptions = {
           from: 'DROPS SHOES <dropshoes.info@gmail.com>',
           to: recipient,
-          subject: 'Hello from gmail using API',
+          subject: 'Gracias por su compra',
           html: emailTemplate,
       };
   
@@ -56,6 +57,9 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
     console.log(error)
   })
 }
+
+
+
 
 module.exports = sendMail
 

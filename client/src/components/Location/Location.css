@@ -204,7 +204,6 @@
     .Location{
         width: 50vw;
         max-height: 70%;
-        /* border: thin dotted #000; */
     }
     
     .TitleLocation{
@@ -235,7 +234,7 @@
         align-items: center;
         justify-content: space-evenly;
     }
-
+    
     .TextAreaFormContact{
         height: 12vh;
     }
@@ -257,7 +256,7 @@
     }
     
     .SubLocation{
-        width: 95vw;
+        width: 95%;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -266,22 +265,23 @@
     }
     
     .Location{
-        width: 50vw;
-        max-height: 40vh;
+        width: 50%;
+        max-height: 500px;
     }
-
+    
     .TitleLocation{
-        font-size: 3vw;
+        font-size: 1.7rem;
+        line-height: 22px;
         font-weight: bold;
     }
     
     .SubTitleLocation{
-        width: 50vw;
-        font-size: 2vw;
+        width: 100%;
+        font-size: 1rem;
     }
-
+    
     .Form{
-        width: 50vw;
+        width: 50%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -289,25 +289,25 @@
     }
     
     .Form form{
-        width: 50vw;
+        width: 450px;
         position: relative;
-        margin-top: -2vh;
+        margin-top: -15%;
         font-size: 1.5vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
     }
-
+    
     .TextAreaFormContact{
-        height: 12vh;
+        height: 120px;
     }
     
     
 }
 
 @media (min-width: 576px) and (max-width: 767px){
-
+    
     .LocationContainer{
         width: 100vw;
         height: 875px;
@@ -318,6 +318,7 @@
         justify-content: space-around;
         background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)), url('../../assets/bgJordan.jpg');
         background-size: cover;
+        /* border: thin dotted #000; */
         /* background: #ccc; */
     }
     

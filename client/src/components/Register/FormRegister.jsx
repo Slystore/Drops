@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { getUserId, userRegister } from "../../redux/users/userActions";
 import { useHistory } from "react-router";
 import "./formRegisterStyles.css";
+import { postNewsletter } from '../../redux/newsletter/newsletterActions';
+
 export default function FormRegister() {
   const history = useHistory();
   const dispatch = useDispatch()
@@ -43,6 +45,7 @@ export default function FormRegister() {
               dispatch(getUserId(x.user.id))
               setSucces(true);
               setTimeout(() => {
+                dispatch(postNewsletter({email: body.mail}))
                 setSucces(false);
                 history.push("/login");
               }, 3500);
