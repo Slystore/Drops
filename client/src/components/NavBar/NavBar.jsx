@@ -87,8 +87,6 @@ function NavBar() {
   const [name, setName] = useState("");
   const {items} = useSelector(state => state.cartReducers)
   
-  /****************************************************** */
-  
   var UserGoogle = localStorage.getItem('gId');
 
   useEffect(() => {
@@ -96,11 +94,6 @@ function NavBar() {
   }, [dispatch]);
   
   const { userId } = useSelector(state => state.usersReducer)
-
-
-  // console.log("DDDD",userId.user)
-
-  /****************************************************** */
   
   function handleInputChange(e) {
     e.preventDefault();
@@ -141,7 +134,7 @@ function NavBar() {
       </Box>
       <Box className="LogoContainer">
         <Link to="/">
-          <img src={logo} className="Logo ball" alt="Logo"/>  
+          <img src={logo} className="LogoNav ball" alt="Logo"/>  
         </Link>
       </Box>
       <Box className="MenuContainer">
