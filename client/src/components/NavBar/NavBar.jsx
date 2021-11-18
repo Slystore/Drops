@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getToken } from "../../redux/users/userActions";
+import { getToken, getUserId} from "../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 
 import Box from "@mui/material/Box";
@@ -19,6 +19,7 @@ import {
   titleMarcas,
   titleCategorias,
   titleUserLog,
+  titleAdminLog,
 } from "./ToolTIps.js";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -60,6 +61,10 @@ function NavBar() {
     userAdmin: {},
   });
 
+  const [userGoogleLocal, setuserGoogleLocal] = useState({
+    userDataLocal: {},
+  });
+
   useEffect(() => {
     const x = getToken();
     if (x.msg) {
@@ -76,13 +81,19 @@ function NavBar() {
     }
   }, []);
 
-  // console.log("userState",loged.userState)
-  // console.log("userAdmin",loged.userAdmin)
 
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const {items} = useSelector(state => state.cartReducers)
+  
+  var UserGoogle = localStorage.getItem('gId');
+
+  useEffect(() => {
+    dispatch(getUserId(UserGoogle));
+  }, [dispatch]);
+  
+  const { userId } = useSelector(state => state.usersReducer)
   
   function handleInputChange(e) {
     e.preventDefault();
@@ -123,7 +134,7 @@ function NavBar() {
       </Box>
       <Box className="LogoContainer">
         <Link to="/">
-          <img src={logo} className="Logo ball" alt="Logo"/>  
+          <img src={logo} className="LogoNav ball" alt="Logo"/>  
         </Link>
       </Box>
       <Box className="MenuContainer">
@@ -139,10 +150,10 @@ function NavBar() {
               <a href="/catalogue">catálogo</a>
             </li>
             <li className="Menu swoopInTop">
-              <a href="#Nosotros">nosotros</a>
+              <a href="/#Nosotros">nosotros</a>
             </li>
             <li className="Menu swoopInTop">
-              <a href="#Location" className="">
+              <a href="/#Location" className="">
                 contacto
               </a>
             </li>
@@ -172,14 +183,24 @@ function NavBar() {
                 <ShoppingCartIcon  className={classes.iconCart} sx={{transition: "0.5s all"}}/>{" "}
              </Badge>
           </div></Link>
+          {console.log("USER_TYPE",loged.userAdmin)}
           {
-              loged.userState ? (
-                <UserTooltip title={titleUserLog}>
+              loged.userState === 'true' ? (
+                <UserTooltip title={loged.userAdmin === 'admin' ? titleAdminLog : titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
                  </div>
                 </UserTooltip>
-              ) : (
+               ) 
+              : userId.user ? (
+                <UserTooltip title={userId.user.userType === 'admin' ? titleAdminLog : titleUserLog}>
+                  <div className="Tool spinIn">
+                     <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
+                 </div>
+                </UserTooltip>
+              )
+              :
+              (
                 <UserTooltip title={titleUser}>
                   <div className="Tool spinIn"> <AccountCircleIcon sx={{transition: "0.5s all", '&:hover':{color: 'red',cursor: "pointer"}}}/></div>
                 </UserTooltip>

@@ -6,10 +6,10 @@ const authConfing = require("../../config/auth");
 const googleLog = async (req, res) => {
   try {
     const client = new OAuth2Client(keys.web.client_id);
-    let { Zb, userType } = req.body;
+    let { wc, userType } = req.body;
     console.log('que es lo que me llega',req.body)
     const ticket = await client.verifyIdToken({
-      idToken: Zb.id_token,
+      idToken: wc.id_token,
       audience: keys.web.client_id,
     });
     const userValidate = await Users.findOne({

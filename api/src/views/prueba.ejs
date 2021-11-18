@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/prueba.css" rel="stylesheet" type="text/css">
+    <title> Mail Transaccional</title>
+</head>
+<body>
+    <div style='display: flex; justify-content: space-around' class="container nav">
+        <div class='logo'> 
+           
+        </div>
+        <div>
+            <p> Usuario </p>
+        </div>
+    </div>
+
+    
+
+     
+    <div class="container footer">  
+        <p>Gracias por tu compra JUAN!! </p>
+    </div> 
+   
+    <div class="container compra">
+        <h3> Resumen de tu compra</h3>
+
+        <div class="container footer"> 
+            <ul class='items'>
+                <% ['Air Force 1 Felt GS', 'Air Force 1 Gore Tex High White DS'].map(e => { %>
+                    <li> <%= e %> </li>   
+                <% }) %>   
+            </ul>
+            <div class='fotos'>
+                <% ['https://i.postimg.cc/1z2wL4GC/Air-Force1-Felt-GS.jpg','https://i.postimg.cc/Dz81j1X4/Air-Force1-Gore-Tex-High-White-DS.jpg'].map(e => { %>
+                    <img src=<%= e %> alt='foto' width='50px' height="25px" >
+                <% } )  %> 
+            </div>
+         </div>
+
+        <p> Envio a domicilio: </p>
+        <p> Caupolican 195, Rincon de Milberg, Tigre</p> 
+        <p> Pagaste: </p>
+        <p> $ 300 </p> 
+    </div>
+
+    <div class="container footer" > <button style="display: block; margin: 0 auto"> Mis compras </button></div>
+
+    <div class="container footer">
+        <img src="/images/portada.jpg" alt="portada" width='400px' height="100px" class='portada'>
+    </div>
+    
+</body>
+</html>

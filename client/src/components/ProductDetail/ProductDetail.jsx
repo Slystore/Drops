@@ -7,7 +7,7 @@ import {
   getProductStockById,
 } from "../../redux/products/productsAction";
 import jwt_decode from "jwt-decode";
-import { getToken } from "../../redux/users/userActions";
+import { getToken, userPostWish } from "../../redux/users/userActions";
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -19,7 +19,8 @@ import {
   loadCart,
 } from "../../redux/cart/cartAction";
 import "./ProductDetail.css";
-
+import { switchClasses } from "@mui/material";
+import swal from "sweetalert";
 
 function ProductDetail(props) {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function ProductDetail(props) {
     x = getToken();
   }
   const decoded = x ? jwt_decode(x) : null;
+  const gId = localStorage.getItem('gId')
 
   let [bul, setBul] = useState(false);
 
@@ -52,10 +54,10 @@ function ProductDetail(props) {
   const addCart = async (e) => {
     e.preventDefault();
     let user = decoded ? decoded.user.id : null;
+    if(productId.status ==="disponible"){
     if (user) {
       // console.log("entrouser",user)
       await fusionCart(id);
-      await loadCart();
       await dispatch(
         addToCart(
           id,
@@ -66,6 +68,8 @@ function ProductDetail(props) {
           productId.Sizes
         )
       );
+      swal("Produto adicionado al carrito!", "success")
+      await loadCart();
     }
     await dispatch(
       addToCart(
@@ -75,15 +79,20 @@ function ProductDetail(props) {
         productId.name,
         productId.image,
         productId.Sizes
-      )
+      ),
+      swal("Produto adicionado al carrito!", "success")
     );
+  }else{
+    swal("Oops...", "Este producto todavía no esta disponible", "error");
+  }
   };
-
   function handleReviews(e) {
     e.preventDefault();
     setBul(!bul);
   }
-
+  const handleAddWishList = async (userId,productId)=> {
+    const x = await userPostWish(userId,productId)
+  }
   return (
     <div className="DetailContainer">
       {productId.name ? (
@@ -196,6 +205,7 @@ function ProductDetail(props) {
                     fontSize: 10,
                   },
                 }}
+                onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}
                 startIcon={<FavoriteIcon 
                   sx={{
                     "@media (min-width: 1200px) and (max-width: 1399px)": {

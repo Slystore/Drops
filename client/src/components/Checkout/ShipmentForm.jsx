@@ -85,7 +85,7 @@ export default function ShipmentForm() {
           `/orders/updateOrder/${orderId}`,
           input
         );
-        console.log(data);
+        // console.log(data,"shipmentform");
         history.push("/pay");
       } catch (error) {
         console.log(error);

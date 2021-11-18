@@ -32,22 +32,38 @@ export const initialState = {
 function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
-                  console.log(action.dayDiscount)
+      
+      console.log(action.dayDiscount)
 
       let discountD
       let dayVerify = new Date().toLocaleString("default", { weekday: "long" });
       let data = action.payload; //trae los products
+
       data = data.map( el => {
-        if(el.discountDay !== null) discountD = el.discountDay.toLowerCase() 
-        if(el.onSale === false) return el
-        if(el.discountDay === null) return el
-        else if(el.onSale === true && discountD !== null && discountD !== dayVerify){
+        //  discountD = el.discountDay.toLowerCase() 
+
+        if(el.onSale === false) {
+          console.log('SIN PROMOCION. elemento sale normal')
+          return el
+        }
+        else if(el.discountDay === null) {
+          console.log('SIN DIA. elemento sale normal')
+          return el
+        }
+        else if(el.onSale === true && el.discountDay !== null && el.discountDay !== dayVerify) {
+          console.log('SIN DIA. elemento sale normal')
+          
           return {
             ...el,
             onSale: false,
             Discounts: null,
             discountDay: null
           };
+        }
+        else if(el.onSale === true && el.discountDay !== null && el.discountDay === dayVerify){
+          
+                    
+          return el
         }
         
       })
@@ -58,32 +74,32 @@ function productsReducer(state = initialState, action) {
       };
 
 
-      if(action.dayDiscount === null || action.dayDiscount === undefined){
-                    console.log('entro aca')
+    //   if(action.dayDiscount === null || action.dayDiscount === undefined){
+    //                 console.log('entro aca')
 
-        return {
-          ...state,
-          products: data,
-          filtrados: data,
-        }    
-      }
-      else if(discountD !== null && discountD !== dayVerify ){
-                    console.log('entro aca con day discount')
+    //     return {
+    //       ...state,
+    //       products: data,
+    //       filtrados: data,
+    //     }    
+    //   }
+    //   else if(discountD !== null && discountD !== dayVerify ){
+    //                 console.log('entro aca con day discount')
 
-        data = data.map(e => {
-           discountD = e.discountDay.toLowerCase()
+    //     data = data.map(e => {
+    //        discountD = e.discountDay.toLowerCase()
 
-            // console.log('entro aca')
-            // console.log(discountD, dayVerify, action.dayDiscount)
-            return {
-              ...e,
-              onSale: false,
-              Discounts: null,
-              discountDay: null
-            };
-          })
+    //         // console.log('entro aca')
+    //         // console.log(discountD, dayVerify, action.dayDiscount)
+    //         return {
+    //           ...e,
+    //           onSale: false,
+    //           Discounts: null,
+    //           discountDay: null
+    //         };
+    //       })
          
-        }
+    //     }
     }
 
     // case GET_PRODUCTS_WITH_DISCOUNTS: {

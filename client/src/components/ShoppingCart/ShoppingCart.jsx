@@ -13,6 +13,7 @@ import logo from "../../assets/Logo.png";
 import { getToken } from "./../../redux/users/userActions";
 import jwt_decode from "jwt-decode";
 import "./ShoppingCart.css";
+import swal from "sweetalert";
 
 function ShopingCart() {
   const dispatch = useDispatch();
@@ -34,11 +35,17 @@ function ShopingCart() {
     dispatch(cartReset());
     history.push("/catalogue");
   };
+  let SizeIdmap=items.filter(el => el.SizeId === 0|| el.SizeId === null);
 
   async function handleSubmit() {
+    if(SizeIdmap.length===0){
     if (user) {
       await fusionCart(user);
       await dispatch(loadCart(user));
+    }
+  }else{
+    history.push("/shoppingCart");
+      swal("Por Favor, elegir talle antes de seguir");
     }
   }
 
@@ -94,7 +101,7 @@ function ShopingCart() {
         </div>
         <div style={{ margin: "0 0 10px 0" }}>
           <Link 
-            to={!user ? "/login" : "/shipment"}
+            to={!user ? "/login" : (SizeIdmap.length===0? "/shipment": "/shoppingCart")}
             className="ContinuarBtnShoppingCart"
             onClick={handleSubmit}
           >

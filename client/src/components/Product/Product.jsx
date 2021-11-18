@@ -18,12 +18,14 @@ import {
 } from "../../redux/cart/cartAction";
 import jwt_decode from "jwt-decode";
 import { getToken, userPostWish } from "../../redux/users/userActions";
+import swal from "sweetalert";
 
 export default function Product({
   name,
   id,
   price,
   image,
+  status,
   Sizes,
   onSale,
   discounts,
@@ -48,36 +50,45 @@ export default function Product({
   const handleAddToCart = async () => {
     let product = items?.find((e) => e.id === id);
     let user = decoded ? decoded.user.id : null;
+    if(status ==="disponible"){
     if (user) {
       await fusionCart(id);
-      await dispatch(loadCart());
       await dispatch(
         addToCart(
           id,
           product?.quantity ? product.quantity + 1 : 1,
-          price,
+          onSale === true ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
+          : price,
+          // price,
           name,
           image,
           Sizes
         )
       );
+      await dispatch(loadCart());
     }
     await dispatch(
       addToCart(
         id,
         product?.quantity ? product.quantity + 1 : 1,
-        price,
+        onSale === true ? (price - (parseInt(discounts) / 100) * price).toPrecision(4)
+          : price,
+        // price,
         name,
         image,
         Sizes
       )
     );
+  }else{
+    swal("Oops...", "Este producto todavía no esta disponible", "error");
+  }
   };
 
   const handleAddWishList = async (userId,productId)=> {
     // console.log('esta es la userId',userId)
     // console.log('esta es la id hardc',decoded ? decoded.id:decoded)
     const x = await userPostWish(userId,productId)
+    swal("Produto agregado a tu wishList!", "success")
   }
 
   return (
@@ -118,7 +129,7 @@ export default function Product({
                   marginTop: -0.5,
                 },
               }}
-              onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId.id)}  />
+              onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}  />
           </div>
         </Link>
       </div>

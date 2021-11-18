@@ -2,6 +2,8 @@ import React from 'react';
 import Rating from '@mui/material/Rating';
 
 function BestProducts(props) {
+
+    var intFrameWidth = window.innerWidth;
     
     return (
         
@@ -16,7 +18,11 @@ function BestProducts(props) {
                  ${props.price} 
             </div>
             <div className="MoreRatingCardRate">
-                <Rating name="read-only" value={props.rating } readOnly size='medium' />
+                <Rating 
+                    name="read-only" 
+                    value={props.rating } 
+                    readOnly 
+                    size={ intFrameWidth < 992? 'small':'medium' }/>
             </div>
                        
         </div>

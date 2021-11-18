@@ -28,7 +28,7 @@ const UpdateForm = (id) => {
         setInput({
             shippingState: ''
         });
-        // window.location.replace("");
+         window.location.replace("");
     }
     return (
         <div>

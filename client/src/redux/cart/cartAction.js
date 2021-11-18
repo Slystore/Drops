@@ -21,6 +21,7 @@ if(localStorage.getItem('token')){
 const decoded = x?jwt_decode(x): null;
 // const decoded = 4
 export const addToCart = (id, quantity, price, name, image, Sizes) => async (dispatch) => {
+  console.log(id, quantity, price, name, image, Sizes)
   let product = {
     id,
     quantity,
@@ -183,17 +184,17 @@ export const loadCart = (user) =>
         window.localStorage.setItem("orderId", JSON.stringify(res.data.orderId))
         cart = await axios.get("/orders/" + res.data.orderId)
       }
-//  console.log(cart.data, "tomiload")
+  console.log(cart.data, "tomiload")
       cart = cart?cart.data.Products.map(e => {
-        // console.log(cart.data, "talleslogueado")
+         console.log(cart.data, "talleslogueado")
         return {
           id: e.id,
           quantity: e.OrderDetail.quantity,
-          price: e.price,
+          price: e.OrderDetail.price,
           name: e.name,
           image: e.image,
           Sizes: cart.data.products[0].Sizes,
-          SizeId:0
+          SizeId:e.OrderDetail.sizeId
         }
       }):[];
 
