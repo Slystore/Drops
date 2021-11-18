@@ -115,7 +115,7 @@
   margin-left: 10px;
 }
 .wish-content{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     justify-self: space-between;
     flex-flow: row wrap;
