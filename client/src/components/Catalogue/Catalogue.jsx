@@ -29,6 +29,8 @@ function Catalogue() {
   const element = document.querySelectorAll(".Shoes");
   VanillaTilt.init(element);
 
+  var intFrameWidth = window.innerWidth;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());

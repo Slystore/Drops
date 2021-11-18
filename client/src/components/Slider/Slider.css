@@ -118,7 +118,7 @@
 @media (min-width: 1200px) and (max-width: 1399px){
 
     .SliderContainer{
-        width: 100%;
+        width: 100vw;
         min-height: 260px;
         margin: 100px 0;
         padding: 10px 0 25px 0;

@@ -32,9 +32,9 @@
     }
     
     .Title{
-        width: 50%;
+        width: 60%;
         height: 22%;
-        padding: 25px;
+        padding: 5% 0;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
@@ -92,9 +92,9 @@
     }
     
     .Title2{
-        width: 50%;
+        width: 55%;
         height: 40%;
-        padding: 20px;
+        padding: 5% 2%;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
@@ -121,9 +121,9 @@
     }
 
     .Title3{
-        width: 50%;
+        width: 55%;
         height: 40%;
-        padding: 20px;
+        padding: 5% 2%;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
@@ -193,9 +193,9 @@
     }
 
     .Title4{
-        width: 66%;
+        width: 75%;
         height: 30%;
-        padding: 12px;
+        padding: 5% 2%;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
@@ -243,9 +243,9 @@
     }
 
     .Title5{
-        width: 66%;
+        width: 75%;
         height: 40%;
-        padding: 5px;
+        padding: 5% 2%;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
@@ -296,7 +296,7 @@
     .Title{
         width: 70%;
         height: 22%;
-        padding: 15px;
+        padding: 10px;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
@@ -313,7 +313,7 @@
     }
     
     .divTitle{
-        width: 36%;
+        width: 35%;
         height: 100%;
         margin-right: 14px;
         float: left;
@@ -340,7 +340,6 @@
         transform: translateX(400px);
         opacity: 0;
         transition: 0.5s ease;
-        /* border: thin dotted #f00; */
     }
     
     .HomeContent2 p{
@@ -533,72 +532,51 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199px){
-    
 
+    
     .Images{
+        width: 75%;
+        height: 500px;
+        max-height: 500px;
+    }
+    
+    .HomeContent{
         width: 80%;
-        height: 600px;
-        max-height: 600px;
+        min-height: 30%;
+        margin: 0 auto;
+        position: relative;
+        top: 32%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(300px);
+        opacity: 0;
+        transition: 0.5s ease;
     }
 
     .Title{
-        width: 70%;
-        height: 20%;
-        display: none;
-        padding: 20px;
+        width: 75%;
+        height: 22%;
+        padding: 7px;
         color: #fff;
-        font-size: 48px;
+        font-size: 44px;
         border: solid #fff;
-        position: absolute;
-        top: 40%;
-        left: 15%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
-    
-    .Title2, .Title3{
-        width: 60%;
-        height: 30%;
-        display: none;
-        padding: 10px;
+
+    .HomeContent p{
+        width: 80%;
+        margin-top: 10px;
+        font-size: 18px;
         color: #fff;
-        font-size: 38px;
-        border: solid #fff;
-        position: relative;
-        top: 35%;
-        left: 20%;
-    }
-    
-    .Title4{
-        width: 70%;
-        height: 26%;
-        display: none;
-        padding: 15px;
-        color: #fff;
-        font-size: 36px;
-        border: solid #fff;
-        position: absolute;
-        top: 37%;
-        left: 15%;
-    }
-    
-    .Title5{
-        width: 70%;
-        height: 36%;
-        display: none;
-        padding: 10px;
-        color: #fff;
-        font-size: 36px;
-        border: solid #fff;
-        position: absolute;
-        top: 32%;
-        left: 15%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
     }
     
     .divTitle{
-        width: 35.7%;
-        min-width: 35.7%;
-        max-width: 36%;
+        width: 35.5%;
         height: 100%;
-        margin-right: 10px;
+        margin-right: 14px;
         float: left;
         background-image: url('../../assets/nikeAirForce1.jpg');
         background-repeat: no-repeat;
@@ -607,12 +585,46 @@
         transition: 0.5s all;
     }
     
-    .divTitle:hover  .Title{
-        display: block;
+    .divTitle:hover  .HomeContent{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    .HomeContent2{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        top: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent2 p{
+        width: 70%;
+        margin-left: 10px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,0.8);
+    }
+
+    .Title2{
+        width: 50%;
+        height: 40%;
+        padding: 7px;
+        color: #fff;
+        font-size: 30px;
+        border: solid #fff;
+        text-shadow: 0 10px 5px rgba(0,0,0,1);
+        box-shadow: 0 10px 10px rgba(0,0,0,0.7);
     }
 
     .divTitle2{
-        width: 35.5%;
+        width: 35%;
         height: 49%;
         margin-right: 10px;
         margin-bottom: 10px;
@@ -624,12 +636,46 @@
         transition: 0.5s all;
     }
     
-    .divTitle2:hover  .Title2{
-        display: block;
+    .divTitle2:hover  .HomeContent2{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .Title3{
+        width: 60%;
+        height: 40%;
+        padding: 7px;
+        color: #fff;
+        font-size: 30px;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    .HomeContent3{
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        top: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+
+    .HomeContent3 p{
+        width: 100%;
+        margin-left: 10px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,0.8);
     }
     
     .divTitle3{
-        width: 35.5%;
+        width: 35%;
         height: 49%;
         margin-right: 10px;
         float: left;
@@ -640,8 +686,42 @@
         transition: 0.5s all;
     }
     
-    .divTitle3:hover  .Title3{
-        display: block;
+    .divTitle3:hover  .HomeContent3{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .HomeContent4{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        top: 28%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(-400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent4 p{
+        width: 90%;
+        margin-top: 10px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+    }
+
+    .Title4{
+        width: 80%;
+        height: 30%;
+        padding: 10px;
+        color: #fff;
+        font-size: 35px;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
     
     .divTitle4{
@@ -656,9 +736,42 @@
         transition: 0.5s all;
     }
     
+    .divTitle4:hover  .HomeContent4{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .HomeContent5{
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        top: 17%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
     
-    .divTitle4:hover  .Title4{
-        display: block;
+    .HomeContent5 p{
+        width: 98%;
+        margin-top: 10px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+    }
+
+    .Title5{
+        width: 80%;
+        height: 40%;
+        padding: 8px;
+        color: #fff;
+        font-size: 30px;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 5px rgba(0,0,0,0.5);
     }
     
     .divTitle5{
@@ -672,48 +785,56 @@
         transition: 0.5s all;
     }
     
-    .divTitle5:hover  .Title5{
-        display: block;
+    .divTitle5:hover  .HomeContent5{
+        transform: translateX(0px);
+        opacity: 1;
     }
-    
-    /* .divTitle:hover{
-        filter: brightness(50%);
-    } */
     
 }
 
 @media (min-width: 768px) and (max-width: 991px){
 
+    .Images{
+        width: 80%;
+        height: 500px;
+        max-height: 500px;
+    }
     
+    .HomeContent{
+        width: 80%;
+        min-height: 30%;
+        margin: 0 auto;
+        position: relative;
+        top: 32%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(300px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+
     .Title{
-        width: 60%;
+        width: 75%;
         height: 20%;
-        display: none;
-        padding: 20px;
+        padding: 7px;
         color: #fff;
         font-size: 48px;
         border: solid #fff;
-        position: absolute;
-        top: 40%;
-        left: 20%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
-    
-    .Title2, .Title4{
-        width: 50%;
-        height: 30%;
-        display: none;
-        padding: 10px;
+
+    .HomeContent p{
+        width: 80%;
+        margin-top: 10px;
+        font-size: 18px;
         color: #fff;
-        text-align: center;
-        font-size: 40px;
-        border: solid #fff;
-        position: relative;
-        top: 35%;
-        left: 25%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
     }
     
     .divTitle{
-        width: 49%;
+        max-width: 47%;
         height: 100%;
         margin-right: 12px;
         float: left;
@@ -723,30 +844,100 @@
         background-size: cover;
         transition: 0.5s all;
     }
+    
+    .divTitle:hover  .HomeContent{
+        transform: translateY(0px);
+        opacity: 1;
+    }
 
-    .divTitle:hover  .Title{
-        display: block;
+    .HomeContent2{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        top: 24%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent2 p{
+        width: 70%;
+        margin-left: 10px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,0.8);
+    }
+
+    .Title2{
+        width: 55%;
+        height: 30%;
+        padding: 7px;
+        color: #fff;
+        font-size: 40px;
+        border: solid #fff;
+        text-shadow: 0 10px 5px rgba(0,0,0,1);
+        box-shadow: 0 10px 10px rgba(0,0,0,0.7);
     }
 
     .divTitle2{
         width: 49%;
         height: 49%;
+        margin-right: 10px;
         margin-bottom: 10px;
-        float: right;
+        float: left;
         background-image: url('../../assets/airJordan1.jpg');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
         transition: 0.5s all;
     }
+    
+    .divTitle2:hover  .HomeContent2{
+        transform: translateX(0px);
+        opacity: 1;
+    }
 
-    .divTitle2:hover  .Title2{
-        display: block;
+    .HomeContent4{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        top: 24%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(400px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+    
+    .HomeContent4 p{
+        width: 90%;
+        margin-top: 10px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+    }
+
+    .Title4{
+        width: 55%;
+        height: 30%;
+        padding: 10px;
+        color: #fff;
+        font-size: 40px;
+        border: solid #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
     
     .divTitle4{
         width: 49%;
         height: 49%;
+        margin-right: 10px;
         float: right;
         background-image: url('../../assets/thunderSpectra.jpg');
         background-repeat: no-repeat;
@@ -755,8 +946,9 @@
         transition: 0.5s all;
     }
 
-    .divTitle4:hover  .Title4{
-        display: block;
+    .divTitle4:hover  .HomeContent4{
+        transform: translateX(0px);
+        opacity: 1;
     }
 
     .divTitle5, .divTitle3, .Title3, .Title5 { display: none }
@@ -764,7 +956,7 @@
 }
 
 @media (min-width: 576px) and (max-width: 767px){
-    
+
     .HomeContainer{
         margin: 50px 0;
     }
@@ -772,23 +964,57 @@
     .Images{
         width: 85%;
         height: 500px;
+        max-height: 500px;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
         flex-wrap: wrap;
     }
+    
+    .HomeContent, .HomeContent2, .HomeContent3, .HomeContent4{
+        width: 80%;
+        min-height: 30%;
+        margin: 0 auto;
+        position: relative;
+        top: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        transition: 0.5s ease;
+    }
 
+    .HomeContent, .HomeContent2, .HomeContent3, .HomeContent4{
+        width: 80%;
+        min-height: 30%;
+        margin: 0 auto;
+        position: relative;
+        top: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(300px);
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+
+    .HomeContent p, .HomeContent2 p, .HomeContent3 p, .HomeContent4 p{
+        width: 80%;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #fff;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+    }
+    
     .Title, .Title2, .Title3, .Title4{
-        width: 50%;
+        width: 60%;
         height: 30%;
-        display: none;
         padding: 10px;
         color: #fff;
         font-size: 26px;
         border: solid #fff;
-        position: absolute;
-        top: 35%;
-        left: 25%;
+        text-shadow: 0 10px 10px rgba(0,0,0,1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
 
     .divTitle{
@@ -802,10 +1028,6 @@
         transition: 0.5s all;
     }
     
-    .divTitle:hover .Title{
-        display: block
-    }
-    
     .divTitle2{
         width: 48%;
         height: 48%;
@@ -816,11 +1038,7 @@
         background-size: cover;
         transition: 0.5s all;
     }
-    
-    .divTitle2:hover .Title2{
-        display: block
-    }
-    
+
     .divTitle3{
         width: 48%;
         height: 48%;
@@ -831,9 +1049,6 @@
         transition: 0.5s all;
     }
     
-    .divTitle3:hover .Title3{
-        display: block
-    }
     
     .divTitle4{
         width: 48%;
@@ -846,12 +1061,28 @@
         transition: 0.5s all;
     }
     
-    .divTitle4:hover .Title4{
-        display: block
+    .divTitle:hover  .HomeContent{
+        transform: translateY(0px);
+        opacity: 1;
     }
     
-    .divTitle5, .Title5{ display: none }
+    .divTitle2:hover  .HomeContent2{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .divTitle3:hover  .HomeContent3{
+        transform: translateY(0px);
+        opacity: 1;
+    }
     
+    .divTitle4:hover  .HomeContent4{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    
+    .divTitle5, .Title5, .HomeContent5{ display: none }
+
 }
 
 @media (max-width: 575px){
