@@ -45,9 +45,10 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "none",
   boxShadow: 24,
   p: 4,
+  paddingLeft: "50px",
 };
 
 const StyledModal = styled(ModalUnstyled)`
@@ -295,7 +296,7 @@ export default function Profile() {
               </div>
             )}
 
-            <Button onClick={handleOpen}>Edit proflie</Button>
+            <Button onClick={handleOpen}>Editar perfil</Button>
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -307,48 +308,54 @@ export default function Profile() {
                 timeout: 500,
               }}
             >
-              <Fade in={open}>
+              <Fade in={open} >
                 <Box sx={style}>
                   <form onSubmit={handleSubmit}>
-                    <div>
-                      <label>Name</label>
+                    <div className="Modal-Profile-Row">
+                      <label className="label-profile-modal">Nombre</label>
                       <input
+                        className="Modal-Profile-Input"
                         onChange={handleFormChange}
                         type="text"
                         name="name"
                       />
                     </div>
-                    <div>
-                      <label>Surname</label>
+                    <div className="Modal-Profile-Row">
+                      <label className="label-profile-modal">Surname</label>
                       <input
+                        className="Modal-Profile-Input"
                         onChange={handleFormChange}
                         type="text"
                         name="surname"
                       />
                     </div>
-                    <div>
-                      <label>Phone</label>
+                    <div className="Modal-Profile-Row">
+                      <label className="label-profile-modal">Teléfono</label>
                       <input
+                        className="Modal-Profile-Input"
                         onChange={handleFormChange}
                         type="text"
                         name="phone"
                       />
                     </div>
-                    <div>
-                      <label>Adress</label>
+                    <div className="Modal-Profile-Row">
+                      <label className="label-profile-modal">Dirección</label>
                       <input
+                        className="Modal-Profile-Input"
                         onChange={handleFormChange}
                         type="text"
                         name="adress"
                       />
                     </div>
-                    <button type="submit">Send</button>
+                    <div className="Btn-Profile-Modal"> 
+                        <button type="submit" className="hvr-grow-shadow"style={{ width: 90, height:30, backgroundColor: 'black', color: 'white', borderRadius: 10, border: 'none'}}>Enviar</button>
+                    </div>
                   </form>
                 </Box>
               </Fade>
             </Modal>
             <Button variant="text" onClick={handleOpenEdit}>
-              Change password
+              Cambiar contraseña
             </Button>
             {edit && (
               <div>
@@ -365,7 +372,7 @@ export default function Profile() {
                   validate={(values) => {
                     let error = {};
                     if (!values.oldPassword) {
-                      error.oldPassword = "Complete this camp";
+                      error.oldPassword = "Completa este campo";
                     }
                     if (values.confirmPass !== values.password) {
                       error.confirmPass =
@@ -376,38 +383,38 @@ export default function Profile() {
                 >
                   {({ errors }) => (
                     <Form>
-                      <label>Actual password</label>
+                      <label>Contraseña actual</label>
                       <Field
                         type="password"
                         name="oldPassword"
-                        placeHolder="Actual password"
+                        placeHolder="Contraseña Actual"
                       />
                       <ErrorMessage
                         name="oldPassword"
                         component={() => <div>{errors.oldPassword}</div>}
                       />
-                      <label>New password</label>
+                      <label>Nueva contraseña</label>
                       <Field
                         type="password"
                         name="password"
-                        placeHolder="New password"
+                        placeHolder="Nueva contraseña"
                       />
                       <ErrorMessage
                         name="password"
                         component={() => <div></div>}
                       />
-                      <label>Confirm new password</label>
+                      <label>Confirmar nueva contraseña</label>
                       <Field
                         type="password"
                         name="confirmPass"
-                        placeHolder="Confirm new password"
+                        placeHolder="Confirmar nueva contraseña"
                       />
                       <ErrorMessage
                         name="confirmPass"
                         component={() => <div>{errors.confirmPass}</div>}
                       />
                       <Button variant="text" type="submit">
-                        Change
+                        Cambiar
                       </Button>
                     </Form>
                   )}
