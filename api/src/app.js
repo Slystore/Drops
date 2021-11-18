@@ -12,7 +12,7 @@ server.set('views', __dirname + '/views')
 
 server.use(morgan('dev'))
 server.use(express.json())
-server.use(express.static('public'))
+server.use(express.static("public"))
 server.use(corsc())
 server.use(cors);
 // server.use(errors)

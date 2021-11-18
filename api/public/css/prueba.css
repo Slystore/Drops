@@ -1,0 +1,35 @@
+.container {
+    margin: 0 auto;
+    width: 500px;
+    /* background-color: black; */
+}
+
+.compra {
+    border: 1px solid black;
+    background-color: white;
+
+}
+
+.logo {
+    background-image: url('../images/Logo.png');
+    /* background-color: white; */
+    width: 100px;
+    height: 50px;
+}
+
+.items {
+    list-style-type: none;
+}
+
+.fotos {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer {
+    background-color: white;
+}
+.portada {
+    display: block;
+    margin: auto
+}
