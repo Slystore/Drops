@@ -102,8 +102,8 @@
     background-size: 80%;
 }
 
-.SliderTitle{
-    font-size: 2.2vw;
+.SliderTitle h1{
+    font-size: 40px;
     font-weight: bold;
 }
 

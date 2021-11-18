@@ -185,7 +185,7 @@ function NavBar() {
           </div></Link>
           {console.log("USER_TYPE",loged.userAdmin)}
           {
-              loged.userState === 'true' ? (
+              loged.userAdmin  ? (
                 <UserTooltip title={loged.userAdmin === 'admin' ? titleAdminLog : titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
