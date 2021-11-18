@@ -109,7 +109,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder="Nombre"
                   />
                   <ErrorMessage
                     name="name"
@@ -124,7 +124,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="surname"
-                    placeholder="Surname"
+                    placeholder="Apellido"
                   />
                   <ErrorMessage
                     name="surname"
@@ -154,7 +154,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                   />
                   <ErrorMessage
                     name="password"
@@ -169,7 +169,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Telefono"
                   />
                   <ErrorMessage
                     name="phone"
@@ -184,7 +184,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="location"
-                    placeholder="Adress"
+                    placeholder="Direccion"
                   />
                   <ErrorMessage
                     name="location"
