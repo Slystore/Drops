@@ -14,9 +14,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Fade from "@mui/material/Fade";
 // import Backdrop from "@mui/material/Backdrop";
-import { BsFillGearFill } from "react-icons/bs"
+import { BsFillGearFill } from "react-icons/bs";
 import ModalUnstyled from "@mui/core/ModalUnstyled";
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
@@ -175,10 +177,11 @@ export default function Profile() {
     setValue(newValue);
   };
   const handleSubmit = async (e) => {
-    const x = await editUsers(data, usersId.user ? usersId.user.id  : gId);
+    const x = await editUsers(data, usersId.user ? usersId.user.id : gId);
     if (x) return "";
   };
   const handleOpenEdit = () => setEdit(true);
+  const handleCloseEdit = () => setEdit(false);
   const handleDeleteWish = async (id, productId) => {
     await userDeleteWish(id, productId);
     window.location.replace("");
@@ -246,7 +249,7 @@ export default function Profile() {
               <div>
                 <div className="profile-content">
                   <h1>
-                    Hello{" "}
+                    Hola{" "}
                     {usersId.user
                       ? usersId.user.name
                       : usersId.user.family_name}
@@ -267,10 +270,13 @@ export default function Profile() {
           </TabPanel>
           <TabPanel value={value} index={1}>
             {usersId.user && (
-              <div>
-                <div className="profile-cont">
-                  <h1>Profile Configuration <BsFillGearFill/></h1>
-                  <div>
+              <div className="profile-cont">
+                <h1>
+                  Configuracion de perfil{" "}
+                  <BsFillGearFill className="icon-prof" />
+                </h1>
+                <div className="profile-box">
+                  <div className="label-content">
                     <label className="label-profile">Nombre</label>
                     <span>
                       {usersId.user
@@ -278,7 +284,7 @@ export default function Profile() {
                         : usersId.user.family_name}
                     </span>
                   </div>
-                  <div>
+                  <div className="label-content">
                     <label className="label-profile">Apellido</label>
                     <span>
                       {usersId.user
@@ -286,17 +292,35 @@ export default function Profile() {
                         : usersId.user.given_name}
                     </span>
                   </div>
-                  <div>
-                    <label className="label-profile">Mail</label>
+                  <div className="label-content">
+                    <label className="label-profile">Correo</label>
                     <span>
                       {usersId.user ? usersId.user.mail : usersId.user.email}
+                    </span>
+                  </div>
+                  <div className="label-content">
+                    <label className="label-profile">Direccion</label>
+                    <span>
+                      {usersId.user
+                        ? usersId.user.location
+                        : usersId.user.location}
+                    </span>
+                  </div>
+                  <div className="label-content">
+                    <label className="label-profile">Telefono</label>
+                    <span>
+                      {usersId.user ? usersId.user.phone : usersId.user.phone}
                     </span>
                   </div>
                 </div>
               </div>
             )}
-
-            <Button onClick={handleOpen}>Edit proflie</Button>
+            <div className="buttons-edit-cont">
+              <Button onClick={handleOpen}>Editar perfil</Button>
+              <Button variant="text" onClick={handleOpenEdit}>
+                Cambiar contraseña
+              </Button>
+            </div>
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -311,46 +335,53 @@ export default function Profile() {
               <Fade in={open}>
                 <Box sx={style}>
                   <form onSubmit={handleSubmit}>
-                    <div>
-                      <label>Name</label>
-                      <input
-                        onChange={handleFormChange}
-                        type="text"
-                        name="name"
-                      />
+                    <div className="form-user-cont">
+                      <div className="inputs-user-content">
+                        <div className="field-content">
+                          <label className="label-user-change">Nombre</label>
+                          <input
+                            className="input-change-user"
+                            onChange={handleFormChange}
+                            type="text"
+                            name="name"
+                          />
+                        </div>
+                        <div className="field-content">
+                          <label className="label-user-change">Apellido</label>
+                          <input
+                            className="input-change-user"
+                            onChange={handleFormChange}
+                            type="text"
+                            name="surname"
+                          />
+                        </div>
+                        <div className="field-content">
+                          <label className="label-user-change">Telefono</label>
+                          <input
+                            className="input-change-user"
+                            onChange={handleFormChange}
+                            type="text"
+                            name="phone"
+                          />
+                        </div>
+                        <div className="field-content">
+                          <label className="label-user-change">Direccion</label>
+                          <input
+                            className="input-change-user"
+                            onChange={handleFormChange}
+                            type="text"
+                            name="adress"
+                          />
+                        </div>
+                        <Button variant="text" type="submit">
+                          Cambiar
+                        </Button>
+                      </div>
                     </div>
-                    <div>
-                      <label>Surname</label>
-                      <input
-                        onChange={handleFormChange}
-                        type="text"
-                        name="surname"
-                      />
-                    </div>
-                    <div>
-                      <label>Phone</label>
-                      <input
-                        onChange={handleFormChange}
-                        type="text"
-                        name="phone"
-                      />
-                    </div>
-                    <div>
-                      <label>Adress</label>
-                      <input
-                        onChange={handleFormChange}
-                        type="text"
-                        name="adress"
-                      />
-                    </div>
-                    <button type="submit">Send</button>
                   </form>
                 </Box>
               </Fade>
             </Modal>
-            <Button variant="text" onClick={handleOpenEdit}>
-              Change password
-            </Button>
             {edit && (
               <div>
                 <Formik
@@ -377,39 +408,63 @@ export default function Profile() {
                 >
                   {({ errors }) => (
                     <Form>
-                      <label>Actual password</label>
-                      <Field
-                        type="password"
-                        name="oldPassword"
-                        placeHolder="Actual password"
-                      />
-                      <ErrorMessage
-                        name="oldPassword"
-                        component={() => <div>{errors.oldPassword}</div>}
-                      />
-                      <label>New password</label>
-                      <Field
-                        type="password"
-                        name="password"
-                        placeHolder="New password"
-                      />
-                      <ErrorMessage
-                        name="password"
-                        component={() => <div></div>}
-                      />
-                      <label>Confirm new password</label>
-                      <Field
-                        type="password"
-                        name="confirmPass"
-                        placeHolder="Confirm new password"
-                      />
-                      <ErrorMessage
-                        name="confirmPass"
-                        component={() => <div>{errors.confirmPass}</div>}
-                      />
-                      <Button variant="text" type="submit">
-                        Change
-                      </Button>
+                      <div className="form-change-cont">
+                        <div className="button-close">
+                          <Button variant="text" onClick={handleCloseEdit}>
+                            Cerrar
+                          </Button>
+                        </div>
+                        <div className="inputs-content">
+                          <div className="field-content">
+                            <label className="label-pass">
+                              Contraseña actual
+                            </label>
+                            <Field
+                              className="input-newPass"
+                              type="password"
+                              name="oldPassword"
+                              placeHolder="Contraseña actual"
+                            />
+                          </div>
+                          <ErrorMessage
+                            name="oldPassword"
+                            component={() => <div>{errors.oldPassword}</div>}
+                          />
+                          <div className="field-content">
+                            <label className="label-pass">
+                              Nueva contraseña
+                            </label>
+                            <Field
+                              className="input-newPass"
+                              type="password"
+                              name="password"
+                              placeHolder="Nueva contraseña"
+                            />
+                          </div>
+                          <ErrorMessage
+                            name="password"
+                            component={() => <div></div>}
+                          />
+                          <div className="field-content">
+                            <label className="label-pass">
+                              Confirma la nueva Contraseña
+                            </label>
+                            <Field
+                              className="input-newPass"
+                              type="password"
+                              name="confirmPass"
+                              placeHolder="Confirma la nueva Contraseña"
+                            />
+                          </div>
+                          <ErrorMessage
+                            name="confirmPass"
+                            component={() => <div>{errors.confirmPass}</div>}
+                          />
+                          <Button variant="text" type="submit">
+                            Change
+                          </Button>
+                        </div>
+                      </div>
                     </Form>
                   )}
                 </Formik>
@@ -420,11 +475,15 @@ export default function Profile() {
             <div>
               <h1>WishList</h1>
               {wishList.length !== 0 ? (
-                <div>
+                <div className="wish-content">
                   {dataFiltered &&
                     dataFiltered.map((el) => (
                       <div>
-                        <button
+                        <IconButton
+                          aria-label="delete"
+                          className="delete-Wish"
+                          variant="outlined"
+                          color="error"
                           onClick={() => {
                             handleDeleteWish(
                               usersId.user ? usersId.user.id : gId,
@@ -432,18 +491,20 @@ export default function Profile() {
                             );
                           }}
                         >
-                          X
-                        </button>
-                        <Product
-                          key={el.id}
-                          id={el.id}
-                          name={el.name}
-                          price={el.price}
-                          Sizes={el.Sizes}
-                          onSale={el.onSale}
-                          discounts={el.discounts}
-                          image={el.image}
-                        />
+                          <DeleteIcon />
+                        </IconButton>
+                        <div className="product-cont">
+                          <Product
+                            key={el.id}
+                            id={el.id}
+                            name={el.name}
+                            price={el.price}
+                            Sizes={el.Sizes}
+                            onSale={el.onSale}
+                            discounts={el.discounts}
+                            image={el.image}
+                          />
+                        </div>
                       </div>
                     ))}
                 </div>
