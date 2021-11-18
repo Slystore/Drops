@@ -1,5 +1,10 @@
 .PaginadoContainer{
-    border: thin dotted #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+    /* border: thin dotted #f0f; */
 }
 
 .Page{
