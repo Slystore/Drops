@@ -5,7 +5,7 @@ const FeatureTop = (usersCount, difer, ordersCount, difSales, difGanancias) => {
     return (
         <div className='boxes'>
             <div className="box">
-                <p className='title'>Clientes activos</p>
+                <p className='title'>Usuarios activos</p>
                 <div className='div'>
                     <p className='number'>{usersCount.users.users}</p>
                     {/* <span>+{usersCount.difer}%</span> */}

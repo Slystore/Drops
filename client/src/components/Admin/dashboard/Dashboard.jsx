@@ -55,7 +55,7 @@ const Dashboard = () => {
     return (
         <div style={{ overflow: 'scroll', overflowX: 'hidden', height: '100vh' }}>
             <FeatureTop users={usersCount} difer={diferencia} sales={ordersCount}
-            difSales={difSales} difGanancias={difGanancias} gananciasNov={gananciasNov}/>
+            difSales={difSales} difGanancias={cost?difGanancias:null} gananciasNov={cost?gananciasNov:null}/>
             <input  type="number" placeholder="Costos totales..." onChange={handleChange} />
             <Chart users={usersCount} />
             <ChartSales sales={ordersCount}/>

@@ -37,12 +37,22 @@ let salesCount= usersCount.sales
     },
    
   ];
- 
+  const data2 = [
+    {
+      name: "Junio",
+      sales: 6000,
+    },
+    {
+      name: "Julio",
+      sales: 6500,
+    },
+  ]
+
   return (
     <div className="chart">
       <p className="chartTitle">Facturación Bruta</p>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
-        <LineChart data={data}>
+        <LineChart data={data} >
           <XAxis dataKey="name" stroke="#555" />
           <Line type="monotone" dataKey="sales" stroke="#BC8CF2" />
           <Tooltip />

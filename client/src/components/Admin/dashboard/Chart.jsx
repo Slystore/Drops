@@ -47,10 +47,10 @@ let usersActive = usersCount.users.users
       name: "Noviembre",
       "New Users": matchNov.length,
     },
-    {
-      name: "Diciembre",
-      "New Users": matchDic.length,
-    },
+    // {
+    //   name: "Diciembre",
+    //   "New Users": matchDic.length,
+    // },
    
   ];
  
