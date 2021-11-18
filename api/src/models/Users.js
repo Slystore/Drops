@@ -60,6 +60,7 @@ module.exports = (Sequelize) => {
                 type: DataTypes.ENUM("superadmin", "admin", "user", "banned", "disabled"),
                 defaultValue: "user",
             }
-        }, { timestamps: false }
+        },
+        //  { timestamps: false }
     );
 };
