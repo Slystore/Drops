@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/prueba.css" rel="stylesheet" type="text/css">
+    <title> Mail Transaccional</title>
+    <style>
+
+        .nav {
+            height: 100px;
+
+        }
+        .container {
+    margin: 0 auto;
+    width: 500px;
+    background-color: rgb(231, 16, 16);
+}
+
+.compra {
+    border: 1px solid black;
+    background-color: white;
+
+}
+
+.logo {
+    align-self: center;
+}
+
+.items {
+    list-style-type: none;
+}
+
+.fotos {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer {
+    background-color: white;
+}
+.portada {
+    display: block;
+    margin: auto
+}
+    </style>
+</head>
+<body>
+   
+     
+    <div class="container footer">  
+        <p>Hola <%= data.User.name %>, tu orden ha sido despachada !! </p>
+    </div> 
+   
+    <div class="container compra">
+        <h3> Resumen de tu orden</h3>
+
+        <div class="container footer"> 
+            <ul class='items'>
+                <% data.Products.map(e => { %>
+                    <li> <%= e.name %> </li>   
+                <% }) %>   
+            </ul>
+            <div class='fotos'>
+                <% data.Products.map(e => { %>
+                    <img src=<%= e.image %> alt='foto' width='100px' height="50px" >
+                <% } )  %> 
+            </div>
+         </div>
+
+        <p> Envio a domicilio: </p>
+        <p> <%= data.shippingAddress + ' ,' + data.shippingLocated + ' ,' + data.shippingCity %></p> 
+        <p> Codigo Postal: <%= data.shippingZip %></p> 
+      
+    </div>
+
+    <!-- <div class="container footer" > <button style="display: block; margin: 0 auto"> Mis compras </button></div> -->
+
+    
+    
+</body>
+</html>

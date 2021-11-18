@@ -33,13 +33,14 @@ function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
       
-      console.log(action.dayDiscount)
-
       let discountD
       let dayVerify = new Date().toLocaleString("default", { weekday: "long" });
       let data = action.payload; //trae los products
 
+      console.log(dayVerify)
+
       data = data.map( el => {
+        console.log(el.discountDay)
         //  discountD = el.discountDay.toLowerCase() 
 
         if(el.onSale === false) {

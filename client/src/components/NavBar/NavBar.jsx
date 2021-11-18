@@ -25,6 +25,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import "./NavBar.css";
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from '@mui/material/Typography';
+
 const useStyles = makeStyles(() => ({
   iconCart: {
     "&:hover": {
@@ -126,10 +132,60 @@ function NavBar() {
           <div className="IconMen"><CloseIcon /></div>
         </div>
         <ul className="NavigationMobile">
+          <li><a className="LinkMobile" href="/">Inicio</a></li>
           <li><a className="LinkMobile" href="/login">Login</a></li>
           <li><a className="LinkMobile" href="/catalogue">Catálogo</a></li>
           <li><a className="LinkMobile" href="#Nosotros">Nosotros</a></li>
           <li><a className="LinkMobile" href="#Location">Contacto</a></li>
+             <Accordion elevation={0}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              sx={{marginRight: '25%'}}
+            >
+              <Typography sx={{marginLeft: '45%', color: 'black', fontSize:18, fontFamily: 'Roboto', fontWeight: 'lighter'}}>Categorías</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className="AccordMarcas">
+                  <div className="LinkNavBarMobile"><a href="/products/bycategories/urbano">Urbano</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bycategories/deportivo">Deportivo</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bycategories/sandalias">Sandalias</a></div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion elevation={0} 
+              sx={{ border: 'none',
+                    '&:before': {
+                      display: 'none',
+                    },
+                  }}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              sx={{marginRight: '32%', border: 0}}
+            >
+              <Typography sx={{marginLeft: '63%', color: 'black', fontSize:18, fontFamily: 'Roboto', fontWeight: 'lighter'}}>Marcas</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ border: 0}}>
+              <div className="AccordMarcas">
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/nike">Nike</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/adidas">Adidas</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/puma">Puma</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/gucci">Gucci</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/balenciaga">Balenciaga</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/offwhite">Off-White</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/reebok">Reebok</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/vans">Vans</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/underarmour">Under</a></div>
+                  <div className="LinkNavBarMobile"><a href="/products/bybrand/jordan">Jordan</a></div>
+
+              </div>
+            </AccordionDetails>
+          </Accordion>
+
         </ul>
       </Box>
       <Box className="LogoContainer">
@@ -185,7 +241,7 @@ function NavBar() {
           </div></Link>
           {console.log("USER_TYPE",loged.userAdmin)}
           {
-              loged.userState === 'true' ? (
+              loged.userAdmin  ? (
                 <UserTooltip title={loged.userAdmin === 'admin' ? titleAdminLog : titleUserLog}>
                   <div className="Tool spinIn">
                      <AccountCircleIcon className={classes.iconUser} sx={{transition: "0.5s all"}}/>
