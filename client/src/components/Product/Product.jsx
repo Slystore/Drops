@@ -85,11 +85,11 @@ export default function Product({
   };
 
   const handleAddWishList = async (userId,productId)=> {
-    // console.log('esta es la userId',userId)
-    // console.log('esta es la id hardc',decoded ? decoded.id:decoded)
+    if(userId){
     const x = await userPostWish(userId,productId)
     swal("Produto agregado a tu wishList!", "success")
-  }
+  }else{swal("Por favor inicia sesión para poder agregar a la wishList!", "error")}
+}
 
   return (
     <div className="ProductContainer">

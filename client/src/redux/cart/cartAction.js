@@ -18,6 +18,7 @@ export const SELECT_SIZEID="SELECT_SIZEID"
 let x
 if(localStorage.getItem('token')){
      x = getToken();}
+const gId = localStorage.getItem('gId')
 const decoded = x?jwt_decode(x): null;
 // const decoded = 4
 export const addToCart = (id, quantity, price, name, image, Sizes) => async (dispatch) => {
@@ -172,7 +173,7 @@ export const changeProductQuantity =
 export const loadCart = (user) =>
   async (dispatch) => {
   
-    let user1 = decoded?decoded.user.id: null
+    let user1 = decoded || gId?(!gId?decoded.user.id: gId): null
     // console.log(user1,'tomimix')
     if (user1 || user) {
        
