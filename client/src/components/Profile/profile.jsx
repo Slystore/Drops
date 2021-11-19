@@ -624,7 +624,7 @@ export default function Profile() {
                               </StyledModal>
                             </TableCell>
                           ) : (
-                            <button disabled>Deja una reseña</button>
+                            <Button variant="text" disabled>Deja una reseña</Button>
                           )}
                         </TableRow>
                       ))
