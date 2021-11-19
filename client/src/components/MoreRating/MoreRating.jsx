@@ -5,6 +5,7 @@ import { getReviews } from '../../redux/reviews/reviewsActions';
 import { getRatings } from "../../redux/rating/ratingActions";
 import { getUsers } from '../../redux/users/userActions';
 import BestProducts from './BestProducts.jsx';
+import { Link } from 'react-router-dom'
 
 import './MoreRating.css';
 
@@ -30,12 +31,12 @@ function MoreRating() {
             <div className="Zapas">
                 { 
                     rating.map(e => 
-                        <BestProducts 
+                        <Link to={`/catalogue/${e.id}`}><BestProducts 
                             key={e.id}
                             image={e.image} 
                             price={e.price} 
                             name={e.name} 
-                            rating={e.rating}/>) 
+                            rating={e.rating}/></Link>) 
                 }
              </div>
         </div>
