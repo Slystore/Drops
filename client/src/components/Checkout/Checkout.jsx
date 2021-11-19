@@ -36,7 +36,7 @@ for(let i=0;i<SizeId.length;i++){
     }
   }
 }
-console.log("NUMBERSIZE", array)
+// console.log("NUMBERSIZE", array)
   // useEffect(() => {
   //   const script = document.createElement("script");
   //   const attr_data_preference = document.createAttribute("data-preference-id");
