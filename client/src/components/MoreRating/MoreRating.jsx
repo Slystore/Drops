@@ -5,14 +5,13 @@ import { getReviews } from '../../redux/reviews/reviewsActions';
 import { getRatings } from "../../redux/rating/ratingActions";
 import { getUsers } from '../../redux/users/userActions';
 import BestProducts from './BestProducts.jsx';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import './MoreRating.css';
 
 function MoreRating() {
 
     const dispatch = useDispatch()
-    // const [reviews, setReviews] = useState([])
 
     useEffect(() => {
         dispatch(getReviews(1))
@@ -31,12 +30,15 @@ function MoreRating() {
             <div className="Zapas">
                 { 
                     rating.map(e => 
-                        <Link to={`/catalogue/${e.id}`}><BestProducts 
-                            key={e.id}
-                            image={e.image} 
-                            price={e.price} 
-                            name={e.name} 
-                            rating={e.rating}/></Link>) 
+                            <Link to={`/catalogue/${e.id}`} className="LinkZapas">
+                                <BestProducts 
+                                    key={e.id}
+                                    image={e.image} 
+                                    price={e.price} 
+                                    name={e.name} 
+                                    rating={e.rating}/>
+                            </Link>
+                    ) 
                 }
              </div>
         </div>
