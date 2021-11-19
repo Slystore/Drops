@@ -10,6 +10,11 @@
     background-position: center center;
     background-size: cover;
 }
+.forgot-msg{
+    font-size: 14px;
+    margin-bottom: 5px;
+    color:red;
+}
 
 .log-Box{
     border: solid #ccc 1px;

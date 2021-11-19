@@ -161,7 +161,7 @@ export default function FormLogin() {
                   ) : (
                     <p className="log-error">{logeado.msg}</p>
                   )}
-                  {forgot.auth ? <div>{forgot.msg}</div> : ""}
+                  {forgot.auth ? <div className ="forgot-msg">{forgot.msg}</div> : ""}
                 </div>
                 <div className="data-Field">
                   <p>
