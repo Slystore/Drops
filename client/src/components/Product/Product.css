@@ -1,10 +1,8 @@
 .ProductContainer:hover{
-    /* border-top: solid 1px #00000020;
-    border-left: solid 1px #00000020; */
     cursor: pointer;
     transform: translateY(-10px);
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2)
-}
+}   
 
 .IconShoppingContainer{
     width: 100%;
@@ -18,7 +16,6 @@
     color:  rgb(197, 197, 197);
     transition: 0.5s all;
     z-index: 1;
-    /* border: thin dotted #f00; */
 }
 
 .IconShopping:hover{
@@ -28,8 +25,6 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-
-
 .TallesProduct{
     width: 100%;
     height: 30px;
@@ -38,7 +33,6 @@
     
     align-items: flex-start;
     justify-content: space-around;
-    /* border: thin dotted #f00; */
 }
 
 .TalleCard{
@@ -58,16 +52,14 @@
 @media (min-width: 1400px){
 
     .ProductContainer{
-        width: 230px;
-        height: 350px;
+        width: 180px;
+        height: 300px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         transition: 0.5s all;
-        
-        /* border: thin dotted #f00; */
     }
 
     .Zapatilla{
@@ -75,24 +67,22 @@
         max-height: 180px;
         height: 300px;
         overflow: hidden;
-        /* border: thin dotted #00f; */
     }
     
     .Zapatilla img{
-        width: 200px;
-        height: 250px;
+        width: 180px;
+        height: 220px;
         position: relative;
-        bottom: 5px;
+        bottom: -15px;
     }
     
     .Name h3{ 
         width: 95%;
         height: 55px;
-        font-size: 1.1vw;
+        font-size: 1vw;
         font-family: 'Zen Kurenaido', sans-serif;
         line-height: 25px;
         color: #000;
-        /* border: thin dotted #f00; */
     }
     
     .PriceProduct{
@@ -102,7 +92,6 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        /* border: thin dotted #f00; */
     }
     
     .OldPrice{
@@ -146,7 +135,7 @@
         align-items: center;
         justify-content: space-evenly;
         color: #cccccc;
-        font-size: 0.7vw;
+        font-size: 0.9vw;
     }
 
     .IconShoppingContainer{
@@ -187,22 +176,18 @@
         flex-direction: column;
         align-items: center;
         transition: 0.5s all;
-        /* border: thin dotted #f00; */
     }
 
     .Zapatilla{
         width: 100%;
         height: 180px;
         overflow: hidden;
-        /* border: thin dotted #0f0; */
     }
     
     .Zapatilla img{
         width: 110px;
         position: relative;
         top: 15px;
-        /* height: 210px; */
-        /* border: thin dotted #0f0; */
     }
 
     .Name h3{ 
@@ -212,7 +197,6 @@
         font-family: 'Zen Kurenaido', sans-serif;
         line-height: 15px;
         color: #000;
-        /* border: thin dotted #f00; */
     }
     
     .PriceProduct{
@@ -223,7 +207,6 @@
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-evenly;
-        /* border: thin dotted #f00; */
         margin-left: 10px;
     }
 
@@ -272,7 +255,7 @@
         align-items: center;
         justify-content: space-evenly;
         color: #cccccc;
-        font-size: 0.7vw;
+        font-size: 0.8vw;
     }
 
     .IconShoppingContainer{
@@ -298,16 +281,15 @@
         background: '-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
         background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
         background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
-        /* border: thin dotted #f00; */
     }
 
 }
 
 @media (min-width: 992px) and (max-width: 1199px){
-    
+
     .ProductContainer{
-        width: 160px;
-        height: 250px;
+        width: 150px;
+        height: 220px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -319,41 +301,40 @@
         width: 100%;
         height: 180px;
         overflow: hidden;
-        border: thin dotted #0f0;
     }
     
     .Zapatilla img{
-        width: 130px;
+        width: 110px;
         position: relative;
         top: 15px;
-        /* height: 210px; */
-        border: thin dotted #0f0;
     }
 
     .Name h3{ 
         width: 100%;
         height: 35px;
-        font-size: 1.1vw;
+        font-size: 1.3vw;
         font-family: 'Zen Kurenaido', sans-serif;
         line-height: 15px;
         color: #000;
-        /* border: thin dotted #f00; */
     }
     
     .PriceProduct{
         width: 95%;
         color: #000;
-        font-size: 1vw;
+        font-size: 1.3vw;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-evenly;
-        /* border: thin dotted #f00; */
         margin-left: 10px;
+    }
+
+    .PriceProduct h5{
+        font-size: 1.3vw;
     }
     
     .OldPrice{
-        font-size: 1.5vw;
+        font-size: 1.3vw;
         margin: 0 10px;
         text-decoration:line-through;
         color: #f00;
@@ -361,12 +342,12 @@
 
     .Discount{
         width: 100%;
-        height: 50px;
+        height: 70px;
         position: absolute;
+        left: 70px;
         top: -15px;
-        left: 0;
         background-image: url('../../assets/discount.png');
-        background-size: 40%;
+        background-size: 30%;
         background-repeat: no-repeat;
         background-position: center center;
     }
@@ -375,9 +356,10 @@
         color: #fff;
         font-weight: bold;
         line-height: 40px;
-        font-size: 1.6vw;
+        font-size: 1.2vw;
+        letter-spacing: -1px;
         position: relative;
-        left: -8px;
+        top: 15px;
     }
     
     .Rate{
@@ -392,7 +374,389 @@
         align-items: center;
         justify-content: space-evenly;
         color: #cccccc;
-        font-size: 0.7vw;
+        font-size: 1vw;
+    }
+
+    .IconShoppingContainer{
+        width: 100%;
+        margin-top: 10px;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color:  rgb(197, 197, 197);
+        transition: 0.5s all;
+        z-index: 1;
+    }
+    
+    .IconShopping{
+        width: 22px;
+        height: 22px;
+        margin: 0 15px;
+        border-radius: 20px;
+        background-color: #00000010;
+        background: '-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .ProductContainer{
+        width: 145px;
+        height: 210px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.5s all;
+    }
+
+    .Zapatilla{
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+    }
+    
+    .Zapatilla img{
+        width: 110px;
+        position: relative;
+        top: 15px;
+    }
+
+    .Name h3{ 
+        width: 100%;
+        height: 35px;
+        font-size: 1.5vw;
+        font-family: 'Zen Kurenaido', sans-serif;
+        line-height: 15px;
+        color: #000;
+    }
+    
+    .PriceProduct{
+        width: 95%;
+        color: #000;
+        font-size: 1.5vw;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        margin-left: 10px;
+    }
+
+    .PriceProduct h5{
+        font-size: 1.5vw;
+    }
+    
+    .OldPrice{
+        font-size: 1.5vw;
+        margin: 0 10px;
+        text-decoration:line-through;
+        color: #f00;
+    }
+
+    .Discount{
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        left: 70px;
+        top: -15px;
+        background-image: url('../../assets/discount.png');
+        background-size: 30%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    .Discount h5{
+        color: #fff;
+        font-weight: bold;
+        line-height: 40px;
+        font-size: 1.2vw;
+        letter-spacing: -1px;
+        position: relative;
+        top: 15px;
+    }
+    
+    .Rate{
+        width: 100%;
+    }
+    
+    .NoRating{
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        color: #cccccc;
+        font-size: 1vw;
+    }
+
+    .IconShoppingContainer{
+        width: 100%;
+        margin-top: 10px;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color:  rgb(197, 197, 197);
+        transition: 0.5s all;
+        z-index: 1;
+    }
+    
+    .IconShopping{
+        width: 22px;
+        height: 22px;
+        margin: 0 15px;
+        border-radius: 20px;
+        background-color: #00000010;
+        background: '-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
+    }
+}
+
+
+@media (min-width: 576px) and (max-width: 767px){
+
+    .ProductContainer{
+        width: 150px;
+        height: 220px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.5s all;
+    }
+
+    .Zapatilla{
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+    }
+    
+    .Zapatilla img{
+        width: 110px;
+        position: relative;
+        top: 15px;
+    }
+
+    .Name h3{ 
+        width: 100%;
+        height: 35px;
+        font-size: 1.5vw;
+        font-family: 'Zen Kurenaido', sans-serif;
+        line-height: 15px;
+        color: #000;
+    }
+    
+    .PriceProduct{
+        width: 95%;
+        color: #000;
+        font-size: 1.5vw;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        margin-left: 10px;
+    }
+
+    .PriceProduct h5{
+        font-size: 1.5vw;
+    }
+    
+    .OldPrice{
+        font-size: 1.5vw;
+        margin: 0 10px;
+        text-decoration:line-through;
+        color: #f00;
+    }
+
+    .Discount{
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        left: 70px;
+        top: -15px;
+        background-image: url('../../assets/discount.png');
+        background-size: 30%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    .Discount h5{
+        color: #fff;
+        font-weight: bold;
+        line-height: 40px;
+        font-size: 1.2vw;
+        letter-spacing: -1px;
+        position: relative;
+        top: 15px;
+    }
+    
+    .Rate{
+        width: 100%;
+    }
+    
+    .NoRating{
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        color: #cccccc;
+        font-size: 1vw;
+    }
+
+    .IconShoppingContainer{
+        width: 100%;
+        margin-top: 10px;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color:  rgb(197, 197, 197);
+        transition: 0.5s all;
+        z-index: 1;
+    }
+    
+    .IconShopping{
+        width: 22px;
+        height: 22px;
+        margin: 0 15px;
+        border-radius: 20px;
+        background-color: #00000010;
+        background: '-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
+    }
+}
+
+
+@media (max-width: 575px){
+
+    .ProductContainer{
+        width: 140px;
+        height: 200px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.5s all;
+    }
+
+    .Zapatilla{
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+    }
+    
+    .Zapatilla img{
+        width: 100px;
+        position: relative;
+        top: 15px;
+    }
+
+    .Name h3{ 
+        width: 100%;
+        height: 35px;
+        font-size: 3.2vw;
+        font-family: 'Zen Kurenaido', sans-serif;
+        line-height: 15px;
+        color: #000;
+    }
+    
+    .PriceProduct{
+        width: 95%;
+        color: #000;
+        font-size: 3.2vw;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        margin-left: 10px;
+    }
+
+    .PriceProduct h5{
+        font-size: 3.2vw;
+    }
+    
+    .OldPrice{
+        font-size: 3.2vw;
+        margin: 0 10px;
+        text-decoration:line-through;
+        color: #f00;
+    }
+
+    .Discount{
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        left: 70px;
+        top: -15px;
+        background-image: url('../../assets/discount.png');
+        background-size: 30%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    .Discount h5{
+        color: #fff;
+        font-weight: bold;
+        line-height: 40px;
+        font-size: 1.2vw;
+        letter-spacing: -1px;
+        position: relative;
+        top: 15px;
+    }
+    
+    .Rate{
+        width: 100%;
+    }
+    
+    .NoRating{
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        color: #cccccc;
+        font-size: 1vw;
+    }
+
+    .IconShoppingContainer{
+        width: 100%;
+        margin-top: 10px;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color:  rgb(197, 197, 197);
+        transition: 0.5s all;
+        z-index: 1;
+    }
+    
+    .IconShopping{
+        width: 22px;
+        height: 22px;
+        margin: 0 15px;
+        border-radius: 20px;
+        background-color: #00000010;
+        background: '-moz-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: '-webkit-linear-gradient(top, #9E0000 0%, #FF0000 100%)';
+        background: 'linear-gradient(to top, #9E0000 0%, #FF0000 100%)';
     }
 }
 

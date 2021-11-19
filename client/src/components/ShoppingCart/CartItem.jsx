@@ -82,7 +82,10 @@ export default function CartItem({ image, price, id, quantity, name, Sizes }) {
   }
 
   const handleAddWishList = async (userId,productId)=> {
+    if(userId){
     const x = await userPostWish(userId,productId)
+    swal("Producto agregado a la wishList!", "success")
+  }else{swal("Por favor inicia sesión para poder agregar a la wishList!", "error")}
   }
 
   function round(num) {

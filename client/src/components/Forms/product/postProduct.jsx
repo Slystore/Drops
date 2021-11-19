@@ -1,18 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Axios from "axios";
 import { productForm } from "../../../redux/products/productsAction";
 import { getBrands } from "../../../redux/brand/brandActions";
 import { getCategories } from "../../../redux/category/categoriesActions";
 import { getSizes } from "../../../redux/sizes/sizeActions";
 import swal from "sweetalert";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import "./postProduct.css";
-import {IoCloudUploadOutline} from 'react-icons/io5';
 
 function validate(input) {
   let errors = {};
   if (!input.name) errors.name = "Es obligatorio ingresar un nombre";
-  else if (!input.image) errors.image = "Es obligatorio ingresar una imagen";
   else if (!input.description)
     errors.description = "Es obligatorio describir el producto";
   else if (!input.price || input.price < 1)
@@ -32,9 +32,7 @@ function validate(input) {
 
 export default function FormProductCreate() {
   const dispatch = useDispatch();
-
   const [errors, setErrors] = useState({});
-
   const { brands } = useSelector((state) => state.brandReducer);
   const { categories } = useSelector((state) => state.categoriesReducer);
   const { sizes } = useSelector((state) => state.sizeReducer);
@@ -51,18 +49,17 @@ export default function FormProductCreate() {
   const [cantidad, setCantidad] = useState(0);
   const [input, setInput] = useState({
     name: "",
-    image: "",
     description: "",
     price: 0,
     status: "",
     brandId: 0,
     categoryId: [],
     stock: [],
+    image: "",
   });
 
   let prueba = !!(
     input.name &&
-    input.image &&
     input.description &&
     input.price &&
     input.status &&
@@ -139,7 +136,6 @@ export default function FormProductCreate() {
     e.preventDefault();
     let prueba = sizes.filter((e) => e.number === +talle);
     setTalleUi([...talleUi, [prueba[0].number, cantidad]]);
-    console.log(talleUi);
     setInput({
       ...input,
       stock: [...input.stock, [parseInt(prueba[0].id), parseInt(cantidad)]],
@@ -147,41 +143,39 @@ export default function FormProductCreate() {
     setCantidad(0);
   };
 
-  const onChangeImage = ()=>{
-    var pdrs = document.getElementById('fileUpload').files[0].name;
-    document.getElementById('info').innerHTML = pdrs;
-  }
-
-  const handleSubmit = (e) => {
+  const uploadImage = async (e) => {
+    e.stopPropagation();
     e.preventDefault();
+    let file = e.target.files[0];
+    document.getElementById('info').innerHTML = file.name;
+    let reader = new FileReader();
+    reader.onloadend = function () {
+      Axios.post(`/products/addProductPhoto`, { image: reader.result })
+        .then((res) => {
+          setInput({ ...input, image: res.data.url });
+        })
+        .catch((res) => {
+          console.log("boom", res);
+        });
+    };
+    reader.readAsDataURL(file);
+  };
 
-    if (
-      input.name === undefined ||
-      input.image === undefined ||
-      input.description === undefined ||
-      input.price < 1 ||
-      input.status === undefined ||
-      input.brandId === undefined ||
-      input.categoryId === undefined ||
-      input.stock === undefined
-    ) {
-      console.log("El formulario esta incompleto");
-    } else {
-      console.log(input);
-      dispatch(productForm(input));
-      swal("", "Producto Creado!", "success");
-      setInput({
-        name: "",
-        image: "",
-        description: "",
-        price: 0,
-        status: "",
-        stock: [],
-        brandId: 0,
-        categoryId: [],
-      });
-      window.location.replace("");
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(productForm(input));
+    setInput({
+      name: "",
+      image: "",
+      description: "",
+      price: 0,
+      status: "",
+      stock: [],
+      brandId: 0,
+      categoryId: [],
+    });
+    swal("", "Producto Creado!", "success");
+    window.location.replace("");
   };
 
   const deleteCategory = (data) => {
@@ -190,6 +184,7 @@ export default function FormProductCreate() {
       categoryId: input.categoryId.filter((category) => data !== category),
     });
   };
+
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -206,28 +201,30 @@ export default function FormProductCreate() {
               />
               {errors.name && <p className="errorText">{errors.name}</p>}
             </div>
-
-            <div className="firstBoxProduct">
-              <label htmlFor="file-upload" className="subir">
-                <IoCloudUploadOutline sx={{ fontSize: 10, marginBottom: 0.4 }} />{" "}
-                Elegir Imagen
-              </label>
-              <label htmlFor="file-upload" className="postear">
-                <IoCloudUploadOutline sx={{ fontSize: 10, marginBottom: 0.4 }} />{" "}
-                Subir
-              </label>
-              <input
-                id="fileUpload"
-                name="fileUpload"
-                className='file'
-                type="file"
-                name="poster"
-                onChange={onChangeImage}
-              />
-            
-              <div id="info" className='info'></div>
+            <div className="boxInputProductFile">
+                <div className="BackGroundInputFile">
+                    < CloudUploadIcon 
+                        sx={{ 
+                            color: "#fff", 
+                            fontSize:26, 
+                            position: "relative",
+                            bottom:4,
+                            left: 10,
+                          }}
+                            />  
+                    <div className="boxInputProduct file-select" id="src-file1">
+                      <input
+                        className="InputFileUpload"
+                        type="file"
+                        id="image"
+                        onChange={(e) => {
+                          uploadImage(e);
+                        }}
+                      />
+                </div>
+                  <div id="info" className="info"></div>
+                </div>
             </div>
-
             <div className="boxInputProduct">
               <p className="titleProduct"> Precio </p>
               <input
@@ -260,8 +257,8 @@ export default function FormProductCreate() {
               >
                 <option> Marcas </option>
                 {brands &&
-                  brands.map((e) => (
-                    <option key={e.id} value={e.id}>
+                  brands.map((e, key) => (
+                    <option key={key} value={e.id}>
                       {" "}
                       {e.name}{" "}
                     </option>
@@ -276,8 +273,8 @@ export default function FormProductCreate() {
               >
                 <option> Categoría </option>
                 {categories &&
-                  categories.map((e) => (
-                    <option key={e.id} value={e.name}>
+                  categories.map((e, key) => (
+                    <option key={key} value={e.name}>
                       {" "}
                       {e.name}{" "}
                     </option>
@@ -291,8 +288,8 @@ export default function FormProductCreate() {
                 onChange={(e) => agregarDieta(e)}
               >
                 <option> Estado </option>
-                <option> Disponible </option>
-                <option> No disponible </option>
+                <option> disponible </option>
+                <option> no disponible </option>
               </select>
             </div>
 
@@ -300,8 +297,8 @@ export default function FormProductCreate() {
               <select className="selectSize" onChange={(e) => handleTalle(e)}>
                 <option> Tallas </option>
                 {sizes &&
-                  sizes.map((e) => (
-                    <option key={e.id} value={e.number}>
+                  sizes.map((e, key) => (
+                    <option key={key} value={e.number}>
                       {" "}
                       {e.number}{" "}
                     </option>
@@ -322,7 +319,7 @@ export default function FormProductCreate() {
             </div>
 
             <div className="boxSelectProduct">
-              <button className="buttonStock" onClick={(e) => agregarStock(e)}>
+              <button disabled={  !cantidad  ? true : false } className="buttonStock" onClick={(e) => agregarStock(e)}>
                 {" "}
                 Agregar{" "}
               </button>
@@ -343,12 +340,12 @@ export default function FormProductCreate() {
             Tallas agregadas
           </label>
           {talleUi &&
-            talleUi.map((el) => {
+            talleUi.map((el, key) => {
               return (
-                <div className="renderSizesProduct">
-                  <p className="stockNumber" key={el[0]}>
+                <div className="renderSizesProduct" key={key}>
+                  <p className="stockNumber">
                     {" "}
-                    Talla:{el[0]} - Cantidad:{el[1]}
+                    Talla: {el[0]} - Cantidad: {el[1]}
                     <button
                       className="deleteStock"
                       onClick={() => deleteCategory(el)}

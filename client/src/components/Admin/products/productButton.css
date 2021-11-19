@@ -8,9 +8,11 @@
     height: auto;
     box-shadow: 0px 5px 15px rgba(0, 0 , 0, 0.90);
     border-radius: 7px;
-    width: 510px;
-    height: 500px;
-    padding: 5px;
+    min-width: 510px;
+    width: 580px;
+    min-height: 500px;
+    height: 560px;
+    padding: 15px;
 }
 
 .navButton {

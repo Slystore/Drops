@@ -24,6 +24,7 @@ import { getSizes } from "../../../redux/sizes/sizeActions";
 import Paginado from "../../Catalogue/Paginado";
 import swal from "sweetalert";
 import { PutProduct, updateDiscountById, unSubscribeDiscountById } from "../../../redux/products/productsAction";
+import "./product.css"
 
 
 const Products = () => {
@@ -476,6 +477,7 @@ const Products = () => {
                 <button
                   className="buttonStock"
                   onClick={(e) => agregarStock(e)}
+                  disabled={  !cantidad  ? true : false }
                 >
                   {" "}
                   Agregar{" "}
@@ -527,56 +529,60 @@ const Products = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="boxModal">
-          <div className="formModal">
+        <Box className="boxModalPromocion">
+          <div className="formModalPromocion">
+            <h2 style={{ marginTop: 5 }} className="titlePromocion">Crear Promoción</h2>
+
 
             <form onSubmit={(e) => handleSubmit2(e)}>
-              <div className="formProduct">
-                <div className="firstBoxProduct">
-                  <div className="boxInputProduct">
-                    <label> Siempre
-                      <input
-                        className="inputProduct"
-                        type={"checkbox"}
-                        name="id"
-                        value={input2.id}
+              <div className='blockOfertas'>
+                <div className="boxInputPromocion">
+                  <label>
+                    Siempre
+                  </label>
 
-                        autoComplete="off"
-                      />
-                    </label>
-                  </div>
-                  <div className="boxInputProduct">
-                    <label className="titleProduct"> porcentaje
-                      <input
-                        className="inputProduct"
-                        type={"number"}
-                        name="porcentage"
-                        onChange={handleChangeForm2}
-                        autoComplete="off"
-                      />
-                    </label>
-                    <label className="titleProduct"> porcentaje2
-                      <input
-                        className="inputProduct"
-                        type={"number"}
-                        name="porcentage"
-                        autoComplete="off"
-                        value={input2.porcentage2}
-                      />
-                    </label>
-                  </div>
-                  <div className="boxBtnCreate">
-                    <button className="btnCreate" type="submit" id="submit" onClick={handleSubmit2}>
-                      {" "}
-                      Guardar
-                    </button>
-                    {
-                      input2.porcentage2 ? <button className="btnCreate" type="submit" id="submit" onClick={handleUndo}> Deshacer </button>
-                        :
-                        null
-                    }
+                  <input
+                    className="estadoPromocion"
+                    type={"checkbox"}
+                    name="id"
+                    value={input2.id}
 
-                  </div>
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="blockOfertas">
+                  <p className='titleInputOfertas'> porcentaje </p>
+                  <input
+                    className='inputOfertas'
+                    type={"number"}
+                    name="porcentage"
+                    onChange={handleChangeForm2}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="blockOfertas">
+
+                  <p className='titleInputOfertas'> porcentaje2</p>
+                  <input
+                    className="inputOfertas"
+                    type={"number"}
+                    name="porcentage"
+                    autoComplete="off"
+                    value={input2.porcentage2}
+                  />
+
+                </div>
+                <div className='blockBtnPromocion'>
+                  <button className="btnPromocion" type="submit" id="submit" onClick={handleSubmit2}>
+                    {" "}
+                    Guardar
+                  </button>
+                  {
+                    input2.porcentage2 ? <button className="btnPromocion" type="submit" id="submit" onClick={handleUndo}> Deshacer </button>
+                      :
+                      null
+                  }
+
                 </div>
               </div>
             </form>
@@ -634,7 +640,7 @@ const Products = () => {
                   </form>*/}
           </div>
         </Box>
-      </Modal>
+      </Modal >
 
 
 
@@ -644,7 +650,7 @@ const Products = () => {
         products={shoes.length}
         paginado={paginado}
       />
-    </Grid>
+    </Grid >
   );
 };
 

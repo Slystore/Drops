@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 30px;
-    /* border: thin dotted #f0f; */
 }
 
 .Page{
@@ -13,15 +12,10 @@
     text-align: center;
     float: left;
     margin: 0 5px;
-    /* transition: 0.5s all; */
-    /* border: thin dotted #00f; */
 }
 
 .PageCurrent{
-    border-bottom: solid 2px #f00;
-}
-
-.Page:hover{
+    color: #f00;
     border-bottom: solid 2px #f00;
 }
 
@@ -31,6 +25,134 @@
     font-weight: bold;
 }
 
-.NumberCurrent{
-    color: #f00;
+@media (min-width: 1400px){
+
+    .Page{
+        width: 20px;
+        height: 25px;
+        text-align: center;
+        float: left;
+        margin: 0 5px;
+    }
+    
+    .Number{
+        font-size: 17px;
+        padding: 5px;
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .PageCurrent{
+        font-size: 17px;
+        color: #f00;
+        font-weight: bold;
+        border-bottom: solid 2px #f00;
+    }
+
+}
+
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .Page{
+        width: 20px;
+        height: 25px;
+        text-align: center;
+        float: left;
+        margin: 0 5px;
+    }
+    
+    .Number{
+        font-size: 16px;
+        padding: 5px;
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .PageCurrent{
+        font-size: 16px;
+        color: #f00;
+        font-weight: bold;
+        border-bottom: solid 2px #f00;
+    }
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .Page{
+        width: 20px;
+        height: 25px;
+        text-align: center;
+        float: left;
+        margin: 0 5px;
+    }
+    
+    .Number{
+        font-size: 14px;
+        padding: 5px;
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .PageCurrent{
+        font-size: 14px;
+        color: #f00;
+        font-weight: bold;
+        border-bottom: solid 2px #f00;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .Page{
+        width: 20px;
+        height: 25px;
+        text-align: center;
+        float: left;
+        margin: 0 5px;
+    }
+    
+    .Number{
+        font-size: 14px;
+        padding: 5px;
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .PageCurrent{
+        font-size: 14px;
+        color: #f00;
+        font-weight: bold;
+        border-bottom: solid 2px #f00;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+
+    .Page{
+        width: 20px;
+        height: 25px;
+        text-align: center;
+        float: left;
+        margin: 0 5px;
+    }
+    
+    .Number{
+        font-size: 14px;
+        padding: 5px;
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .PageCurrent{
+        font-size: 14px;
+        color: #f00;
+        font-weight: bold;
+        border-bottom: solid 2px #f00;
+    }
+    
 }

@@ -6,10 +6,10 @@ const { CLOUD_NAME, API_KEY_CLOUDINARY, API_SECRET_CLOUDINARY } = process.env;
 
 const storageMulter = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../api/assets/images");
+    cb(null, "../client/public/images");
   },
   filename: function (req, file, cb) {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    cb(null, `${file.originalname}`);
   },
 });
 
@@ -21,7 +21,7 @@ const uploadImage = async (req, res) => {
       api_secret: API_SECRET_CLOUDINARY,
     });
     let resultado;
-    await cloudinary.uploader.upload(`${req.file.path}`, (error, result) => {
+    await cloudinary.uploader.upload(`${req.body.image}`, (error, result) => {
       resultado = result;
     });
     await res.json(resultado);
