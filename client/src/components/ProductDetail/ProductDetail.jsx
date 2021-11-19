@@ -91,8 +91,11 @@ function ProductDetail(props) {
     setBul(!bul);
   }
   const handleAddWishList = async (userId,productId)=> {
+    if(userId){
     const x = await userPostWish(userId,productId)
-  }
+    swal("Producto agregado a la wishList!", "success")
+  }else{swal("Por favor inicia sesión para poder agregar a la wishList!", "error")}
+}
   return (
     <div className="DetailContainer">
       {productId.name ? (
