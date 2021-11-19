@@ -65,7 +65,7 @@ export const userWishListGet = (id) => {
 export const userForgotPass = async (user) => {
   console.log("este es el user ", user);
   try {
-    let { data } = await axios.put("/api/forgotPassword", user);
+    let { data } = await axios.put("/forgotPassword", user);
     console.log("a ver que data me llega", data);
     return data;
   } catch (error) {
@@ -111,7 +111,7 @@ export const editUsers = async (userUpdate, id) => {
 export const userNewPass = async (newPass, id) => {
   console.log("este es el user y la id ", newPass, id);
   try {
-    let { data } = await axios.put(`/api/newPassword/${id}`, newPass);
+    let { data } = await axios.put(`/newPassword/${id}`, newPass);
     return data;
   } catch (err) {
     console.log("rompo en la action de newPass", err);

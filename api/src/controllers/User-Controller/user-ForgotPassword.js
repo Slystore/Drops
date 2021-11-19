@@ -16,7 +16,7 @@ const forgotPassword = async (req, res) => {
     console.log("este es el user ", userEmail);
     try {
       await transporter.sendMail({
-        from: '"Forgot password  👻" <germicampo@gmail.com>', // sender address
+        from: '"Forgot password  " <dropshoes.info@gmail.com>', // sender address
         to: userEmail.mail, // list of receivers
         subject: "Hello ✔", // Subject line
         html: `<b>¿Olvidaste tu contraseña?,accede a este link para recuperarla </b>
