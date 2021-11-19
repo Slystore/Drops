@@ -1,31 +1,3 @@
-.file {
-  width: 410px;
-  height: 33px;
-  display: none;
-  z-index: 10000;
-}
-.subir {
-  margin-left: 10px;
-  padding: 5px 5px;
-  background: #ea5103;
-  color: #fff;
-  border-radius: 5px;
-  float: left;
-  border: 0px solid #fff;
-}
-.subir:hover {
-  background: #ea2203;
-  cursor: pointer;
-}
-.info {
-  width: 250px;
-  float: left;
-  font-size: 15px;
-  position: relative;
-  margin-left: 10px;
-  margin-top: 8px;
-}
-
 .postear{
     margin-left: 10px;
     padding: 5px 5px;
@@ -40,24 +12,25 @@
     cursor: pointer;
 }
 
-.boxForm3 {
-  width: 446px;
-  height: 45px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  float: left;
-}
-
 .formProduct {
   display: flex;
   position: relative;
+  padding-left: 10px;
+  /* border: 1px solid  #f00; */
 }
 
 .boxInputProduct {
   height: 70px;
-  width: 270px;
+  width: 280px;
   /* border: 1px solid  #f00; */
 }
+
+.boxInputProductFile {
+  height: 70px;
+  width: 280px;
+  /* border: 1px solid  #f00; */
+}
+
 .titleProduct {
   font-size: 15px;
   margin: 0px 0 0 10px;
@@ -68,7 +41,7 @@
   margin: 0 0 0 10px;
   outline: none;
   height: 30px;
-  width: 220px;
+  width: 240px;
   border: 1px solid #555;
   border-radius: 3px;
 }
@@ -109,7 +82,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 235px;
+  width: 250px;
   /* border: thin solid #0f0; */
 }
 
@@ -138,11 +111,11 @@
 
 .boxTextarea {
   height: 90px;
-  margin: 40px 0 0 10px;
+  margin: 5px 0 0 10px;
 }
 
 .textarea {
-  width: 220px;
+  width: 240px;
   height: 90px;
   border: none;
   outline: none;
@@ -178,18 +151,19 @@
   color: white;
   outline: none;
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   border-radius: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .boxBtnCreate {
-  margin-top: 15px;
-  margin-right: 36px;
+  margin-top: 50px;
+  margin-right: 60px;
   height: 50px;
   display: flex;
   justify-content: right;
@@ -218,18 +192,85 @@
 
 .AddTallesContainer {
   padding: 0 20px 0 0;
-  width: 220px;
-  height: 100px;
+  width: 240px;
+  height: 120px;
   position: absolute;
-  left: 15px;
+  left: 35px;
   border-radius: 5px;
-  top: 380px;
+  top: 400px;
   overflow-y: scroll;
   z-index: 99999999;
   border: thin solid #ccc;
   /* border: thin solid #f00; */
 }
 
-.boxStockProduct {
+/* .boxStockProduct {
   border: thin solid #0f0;
+} */
+
+
+.file-select {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  height: 35px;
 }
+
+.file-select:hover {
+  cursor: pointer;
+}
+
+.file-select::before {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: 'Seleccionar'; /* testo por defecto */
+  position: absolute;
+  left: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 16px;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 240px;
+  height: 32px;
+  display: inline-block;
+}
+
+.file-select input[type="file"]:hover{
+  cursor: pointer;
+}
+
+#src-file1::before {
+  width: 120px;
+  height: 30px;
+  margin-bottom: -30px;
+  content: 'Subir Imagen';
+  cursor: pointer;
+}
+
+.BackGroundInputFile{
+  width: 240px;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 7px;
+  background: linear-gradient(360deg, #9E0000, #FF0000);
+}
+
+.BackGroundInputFile:hover, #src-file1:hover{
+  cursor: pointer;
+}
+
+.info{
+  margin-top: 5px;
+  color: #00000080;
+  font-size: 14px;
+  font-style: italic;
+}
+

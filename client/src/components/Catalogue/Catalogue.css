@@ -1,12 +1,10 @@
-
 .CatologueContainer{
-    width: 99.1vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     overflow: hidden;
-    /* border: thin dotted #00f;  */
 }
 
 .FormRadioCatalogue{
@@ -17,7 +15,7 @@
     margin: 0 0 0 50px;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1601px) {
 
     .Portada{
         width: 100%;
@@ -28,24 +26,21 @@
         background-position: center center;
         background-repeat: no-repeat;
         overflow: hidden;
-        /* border: thin dotted #00f;  */
     }
 
     .Info{ 
-        width: 85%;
+        width: 80%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
         margin-top: 60px;
-        /* border: thin dotted #0f0;  */
     }
-    
+
     .Filtros{
         width: 15%;
         height: auto;
         padding-bottom: 50px;
-        /* border: thin dotted #00f;  */
     }
     
     .TitleFilter{
@@ -80,7 +75,7 @@
     }
     
     .Productos{
-        width: 85%; 
+        width: 80%; 
         min-height:100%;
         display: flex;
         flex-wrap: wrap;
@@ -88,10 +83,120 @@
     }
     
     .Shoes{
-       
         position: relative;
         float: left;
-        margin-right: 30px;
+        margin-right: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .Paginado{
+        width: 40%;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .RadioFilter{
+        margin: 0 5px;
+        width: 16px;
+        height: 16px;
+        position: relative;
+        top: 1px;
+        border: solid 2px #999;
+        margin-right: 5px;   
+        transition: 0.2s all linear;
+    }
+
+    .RadioFilter:hover{
+        cursor: pointer;
+    }
+
+    .RadioFilter:checked {
+        border: 8px solid rgb(202, 0, 67);
+    }
+
+    .BtnCatalogueDelete{
+        width: 120px;
+        height: 30px;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+}
+
+@media (min-width: 1400px) and (max-width: 1600px){
+
+    .Portada{
+        width: 100%;
+        max-height: 400px;
+        height: 40vh;
+        background-color: #ccccce;
+        background-image: url(../../assets/portada.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    .Info{ 
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-top: 60px;
+    }
+    
+    .Filtros{
+        width: 15%;
+        height: auto;
+        padding-bottom: 50px;
+    }
+    
+    .TitleFilter{
+        width: 100%;
+        height: 10px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .SelectFilter{ 
+        width: 100%;
+        height: 40px;
+        margin-bottom: 20px;
+    }
+    
+    .Select{
+        width: 80%;
+        height: 30px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 1em;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .Select:hover{
+        box-shadow: 0 5px 10px #00000030;
+        cursor: pointer;
+        border: none;
+    }
+    
+    .Productos{
+        width: 75%; 
+        min-height:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .Shoes{
+        position: relative;
+        float: left;
+        margin-right: 15px;
         margin-bottom: 30px;
     }
     
@@ -112,7 +217,6 @@
         top: 3px;
         border: solid 2px #999;
         margin-right: 5px;   
-            /* appearance: none; */
         transition: 0.2s all linear;
         
     }
@@ -121,49 +225,49 @@
         cursor: pointer;
     }
 
-    
     .RadioFilter:checked {
-        
         border: 8px solid rgb(202, 0, 67);
     }
-    
+
+    .BtnCatalogueDelete{
+        width: 120px;
+        height: 30px;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
     
 }
 
 @media (min-width: 1200px) and (max-width: 1399px){
 
-    
     .Portada{
         width: 100%;
-        max-height: 400px;
-        height: 40vh;
+        max-height: 350px;
+        height: 300px;
         background-color: #ccccce;
         background-image: url(../../assets/portada.jpg);
         background-position: center center;
         background-repeat: no-repeat;
-        background-size: 70%;
+        background-size: cover;
         overflow: hidden;
-        /* border: thin dotted #00f;  */
     }
 
     .Info{ 
-        width: 90%;
+        width: 80%;
         margin-top: 30px;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-around;
-        /* border: thin dotted #00f;  */
     }
     
     .Filtros{
-        width: 15%;
+        width: 20%;
         height: auto;
         padding-bottom: 50px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* border: thin dotted #00f;  */
     }
 
     .Filtros h1{
@@ -208,18 +312,17 @@
     }
     
     .Productos{
-        width: 80%; 
+        width: 95%; 
         min-height: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        /* border: thin dotted #f00; */
     }
     
     .Shoes{
         position: relative;
         float: left;
-        margin-right: 30px;
+        margin-left: 5px;
         margin-bottom: 30px;
     }
     
@@ -230,7 +333,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
-        /* border: thin dotted #f00; */
     }
 
     .RadioFilter{
@@ -243,14 +345,21 @@
         margin-right: 5px;   
         transition: 0.2s all linear;
     }
+
+    .BtnCatalogueDelete{
+        width: 100px;
+        height: 25px;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px){
 
     .Portada{
         width: 100%;
-        max-height: 400px;
-        height: 40vh;
+        max-height: 300px;
+        height: 300px;
         background-color: #ccccce;
         background-image: url(../../assets/portada.jpg);
         background-position: center center;
@@ -258,8 +367,7 @@
         background-size: cover;
         overflow: hidden;
         position: relative;
-        top: -50px;
-        /* border: thin dotted #00f;  */
+        top: -40px;
     }
 
     .Info{ 
@@ -267,22 +375,21 @@
         margin-top: 30px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-around;
         position: relative;
         top: -50px;
-        /* border: thin dotted #00f;  */
     }
 
     .Filtros{
         width: 100%;
-        height: 100px;
+        height: 50px;
         padding-bottom: 50px;
         display: flex;
         flex-direction: row;
-        align-items: stretch;
-        justify-content: flex-start;
-        border: thin dotted #00f; 
+        flex-wrap: wrap;
+        align-items: center;    
+        justify-content: space-around;
     }
     
     .Filtros h1{
@@ -290,22 +397,22 @@
     }
     
     .TitleFilter{
-        width: 80%;
+        width: 120px;
         height: 20px;
-        font-size: 1.2vw;
+        float: left;
+        font-size: 1.1vw;
         font-weight: 500;
-        margin-top: 3px;
-        /* border: thin dotted #00f;  */
+        margin-top: -22px;
     }
-
+    
     .SelectFilter{ 
-        width: 100%;
+        width: 100px;
         height: 30px;
         margin-bottom: 20px;
     }
     
     .Select{
-        width: 80%;
+        width: 90px;
         height: 20px;
         outline: 0; 
         border-radius: 12px;
@@ -321,26 +428,34 @@
         cursor: pointer;
         border: none;
     }
-
+    
     .FormRadioCatalogue{
-        width: 150%;
-        border: thin dotted #f00;
+        width: 140px;
+        margin-bottom: 30px;
+    }   
+
+    .LabelCatalogueOrder{
+        font-size: 0.8rem;
+    }
+    
+    .RadioFilterLabel{
+        font-size: 0.8rem;
+        margin: 0 0 0 15px;
     }
 
     .Productos{
-        width: 95vw; 
-        height: 77vh;
+        width: 75%; 
+        height: auto;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        /* border: thin dotted #f00; */
     }
     
     .Shoes{
         position: relative;
         float: left;
-        margin-right: 30px;
-        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-bottom: 20px;
     }
     
     .Paginado{
@@ -350,33 +465,428 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
-        /* border: thin dotted #f00; */
     }
 
     .RadioFilter{
         margin: 0 5px;
-        width: 14px;
-        height: 14px;
-        /* position: relative;
-        top: -1px; */
+        width: 12px;
+        height: 12px;
         border: solid 2px #999;
         margin-right: 5px;   
-            /* appearance: none; */
         transition: 0.2s all linear;
     }
 
+    .BtnCatalogueDelete{
+        width: 100px;
+        height: 25px;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
 
-
+    .BtnListFilterDelete{
+        display: none;
+    }
+    
 }
 
 @media (min-width: 768px) and (max-width: 991px){
+
+    .Portada{
+        width: 100%;
+        max-height: 250px;
+        height: 250px;
+        background-color: #ccccce;
+        background-image: url(../../assets/portada.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        position: relative;
+        top: -20px;
+    }
+
+    .Info{ 
+        width: 95%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        top: -50px;
+    }
+
+    .Filtros{
+        width: 100%;
+        height: 100px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;    
+        margin-top: 30px;
+        justify-content: space-around;
+    }
+    
+    .Filtros h1{
+        display: none;
+    }
+    
+    .TitleFilter{
+        width: 120px;
+        height: 20px;
+        float: left;
+        font-size: 1.6vw;
+        font-weight: 500;
+        margin-top: -22px;
+    }
+    
+    .SelectFilter{ 
+        width: 100px;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .Select{
+        width: 90px;
+        height: 20px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 0.8em;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .Select:hover{
+        box-shadow: 0 5px 10px #00000030;
+        cursor: pointer;
+        border: none;
+    }
+    
+    .FormRadioCatalogue{
+        width: 140px;
+        margin-bottom: 30px;
+    }   
+
+    .LabelCatalogueOrder{
+        font-size: 1rem;
+    }
+    
+    .RadioFilterLabel{
+        font-size: 1rem;
+        margin: 0 0 0 15px;
+    }
+
+    .Productos{
+        width: 90%; 
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .Shoes{
+        position: relative;
+        float: left;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .Paginado{
+        width: 60%;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .RadioFilter{
+        margin: 0 5px;
+        width: 15px;
+        height: 15px;
+        border: solid 2px #999;
+        margin-right: 5px;   
+        transition: 0.2s all linear;
+    }
+
+    .BtnCatalogueDelete{
+        width: 100px;
+        height: 25px;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .BtnListFilterDelete{
+        display: none;
+    }
 
 }
 
 @media (min-width: 576px) and (max-width: 767px){
 
+    .Portada{
+        width: 100%;
+        max-height: 250px;
+        height: 250px;
+        background-color: #ccccce;
+        background-image: url(../../assets/portada.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        position: relative;
+        top: -20px;
+    }
+
+    .Info{ 
+        width: 95%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        top: -50px;
+    }
+
+    .Filtros{
+        width: 90%;
+        height: 100px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;    
+        margin-top: 30px;
+        justify-content: space-around;
+    }
+    
+    .Filtros h1{
+        display: none;
+    }
+    
+    .TitleFilter{
+        width: 120px;
+        height: 20px;
+        float: left;
+        font-size: 2vw;
+        font-weight: 500;
+        margin-top: -22px;
+    }
+    
+    .SelectFilter{ 
+        width: 100px;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .Select{
+        width: 90px;
+        height: 20px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 0.8em;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .Select:hover{
+        box-shadow: 0 5px 10px #00000030;
+        cursor: pointer;
+        border: none;
+    }
+    
+    .FormRadioCatalogue{
+        width: 140px;
+        margin-bottom: 30px;
+    }   
+
+    .LabelCatalogueOrder{
+        font-size: 0.9rem;
+    }
+    
+    .RadioFilterLabel{
+        font-size: 0.9rem;
+        margin: 0 0 0 15px;
+    }
+
+    .Productos{
+        width: 90%; 
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .Shoes{
+        position: relative;
+        float: left;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .Paginado{
+        width: 70%;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .RadioFilter{
+        margin: 0 5px;
+        width: 13px;
+        height: 13px;
+        border: solid 2px #999;
+        margin-right: 5px;   
+        transition: 0.2s all linear;
+    }
+
+    .BtnCatalogueDelete{
+        width: 90px;
+        height: 20px;
+        font-size: 12px;
+        margin-bottom: 30px;
+    }
+
+    .BtnListFilterDelete{
+        display: none;
+    }
+
 }
 
 @media (max-width: 575px){
+
+    .Portada{
+        width: 100%;
+        max-height: 170px;
+        height: 150px;
+        background-color: #ccccce;
+        background-image: url(../../assets/portada.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 120%;
+        overflow: hidden;
+        position: relative;
+        top: 5px;
+    }
+
+    .Info{ 
+        width: 95%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        top: -50px;
+    }
+
+    .Filtros{
+        width: 90%;
+        height: 100px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;    
+        margin-top: 50px;
+        justify-content: space-evenly;
+    }
+    
+    .Filtros h1{
+        display: none;
+    }
+    
+    .TitleFilter{   
+        display: none;
+    }
+    
+    .SelectFilter{ 
+        width: 100px;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .Select{
+        width: 90px;
+        height: 20px;
+        outline: 0; 
+        border-radius: 12px;
+        padding: 0px 10px 0 10px;
+        font-size: 0.7em;
+        transition: all 0.25s ease; 
+        color: rgb(99, 99, 99);
+        border: solid 1px #ccc;
+    }
+    
+    .Select:hover{
+        box-shadow: 0 5px 10px #00000030;
+        cursor: pointer;
+        border: none;
+    }
+    
+    .FormRadioCatalogue{
+        width: 140px;
+        margin-bottom: 30px;
+    }   
+
+    .LabelCatalogueOrder{
+        font-size: 0.8rem;
+    }
+    
+    .RadioFilterLabel{
+        font-size: 0.8rem;
+        margin: 0 0 0 15px;
+    }
+
+    .Productos{
+        width: 90%; 
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .Shoes{
+        position: relative;
+        float: left;
+        margin-bottom: 20px;
+    }
+    
+    .Paginado{
+        width: 70%;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .RadioFilter{
+        margin: 0 5px;
+        width: 12px;
+        height: 12px;
+        border: solid 2px #999;
+        margin-right: 5px;   
+        transition: 0.2s all linear;
+    }
+
+    .BtnCatalogueDelete{
+        width: 80px;
+        height: 18px;
+        font-size: 10px;
+        margin-bottom: 30px;
+    }
+
+    .BtnListFilterDelete{
+        display: none;
+    }
 
 }
