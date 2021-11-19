@@ -277,7 +277,7 @@ function Catalogue() {
                 return (
                   product && (
                     <Link to={`/catalogue/${product.id}`} key={index}>
-                      <div className="Shoes" key={index}>
+                      <div className="Shoes" key={index} data-tilt>
                           <Product
                             id={product.id}
                             image={product.image}
