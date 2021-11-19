@@ -213,16 +213,16 @@ export default function Profile() {
   };
 
   const handleClick = (e) => {
-    e.preventDefault()
-    dispatch(deleteNewsletter({email: usersId.user.mail}))
+    e.preventDefault();
+    dispatch(deleteNewsletter({ email: usersId.user.mail }));
     swal({
       title: "Te has desuscripto al newsletter con exito!",
       icon: "success",
       buttons: false,
     });
-    setNewsletter(true)
+    setNewsletter(true);
     // console.log(usersId.user.mail)
-  }
+  };
 
   let wishFilt = wishList.map((el) => el.ProductId);
   let dataFiltered = products.filter((el) => wishFilt.includes(el.id));
@@ -332,12 +332,15 @@ export default function Profile() {
               </div>
             )}
 
-
             <div className="buttons-edit-cont">
               <Button onClick={handleOpen}>Editar perfil</Button>
-              <Button variant="text" onClick={handleOpenEdit}>
-                Cambiar contraseña
-              </Button>
+              {gId ? (
+                <div></div>
+              ) : (
+                <Button variant="text" onClick={handleOpenEdit}>
+                  Cambiar contraseña
+                </Button>
+              )}
             </div>
 
             <Modal
@@ -351,7 +354,7 @@ export default function Profile() {
                 timeout: 500,
               }}
             >
-              <Fade in={open} >
+              <Fade in={open}>
                 <Box sx={style}>
                   <form onSubmit={handleSubmit}>
                     <div className="form-user-cont">
@@ -411,8 +414,11 @@ export default function Profile() {
                     confirmPass: "",
                   }}
                   onSubmit={async (body, { resetForm }) => {
-                    console.log('este es el id', usersId ? gId : usersId.user.id)
-                    await editUsers(body, usersId ?  usersId.user.id : gId);
+                    console.log(
+                      "este es el id",
+                      usersId ? gId : usersId.user.id
+                    );
+                    await editUsers(body, usersId ? usersId.user.id : gId);
                     resetForm();
                   }}
                   validate={(values) => {
@@ -623,8 +629,11 @@ export default function Profile() {
               </TableContainer>
             </Grid>
           </TabPanel>
-          <TabPanel value={value} index={4}> 
-                      <button disabled={newsletter} onClick={handleClick}> desuscribirme </button>
+          <TabPanel value={value} index={4}>
+            <button disabled={newsletter} onClick={handleClick}>
+              {" "}
+              desuscribirme{" "}
+            </button>
           </TabPanel>
         </Box>
       )}
