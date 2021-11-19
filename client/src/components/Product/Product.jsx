@@ -30,6 +30,9 @@ export default function Product({
   onSale,
   discounts,
 }) {
+  
+  var intFrameWidth = window.innerWidth;
+
   const { items } = useSelector((store) => store.cartReducers);
   const dispatch = useDispatch();
   let x;
@@ -168,7 +171,7 @@ export default function Product({
 
       {data[0] && data[0].rating ? (
         <div className="Rate">
-          <Rating name="read-only" value={data[0].rating} readOnly />
+          <Rating name="read-only" value={data[0].rating} readOnly size={intFrameWidth > 1600 ? "large" : intFrameWidth > 575 ? "medium" : "small"} />
         </div>
       ) : (
         <div className="NoRating">
