@@ -41,7 +41,7 @@ const UpdateForm = (id) => {
 
         //---------------------
         await sendMail(orderId.User.mail, orderId )
-        //  window.location.replace("");
+         window.location.replace("");
 
         }
         console.log('Este es el orderId', orderId)
