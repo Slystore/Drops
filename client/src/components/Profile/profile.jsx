@@ -411,7 +411,8 @@ export default function Profile() {
                     confirmPass: "",
                   }}
                   onSubmit={async (body, { resetForm }) => {
-                    await editUsers(body, usersId ? gId : usersId.user.id);
+                    console.log('este es el id', usersId ? gId : usersId.user.id)
+                    await editUsers(body, usersId ?  usersId.user.id : gId);
                     resetForm();
                   }}
                   validate={(values) => {
