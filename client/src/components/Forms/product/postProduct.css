@@ -2,6 +2,7 @@
   width: 410px;
   height: 33px;
   display: none;
+  z-index: 10000;
 }
 .subir {
   margin-left: 10px;

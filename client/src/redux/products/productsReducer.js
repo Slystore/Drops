@@ -28,134 +28,45 @@ export const initialState = {
   stockBySize: [],
   filtros: [],
   dataFiltrada: {},
+  productPhoto: [],
 };
 function productsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS: {
-      
-      let discountD
       let dayVerify = new Date().toLocaleString("default", { weekday: "long" });
-      let data = action.payload; //trae los products
+      let data = action.payload;
+      data = data.map((el) => {
+        if (el.onSale === false) {
+          return el;
+        } else if (el.discountDay === null) {
+          return el;
+        } else if (
+          el.onSale === true &&
+          el.discountDay !== null &&
+          el.discountDay !== dayVerify
+        ) {
+          console.log("SIN DIA. elemento sale normal");
 
-      console.log(dayVerify)
-
-      data = data.map( el => {
-        console.log(el.discountDay)
-        //  discountD = el.discountDay.toLowerCase() 
-
-        if(el.onSale === false) {
-          console.log('SIN PROMOCION. elemento sale normal')
-          return el
-        }
-        else if(el.discountDay === null) {
-          console.log('SIN DIA. elemento sale normal')
-          return el
-        }
-        else if(el.onSale === true && el.discountDay !== null && el.discountDay !== dayVerify) {
-          console.log('SIN DIA. elemento sale normal')
-          
           return {
             ...el,
             onSale: false,
             Discounts: null,
-            discountDay: null
+            discountDay: null,
           };
+        } else if (
+          el.onSale === true &&
+          el.discountDay !== null &&
+          el.discountDay === dayVerify
+        ) {
+          return el;
         }
-        else if(el.onSale === true && el.discountDay !== null && el.discountDay === dayVerify){
-          
-                    
-          return el
-        }
-        
-      })
+      });
       return {
         ...state,
         products: data,
         filtrados: data,
-      };
-
-
-    //   if(action.dayDiscount === null || action.dayDiscount === undefined){
-    //                 console.log('entro aca')
-
-    //     return {
-    //       ...state,
-    //       products: data,
-    //       filtrados: data,
-    //     }    
-    //   }
-    //   else if(discountD !== null && discountD !== dayVerify ){
-    //                 console.log('entro aca con day discount')
-
-    //     data = data.map(e => {
-    //        discountD = e.discountDay.toLowerCase()
-
-    //         // console.log('entro aca')
-    //         // console.log(discountD, dayVerify, action.dayDiscount)
-    //         return {
-    //           ...e,
-    //           onSale: false,
-    //           Discounts: null,
-    //           discountDay: null
-    //         };
-    //       })
-         
-    //     }
+      }
     }
-
-    // case GET_PRODUCTS_WITH_DISCOUNTS: {
-      
-    //   // day, discount, target [marca/categoria, string, id]
-    //   let data = action.payload; //trae los products
-     
-    //   let dayVerify = new Date().toLocaleString("default", { weekday: "long" });
-    //   let filterType = action.target[0]; // guarda en una variable si es marca o categoria
-    //   let brandFilter = action.target[1]; // guarda que marca o categoria es
-    //   let dayFilter = action.day.toLocaleLowerCase(); // guarda en la variable el dia de la semana que esa marca o categoria estara en oferta
-
-    //   console.log('antes de agregar data', data)
-    //   if (filterType === 'marca') {// Busca entre los productos aquellos que coincidan con la marca que me traje como parametro
-    //     console.log('etro en el if de marcas', filterType)
-    //     data = data.map((e) => {
-         
-    //       if (
-    //         dayVerify === dayFilter &&
-    //         Object.values(e.Brand).includes(brandFilter)
-    //       ) {
-    //        console.log('entra')
-    //         return {
-    //           ...e,
-    //           onSale: true,
-    //           Discounts: action.discount,
-    //         };
-    //       }
-    //       return e;
-    //     })
-    //   } else {// Busca entre los productos aquellos que coincidan con la categoria que me traje como parametro
-    //     console.log(filterType)
-    //     data = data.map((e) => {
-    //       if (
-    //         dayVerify === dayFilter &&
-    //         Object.values(e.Category).includes(brandFilter)
-    //       ) {
-    //         return {
-    //           ...e,
-    //           onSale: true,
-    //           Discounts: action.discount,
-    //         };
-    //       }
-    //       return e;
-    //     })
-    //   };
-    //   //
-    //   console.log(data)
-    //   return {
-    //     ...state,
-    //     products: data,
-    //     filtrados: data
-    //   }
-    // }
-
     case GET_PRODUCTS_PER_PAGE: {
       return {
         ...state,
@@ -179,10 +90,7 @@ function productsReducer(state = initialState, action) {
       };
 
     case ORDER_METHOD:
-      console.log("hola", action.payload);
-      console.log("hola", action.order);
       let array2 = state.products;
-
       let orderedArray2 =
         action.payload === "asc" && action.order === "price"
           ? array2.sort((a, b) => a.price - b.price)
@@ -292,37 +200,6 @@ function productsReducer(state = initialState, action) {
         };
       }
     }
-
-    // case FILTER_BY_PRICE: {
-    //    let productsByPrice = state.filtrados;
-
-    //   if(state.filtros.length === 0){// Si no hay filtros aplicados previamente
-    //     let filterPrice =
-    //     action.payload === "1"
-    //       ? productsByPrice
-    //       : productsByPrice.filter((el) =>
-    //           el.price > parseInt(action.payload)
-    //         );
-    //     state.filtros = [...filterPrice]
-    //     return {
-    //       ...state,
-    //       products: state.filtros,
-    //     };
-    //   }
-    //   else {// Si ya hay filtros aplicados
-    //     let filterPrice2 =
-    //     action.payload === "1"
-    //       ? state.filtros
-    //       : state.filtros.filter((el) =>
-    //           el.price > parseInt(action.payload)
-    //         );
-    //         state.filtros = [...filterPrice2]
-    //         return {
-    //           ...state,
-    //           products: state.filtros,
-    //         };
-    //   }
-    // }
     case FILTERS_RESET: {
       return {
         ...state,
@@ -353,6 +230,7 @@ function productsReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
+
     default:
       return state;
   }
