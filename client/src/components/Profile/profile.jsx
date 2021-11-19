@@ -513,7 +513,7 @@ export default function Profile() {
                         >
                           <DeleteIcon />
                         </IconButton>
-                        <div className="product-cont">
+                        <div className="product-cont Shoes">
                           <Product
                             key={el.id}
                             id={el.id}
