@@ -172,8 +172,8 @@ export const changeProductQuantity =
 
 export const loadCart = (user) =>
   async (dispatch) => {
-  
-    let user1 = decoded || gId?(!gId?decoded.user.id: gId): null
+  // if(gId){return}
+    let user1 = decoded ?decoded.user.id: null
     // console.log(user1,'tomimix')
     if (user1 || user) {
        

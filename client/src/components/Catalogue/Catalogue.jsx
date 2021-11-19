@@ -28,7 +28,7 @@ import VanillaTilt from "vanilla-tilt";
 function Catalogue() {
   const element = document.querySelectorAll(".Shoes");
   VanillaTilt.init(element);
-
+  const gId = localStorage.getItem('gId')
   var intFrameWidth = window.innerWidth;
 
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ function Catalogue() {
     dispatch(getProducts());
     dispatch(getBrands());
     dispatch(getCategories());
-    dispatch(loadCart());
+    if(!gId){dispatch(loadCart())};
     dispatch(getRatings());
     dispatch(getDiscounts());
   }, [dispatch]);
