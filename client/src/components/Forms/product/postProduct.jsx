@@ -178,12 +178,12 @@ export default function FormProductCreate() {
     window.location.replace("");
   };
 
-  const deleteCategory = (data) => {
-    setInput({
-      ...input,
-      categoryId: input.categoryId.filter((category) => data !== category),
-    });
-  };
+  // const deleteCategory = (data) => {
+  //   setInput({
+  //     ...input,
+  //     categoryId: input.categoryId.filter((category) => data !== category),
+  //   });
+  // };
 
   return (
     <div>
@@ -346,13 +346,13 @@ export default function FormProductCreate() {
                   <p className="stockNumber">
                     {" "}
                     Talla: {el[0]} - Cantidad: {el[1]}
-                    <button
+                   {/* <button
                       className="deleteStock"
                       onClick={() => deleteCategory(el)}
                     >
                       {" "}
                       X{" "}
-                    </button>
+                   </button>*/}
                   </p>
                 </div>
               );

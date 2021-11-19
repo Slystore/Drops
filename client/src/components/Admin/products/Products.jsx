@@ -73,6 +73,7 @@ const Products = () => {
     }
   };
 
+  
   const promocionarProduct = (elemento) => {
 
     setInput2({
@@ -105,7 +106,7 @@ const Products = () => {
   const [input, setInput] = useState({
     id: "",
     name: "",
-    image: "",
+    // image: "",
     description: "",
     price: 0,
     status: "",
@@ -150,6 +151,7 @@ const Products = () => {
       }
     })
     dispatch(updateDiscountById(input2))
+    window.location.replace("");
   }
 
   const handleUndo = (e) => {
@@ -247,12 +249,12 @@ const Products = () => {
     }
   };
 
-  const deleteCategory = (data) => {
-    setInput({
-      ...input,
-      categoryId: input.categoryId.filter((category) => data !== category),
-    });
-  };
+  // const deleteCategory = (data) => {
+  //   setInput({
+  //     ...input,
+  //     categoryId: input.categoryId.filter((category) => data !== category),
+  //   });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -264,7 +266,7 @@ const Products = () => {
     setInput({
       id: "",
       name: "",
-      image: "",
+      // image: "",
       description: "",
       price: 0,
       status: "",
@@ -376,7 +378,7 @@ const Products = () => {
                     />
                   </div>
 
-                  <div className="boxInputProduct">
+                  {/*<div className="boxInputProduct">
                     <p className="titleProduct"> Imagen </p>
                     <input
                       className="inputProduct"
@@ -384,7 +386,7 @@ const Products = () => {
                       name="image"
                       onChange={handleChangeForm}
                     />
-                  </div>
+            </div>*/}
 
                   <div className="boxInputProduct">
                     <p className="titleProduct"> Price </p>
@@ -497,13 +499,13 @@ const Products = () => {
                           <p className="stockNumber" key={el[0]}>
                             {" "}
                             Talla:{el[0]} - Cantidad:{el[1]}
-                            <button
+                           {/* <button
                               className="deleteStock"
                               onClick={() => deleteCategory(el)}
                             >
                               {" "}
                               X{" "}
-                            </button>
+                           </button>*/}
                           </p>
                         </div>
                       );
@@ -561,16 +563,7 @@ const Products = () => {
                   />
                 </div>
                 <div className="blockOfertas">
-
-                  <p className='titleInputOfertas'> porcentaje2</p>
-                  <input
-                    className="inputOfertas"
-                    type={"number"}
-                    name="porcentage"
-                    autoComplete="off"
-                    value={input2.porcentage2}
-                  />
-
+                  <p className='titleInputOfertas'> valor en DB {input2.porcentage2} </p>
                 </div>
                 <div className='blockBtnPromocion'>
                   <button className="btnPromocion" type="submit" id="submit" onClick={handleSubmit2}>
