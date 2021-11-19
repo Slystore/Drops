@@ -618,13 +618,13 @@ export default function Profile() {
                                       name="rating"
                                       onChange={commnentCapture}
                                     />
-                                    <button type="submit">Comentar</button>
+                                    <Button variant="text" type="submit">Comentar</Button>
                                   </form>
                                 </Box>
                               </StyledModal>
                             </TableCell>
                           ) : (
-                            <button disabled>Deja una reseña</button>
+                            <Button variant="text" disabled>Deja una reseña</Button>
                           )}
                         </TableRow>
                       ))
