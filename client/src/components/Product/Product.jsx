@@ -30,6 +30,9 @@ export default function Product({
   onSale,
   discounts,
 }) {
+  
+  var intFrameWidth = window.innerWidth;
+
   const { items } = useSelector((store) => store.cartReducers);
   const dispatch = useDispatch();
   let x;
@@ -85,11 +88,11 @@ export default function Product({
   };
 
   const handleAddWishList = async (userId,productId)=> {
-    // console.log('esta es la userId',userId)
-    // console.log('esta es la id hardc',decoded ? decoded.id:decoded)
+    if(userId){
     const x = await userPostWish(userId,productId)
     swal("Produto agregado a tu wishList!", "success")
-  }
+  }else{swal("Por favor inicia sesión para poder agregar a la wishList!", "error")}
+}
 
   return (
     <div className="ProductContainer">
@@ -111,6 +114,12 @@ export default function Product({
                   position: "relative",
                   left: -3
                 },
+                "@media (min-width: 0px) and (max-width: 1199px)": {
+                  fontSize: 14,
+                  marginTop: -1,
+                  position: "relative",
+                  left: -3
+                },
               }}
               onClick={() => handleAddToCart(id)}
             />
@@ -127,6 +136,12 @@ export default function Product({
                 "@media (min-width: 1200px) and (max-width: 1399px)": {
                   fontSize: 16,
                   marginTop: -0.5,
+                },
+                "@media (min-width: 0px) and (max-width: 1199px)": {
+                  fontSize: 14,
+                  marginTop: -1,
+                  position: "relative",
+                  
                 },
               }}
               onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}  />
@@ -156,7 +171,7 @@ export default function Product({
 
       {data[0] && data[0].rating ? (
         <div className="Rate">
-          <Rating name="read-only" value={data[0].rating} readOnly />
+          <Rating name="read-only" value={data[0].rating} readOnly size={intFrameWidth > 1600 ? "large" : intFrameWidth > 575 ? "medium" : "small"} />
         </div>
       ) : (
         <div className="NoRating">

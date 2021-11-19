@@ -213,16 +213,16 @@ export default function Profile() {
   };
 
   const handleClick = (e) => {
-    e.preventDefault()
-    dispatch(deleteNewsletter({email: usersId.user.mail}))
+    e.preventDefault();
+    dispatch(deleteNewsletter({ email: usersId.user.mail }));
     swal({
       title: "Te has desuscripto al newsletter con exito!",
       icon: "success",
       buttons: false,
     });
-    setNewsletter(true)
+    setNewsletter(true);
     // console.log(usersId.user.mail)
-  }
+  };
 
   let wishFilt = wishList.map((el) => el.ProductId);
   let dataFiltered = products.filter((el) => wishFilt.includes(el.id));
@@ -255,7 +255,6 @@ export default function Profile() {
             <Tab label="Configuracion" {...a11yProps(1)} />
             <Tab label=" Mis deseados" {...a11yProps(2)} />
             <Tab label="Mis compras" {...a11yProps(3)} />
-            <Tab label="Newsletter" {...a11yProps(4)} />
             <a href="/" className="home">
               <Tab label="Home" {...a11yProps(4)} />
             </a>
@@ -280,6 +279,14 @@ export default function Profile() {
                       alt=""
                     />
                   </div>
+                  <span>
+                    Ahora mismo estas suscripto al newsletter, si quieres
+                    desuscribirte aprieta este boton{" "}
+                    <button className="button-newsletter" disabled={newsletter} onClick={handleClick}>
+                      {" "}
+                      desuscribirme{" "}
+                    </button>
+                  </span>
                 </div>
               </div>
             )}
@@ -332,12 +339,15 @@ export default function Profile() {
               </div>
             )}
 
-
             <div className="buttons-edit-cont">
               <Button onClick={handleOpen}>Editar perfil</Button>
-              <Button variant="text" onClick={handleOpenEdit}>
-                Cambiar contraseña
-              </Button>
+              {gId ? (
+                <div></div>
+              ) : (
+                <Button variant="text" onClick={handleOpenEdit}>
+                  Cambiar contraseña
+                </Button>
+              )}
             </div>
 
             <Modal
@@ -351,7 +361,7 @@ export default function Profile() {
                 timeout: 500,
               }}
             >
-              <Fade in={open} >
+              <Fade in={open}>
                 <Box sx={style}>
                   <form onSubmit={handleSubmit}>
                     <div className="form-user-cont">
@@ -411,7 +421,11 @@ export default function Profile() {
                     confirmPass: "",
                   }}
                   onSubmit={async (body, { resetForm }) => {
-                    await editUsers(body, usersId ? gId : usersId.user.id);
+                    console.log(
+                      "este es el id",
+                      usersId ? gId : usersId.user.id
+                    );
+                    await editUsers(body, usersId ? usersId.user.id : gId);
                     resetForm();
                   }}
                   validate={(values) => {
@@ -513,7 +527,7 @@ export default function Profile() {
                         >
                           <DeleteIcon />
                         </IconButton>
-                        <div className="product-cont">
+                        <div className="product-cont Shoes">
                           <Product
                             key={el.id}
                             id={el.id}
@@ -621,9 +635,6 @@ export default function Profile() {
                 </Table>
               </TableContainer>
             </Grid>
-          </TabPanel>
-          <TabPanel value={value} index={4}> 
-                      <button disabled={newsletter} onClick={handleClick}> desuscribirme </button>
           </TabPanel>
         </Box>
       )}

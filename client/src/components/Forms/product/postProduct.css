@@ -1,187 +1,276 @@
+.postear{
+    margin-left: 10px;
+    padding: 5px 5px;
+    background: #ea5103;
+    color: #fff;
+    border-radius: 5px;
+    float: left;
+    border: 0px solid #fff;
+}
+.postear:hover {
+    background: #ea2203;
+    cursor: pointer;
+}
+
 .formProduct {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
+  padding-left: 10px;
+  /* border: 1px solid  #f00; */
 }
 
 .boxInputProduct {
-    height: 70px;
-    width: 270px;
-    /* border: 1px solid  #f00; */
+  height: 70px;
+  width: 280px;
+  /* border: 1px solid  #f00; */
 }
+
+.boxInputProductFile {
+  height: 70px;
+  width: 280px;
+  /* border: 1px solid  #f00; */
+}
+
 .titleProduct {
-    font-size: 15px;
-    margin: 0px 0 0 10px;
-    color: #555;
-    width: 60px;
-    
+  font-size: 15px;
+  margin: 0px 0 0 10px;
+  color: #555;
+  width: 60px;
 }
 .inputProduct {
-    margin: 0 0 0 10px;
-    outline: none;
-    height: 30px;
-    width: 220px;
-    border: 1px solid  #555;
-    border-radius: 3px ;
-    
+  margin: 0 0 0 10px;
+  outline: none;
+  height: 30px;
+  width: 240px;
+  border: 1px solid #555;
+  border-radius: 3px;
 }
 .errorText {
-    font-size: 13px;
-    margin: 0 0 0 10px;
-    color: red;
-    width: 220px;
+  font-size: 13px;
+  margin: 0 0 0 10px;
+  color: red;
+  width: 220px;
 }
 .secondBoxProduct {
-    width: 50%;
-    /* border: 1px solid  #f00; */
+  width: 50%;
+  /* border: 1px solid  #f00; */
 }
 
 .selectProduct {
-    outline: none;
-    height: 30px;
-    width: 220px;
-    border: 1px solid  #555;
-    border-radius: 3px ;
-    color: #555;
+  outline: none;
+  height: 30px;
+  width: 220px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  color: #555;
 }
 
-.selectSize, .inputStock {
-    outline: none;
-    height: 30px;
-    width: 80px;
-    padding-left: 10px;
-    border: 1px solid  #555;
-    border-radius: 3px ;
-    color: #555;
+.selectSize,
+.inputStock {
+  outline: none;
+  height: 30px;
+  width: 80px;
+  padding-left: 10px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  color: #555;
 }
 
 .boxSelectProduct {
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 235px;
-    /* border: thin solid #0f0; */
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  /* border: thin solid #0f0; */
 }
 
 .boxSelectSizes {
-    width: 115px;
-    height: 70px;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border: thin solid rgb(255, 230, 0); */
+  width: 115px;
+  height: 70px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: thin solid rgb(255, 230, 0); */
 }
 
 .boxSelectSizes2 {
-    width: 115px;
-    height: 70px;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 25px;
-    /* border: thin solid rgb(255, 230, 0); */
+  width: 115px;
+  height: 70px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 25px;
+  /* border: thin solid rgb(255, 230, 0); */
 }
 
 .boxTextarea {
-    height: 90px;
-    margin: 0 0 0 10px;
+  height: 90px;
+  margin: 5px 0 0 10px;
 }
 
 .textarea {
-    width: 220px;
-    height: 90px;
-    border: none;
-    outline: none;
-    resize: none;
-    font-size: 14px;
-    padding-left: 5px;
-    border: 1px solid  #555;
+  width: 240px;
+  height: 90px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 14px;
+  padding-left: 5px;
+  border: 1px solid #555;
 }
 
 .titleStockProduct {
-    width: 80px;
-    font-size: 15px;
-    margin: 0px 0 0 10px;
-    color: #555;
+  width: 80px;
+  font-size: 15px;
+  margin: 0px 0 0 10px;
+  color: #555;
 }
 
 .buttonStock {
-    width: 140px;
-    height: 40px;
-    margin-left: 10px;
-    margin-bottom: 35px;
-    border: none;
-    outline: none;
+  width: 140px;
+  height: 40px;
+  margin-left: 10px;
+  margin-bottom: 35px;
+  border: none;
+  outline: none;
 }
 
 .stockNumber {
-    font-size: 14px;
-    margin: 0px;
+  font-size: 14px;
+  margin: 0px;
 }
 
 .deleteStock {
-    background-color: red;
-    color: white;
-    outline: none;
-    border:none;
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
+  background-color: red;
+  color: white;
+  outline: none;
+  border: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 .boxBtnCreate {
-    margin-top: 15px;
-    margin-right: 36px;
-    height: 50px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+  margin-top: 50px;
+  margin-right: 60px;
+  height: 50px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 .btnCreate {
-    width: 140px;
-    height: 40px;
-    outline: none;
-    border: none;
-    transition: all 0.3s ease-in-out;
+  width: 140px;
+  height: 40px;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease-in-out;
 }
 .btnCreate:hover {
-    background-color: #555;
-    border-radius: 5px;
-    color: white;
+  background-color: #555;
+  border-radius: 5px;
+  color: white;
 }
 
 .renderSizesProduct {
-    height: 27px;
-    display: flex;
-    justify-content: space-evenly;
-    width: auto;
+  height: 27px;
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
 }
 
-.AddTallesContainer{
-    padding: 0 20px 0 0;
-    width: 220px;
-    height: 100px;
-    position: absolute;
-    left: 15px;
-    border-radius: 5px;
-    top: 380px;
-    overflow-y:  scroll;
-    z-index: 99999999;
-    border: thin solid #ccc;
-    /* border: thin solid #f00; */
+.AddTallesContainer {
+  padding: 0 20px 0 0;
+  width: 240px;
+  height: 120px;
+  position: absolute;
+  left: 35px;
+  border-radius: 5px;
+  top: 400px;
+  overflow-y: scroll;
+  z-index: 99999999;
+  border: thin solid #ccc;
+  /* border: thin solid #f00; */
 }
 
-.boxStockProduct{
-    border: thin solid #0f0;
+/* .boxStockProduct {
+  border: thin solid #0f0;
+} */
+
+
+.file-select {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  height: 35px;
+}
+
+.file-select:hover {
+  cursor: pointer;
+}
+
+.file-select::before {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: 'Seleccionar'; /* testo por defecto */
+  position: absolute;
+  left: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 16px;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 240px;
+  height: 32px;
+  display: inline-block;
+}
+
+.file-select input[type="file"]:hover{
+  cursor: pointer;
+}
+
+#src-file1::before {
+  width: 120px;
+  height: 30px;
+  margin-bottom: -30px;
+  content: 'Subir Imagen';
+  cursor: pointer;
+}
+
+.BackGroundInputFile{
+  width: 240px;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 7px;
+  background: linear-gradient(360deg, #9E0000, #FF0000);
+}
+
+.BackGroundInputFile:hover, #src-file1:hover{
+  cursor: pointer;
+}
+
+.info{
+  margin-top: 5px;
+  color: #00000080;
+  font-size: 14px;
+  font-style: italic;
 }
 

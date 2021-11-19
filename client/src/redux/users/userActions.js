@@ -99,6 +99,7 @@ export const getToken = () => {
 
 export const editUsers = async (userUpdate, id) => {
   console.log("este es el userUpdate de la action ", userUpdate);
+  console.log("este es el id de la action ", id);
   try {
     let { data } = await axios.put(`/edit/${id}`, userUpdate);
     return data;

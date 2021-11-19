@@ -130,6 +130,14 @@
 .delete-Wish{
     height: 20px;
     width: 5px;
+    position: relative;
+    right: 45px;
+    top: 10px;
+    z-index: 1111;
+}
+
+.delete-Wish:hover{
+    transform: translateY(-10px);
 }
 
 .Modal-Profile-Row{
@@ -144,6 +152,16 @@
 .Modal-Profile-Input:focus{
     border: none;
     outline: thin solid #f00;
+}
+.button-newsletter{
+  border-radius: 5px;
+  border: thin solid #ccc;
+  width: 130px;
+  height: 45px;
+}
+.button-newsletter:hover{
+  background-color:#fc4444; 
+
 }
 
 .Btn-Profile-Modal{

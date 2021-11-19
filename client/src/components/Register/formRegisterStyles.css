@@ -98,3 +98,634 @@
     transition: all 0.3s ease-in-out;
     transition-duration: 1s;
 }
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    .reg-Box{
+        border: solid #ccc 1px;
+        background: #fff;
+        width: 65%;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 10vh;
+        padding: 15px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+
+    .reg-Box .border-dec{
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    .reg-Box h1{
+        width: 100%;
+        text-align: left;
+        margin-left: 80px;
+    }
+    
+    .data-Field-reg{
+        width: 70%;
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        border-radius: 8px;
+        outline: none;
+    }
+    
+    .no-validate{
+        font-size: 14px;
+        text-align: start;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .validate{
+        font-size: 16px;
+        text-align: start;
+        margin-left: 180px;
+        color: green;
+        font-weight: 600;
+    }
+    
+    .data-Field-reg p{
+        width: 200px;
+        margin-top: 30px;
+        margin-left: -60px;
+        font-size: 16px;
+    }
+    
+    .data-Field-reg a{
+        font-size: 16px;
+        text-decoration: none;
+        color: #fc4444;
+    }
+    
+    .data-log-box{
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .data-log-box p{
+        text-align: center;
+        margin-right: 7vw;
+    }
+    
+    .form-box-reg{
+        width: 35vw;
+        margin-right: 24vw;
+        margin-top: 35px;
+    }
+    
+    .Field-reg{
+        width: 95%;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: thin solid #ccc;
+        outline: none;
+    }
+    
+    .btn-reg{
+        width: 100px;
+        margin-right: 12vw;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0;
+        background:none;
+        border: thin solid #ccc;
+        outline: none;
+    }
+
+    .btn-reg:hover{
+        background-color: #fc4444; 
+        transition-duration: 1s;
+        font-size: 15px;
+        font-weight: 100;
+        transform:scale(1.1);
+    }
+
+    .btn-reg:after{
+        transition: all 0.3s ease-in-out;
+        transition-duration: 1s;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .reg-Box{
+        border: solid #ccc 1px;
+        background: #fff;
+        width: 75%;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 10vh;
+        padding: 15px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+
+    .reg-Box .border-dec{
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    .reg-Box h1{
+        width: 100%;
+        text-align: left;
+        margin-left: 80px;
+    }
+    
+    .data-Field-reg{
+        width: 90%;
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        border-radius: 8px;
+        outline: none;
+    }
+    
+    .no-validate{
+        font-size: 14px;
+        text-align: start;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .validate{
+        font-size: 16px;
+        text-align: start;
+        margin-left: 180px;
+        color: green;
+        font-weight: 600;
+    }
+    
+    .data-Field-reg p{
+        width: 200px;
+        margin-top: 30px;
+        margin-left: -60px;
+        font-size: 16px;
+    }
+    
+    .data-Field-reg a{
+        font-size: 16px;
+        text-decoration: none;
+        color: #fc4444;
+    }
+    
+    .data-log-box{
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .data-log-box p{
+        text-align: center;
+        margin-right: 21vw;
+    }
+    
+    .form-box-reg{
+        width: 35vw;
+        margin-right: 36vw;
+        margin-top: 35px;
+    }
+    
+    .Field-reg{
+        width: 95%;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: thin solid #ccc;
+        outline: none;
+    }
+    
+    .btn-reg{
+        width: 100px;
+        margin-right: 27vw;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0;
+        background:none;
+        border: thin solid #ccc;
+        outline: none;
+    }
+
+    .btn-reg:hover{
+        background-color: #fc4444; 
+        transition-duration: 1s;
+        font-size: 15px;
+        font-weight: 100;
+        transform:scale(1.1);
+    }
+
+    .btn-reg:after{
+        transition: all 0.3s ease-in-out;
+        transition-duration: 1s;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .reg-Box{
+        border: solid #ccc 1px;
+        background: #fff;
+        width: 90%;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 10vh;
+        padding: 15px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+
+    .reg-Box .border-dec{
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    .reg-Box h1{
+        width: 100%;
+        text-align: left;
+        margin-left: 80px;
+    }
+    
+    .data-Field-reg{
+        width: 100%;
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        border-radius: 8px;
+        outline: none;
+    }
+    
+    .no-validate{
+        font-size: 14px;
+        text-align: start;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .validate{
+        font-size: 16px;
+        text-align: start;
+        margin-left: 180px;
+        color: green;
+        font-weight: 600;
+    }
+    
+    .data-Field-reg p{
+        width: 200px;
+        margin-top: 30px;
+        margin-left: -60px;
+        font-size: 16px;
+    }
+    
+    .data-Field-reg a{
+        font-size: 16px;
+        text-decoration: none;
+        color: #fc4444;
+    }
+    
+    .data-log-box{
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .data-log-box p{
+        text-align: center;
+        margin-right: 32vw;
+    }
+    
+    .form-box-reg{
+        width: 40vw;
+        margin-right: 47vw;
+        margin-top: 35px;
+    }
+    
+    .Field-reg{
+        width: 95%;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: thin solid #ccc;
+        outline: none;
+    }
+    
+    .btn-reg{
+        width: 100px;
+        margin-right: 40vw;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0;
+        background:none;
+        border: thin solid #ccc;
+        outline: none;
+    }
+
+    .btn-reg:hover{
+        background-color: #fc4444; 
+        transition-duration: 1s;
+        font-size: 15px;
+        font-weight: 100;
+        transform:scale(1.1);
+    }
+
+    .btn-reg:after{
+        transition: all 0.3s ease-in-out;
+        transition-duration: 1s;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+
+    .reg-Box{
+        border: solid #ccc 1px;
+        background: #fff;
+        width: 60%;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 10vh;
+        padding: 15px;
+        margin: 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+
+    .reg-Box .border-dec{
+        width: 87%;
+        margin-top: 10px;
+    }
+
+    .reg-Box h1{
+        width: 100%;
+        text-align: left;
+        margin-left: 80px;
+    }
+    
+    .data-Field-reg{
+        width: 100%;
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        border-radius: 8px;
+        outline: none;
+    }
+    
+    .no-validate{
+        font-size: 14px;
+        text-align: start;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .validate{
+        font-size: 16px;
+        text-align: start;
+        margin-left: 180px;
+        color: green;
+        font-weight: 600;
+    }
+    
+    .data-Field-reg p{
+        width: 200px;
+        margin-top: 30px;
+        margin-left: -60px;
+        font-size: 16px;
+    }
+    
+    .data-Field-reg a{
+        font-size: 16px;
+        text-decoration: none;
+        color: #fc4444;
+    }
+    
+    .data-log-box{
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .data-log-box p{
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .form-box-reg{
+        width: 50vw;
+        margin: 0 auto;
+        margin-top: 35px;
+    }
+    
+    .Field-reg{
+        width: 95%;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: thin solid #ccc;
+        outline: none;
+    }
+    
+    .btn-reg{
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0;
+        background:none;
+        border: thin solid #ccc;
+        outline: none;
+    }
+
+    .btn-reg:hover{
+        background-color: #fc4444; 
+        transition-duration: 1s;
+        font-size: 15px;
+        font-weight: 100;
+        transform:scale(1.1);
+    }
+
+    .btn-reg:after{
+        transition: all 0.3s ease-in-out;
+        transition-duration: 1s;
+    }
+
+}
+
+@media (max-width: 575px){
+
+    .reg-Box{
+        border: solid #ccc 1px;
+        background: #fff;
+        width: 85%;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 10vh;
+        padding: 15px;
+        margin: 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+
+    .reg-Box h1{
+        width: 100%;
+        text-align: left;
+        margin-left: 80px;
+    }
+    
+    .data-Field-reg{
+        width: 100%;
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        border-radius: 8px;
+        outline: none;
+    }
+    
+    .no-validate{
+        font-size: 14px;
+        text-align: start;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .validate{
+        font-size: 16px;
+        text-align: start;
+        margin-left: 180px;
+        color: green;
+        font-weight: 600;
+    }
+    
+    .data-Field-reg p{
+        width: 200px;
+        margin-top: 30px;
+        margin-left: -60px;
+        font-size: 16px;
+    }
+    
+    .data-Field-reg a{
+        font-size: 16px;
+        text-decoration: none;
+        color: #fc4444;
+    }
+    
+    .data-log-box{
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .data-log-box p{
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .form-box-reg{
+        width: 70vw;
+        margin: 0 auto;
+        margin-top: 35px;
+    }
+    
+    .Field-reg{
+        width: 95%;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: thin solid #ccc;
+        outline: none;
+    }
+    
+    .btn-reg{
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0;
+        background:none;
+        border: thin solid #ccc;
+        outline: none;
+    }
+
+    .btn-reg:hover{
+        background-color: #fc4444; 
+        transition-duration: 1s;
+        font-size: 15px;
+        font-weight: 100;
+        transform:scale(1.1);
+    }
+
+    .btn-reg:after{
+        transition: all 0.3s ease-in-out;
+        transition-duration: 1s;
+    }
+
+}

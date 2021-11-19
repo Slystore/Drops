@@ -91,8 +91,11 @@ function ProductDetail(props) {
     setBul(!bul);
   }
   const handleAddWishList = async (userId,productId)=> {
+    if(userId){
     const x = await userPostWish(userId,productId)
-  }
+    swal("Producto agregado a la wishList!", "success")
+  }else{swal("Por favor inicia sesión para poder agregar a la wishList!", "error")}
+}
   return (
     <div className="DetailContainer">
       {productId.name ? (
@@ -176,12 +179,29 @@ function ProductDetail(props) {
                     height: 25,
                     fontSize: 10,
                   },
+                  "@media (min-width: 576px) and (max-width: 1199px)": {
+                    width: 120,
+                    height: 25,
+                    fontSize: 8,
+                  },
+                  "@media (max-width: 575px)": {
+                    width: 110,
+                    height: 20,
+                    fontSize: 7,
+                    margin: '10px 0'
+                  },
                 }}
                 onClick={addCart}
                 startIcon={<ShoppingCartIcon 
                   sx={{
                     "@media (min-width: 1200px) and (max-width: 1399px)": {
                       height: 14,
+                    },
+                    "@media (min-width: 576px) and (max-width: 1199px)": {
+                      height: 14,
+                    },
+                    "@media (max-width: 575px)": {
+                      height: 12,
                     },
                   }} 
                 />}
@@ -204,12 +224,29 @@ function ProductDetail(props) {
                     height: 25,
                     fontSize: 10,
                   },
+                  "@media (min-width: 576px) and (max-width: 1199px)": {
+                    width: 80,
+                    height: 25,
+                    fontSize: 8,
+                  },
+                  "@media (max-width: 575px)": {
+                    width: 80,
+                    height: 20,
+                    fontSize: 7,
+                    margin: '10px 0'
+                  },
                 }}
                 onClick={()=>handleAddWishList(decoded ? decoded.user.id : gId,id)}
                 startIcon={<FavoriteIcon 
                   sx={{
                     "@media (min-width: 1200px) and (max-width: 1399px)": {
                       height: 14,
+                    },
+                    "@media (min-width: 576px) and (max-width: 1199px)": {
+                      height: 14,
+                    },
+                    "@media (max-width: 575px)": {
+                      height: 12,
                     },
                   }} 
                   />}
@@ -232,12 +269,29 @@ function ProductDetail(props) {
                     height: 25,
                     fontSize: 10,
                   },
+                  "@media (min-width: 576px) and (max-width: 1199px)": {
+                    width: 80,
+                    height: 25,
+                    fontSize: 8,
+                  },
+                  "@media (max-width: 575px)": {
+                    width: 80,
+                    height: 20,
+                    fontSize: 7,
+                    margin: '10px 0'
+                  },
                 }}
                 onClick={(e) => handleReviews(e)}
                 startIcon={<RateReviewIcon 
                   sx={{
                     "@media (min-width: 1200px) and (max-width: 1399px)": {
                       height: 14,
+                    },
+                    "@media (min-width: 576px) and (max-width: 1199px)": {
+                      height: 14,
+                    },
+                    "@media (max-width: 575px)": {
+                      height: 12,
                     },
                   }} 
                 />}

@@ -10,25 +10,33 @@ const login = async (req, res) => {
     where: {
       mail: mail,
     },
-    attributtes: [password, mail],
   });
   try {
     if (!user) {
       res.json({ msg: "Este usuario no coincide con uno existente" });
     }
-    let match = await bcrypt.compare(password, user.password);
-    console.log("este es el resultado del match", match);
-    if (match) {
-      let token = jwt.sign({ user: user }, authConfing.secret, {
-        expiresIn: "999days",
+    console.log(user.userType, "tipo de user");
+    console.log(user, "user");
+    if (user.userType === "banned" || user.userType === "disabled") {
+      console.log("porque entro ?");
+      res.json({
+        msg: "Tu cuenta se encuentra desabilitada o baneada, por favor contacta con un administrador",
       });
-      return res.status(200).json({ auth: true, token: token });
     } else {
-      return res.json({
-        auth: false,
-        id:user.id,
-        msg: "La contraseña o el mail no coinciden con nuestros registros. Por favor intenete de nuevo",
-      });
+      let match = await bcrypt.compare(password, user.password);
+      console.log("este es el resultado del match", match);
+      if (match) {
+        let token = jwt.sign({ user: user }, authConfing.secret, {
+          expiresIn: "999days",
+        });
+        return res.status(200).json({ auth: true, token: token });
+      } else {
+        return res.json({
+          auth: false,
+          id: user.id,
+          msg: "La contraseña o el mail no coinciden con nuestros registros. Por favor intenete de nuevo",
+        });
+      }
     }
   } catch (err) {
     console.log("rompo en el login controller", err);

@@ -62,13 +62,13 @@ export default function FormRegister() {
               !/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(values.name)
             ) {
               error.name =
-                "Debe comenzar con mayúscula, sin numeros ni espacios";
+                "Debe comenzar con mayúscula, sin números ni espacios";
             }
             //apellido
             if (!values.surname) {
               error.surname = "Por favor ingrese un apellido";
             } else if (!/^[a-zA-Z]{3,30}/.test(values.surname)) {
-              error.surname = "El apellido debe tener entre 3 y 30 carecteres";
+              error.surname = "El apellido debe tener entre 3 y 30 caracteres";
             }
             //mail
             if (!values.mail) {
@@ -78,10 +78,10 @@ export default function FormRegister() {
                 values.mail
               )
             ) {
-              error.mail = "Por favor ingrese una direccion de correo valida";
+              error.mail = "Por favor ingrese una dirección de correo válida";
             }
             if (!values.password) {
-              error.password = "Por favor ingrese una contraña";
+              error.password = "Por favor ingrese una contraseña";
             } else if (
               !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(values.password)
             ) {
@@ -89,12 +89,12 @@ export default function FormRegister() {
                 "La contraseña debe tener mínimo seis caracteres, al menos una letra y un número";
             }
             if (!values.location) {
-              error.location = "Por favor ingrese una direccion de vivienda";
+              error.location = "Por favor ingrese una dirección de vivienda";
             }
             if (!values.phone) {
-              error.phone = "Por favor ingrese un numero de telofono";
+              error.phone = "Por favor ingrese un número de teléfono";
             } else if (!/^[+]?\d{2} \d{1} \d{2,4} \d{6}/gi.test(values.phone)) {
-              error.phone = "El numero ingresado no es valido";
+              error.phone = "El número ingresado no es válido";
             }
 
             return error;
@@ -109,7 +109,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder="Nombre"
                   />
                   <ErrorMessage
                     name="name"
@@ -124,7 +124,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="surname"
-                    placeholder="Surname"
+                    placeholder="Apellido"
                   />
                   <ErrorMessage
                     name="surname"
@@ -154,7 +154,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                   />
                   <ErrorMessage
                     name="password"
@@ -169,7 +169,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Telefono"
                   />
                   <ErrorMessage
                     name="phone"
@@ -184,7 +184,7 @@ export default function FormRegister() {
                     autoComplete="off"
                     type="text"
                     name="location"
-                    placeholder="Adress"
+                    placeholder="Direccion"
                   />
                   <ErrorMessage
                     name="location"
@@ -202,8 +202,8 @@ export default function FormRegister() {
               <div className="data-Field-reg">
                 <div className = "data-log-box">
                   <p>
-                    Do you already have an account?{" "}
-                    <a href="/login">Login here</a>
+                    Ya tienes una cuenta?{" "}<br />
+                    <a href="/login">Entra aquí</a>
                   </p>
                 </div>
               </div>

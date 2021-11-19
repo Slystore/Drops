@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState,useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
-import { putOrder } from '../../../redux/orders/ordersAction';
+import { putOrder, getOrdersById } from '../../../redux/orders/ordersAction';
+import { sendMail } from '../../../redux/mail/mailAction.js'
+
 
 const UpdateForm = (id) => {
     const dispatch = useDispatch()
     // const { id } = props.match.params;
     console.log(id.id.id,"updateorderid")
+
+    const { orderId } = useSelector((state) => state.ordersReducer)
+
+    useEffect(() => {
+        dispatch(getOrdersById(id.id.id))
+    }, [dispatch])
+
+
     const [input, setInput] = useState({
         shippingState: '',
     })
@@ -28,8 +38,13 @@ const UpdateForm = (id) => {
         setInput({
             shippingState: ''
         });
+
+        //---------------------
+        await sendMail(orderId.User.mail, orderId )
          window.location.replace("");
-    }
+
+        }
+        console.log('Este es el orderId', orderId)
     return (
         <div>
             <form onSubmit={e => { handleSubmit(e) }}>
