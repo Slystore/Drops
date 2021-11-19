@@ -153,6 +153,16 @@
     border: none;
     outline: thin solid #f00;
 }
+.button-newsletter{
+  border-radius: 5px;
+  border: thin solid #ccc;
+  width: 130px;
+  height: 45px;
+}
+.button-newsletter:hover{
+  background-color:#fc4444; 
+
+}
 
 .Btn-Profile-Modal{
     width: 100%;

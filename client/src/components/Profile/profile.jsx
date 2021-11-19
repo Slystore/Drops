@@ -255,7 +255,6 @@ export default function Profile() {
             <Tab label="Configuracion" {...a11yProps(1)} />
             <Tab label=" Mis deseados" {...a11yProps(2)} />
             <Tab label="Mis compras" {...a11yProps(3)} />
-            <Tab label="Newsletter" {...a11yProps(4)} />
             <a href="/" className="home">
               <Tab label="Home" {...a11yProps(4)} />
             </a>
@@ -280,6 +279,14 @@ export default function Profile() {
                       alt=""
                     />
                   </div>
+                  <span>
+                    Ahora mismo estas suscripto al newsletter, si quieres
+                    desuscribirte aprieta este boton{" "}
+                    <button className="button-newsletter" disabled={newsletter} onClick={handleClick}>
+                      {" "}
+                      desuscribirme{" "}
+                    </button>
+                  </span>
                 </div>
               </div>
             )}
@@ -628,12 +635,6 @@ export default function Profile() {
                 </Table>
               </TableContainer>
             </Grid>
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            <button disabled={newsletter} onClick={handleClick}>
-              {" "}
-              desuscribirme{" "}
-            </button>
           </TabPanel>
         </Box>
       )}
