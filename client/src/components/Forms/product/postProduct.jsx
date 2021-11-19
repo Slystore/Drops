@@ -7,6 +7,7 @@ import { getBrands } from "../../../redux/brand/brandActions";
 import { getCategories } from "../../../redux/category/categoriesActions";
 import { getSizes } from "../../../redux/sizes/sizeActions";
 import swal from "sweetalert";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import "./postProduct.css";
 
 function validate(input) {
@@ -146,6 +147,7 @@ export default function FormProductCreate() {
     e.stopPropagation();
     e.preventDefault();
     let file = e.target.files[0];
+    document.getElementById('info').innerHTML = file.name;
     let reader = new FileReader();
     reader.onloadend = function () {
       Axios.post(`/products/addProductPhoto`, { image: reader.result })
@@ -175,12 +177,14 @@ export default function FormProductCreate() {
     swal("", "Producto Creado!", "success");
     window.location.replace("");
   };
+
   const deleteCategory = (data) => {
     setInput({
       ...input,
       categoryId: input.categoryId.filter((category) => data !== category),
     });
   };
+
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -197,15 +201,29 @@ export default function FormProductCreate() {
               />
               {errors.name && <p className="errorText">{errors.name}</p>}
             </div>
-            <div className="firstBoxProduct">
-              <input
-                type="file"
-                id="image"
-                onChange={(e) => {
-                  uploadImage(e);
-                }}
-              />
-              <div id="info" className="info"></div>
+            <div className="boxInputProductFile">
+                <div className="BackGroundInputFile">
+                    < CloudUploadIcon 
+                        sx={{ 
+                            color: "#fff", 
+                            fontSize:26, 
+                            position: "relative",
+                            bottom:4,
+                            left: 10,
+                          }}
+                            />  
+                    <div className="boxInputProduct file-select" id="src-file1">
+                      <input
+                        className="InputFileUpload"
+                        type="file"
+                        id="image"
+                        onChange={(e) => {
+                          uploadImage(e);
+                        }}
+                      />
+                </div>
+                  <div id="info" className="info"></div>
+                </div>
             </div>
             <div className="boxInputProduct">
               <p className="titleProduct"> Precio </p>
@@ -327,7 +345,7 @@ export default function FormProductCreate() {
                 <div className="renderSizesProduct" key={key}>
                   <p className="stockNumber">
                     {" "}
-                    Talla:{el[0]} - Cantidad:{el[1]}
+                    Talla: {el[0]} - Cantidad: {el[1]}
                     <button
                       className="deleteStock"
                       onClick={() => deleteCategory(el)}
