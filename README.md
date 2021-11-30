@@ -34,10 +34,10 @@ style="width: 100%;
         • Corel Draw<br/><br/>
         <i><strong>Integrantes:</strong></i><br/><br/>
         • <a style="text-decoration: none; color: black;" href="https://www.linkedin.com/in/tom%C3%A1s-berrotar%C3%A1n-dev/" target="_blank">Tomás Berrotarán</a><br/>
-        • <a style="text-decoration: none; color: black;" target="_blank" href="https://www.linkedin.com/in/german-campodonico-/">Germán Compodonico</a><br/>
-        • <a style="text-decoration: none; color: black;" target="_blank" href="https://www.linkedin.com/in/gabriel-villarroel/">Gabriel Villarroel</a><br/>
-        • <a style="text-decoration: none; color: black;" target="_blank" href="https://www.linkedin.com/in/jos%C3%A9degouveia/">José De Gouveia</a><br/>
-        • <a style="text-decoration: none; color: black;" target="_blank" href="https://www.linkedin.com/in/juan-iturraspe-dev/">Juan Iturraspe</a><br/>
-        • <a style="text-decoration: none; color: black;" target="_blank" href="https://www.linkedin.com/in/daniel-full-stack/">Daniel Mena</a>
+        • <a style="text-decoration: none; color: black;" href="https://www.linkedin.com/in/german-campodonico-/" target="_blank">Germán Compodonico</a><br/>
+        • <a style="text-decoration: none; color: black;" href="https://www.linkedin.com/in/gabriel-villarroel/" target="_blank">Gabriel Villarroel</a><br/>
+        • <a style="text-decoration: none; color: black;" href="https://www.linkedin.com/in/jos%C3%A9degouveia/" target="_blank">José De Gouveia</a><br/>
+        • <a style="text-decoration: none; color: black;" href="https://www.linkedin.com/in/juan-iturraspe-dev/" target="_blank">Juan Iturraspe</a><br/>
+        • <a style="text-decoration: none; color: black;" href="https://www.linkedin.com/in/daniel-full-stack/" target="_blank">Daniel Mena</a>
     </p>
 </div>
